@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
     nextArrow: $('#next-libros'),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
     nextArrow: $('#next-librerias'),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
