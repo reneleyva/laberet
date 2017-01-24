@@ -4,22 +4,30 @@ jQuery(document).ready(function($) {
     dots: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    dots: false,
     prevArrow: $('#prev-libros'),
     nextArrow: $('#next-libros'),
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
           dots: true
         }
       },
       {
-        breakpoint: 950,
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -29,7 +37,7 @@ jQuery(document).ready(function($) {
 });
 
   $('#carousel-librerias').slick({
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow: 3,
