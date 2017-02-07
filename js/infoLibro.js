@@ -16,6 +16,11 @@ jQuery(document).ready(function($) {
 		//alert(back);
 	});
 
+  $("#ver-perfil").click(function() {
+    var id = $(this).closest('.libreria').data('id');
+    location.href = "http://localhost/laberet/user/infoLibreria/?id="+id;
+  });
+
 	$('.cover').click(function() {
 		var title = $('.info').find('.title').text();
 		$('.modal').find('#titulo').text(title);

@@ -104,7 +104,7 @@
 				<button type="" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
 			</div>
 
-			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs">
+			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="1">
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
@@ -113,7 +113,7 @@
 						<div class="circle"></div>
 						<p class="text-center"><?php echo $libreria['direccion']; ?></p>
 						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default"><b>VER PERFIL</b></button></a>
+							<button id="ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
 						</div>
 					</div>
 				</div>
