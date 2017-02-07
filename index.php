@@ -1,7 +1,7 @@
 <?php
 $Bienvenida = 'Bienvenido a Laberet';
 
-if (get_magic_quotes_gpc()){
+if (get_magic_quotes_gpc()) {
 	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
 	while (list($key, $val) = each($process)) {
 		foreach ($val as $k => $v){
@@ -40,7 +40,7 @@ if (isset($_GET['showbook'])){
 }
 
 
-if (isset($_GET['addbook'])){
+if (isset($_GET['addbook'])) {
 	include 'agregaLibros.html.php';
     exit();
 }

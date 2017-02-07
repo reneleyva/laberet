@@ -23,8 +23,8 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#carousel-relacionados').slick({
-    dots: true,
     infinite: true,
+    centerMode: true,
     speed: 300,
     slidesToShow: 5,
     slidesToScroll: 5,

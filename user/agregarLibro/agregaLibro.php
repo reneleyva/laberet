@@ -9,7 +9,7 @@
 	$id = $value['max'];
 
     $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
+    $autor =  mysql_real_escape_string($_POST['autor']);
     $lenguaje = $_POST['lenguaje'];
     $isbn = $_POST['isbn'];
     $precio = $_POST['precio'];
@@ -81,7 +81,7 @@
 			tags = "'.$tags.'",
 			LibreriaidLibreria = 1,
 			fotoFrente = "'.$fotoFrentePath.'",
-			fotoAtras = "'.$fotoFrentePath.'";';     
+			fotoAtras = "'.$fotoAtrasPath.'";';     
 
 	$pdo->exec($sql);
     header('Location: http://localhost/laberet/user/agregarLibro/');

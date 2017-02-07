@@ -10,10 +10,10 @@
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="css/infoLibro-style.css"> 
-	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../../slick/slick-theme.css"/>
+	<link rel="stylesheet" href="../../css/infoLibro-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="img/logo.png" alt=""></a>
+	    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="../../img/logo.png" alt=""></a>
 		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
 	  </div>
 
@@ -49,7 +49,7 @@
 	    </div>
 	    <div id="list" class="col-lg-6 col-md-6 col-sm-7">
 	    	<ul class="nav navbar-nav navbar-right">
-		   	  <li id="cart"><a href="#"><img src="img/grey-cart.png" alt=""><b>(0)</b></a></li>	
+		   	  <li id="cart"><a href="#"><img src="../../img/grey-cart.png" alt=""><b>(0)</b></a></li>	
 		      <li><a href="#">Pedidos Especiales</a></li>
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
@@ -68,31 +68,38 @@
 	
 	<div class="container">
 		<div class="row bookInfo">
-		
+			<?php include 'info.php'; ?>
+
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="img/brave-men.jpg" alt="">					
+					<img src="../../<?php echo htmlspecialchars($row['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="img/braveMen-back.jpg" alt="">					
+					<img src="../../<?php echo htmlspecialchars($row['fotoAtras'], ENT_QUOTES, 'UTF-8');?>" alt="">					
 				</div>
 			</div>
 			
 			<div class="info col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<p class="title">
-				<?php echo "kjsdhakjsh";?>
-					
-				</p>
-				<p><a class="author" href="#">Ernie Pyle</a></p>
-				<p><b>Precio: </b> $230</p>
-				<p><b>Ubicación: </b> <a href="#" title="Librería Aurora">Librería Aurora</a></p>
-				<p><b>ISBN: </b> 9788435020848</p>
-				<p><b>Encuadernación: </b> Tapa Blanda</p>
-				<p><b>Lenguaje: </b> inglés</p>
+				<?php echo htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');?></p>
+
+				<p><a class="author" href="#">
+					<?php echo htmlspecialchars($row['autor'], ENT_QUOTES, 'UTF-8');?>
+				</a></p>
+				<p><b>Precio: </b> $<?php echo htmlspecialchars($row['precio'], ENT_QUOTES, 'UTF-8');?></p>
+				<p><b>Ubicación: </b> <a href="#">
+					<?php echo htmlspecialchars($nombreLibreria, ENT_QUOTES, 'UTF-8');?>
+				</a></p>
+				<p><b>ISBN: </b> <?php echo htmlspecialchars($row['isbn'], ENT_QUOTES, 'UTF-8');?></p>
+				<p><b>Lenguaje: </b> <?php echo htmlspecialchars($row['lenguaje'], ENT_QUOTES, 'UTF-8');?></p>
 				<p><b>Tags: </b> 
-				<a href="#" class="label label-default">War</a>
-				<a href="#" class="label label-default">Ernie Pyle</a>
-				<a href="#" class="label label-default">WWII</a>
+				<?php 
+
+				for ($i=0; $i < count($tags); $i++) { 
+					echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
+				} 
+				?><!-- Fin php -->
+		
 				</p>
 				
 				<button type="" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
@@ -102,10 +109,10 @@
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
+							<h4 class="col-lg-12"><b><?php echo $nombreLibreria; ?></b></h4>
 						</div>
 						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
+						<p class="text-center"><?php echo $libreria['direccion']; ?></p>
 						<div class="row text-center">
 							<a href="#"><button type="" class="btn btn-default"><b>VER PERFIL</b></button></a>
 						</div>
@@ -115,6 +122,11 @@
 		</div>
 
 		<div class="row card">
+			<?php 
+				foreach ($relacionados as $libro) {
+					echo $libro['titulo']." ";
+				}
+			?>
 			<h3 class="text-center">Libros Relacionados</h3>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
 			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
@@ -133,60 +145,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
+				
 				
 			</div><!-- Fin Carousel -->
 
@@ -245,8 +204,8 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="slick/slick.min.js"></script>
-	<script src="js/infoLibro.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../slick/slick.min.js"></script>
+	<script src="../../js/infoLibro.js"></script>
 </body>
 </html>
