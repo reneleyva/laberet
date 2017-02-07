@@ -3,7 +3,7 @@
 include '../../conexion.php';
 
 if (isset($_POST['isbn'])){
-
+	
 	$isbn = $_POST['isbn'];
 	$autor = $_POST['autor'];
 	$titulo = $_POST['titulo'];

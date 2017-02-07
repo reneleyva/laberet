@@ -9,7 +9,7 @@
 	$id = $value['max'];
 
     $titulo = $_POST['titulo'];
-    $autor =  mysql_real_escape_string($_POST['autor']);
+    $autor =  $_POST['autor'];
     $lenguaje = $_POST['lenguaje'];
     $isbn = $_POST['isbn'];
     $precio = $_POST['precio'];
@@ -76,10 +76,9 @@
 			autor = "'.$autor.'",
 			isbn = "'.$isbn.'",
             fechaAdicion = "'.$fecha.'",
-			lenguaje = "'.$lenguaje.'",
 			precio = "'.$precio.'",
 			tags = "'.$tags.'",
-			LibreriaidLibreria = 1,
+			LibreriaidLibreria = 4,
 			fotoFrente = "'.$fotoFrentePath.'",
 			fotoAtras = "'.$fotoAtrasPath.'";';     
 
