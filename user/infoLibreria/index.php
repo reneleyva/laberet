@@ -134,6 +134,7 @@
 						?></p>
 					</div>
 				</div>
+				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book['id'], ENT_QUOTES, 'UTF-8');?>">
 			</div>
 		<?php endforeach; ?>
 
@@ -162,6 +163,7 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/linkLibro.js"></script>
 
 </body>
 </html>

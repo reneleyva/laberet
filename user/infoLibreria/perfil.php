@@ -20,13 +20,14 @@ try {
 
 
 try{
-	$sql = 'SELECT titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro';
+	//Tales que pertenecen a la librería-
+	$sql = 'SELECT idLibro, titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro';
 	$result = $pdo->query($sql);
 	$contador = 0;
 	$vacio = True;
 	while ($row2 = $result->fetch()) { //Ojo con la cantidad
 		    $vacio = False;
-			$books[] = array('titulo' => $row2['titulo'],'autor' => $row2['autor'],'precio' => $row2['precio'],
+			$books[] = array('id' => $row2['idLibro'], 'titulo' => $row2['titulo'],'autor' => $row2['autor'],'precio' => $row2['precio'],
 			'fotoFrente' => $row2['fotoFrente'],'fotoAtras' => $row2['fotoAtras']);
 	}
 	if ($vacio) {
