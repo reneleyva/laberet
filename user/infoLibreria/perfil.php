@@ -1,69 +1,39 @@
 <?php
 include '../../conexion.php';
 
-try {
-	$sql = 
-}
-
-
-
-/*
-<?php 
-
-include '../../conexion.php';
-
-if (!isset($_REQUEST['id'])) {
-	echo "404";
+if (!isset($_GET['id'])) {
+	echo "erro";
 	exit();
 }
 
-$id = $_REQUEST['id'];
-
+$id = $_GET['id'];
 try {
-		$sql = "SELECT * FROM Libro WHERE idLibro = ".$id.";";
-		$result = $pdo->query($sql);
-		$row = $result->fetch();
-
-		if (!$row) {
-			echo "404";
-		}
-		$tags = explode(" ", trim($row['tags'], " ")); //TAGS
-		//La libreria que vende el libro. 
-		$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$row['LibreriaidLibreria'].";";
-		$result = $pdo->query($sql);
-		$libreria = $result->fetch();
-		$nombreLibreria = $libreria['Nombre']; 
-
-		//Libro relacionados. 
-		$relacionados = array();
-
-		//Mismo autor
-		$sql = "SELECT * FROM Libro WHERE autor = '".$row['autor']."' AND titulo != '".$row['titulo']."';";
-		// echo $sql;
-		$result = $pdo->query($sql);
-		while ($libro = $result->fetch()) {
-			array_push($relacionados, $libro);
-		}
-
-		
-		//Por tags. 
-		// echo "COUNT: ".count($tags);
-		for ($i=0; $i < count($tags)-1; $i++) { 
-			if ($tags[$i] == "")
-				continue;
-			$sql = "SELECT * FROM Libro WHERE tags LIKE '%".$tags[$i]."%' AND titulo != '".$row['titulo']."';";
-			// echo $sql."<br>";
-			$result = $pdo->query($sql);
-			while ($libro = $result->fetch()) {
-				array_push($relacionados, $libro);
-			}
-		}
+	$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
+	$result = $pdo->query($sql);
+	$row = $result->fetch();
+	$nombre = $row['Nombre'];
+	$direccion = $row['direccion'];
+	$telefono = $row['telefono'];
+} catch (Exception $e) {
+	echo "Pene de Morubio";
+}
 
 
-	} catch (PDOException $e) {
-		$error = 'Error fetching books: ' . $e->getMessage();
-		echo $e->getMessage();
-		// include 'error.html.php';
+try{
+	$sql = 'SELECT titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro';
+	$result = $pdo->query($sql);
+	$contador = 0;
+	$vacio = True;
+	while ($row2 = $result->fetch()) { //Ojo con la cantidad
+		    $vacio = False;
+			$books[] = array('titulo' => $row2['titulo'],'autor' => $row2['autor'],'precio' => $row2['precio'],
+			'fotoFrente' => $row2['fotoFrente'],'fotoAtras' => $row2['fotoAtras']);
+	}
+	if ($vacio) {
+		echo 'No hay libros que mostrar.';
 		exit();
 	}
-*/
+} catch (PDOException $e) {
+	$error = 'Error fetching books: ' . $e->getMessage();
+	exit();
+}

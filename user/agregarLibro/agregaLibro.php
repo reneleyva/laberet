@@ -78,7 +78,7 @@
             fechaAdicion = "'.$fecha.'",
 			precio = "'.$precio.'",
 			tags = "'.$tags.'",
-			LibreriaidLibreria = 4,
+			LibreriaidLibreria = 6,
 			fotoFrente = "'.$fotoFrentePath.'",
 			fotoAtras = "'.$fotoAtrasPath.'";';     
 

@@ -63,24 +63,24 @@
 	    
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
-	
+	<?php include 'perfil.php'; ?>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
 					<div class="row text-center">
-						<h3 class="col-lg-12"><b>Librería Aurora</b></h3>
-						<p>Donceles #2 col. centro</p>
+						<h3 class="col-lg-12"><b><?php echo $nombre ?></b></h3>
+						<p><?php echo $direccion ?></p>
 					</div>
 					<div class="circle"></div>
-					<p>Tel. 56130481</p>
+					<p><?php echo "Tel: ".$telefono ?></p>
 
 					<div class="hl text-center"></div>
 					<div class="row text-center redes-sociales">
-						<a href="#"><img src="img/facebook.png" alt=""></a>
-						<a href="#"><img src="img/twitter.png" alt=""></a>
-						<a href="#"><img src="img/instagram.png" alt=""></a>
-						<a href="#"><img src="img/maps.png" alt=""></a>
+						<a href="#"><img src="../../img/facebook.png" alt=""></a>
+						<a href="#"><img src="../../img/twitter.png" alt=""></a>
+						<a href="#"><img src="../../img/instagram.png" alt=""></a>
+						<a href="#"><img src="../../img/maps.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -116,140 +116,30 @@
 
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
+
+		<?php 
+		foreach ($books as $book): ?>
+			<div class="thumbnail libro col-lg-3 col-md-6">
+				<div class="caption">
+				<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
+					<div class="info">
+						<p class="book-title"><?php
+				        	echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');
+				        ?></p>
+						<a class="book-author" href="#"><?php
+							echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');
+						?></a>
+						<p class="book-price"><?php
+							echo htmlspecialchars('$ '.$book['precio'], ENT_QUOTES, 'UTF-8');
+						?></p>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+
 			
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<a href="#"><img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men"></a>
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
 
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/fundacion-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Fundación</p>
-						<a class="book-author" href="#">Isaac Asimov</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/tarumba-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/fundacion-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Fundación</p>
-						<a class="book-author" href="#">Isaac Asimov</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/tarumba-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/fundacion-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Fundación</p>
-						<a class="book-author" href="#">Isaac Asimov</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/tarumba-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<nav class="text-center" aria-label="Page navigation">
+			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
 			  <ul class="pagination">
 			    <li>
 			      <a href="#" aria-label="Previous">
@@ -270,10 +160,6 @@
 			</nav>
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 	</div>
-
-	<input type="hidden" name="id" value="<?php
-					echo $book['idLibro']; ?>">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 

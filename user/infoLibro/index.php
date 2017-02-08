@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
+    
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
@@ -104,7 +104,8 @@
 				<button type="" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
 			</div>
 
-			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="1">
+			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="<?php
+					echo $row['LibreriaidLibreria']; ?>">
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
