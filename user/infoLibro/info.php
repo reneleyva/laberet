@@ -14,11 +14,11 @@ try {
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
 	$autor = $row['autor'];
+	$titulo = $row['titulo'];
 
 	if (!$row) {
 		echo "404";
 	}
-	$tags = explode(" ", trim($row['tags'], " ")); //TAGS
 	//La libreria que vende el libro. 
 	$idLibreria = $row['LibreriaidLibreria'];
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$idLibreria.";";
@@ -27,31 +27,42 @@ try {
 	$nombreLibreria = $libreria['Nombre']; 
 
 	//Busca autor
-	$sql = "SELECT * FROM Libro WHERE LibreriaidLibreria = '".$idLibreria."' AND titulo != '".$row['titulo']."';";
+	$sql = "SELECT * FROM Libro WHERE autor = '".$autor.
+		    "' AND titulo != '".$titulo."';";
 	$result = $pdo->query($sql);
+	$cont = 0;
+	$books = Null;
+	$titulos = Null;
 	while ($libro = $result->fetch()) {
-		$books[] =array('titulo' => $row['titulo'],'autor' => $row['autor'], 
-			            'fotoFrente' => $row['fotoFrente'],'precio' => $row['precio']);
+		$cont ++;
+		$titulos[] = $libro['titulo'];
+		$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
+			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
 	}
 
-		
-		//Por tags. 
-		// echo "COUNT: ".count($tags);
-	for ($i=0; $i < count($tags)-1; $i++) { 
-		if ($tags[$i] == "")
-			continue;
-		$sql = "SELECT * FROM Libro WHERE tags LIKE '%".$tags[$i]."%' AND titulo != '".$row['titulo']."';";
-		// echo $sql."<br>";
-		$result = $pdo->query($sql);
-		while ($libro = $result->fetch()) {
-			array_push($relacionados, $libro);
+	//Separa los tags
+	if(!$books){
+		return;
+	}
+	$tags = explode(" ", trim($row['tags'], " ")); 
+	foreach ($tags as $tag) {
+		if ($tag != ""){
+			$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE 
+			        lower('%".$tag."%') AND titulo != '".$titulo."';";
+			$result = $pdo->query($sql);
+			while ($libro = $result->fetch()) {
+				// Verifica que no se repita el título
+				if (!in_array($libro['titulo'], $titulos)){
+					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
+			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
+				}
+			}
 		}
 	}
 
-
-	} catch (PDOException $e) {
-		$error = 'Error fetching books: ' . $e->getMessage();
-		echo $e->getMessage();
-		// include 'error.html.php';
-		exit();
-	}
+} catch (PDOException $e) {
+	$error = 'Error fetching books: ' . $e->getMessage();
+	echo $e->getMessage();
+	// include 'error.html.php';
+	exit();
+}
