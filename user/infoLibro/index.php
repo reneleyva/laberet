@@ -137,7 +137,7 @@
 				
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men"></a>
 						<div class="info">
 							<p class="book-title">Brave men</p>
 							<a class="book-author" href="#">Ernie Pyle</a>
@@ -161,7 +161,7 @@
 		<div class="row footer text-center">
 				<div class="col-lg-4">
 					<div class="row">
-						<img src="img/laberet_icon.png" alt="">
+						<img src="../../img/laberet_icon.png" alt="">
 						<b>LABERET</b>
 					</div>
 				</div>
@@ -190,10 +190,10 @@
 			      <div class="modal-body">
 			        <div class="row">
 			        	<div class="modal-cover col-lg-6">
-			        		<img src="img/brave-men.jpg" alt="">
+			        		<img src="../../img/brave-men.jpg" alt="">
 			        	</div>
 			        	<div class="modal-back col-lg-6">
-			        		<img src="img/braveMen-back.jpg" alt="">
+			        		<img src="../../img/braveMen-back.jpg" alt="">
 			        	</div>
 			        </div>
 			      </div>

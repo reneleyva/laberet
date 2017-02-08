@@ -94,7 +94,7 @@
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php include 'muestraLibros.php'; ?>
 			 
-			<?php if(!$books){echo "FUCK!"
+			<?php if(!$books){echo "FUCK!";
 			exit();}
 
 			foreach ($books as $book): ?>
