@@ -12,28 +12,12 @@
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
+	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
-		function showHint(str) {
-		if (str.length == 0) {
-			document.getElementById("txtHint").innerHTML = "";
-			return;
-		} else {
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("txtHint").innerHTML = this.responseText;
-				}
-			};
-			xmlhttp.open("GET", "gethint.php?q=" + str, true);
-			xmlhttp.send();
-			}
-		}
-		</script>
 
 </head>
 <body>
@@ -70,19 +54,18 @@
 			
 			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<div class="form-group">
-					<div class="input-group">
-						<input type="text" name = "keyword" id = "keyword" class="form-control" 
-						       placeholder="Search for...">       
+					<div class="input-group	">
+						<input type="text" name="keyword" id ="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
 				    
 				<select name="" class="form-control">
-					  <option>TODO</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
+					  <option>Todo</option>
+					  <option>Autor</option>
+					  <option>Titulo</option>
+					  <option>Categoria</option>
 				</select>
 				    
 				</div>
@@ -146,5 +129,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/linkLibro.js"></script>
+	<script src="../../js/jquery-ui.min.js"></script>
+	<script src="../../js/busca.js"></script>
 </body>
 </html>
