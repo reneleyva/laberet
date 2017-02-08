@@ -55,7 +55,7 @@
 			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<div class="form-group">
 					<div class="input-group	">
-						<input type="text" name="keyword" id ="keyword" class="form-control" placeholder="Search for...">       
+						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
