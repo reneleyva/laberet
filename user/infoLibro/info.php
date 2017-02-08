@@ -13,26 +13,25 @@ try {
 	$sql = "SELECT * FROM Libro WHERE idLibro = ".$id.";";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
+	$autor = $row['autor'];
 
 	if (!$row) {
 		echo "404";
 	}
 	$tags = explode(" ", trim($row['tags'], " ")); //TAGS
 	//La libreria que vende el libro. 
-	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$row['LibreriaidLibreria'].";";
+	$idLibreria = $row['LibreriaidLibreria'];
+	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$idLibreria.";";
 	$result = $pdo->query($sql);
 	$libreria = $result->fetch();
 	$nombreLibreria = $libreria['Nombre']; 
 
-	//Libro relacionados. 
-	$relacionados = array();
-
-	//Mismo autor
-	$sql = "SELECT * FROM Libro WHERE autor = '".$row['autor']."' AND titulo != '".$row['titulo']."';";
-	// echo $sql;
+	//Busca autor
+	$sql = "SELECT * FROM Libro WHERE LibreriaidLibreria = '".$idLibreria."' AND titulo != '".$row['titulo']."';";
 	$result = $pdo->query($sql);
 	while ($libro = $result->fetch()) {
-		array_push($relacionados, $libro);
+		$books[] =array('titulo' => $row['titulo'],'autor' => $row['autor'], 
+			            'fotoFrente' => $row['fotoFrente'],'precio' => $row['precio']);
 	}
 
 		

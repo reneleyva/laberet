@@ -124,8 +124,10 @@
 				        	echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');?></a>
 						<p class="book-price"><?php
 				        	echo htmlspecialchars("$ ".$book['precio'], ENT_QUOTES, 'UTF-8');?></p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b>12/04/17</p>
+						<p><?php
+				        	echo htmlspecialchars($book['isbn'], ENT_QUOTES, 'UTF-8');?></p>
+						<p><?php
+				        	echo htmlspecialchars('Fecha: '.$book['fechaAdicion'], ENT_QUOTES, 'UTF-8');?></p>
 					</div>
 				</div>
 				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">

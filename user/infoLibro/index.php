@@ -122,11 +122,6 @@
 		</div>
 
 		<div class="row card">
-			<?php 
-				foreach ($relacionados as $libro) {
-					echo $libro['titulo']." ";
-				}
-			?>
 			<h3 class="text-center">Libros Relacionados</h3>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
 			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
@@ -134,7 +129,11 @@
 			</div>
 
 			<div id="carousel-relacionados" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-				
+			<?php include 'info.php'; ?>
+
+			<?php if(!$books){echo "FUCK!";
+					exit();}
+			foreach ($books as $book): ?>
 				<div class="thumbnail libro">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men"></a>
@@ -145,6 +144,7 @@
 						</div>
 					</div>
 				</div>
+			<?php endforeach; ?>
 				
 				
 			</div><!-- Fin Carousel -->
