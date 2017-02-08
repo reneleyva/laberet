@@ -18,5 +18,3 @@
 		include 'error.html.php';
 		exit();
 	}
-	// include 'busqueda.html.php';
-    // exit();
