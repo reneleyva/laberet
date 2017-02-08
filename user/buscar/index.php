@@ -30,16 +30,16 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand navbar-left" href="#"><img src="../../img/logo.png" alt=""></a>
+		          <a class="navbar-brand navbar-left" href="../../"><img src="../../img/logo.png" alt=""></a>
 		          <!-- <a class="navbar-brand" href="#"><b>LABERET</b></a> -->
         	</div>
 
         	<div id="navbar" class="navbar-collapse collapse">
         		
         		<ul class="nav navbar-nav navbar-right">
-        			<li><a href="#">Inicio</a></li>
+        			<li><a href="../../">Inicio</a></li>
 		            <li class="active"><a href="#">Catálogo</a></li>
-		            <li><a href="#">Librerías</a></li>
+		            <li><a href="../../#librerias">Librerías</a></li>
 		            <li><a href="registrarse.html">Registrarse</a></li>
 		            <li ><a href="iniciarSesion.html">Iniciar Sesión</a></li>
 		            
@@ -77,9 +77,10 @@
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php include 'muestraLibros.php'; ?>
 			 
-			<?php if(!$books){echo "FUCK!";
-			exit();}
-
+			<?php if(!$books){
+				echo "FUCK!";
+				exit();
+			}
 			foreach ($books as $book): ?>
 
 			<div class="thumbnail libro col-lg-3 col-md-6">

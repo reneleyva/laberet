@@ -51,11 +51,10 @@
         	</div>
 
         	<div id="navbar" class="navbar-collapse collapse">
-        		
-        		<ul class="nav navbar-nav navbar-right">
-        			<li><a href="#">Inicio</a></li>
+        		+<ul class="nav navbar-nav navbar-right">
+        			<li><a href="../../">Inicio</a></li>
 		            <li class="active"><a href="#">Catálogo</a></li>
-		            <li><a href="#">Librerías</a></li>
+		            <li><a href="../../#librerias">Librerías</a></li>
 		            <li><a href="registrarse.html">Registrarse</a></li>
 		            <li ><a href="iniciarSesion.html">Iniciar Sesión</a></li>
 		            
