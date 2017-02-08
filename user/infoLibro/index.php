@@ -93,7 +93,6 @@
 				<p><b>ISBN: </b> <?php echo htmlspecialchars($row['isbn'], ENT_QUOTES, 'UTF-8');?></p>
 				<p><b>Tags: </b> 
 				<?php 
-
 				for ($i=0; $i < count($tags); $i++) { 
 					echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
 				} 
