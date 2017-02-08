@@ -30,11 +30,9 @@ try {
 	$sql = "SELECT * FROM Libro WHERE autor = '".$autor.
 		    "' AND titulo != '".$titulo."';";
 	$result = $pdo->query($sql);
-	$cont = 0;
 	$books = Null;
 	$titulos = Null;
 	while ($libro = $result->fetch()) {
-		$cont ++;
 		$titulos[] = $libro['titulo'];
 		$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
 			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
@@ -42,7 +40,8 @@ try {
 
 	//Separa los tags
 	if(!$books){
-		return;
+		$tags = Null;
+		$titulos[] = Null;
 	}
 	$tags = explode(" ", trim($row['tags'], " ")); 
 	foreach ($tags as $tag) {
@@ -63,6 +62,5 @@ try {
 } catch (PDOException $e) {
 	$error = 'Error fetching books: ' . $e->getMessage();
 	echo $e->getMessage();
-	// include 'error.html.php';
 	exit();
 }
