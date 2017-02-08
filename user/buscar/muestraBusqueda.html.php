@@ -17,23 +17,23 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
+    <!-- <script>
 		function showHint(str) {
-		if (str.length == 0) {
-			document.getElementById("txtHint").innerHTML = "";
-			return;
-		} else {
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("txtHint").innerHTML = this.responseText;
+			if (str.length == 0) {
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("txtHint").innerHTML = this.responseText;
+					}
+				};
+				xmlhttp.open("GET", "gethint.php?q=" + str, true);
+				xmlhttp.send();
 				}
-			};
-			xmlhttp.open("GET", "gethint.php?q=" + str, true);
-			xmlhttp.send();
-			}
 		}
-		</script>
+		</script> -->
 
 </head>
 <body>
@@ -71,8 +71,7 @@
 			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" name = "keyword" id = "keyword" class="form-control" 
-						       placeholder="Search for...">       
+						<input type="text" name = "keyword" id = "keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
@@ -88,7 +87,7 @@
 				</div>
 			</form>
 
-			<!-- <h3 class="resultado">Resultados para: <span>Julio Cortazar</span></h3> -->
+			<h3 class="resultado">Resultados para: <span><?php echo htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8');?></span></h3>
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
