@@ -136,11 +136,11 @@
 			foreach ($books as $book): ?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
 						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
+							<p class="book-title"><?php echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');?></p>
+							<a class="book-author" href="#"><?php echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');?></a>
+							<p class="book-price"><?php echo htmlspecialchars('$ '.$book['precio'], ENT_QUOTES, 'UTF-8');?></p>
 						</div>
 					</div>
 				</div>
