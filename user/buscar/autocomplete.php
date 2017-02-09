@@ -17,9 +17,11 @@ $query = $db->query("SELECT titulo,autor from Libro where lower(tags)
 		        like lower('".$keyword."%') or lower(titulo) like lower('".$keyword."%') 
 		        or lower(autor) like lower('% ".$keyword."%');");
 
+$data = NULL;
 while ($row = $query->fetch_assoc()) {
     $data[] = $row['autor'];
     $data[] = $row['titulo'];
 }
-    
+
+//echo "jsnkjadihsuh";
 echo json_encode($data);
