@@ -170,18 +170,20 @@
 					echo "FUCK!";
 					exit();
 				}
-				foreach ($librerias as $libreria): 
+				foreach ($libros as $libro): 
 			?>
 			<div class="thumbnail libro col-lg-3 col-md-6">
 				<div class="caption">
-					<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
+					<a href="#"><img class="book-cover" src="<?php echo htmlspecialchars($libro['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="Brave Men"></a>
 					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
+						<p class="book-title"><?php echo htmlspecialchars($libro['titulo'], ENT_QUOTES, 'UTF-8');?></p>
+						<a class="book-author" href="#"><?php echo htmlspecialchars($libro['autor'], ENT_QUOTES, 'UTF-8');?></a>
+						<p class="book-price">$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?></p>
 					</div>
 				</div>
 			</div>
+
+			<?php endforeach; ?>
 
 			<div class="row text-center btn-catalogo">
 				<a href="#"><button class="btn btn-default btn-ver">VER CATALAGO COMPLETO</button></a>
