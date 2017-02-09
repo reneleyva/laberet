@@ -117,59 +117,34 @@
 	<!-- INICIO Carousel Librerías -->
 	<div id="librerias" class="container-fluid">
 		<h2 class="text-center">Descubre libros de entre 20 librerías de la ciudad.</h2>
-
-		 <div class="row carousel">
+		 <div class="row carousel"> 
+		<?php 
+			include 'librerias.php';
+			if(!$librerias){
+				echo "FUCK!";
+				exit();
+			}
+		foreach ($librerias as $libreria): ?>
+		
 			<div>
 				<div id="box">
 					<div class="row text-center">
-						<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
+						<h4 class="col-lg-12"><b>
+						<?php echo htmlspecialchars($libreria['Nombre'], ENT_QUOTES, 'UTF-8');?>
+						</b></h4>
 					</div>
-					<div class="circle"></div>
-					<p>Donceles #2 col. centro</p>
+					<div style="background: url(
+						<?php echo htmlspecialchars('img/'.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
+					 ) no-repeat no-repeat center center;" class="circle"></div>
+					<p>
+						<?php echo htmlspecialchars($libreria['direccion'], ENT_QUOTES, 'UTF-8');?>
+					</p>
 					<div class="row text-center">
-						<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
+						<a href="user/infoLibreria/?id=<?php echo htmlspecialchars($libreria['idLibreria'], ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 					</div>
 				</div>
 			</div>
-
-			<div>
-				<div id="box">
-					<div class="row text-center">
-						<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-					</div>
-					<div class="circle"></div>
-					<p>Donceles #2 col. centro</p>
-					<div class="row text-center">
-						<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-					</div>
-				</div>
-			</div>
-
-			<div>
-				<div id="box">
-					<div class="row text-center">
-						<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-					</div>
-					<div class="circle"></div>
-					<p>Donceles #2 col. centro</p>
-					<div class="row text-center">
-						<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-					</div>
-				</div>
-			</div>
-
-			<div>
-				<div id="box">
-					<div class="row text-center">
-						<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-					</div>
-					<div class="circle"></div>
-					<p>Donceles #2 col. centro</p>
-					<div class="row text-center">
-						<a href="#"><button type="" class="btn">VER PERFIL</button></a>
-					</div>
-				</div>
-			</div>
+			<?php endforeach; ?>
 
 		</div> <!-- FIN Carousel -->
 		
