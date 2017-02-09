@@ -90,7 +90,11 @@
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
-			<?php if(!$books){echo "FUCK!";}
+			<?php if(!$books){
+				//BBB
+				include 'busqueda-error.html';
+				exit();
+			}
 
 			foreach ($books as $book): ?>
 
