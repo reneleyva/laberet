@@ -163,42 +163,18 @@
 		<div class="row ultimos-libros">
 
 			<h2 class="text-center">Ultimos Libros Agregados.</h2>
+
+			<?php 
+				include 'libros.php';
+				if(!$libros){
+					echo "FUCK!";
+					exit();
+				}
+				foreach ($librerias as $libreria): 
+			?>
 			<div class="thumbnail libro col-lg-3 col-md-6">
 				<div class="caption">
 					<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/fundacion-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Fundación</p>
-						<a class="book-author" href="#">Isaac Asimov</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/tarumba-cover.jpg" alt="Brave Men">
-					<div class="info">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price">$230</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail libro col-lg-3 col-md-6">
-				<div class="caption">
-					<img class="book-cover" src="img/brave-men.jpg" alt="Brave Men">
 					<div class="info">
 						<p class="book-title">Brave men</p>
 						<a class="book-author" href="#">Ernie Pyle</a>
