@@ -181,7 +181,10 @@
 						<p class="book-price">$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?></p>
 					</div>
 				</div>
+				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars(
+				  $libro['idLibro'], ENT_QUOTES, 'UTF-8');?>">
 			</div>
+			
 
 			<?php endforeach; ?>
 
@@ -224,6 +227,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
+    <script src="js/linkLibro.js"></script>
     <script src="js/carousel.js"></script>
 </body>
 </html>

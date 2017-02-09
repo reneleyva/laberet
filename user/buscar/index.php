@@ -83,7 +83,7 @@
 			}
 			foreach ($books as $book): ?>
 
-			<div class="thumbnail libro col-lg-3 col-md-6">
+			<div class="thumbnail libro pene col-lg-3 col-md-6">
 				<div class="caption">
 					<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
 					<div class="info">
