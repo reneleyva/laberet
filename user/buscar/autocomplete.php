@@ -6,31 +6,41 @@ $dbUsername = 'root';
 $dbPassword = 'root';
 $dbName = 'laberet';
 
-//connect with the database
 $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
 
-//get search term
+//termino
 $keyword = $_GET['term'];
 
-//get matched data from skills table
-$query = $db->query("SELECT titulo,autor from Libro where lower(tags) 
-		        like lower('".$keyword."%') or lower(titulo) like lower('".$keyword."%') 
-		        or lower(autor) like lower('% ".$keyword."%');");
+//Por autor 
+$query = $db->query("SELECT autor from Libro WHERE autor LIKE '".$keyword."%';");
 
-<<<<<<< HEAD
-$data = NULL;
-=======
+$data = array();
 
-$data=Null;
->>>>>>> 27473e2b9a6e32397e0f3dfd3f4ce466d67d09fb
 while ($row = $query->fetch_assoc()) {
-    $data[] = $row['autor'];
-    echo $row['autor'];
-    $data[] = $row['titulo'];
+    if (!in_array($row['autor'], $data, false)) {
+    	// echo "Valor: ".$row['autor'];
+   		$data[] = $row['autor'];
+    }
 }
 
-<<<<<<< HEAD
-//echo "jsnkjadihsuh";
-=======
->>>>>>> 27473e2b9a6e32397e0f3dfd3f4ce466d67d09fb
-echo json_encode($data);
+echo "VAlor1: ".$data[1];
+echo "VAlor2: ".$data[2];
+
+if ($data[1] == $data[2]) {
+	echo "The same shit";
+} else {
+	echo "WTF";
+}
+$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '".$keyword."%';");
+
+while ($row = $query->fetch_assoc()) {
+	if (!in_array($row['titulo'], $data))
+   		$data[] = $row['titulo'];
+}
+
+// echo json_encode($data);
+// if (in_array("Jaime Sabines", $data)) {
+// 	echo "jlkjlkj";
+// }
+// else 
+// 	echo "Nope";

@@ -6,21 +6,17 @@ jQuery(document).ready(function($) {
 		$('#forma').find('#nombre').focus();
 	});
 
-	$("#guardar").click(function(event) {
-		event.preventDefault();
+	$("form").submit(function(event) {
 		$(".err-msg").hide();
 		var pass1 = $('#pass1').val();
 		var pass2 = $('#pass2').val();
 
-		console.log(pass1);
-		console.log(pass1);
-
 		if (pass1.length < 5) {
 			$("#corta").show();
+			event.preventDefault();
 		} else if (pass1 !== pass2) {
 			$("#coiciden").show();
-		} else {
-			$("form").submit();
+			event.preventDefault();
 		}
 	});
 });
