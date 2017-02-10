@@ -189,7 +189,7 @@
 			<?php endforeach; ?>
 
 			<div class="row text-center btn-catalogo">
-				<a href="#"><button class="btn btn-default btn-ver">VER CATALAGO COMPLETO</button></a>
+				<a href="./user/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
 			</div>
 
 			<div id="footer-hl" class="hl"></div>
