@@ -51,10 +51,10 @@ try {
 			$result = $pdo->query($sql);
 			while ($libro = $result->fetch()) {
 				// Verifica que no se repita el título
-				if (!in_array($libro['titulo'], $titulos)){
+				if (!(in_array($libro['titulo'], $titulos))){
 					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
 			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
-				}
+				} 
 			}
 		}
 	}

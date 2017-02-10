@@ -36,9 +36,9 @@
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form class="navbar-form" role="search">
+	       <form action="../buscar/busca.php" method="post" class="navbar-form" role="search">
 	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search" name="q">
+	            <input type="text" class="form-control" placeholder="Search" name="keyword">
 	            <div class="input-group-btn">
 	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	            </div>
@@ -91,13 +91,13 @@
 	<div class="container">
 		<div class="row">
 			
-			<form action="" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for...">
+						<input type="text" class="form-control" name= "keyword" placeholder="Search for...">
 						<span class="input-group-btn">
-							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
 				    
@@ -111,7 +111,7 @@
 				</div>
 			</form>
 
-			<h3 class="resultado">Resultados para: <span>Julio Cortazar</span></h3>
+			<h3 class="resultado">Resultados para: <span>Stephen King</span></h3>
 		</div>
 
 		
