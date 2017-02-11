@@ -94,7 +94,8 @@
 				<p><b>Tags: </b> 
 				<?php 
 				for ($i=0; $i < count($tags); $i++) { 
-					echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
+					if ($tags[$i] != '')
+						echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
 				} 
 				?><!-- Fin php -->
 		
