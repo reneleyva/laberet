@@ -38,7 +38,7 @@
         		
         		<ul class="nav navbar-nav navbar-right">
         			<li><a href="../../">Inicio</a></li>
-		            <li class="active"><a href="#">Catálogo</a></li>
+		            <li class="active"><a href="">Catálogo</a></li>
 		            <li><a href="../../#librerias">Librerías</a></li>
 		            <li><a href="registrarse.html">Registrarse</a></li>
 		            <li ><a href="iniciarSesion.html">Iniciar Sesión</a></li>
@@ -83,7 +83,7 @@
 			}
 			foreach ($books as $book): ?>
 
-			<div class="thumbnail libro pene col-lg-3 col-md-6">
+			<div class="thumbnail libro  col-lg-3 col-md-6">
 				<div class="caption">
 					<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
 					<div class="info">

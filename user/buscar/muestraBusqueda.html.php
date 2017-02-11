@@ -46,7 +46,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		          </button>
-		          <a class="navbar-brand navbar-left" href="#"><img src="../../img/logo.png" alt=""></a>
+		          <a class="navbar-brand navbar-left" href="../../"><img src="../../img/logo.png" alt=""></a>
 		          <!-- <a class="navbar-brand" href="#"><b>LABERET</b></a> -->
         	</div>
 

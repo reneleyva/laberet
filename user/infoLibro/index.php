@@ -38,9 +38,9 @@
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form class="navbar-form" role="search">
+	        <form action="../buscar/busca.php" method="post" class="navbar-form" role="search">
 	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search" name="q">
+	            <input type="text" class="form-control" placeholder="Search" name="keyword">
 	            <div class="input-group-btn">
 	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	            </div>

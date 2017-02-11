@@ -57,12 +57,15 @@
 	<div class="container-fluid">
 	<!-- HEADER -->
 		<div class="row-fluid">
+		<form action="user/buscar/busca.php" class="form-inline" method="post" accept-charset="utf-8">
 			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 			<h2 class="centering text-center"></h2>
 			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="" type="text" name="" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<input id="busqueda" class="" type="text" name="keyword" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
 			</div>
+			</form>	
 	 	</div> <!-- FIN HEADER -->
+	 	
 		
     </div>
 	
