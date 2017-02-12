@@ -77,7 +77,7 @@
 				    </div>
 				    
 				<select name="" class="form-control">
-					  <option>TODO</option>
+					  <option>Todo</option>
 					  <option>Autor</option>
 					  <option>Titulo</option>
 					  <option>Categoria</option>
