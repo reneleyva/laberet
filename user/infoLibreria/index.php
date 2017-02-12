@@ -95,6 +95,8 @@
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
+						<input type="hidden" name="id" value="<?php
+							echo $_GET['id']; ?>">
 						<input type="text" class="form-control" name= "keyword" placeholder="Search for...">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -103,9 +105,9 @@
 				    
 				<select name="" class="form-control">
 					  <option>TODO</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
+					  <option>Autor</option>
+					  <option>Título</option>
+					  <option>Género</option>
 				</select>
 				    
 				</div>
