@@ -78,9 +78,9 @@
 				    
 				<select name="" class="form-control">
 					  <option>TODO</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
+					  <option>Autor</option>
+					  <option>Titulo</option>
+					  <option>Categoria</option>
 				</select>
 				    
 				</div>
