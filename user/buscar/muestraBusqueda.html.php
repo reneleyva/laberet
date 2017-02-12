@@ -17,23 +17,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- <script>
-		function showHint(str) {
-			if (str.length == 0) {
-				document.getElementById("txtHint").innerHTML = "";
-				return;
-			} else {
-				var xmlhttp = new XMLHttpRequest();
-				xmlhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("txtHint").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET", "gethint.php?q=" + str, true);
-				xmlhttp.send();
-				}
-		}
-		</script> -->
 
 </head>
 <body>
@@ -75,8 +58,10 @@
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
-				    
-				<select name="" class="form-control">
+				
+				<!-- Escondo el valor para desde javascript poner seleccionada la opcion que escogió el usuario como busqueda -->
+				<select id="options" name="selection" class="form-control" data-selected="<?php echo $selection; ?>">
+					<?php echo $selected ?>
 					  <option>TODO</option>
 					  <option>Autor</option>
 					  <option>Titulo</option>
@@ -91,7 +76,7 @@
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php if(!$books){
-				//BBB
+				//BBBs
 				include 'busqueda-error.html';
 				exit();
 			}
@@ -144,5 +129,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/linkLibro.js"></script>
+	<script src="../../js/optionHack.js"></script>
 </body>
 </html>

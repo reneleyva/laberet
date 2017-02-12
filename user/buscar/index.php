@@ -68,7 +68,6 @@
 					  <option>Autor</option>
 					  <option>Titulo</option>
 					  <option>Categoria</option>
-					  <option>Pene</option>
 				</select>
 				    
 				</div>
