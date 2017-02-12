@@ -63,11 +63,12 @@
 						</span>
 				    </div>
 				    
-				<select name="" class="form-control">
+				<select name="selection" class="form-control">
 					  <option>Todo</option>
 					  <option>Autor</option>
 					  <option>Titulo</option>
 					  <option>Categoria</option>
+					  <option>Pene</option>
 				</select>
 				    
 				</div>

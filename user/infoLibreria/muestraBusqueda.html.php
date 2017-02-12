@@ -67,7 +67,7 @@
 
 		<div class="row">
 			
-			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="../buscar/busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<div class="form-group">
 					<div class="input-group">
 						<input type="text" name = "keyword" id = "keyword" class="form-control" placeholder="Search for...">       
@@ -78,9 +78,9 @@
 				    
 				<select name="" class="form-control">
 					  <option>TODO</option>
-					  <option>Autor</option>
-					  <option>Titulo</option>
-					  <option>Categoria</option>
+					  <option>Pene</option>
+					  <option>Stuff</option>
+					  <option>Stuff</option>
 				</select>
 				    
 				</div>
@@ -92,7 +92,6 @@
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php if(!$books){
 				//BBB
-				include 'busqueda-error.html';
 				exit();
 			}
 
