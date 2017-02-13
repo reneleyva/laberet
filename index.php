@@ -24,8 +24,11 @@
 </head>
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
-	
-
+	<?php  
+		session_start();
+		$_SESSION['nombre'] = 'invitado';
+		$_SESSION['carrito'] = array();
+	?>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
