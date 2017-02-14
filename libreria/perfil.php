@@ -1,12 +1,13 @@
 <?php
-include '../../conexion.php';
+include '../conexion.php';
 
-if (!isset($_GET['id'])) {
-	echo "error";
-	exit();
-}
+// if (!isset($_GET['id'])) {
+// 	echo "error";
+// 	exit();
+// }
 
-$id = $_GET['id'];
+// $id = $_GET['id'];
+$id = 6;
 try {
 	$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
 	$result = $pdo->query($sql);
@@ -14,23 +15,29 @@ try {
 	$nombre = $row['Nombre'];
 	$direccion = $row['direccion'];
 	$telefono = $row['telefono'];
-	$fotoPortada = $row['fotoPortada'];
 	$fotoPerfil = $row['fotoPerfil'];
+	$fotoPortada = $row['fotoPortada'];
+	$idLibreria = $id;
 } catch (Exception $e) {
 	echo "Pene de Morubio";
 }
 
-
 try{
 	//Tales que pertenecen a la librería-
-	$sql = 'SELECT idLibro, titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro where LibreriaidLibreria = '.$id.';';
+	$sql = 'SELECT idLibro, titulo,autor,precio,tags,fotoFrente,fotoAtras,fechaAdicion FROM Libro where LibreriaidLibreria = '.$id.';';
 	$result = $pdo->query($sql);
-	$contador = 0;
+	$tam = 0;
 	$vacio = True;
 	while ($row2 = $result->fetch()) { //Ojo con la cantidad
 		    $vacio = False;
-			$books[] = array('id' => $row2['idLibro'], 'titulo' => $row2['titulo'],'autor' => $row2['autor'],'precio' => $row2['precio'],
-			'fotoFrente' => $row2['fotoFrente'],'fotoAtras' => $row2['fotoAtras']);
+		    $tam++;
+		    $titulos[]=$row2['titulo'];
+		    $idLibros[] = $row2['idLibro'];
+		    $autores[] = $row2['autor'];
+		    $precios[]=$row2['precio'];
+		    $fotoFrente[]=$row2['fotoFrente'];
+		    $fotoAtras[]=$row2['fotoAtras'];
+		    $fechas[]=$row2['fechaAdicion'];
 	}
 	if ($vacio) {
 		echo 'No hay libros que mostrar.';

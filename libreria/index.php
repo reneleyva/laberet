@@ -42,7 +42,7 @@
 				<li><a href="#">Agregar Libro</a></li>
 				<li><a href="#">Ventas</a></li>
 				<li><a href="#">Pedidos Especiales</a></li>
-				<li><a href="#">Catálogo Universal</a></li>
+				<li><a href="../user/buscar">Catálogo Universal</a></li>
 			</ul>
 	   </div>
 
@@ -63,17 +63,17 @@
 	    
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
-
-	<div class="container-fluid">
+	<?php include 'perfil.php'; ?>
+	<div style="background: url(../img/<?php echo $fotoPortada?>) no-repeat no-repeat center center;" class="container-fluid">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
 					
-					<div class="circle"></div>
+					<div class="circle" style="background: url(../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 					<div class="row text-center">
-						<h2 class="col-lg-12"><b>Librería Aurora</b></h2>
-						<p>Donceles #2 col. centro</p>
-						<p>Tel. 56130481</p>
+						<h2 class="col-lg-12"><b><?php echo $nombre ?></b></h2>
+						<p><?php echo $direccion ?></p>
+						<p><?php echo $telefono ?></p>
 					</div>
 				</div>
 			</div>
@@ -104,26 +104,68 @@
 				    
 				</div>
 
-				<button id="agregar-nuevo" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></button>
+				<a href="agregarLibro" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b> <input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($idLibreria, ENT_QUOTES, 'UTF-8');?>"></a>
 			</form>
 		</div>
 
-		
+		<?php
+		if(!($tam%2== 0)){
+			$tam = $tam+1;
+		} 
+		for ($x = 0;$x<=($tam/2)+1;$x+=2): ?>
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
+			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php
+				        echo htmlspecialchars($idLibros[$x], ENT_QUOTES, 'UTF-8');?>">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $fotoFrente[$x]?>" alt="PENE">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
+						<p class="book-title"><?php
+				        	echo htmlspecialchars($titulos[$x], ENT_QUOTES, 'UTF-8');
+				        ?></p>
+						<a class="book-author" href="#"><?php
+				        	echo htmlspecialchars($autores[$x], ENT_QUOTES, 'UTF-8');
+				        ?></a>
+						<p class="book-price"><b>Precio: $ </b><?php
+				        	echo htmlspecialchars($precios[$x], ENT_QUOTES, 'UTF-8');
+				        ?></p>
 						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b>12/04/17</p>
+						<p><b>Fecha Adición: </b><?php echo $fechas[$x]?></p>
 						<p><b>Lenguaje: </b>Inglés</p>
-						<p><b>Encuadernación: </b>Tapa Blanda</p>
+					</div>
+				</div>
+
+				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
+					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
+					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
+					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
+				</div>
+			</div>
+				<?php 
+				// Para evita poner de más
+				if ($x > ($tam/2)) {
+					echo 'Pene';
+					break;
+				} ?>
+			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php
+				        echo htmlspecialchars($idLibros[$x], ENT_QUOTES, 'UTF-8');?>">
+				<div class="caption">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $fotoFrente[$x+1]?>" alt="Foto">
+					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<p class="book-title"><?php
+				        	echo htmlspecialchars($titulos[$x+1], ENT_QUOTES, 'UTF-8');
+				        ?></p>
+						<a class="book-author" href="#"><?php
+				        	echo htmlspecialchars($autores[$x+1], ENT_QUOTES, 'UTF-8');
+				        ?></a>
+						<p class="book-price"><b>Precio: $ </b><?php
+				        	echo htmlspecialchars($precios[$x+1], ENT_QUOTES, 'UTF-8');
+				        ?></p>
+						<p><b>ISBN: </b>9788435020848</p>
+						<p><b>Fecha Adición: </b><?php echo $fechas[$x+1]?></p>
+						<p><b>Lenguaje: </b>Inglés</p>
 					</div>
 				</div>
 
@@ -134,105 +176,23 @@
 				</div>
 			</div>
 
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b>12/04/17</p>
-						<p><b>Lenguaje: </b>Inglés</p>
-						<p><b>Encuadernación: </b>Tapa Blanda</p>
-					</div>
-				</div>
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
-			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-			
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b>12/04/17</p>
-						<p><b>Lenguaje: </b>Inglés</p>
-						<p><b>Encuadernación: </b>Tapa Blanda</p>
-					</div>
-				</div>
+		</div>
+		<?php endfor; ?>
 
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
 
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b>12/04/17</p>
-						<p><b>Lenguaje: </b>Inglés</p>
-						<p><b>Encuadernación: </b>Tapa Blanda</p>
-					</div>
-				</div>
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
-			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-
-			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
-			  <ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		</div> <!-- FIN MUESTRA DE LIBROS -->
+			 <!-- FIN MUESTRA DE LIBROS -->
 		
 
-		
-	</div>
-	
-	<div class="container-fluid footer">
+	<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+	<div class="container footer">
 		<div class="row-fluid text-center">
 				<div class="col-lg-4">
 					<div class="row">
-						<img src="img/logo-white.png" alt="">
+						<img src="../img/logo-white.png" alt="">
 						<b>LABERET</b>
 					</div>
 					<div class="row">
-						<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
+						<p>Made with <img src="../img/love.png" alt="Love"> by APSUS</p>
 					</div>
 				</div>
 				<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>

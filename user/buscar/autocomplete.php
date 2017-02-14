@@ -21,7 +21,7 @@ while ($row = $query->fetch_assoc()) {
 
 
 //Busco por titulo de libro
-$query = $db->query("SELECT DISTINCT titulo from Libro WHERE titulo LIKE '".$keyword."%';");
+$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '%".$keyword."%';");
 
 while ($row = $query->fetch_assoc()) {
    	array_push($data, $row['titulo']);
@@ -30,7 +30,7 @@ while ($row = $query->fetch_assoc()) {
 //Para que no muestre muchos 
 //resultados si los datos son muchos se cortan
 if (sizeof($data) > 5) {
-	echo json_encode(array_slice($data, 5));
+	echo json_encode(array_slice($data, 10));
 } else {
 	echo json_encode($data);
 }

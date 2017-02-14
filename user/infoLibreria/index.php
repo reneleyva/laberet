@@ -64,15 +64,15 @@
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
 	<?php include 'perfil.php'; ?>
-	<div class="container-fluid">
-		<div class="row-fluid">
+	<div class="container-fluid" style="background: url(../../img/<?php echo $fotoPortada?>) no-repeat no-repeat center center;">
+		<div class="row-fluid" >
 			<div>
 				<div id="box">
 					<div class="row text-center">
 						<h3 class="col-lg-12"><b><?php echo $nombre ?></b></h3>
 						<p><?php echo $direccion ?></p>
 					</div>
-					<div class="circle"></div>
+					<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 					<p><?php echo "Tel: ".$telefono ?></p>
 
 					<div class="hl text-center"></div>

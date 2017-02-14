@@ -105,16 +105,16 @@
 			</div>
 
 			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="<?php
-					echo $row['LibreriaidLibreria']; ?>">
+					echo $idLibreria; ?>">
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
 							<h4 class="col-lg-12"><b><?php echo $nombreLibreria; ?></b></h4>
 						</div>
-						<div class="circle"></div>
-						<p class="text-center"><?php echo $libreria['direccion']; ?></p>
+						<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
+						<p class="text-center"><?php echo $direccion; ?></p>
 						<div class="row text-center">
-							<button id="ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
+							<button id="ver-perfil" name = "ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
 						</div>
 					</div>
 				</div>

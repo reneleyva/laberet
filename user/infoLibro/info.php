@@ -24,7 +24,10 @@ try {
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$idLibreria.";";
 	$result = $pdo->query($sql);
 	$libreria = $result->fetch();
-	$nombreLibreria = $libreria['Nombre']; 
+	$nombreLibreria = $libreria['Nombre'];
+	$fotoPerfil = $libreria['fotoPerfil'];
+	$direccion = $libreria['direccion']; 
+	$fotoPerfil = $libreria['fotoPerfil'];
 
 	//Busca autor
 	$sql = "SELECT * FROM Libro WHERE autor = '".$autor.
