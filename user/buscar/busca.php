@@ -21,9 +21,7 @@ if(isset($_POST['keyword'])){
 		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(titulo) like lower('%".$keyword."%');";
 		        break;
 		    case 'Categoria':
-		    	$sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(tags) like lower('%".$keyword."%');";
-		    default:
-		        $sql = "SELECT titulo,autor,fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(tags) like lower('%Pene%');";
+		    	$sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where lower(tags) like lower('%".$keyword."%');";
 		}
 		$result = $pdo->query($sql);
 		$vacio = True;
