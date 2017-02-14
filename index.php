@@ -24,7 +24,21 @@
 </head>
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
-	
+	<!-- Inciar sesion -->
+	<?php  
+
+	session_start();
+	if(isset($_SESSION['name']))
+	{
+	}
+	else
+	{
+		$_SESSION['name'] = 'invitado';
+	}
+	$_SESSION['guest'] = true;
+	$_SESSION['id'] = 0;
+	$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+	?>
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
