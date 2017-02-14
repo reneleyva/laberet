@@ -57,6 +57,7 @@
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
+<<<<<<< HEAD
 				    </div>
 				    
 				<select name="" class="form-control">
@@ -65,6 +66,13 @@
 				<!-- Escondo el valor para desde javascript poner seleccionada la opcion que escogió el usuario como busqueda -->
 				<select id="options" name="selection" class="form-control" data-selected="<?php echo $selection; ?>">
 					  <option>TODO</option>
+=======
+				    </div>				
+				<!-- Escondo el valor para desde javascript poner seleccionada la opcion que escogió el usuario como busqueda -->
+				<select id="options" name="selection" class="form-control" data-selected="<?php echo $selection; ?>">
+				<select name="selection" class="form-control">
+					  <option>Todo</option>
+>>>>>>> b1b00fb8627f8ffdc9180c0d02c353edd93dc970
 					  <option>Autor</option>
 					  <option>Titulo</option>
 					  <option>Categoria</option>
