@@ -14,6 +14,8 @@ try {
 	$nombre = $row['Nombre'];
 	$direccion = $row['direccion'];
 	$telefono = $row['telefono'];
+	$fotoPortada = $row['fotoPortada'];
+	$fotoPerfil = $row['fotoPerfil'];
 } catch (Exception $e) {
 	echo "Pene de Morubio";
 }

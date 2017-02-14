@@ -11,8 +11,9 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
 	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
+	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
+	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +39,7 @@
         		
         		<ul class="nav navbar-nav navbar-right">
         			<li><a href="../../">Inicio</a></li>
-		            <li class="active"><a href="#">Catálogo</a></li>
+		            <li class="active"><a href="">Catálogo</a></li>
 		            <li><a href="../../#librerias">Librerías</a></li>
 		            <li><a href="registrarse.html">Registrarse</a></li>
 		            <li ><a href="iniciarSesion.html">Iniciar Sesión</a></li>
@@ -55,13 +56,14 @@
 			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
 				<div class="form-group">
 					<div class="input-group	">
+						<!-- BUSQUEDA -->
 						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
 				    
-				<select name="" class="form-control">
+				<select name="selection" class="form-control">
 					  <option>Todo</option>
 					  <option>Autor</option>
 					  <option>Titulo</option>
@@ -83,7 +85,7 @@
 			}
 			foreach ($books as $book): ?>
 
-			<div class="thumbnail libro col-lg-3 col-md-6">
+			<div class="thumbnail libro  col-lg-3 col-md-6">
 				<div class="caption">
 					<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
 					<div class="info">

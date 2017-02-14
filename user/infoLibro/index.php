@@ -38,9 +38,9 @@
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form class="navbar-form" role="search">
+	        <form action="../buscar/busca.php" method="post" class="navbar-form" role="search">
 	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search" name="q">
+	            <input type="text" class="form-control" placeholder="Search" name="keyword">
 	            <div class="input-group-btn">
 	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	            </div>
@@ -94,7 +94,8 @@
 				<p><b>Tags: </b> 
 				<?php 
 				for ($i=0; $i < count($tags); $i++) { 
-					echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
+					if ($tags[$i] != '')
+						echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
 				} 
 				?><!-- Fin php -->
 		
@@ -104,16 +105,16 @@
 			</div>
 
 			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="<?php
-					echo $row['LibreriaidLibreria']; ?>">
+					echo $idLibreria; ?>">
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
 							<h4 class="col-lg-12"><b><?php echo $nombreLibreria; ?></b></h4>
 						</div>
-						<div class="circle"></div>
-						<p class="text-center"><?php echo $libreria['direccion']; ?></p>
+						<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
+						<p class="text-center"><?php echo $direccion; ?></p>
 						<div class="row text-center">
-							<button id="ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
+							<button id="ver-perfil" name = "ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
 						</div>
 					</div>
 				</div>

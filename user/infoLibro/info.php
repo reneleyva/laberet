@@ -24,7 +24,10 @@ try {
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$idLibreria.";";
 	$result = $pdo->query($sql);
 	$libreria = $result->fetch();
-	$nombreLibreria = $libreria['Nombre']; 
+	$nombreLibreria = $libreria['Nombre'];
+	$fotoPerfil = $libreria['fotoPerfil'];
+	$direccion = $libreria['direccion']; 
+	$fotoPerfil = $libreria['fotoPerfil'];
 
 	//Busca autor
 	$sql = "SELECT * FROM Libro WHERE autor = '".$autor.
@@ -51,10 +54,10 @@ try {
 			$result = $pdo->query($sql);
 			while ($libro = $result->fetch()) {
 				// Verifica que no se repita el título
-				if (!in_array($libro['titulo'], $titulos)){
+				if (!(in_array($libro['titulo'], $titulos))){
 					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
 			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
-				}
+				} 
 			}
 		}
 	}

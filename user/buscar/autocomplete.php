@@ -1,28 +1,36 @@
 <?php
 
- //database configuration
 $dbHost = 'localhost';
 $dbUsername = 'root';
 $dbPassword = 'root';
 $dbName = 'laberet';
 
-//connect with the database
 $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
 
-//get search term
+//termino
 $keyword = $_GET['term'];
 
-//get matched data from skills table
-$query = $db->query("SELECT titulo,autor from Libro where lower(tags) 
-		        like lower('".$keyword."%') or lower(titulo) like lower('".$keyword."%') 
-		        or lower(autor) like lower('% ".$keyword."%');");
+//Busco Por autor 
+$query = $db->query("SELECT DISTINCT autor from Libro WHERE autor LIKE '".$keyword."%';");
 
+$data = array();
 
-$data=Null;
 while ($row = $query->fetch_assoc()) {
-    $data[] = $row['autor'];
-    echo $row['autor'];
-    $data[] = $row['titulo'];
+   	array_push($data, $row['autor']);
 }
 
-echo json_encode($data);
+
+//Busco por titulo de libro
+$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '%".$keyword."%';");
+
+while ($row = $query->fetch_assoc()) {
+   	array_push($data, $row['titulo']);
+}
+
+//Para que no muestre muchos 
+//resultados si los datos son muchos se cortan
+if (sizeof($data) > 5) {
+	echo json_encode(array_slice($data, 10));
+} else {
+	echo json_encode($data);
+}

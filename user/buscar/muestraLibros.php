@@ -2,7 +2,7 @@
 	include '../../conexion.php';
 
 	try{
-		$sql = 'SELECT idLibro,titulo,autor,precio,fotoFrente,fotoAtras FROM Libro';
+		$sql = 'SELECT idLibro,titulo,autor,precio,fotoFrente,fotoAtras FROM Libro order by fechaAdicion DESC';
 		$result = $pdo->query($sql);
 		$vacio = True;
 		while ($row = $result->fetch()) {
@@ -15,6 +15,5 @@
 		}
 	} catch (PDOException $e) {
 		$error = 'Error fetching books: ' . $e->getMessage();
-		include 'error.html.php';
 		exit();
 	}

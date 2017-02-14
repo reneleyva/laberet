@@ -57,12 +57,15 @@
 	<div class="container-fluid">
 	<!-- HEADER -->
 		<div class="row-fluid">
+		<form action="user/buscar/busca.php" class="form-inline" method="post" accept-charset="utf-8">
 			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 			<h2 class="centering text-center"></h2>
 			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="" type="text" name="" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<input id="busqueda" class="" type="text" name="keyword" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
 			</div>
+			</form>	
 	 	</div> <!-- FIN HEADER -->
+	 	
 		
     </div>
 	
@@ -181,12 +184,15 @@
 						<p class="book-price">$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?></p>
 					</div>
 				</div>
+				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars(
+				  $libro['idLibro'], ENT_QUOTES, 'UTF-8');?>">
 			</div>
+			
 
 			<?php endforeach; ?>
 
 			<div class="row text-center btn-catalogo">
-				<a href="#"><button class="btn btn-default btn-ver">VER CATALAGO COMPLETO</button></a>
+				<a href="./user/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
 			</div>
 
 			<div id="footer-hl" class="hl"></div>
@@ -224,6 +230,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
+    <script src="js/linkLibro.js"></script>
     <script src="js/carousel.js"></script>
 </body>
 </html>
