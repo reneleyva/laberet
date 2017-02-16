@@ -116,7 +116,7 @@
 			<?php include 'libreria.php';?>
 			<?php if (!$books) {
 					echo "FUCK!";
-					exit();
+					//exit();
 				} 
 			?>
 			<?php foreach ($books as $book): ?>
@@ -195,12 +195,112 @@
 				</div>
 			</div><!-- FIN Footer -->
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="modal-venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Venta en Linea</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	<h3><b>Los siguientes Libros han sido vendidos en linea.</b></h3>
+	        	<h4>Se recomienda apartar estos libros para envio.</h4>
 
+	        	<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+						<a href="#" class="btn btn-default"><b>Ver Libro</b></a>
+					</div>
+		       	</div>
+
+				<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+						<a href="#" class="btn btn-default"><b>Ver Libro</b></a>
+					</div>
+		       	</div>
+
+
+	        </div>
+
+	        <div class="modal-footer">
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal-pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Pedido Especial</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	
+	        	<h4>Si tiene alguno de los siguientes libros cataloguelos y se le notificará al usuario.</h4>
+
+	        	<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+	        	</div>
+
+	        	<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+	        	</div>
+
+	        	<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p class="description"><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus ab, odit earum cum alias, nemo asperiores qui consectetur, neque suscipit et quasi recusandae similique, exercitationem architecto. Nisi harum saepe quae totam, ipsa at laudantium a officiis. Ab culpa quidem, quasi aliquam, iste, dolorem quis esse minus, temporibus dolorum earum. Dolore. </p>
+	        	</div>
+
+
+	        </div>
+
+	        <div class="modal-footer">
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
 	
 
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/homeLibreria.js"></script>
 </body>
 </html>

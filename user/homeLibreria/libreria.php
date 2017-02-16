@@ -1,7 +1,7 @@
 <?php
 include '../../conexion.php';
 
-$id = 6; // Aquí debería de ser una variable
+$id = 1; // Aquí debería de ser una variable
 
 try {
 	$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
