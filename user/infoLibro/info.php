@@ -50,8 +50,8 @@ try {
 	$tags = explode(" ", trim($row['tags'], " ")); 
 	foreach ($tags as $tag) {
 		if ($tag != ""){
-			$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE 
-			        lower('%".$tag."%') AND titulo != '".$titulo."';";
+			$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE lower(tags) 
+			LIKE lower('%".$tag."%') AND titulo != '".$titulo."';";
 			$result = $pdo->query($sql);
 			while ($libro = $result->fetch()) {
 				// Verifica que no se repita el título
