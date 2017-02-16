@@ -268,21 +268,28 @@
 					<p><b>Autor: </b> Miguel Cervantes</p>
 					<p><b>Título: </b> El Quijote</p>
 					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
 	        	</div>
-
-	        	<div class="pedido">
+				
+				<div class="pedido">
 	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
 					<p><b>Autor: </b> Miguel Cervantes</p>
 					<p><b>Título: </b> El Quijote</p>
 					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
 	        	</div>
+	        	
 
-	        	<div class="pedido">
-	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
-					<p><b>Autor: </b> Miguel Cervantes</p>
-					<p><b>Título: </b> El Quijote</p>
-					<p class="description"><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus ab, odit earum cum alias, nemo asperiores qui consectetur, neque suscipit et quasi recusandae similique, exercitationem architecto. Nisi harum saepe quae totam, ipsa at laudantium a officiis. Ab culpa quidem, quasi aliquam, iste, dolorem quis esse minus, temporibus dolorum earum. Dolore. </p>
-	        	</div>
+
+	        	
 
 
 	        </div>
