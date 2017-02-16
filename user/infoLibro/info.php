@@ -30,7 +30,7 @@ try {
 	$fotoPerfil = $libreria['fotoPerfil'];
 
 	//Busca autor
-	$sql = "SELECT * FROM Libro WHERE autor = '".$autor.
+	$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE autor = '".$autor.
 		    "' AND titulo != '".$titulo."';";
 	$result = $pdo->query($sql);
 	$books = Null;
@@ -38,7 +38,8 @@ try {
 	while ($libro = $result->fetch()) {
 		$titulos[] = $libro['titulo'];
 		$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
-			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
+			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],
+			            'id' => $libro['idLibro']);
 	}
 
 	//Separa los tags
@@ -56,7 +57,8 @@ try {
 				// Verifica que no se repita el título
 				if (!(in_array($libro['titulo'], $titulos))){
 					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
-			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio']);
+			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],
+			            'id' => $libro['idLibro']);
 				} 
 			}
 		}
