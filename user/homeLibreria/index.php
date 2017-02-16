@@ -18,6 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -113,6 +114,11 @@
 			
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			<?php include 'libreria.php';?>
+			<?php if (!$books) {
+					echo "FUCK!";
+					exit();
+				} 
+			?>
 			<?php foreach ($books as $book): ?>
 				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">

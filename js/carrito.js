@@ -5,7 +5,7 @@ function calculateTotal() {
 		var price = $(this).find(".price").data("price");
 		total += price + 100; //+100 del envio
 	});
-	$('#total').html("<b>" + "Total: " + total + "</b>");
+	$('#total').html("<b>" + "Total: $" + total + " MXN</b>");
 	if (total > 0) {
 		$(".continue button").removeClass("disabled");
 	} else {
