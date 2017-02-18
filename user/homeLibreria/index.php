@@ -119,32 +119,49 @@
 					//exit();
 				} 
 			?>
+			<?php $flag = FALSE; //PAra que imprima cada 2 veces una linea horizontal?> 
 			<?php foreach ($books as $book): ?>
+
 				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
 					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../<?php echo $book['fotoFrente']?>" alt="Foto">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title"><?php
-				        	echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');?></p>
-						<a class="book-author" href="#"><?php
-				        	echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');?></a>
-						<p class="book-price"><?php
-				        	echo htmlspecialchars("$ ".$book['precio'], ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-title">
+							<?php echo $book['titulo']; ?>
+						</p>
+						<a class="book-author" href="#">
+							<?php echo $book['autor'];?>
+						</a>
 						<p><?php
-				        	echo htmlspecialchars($book['isbn'], ENT_QUOTES, 'UTF-8');?></p>
-						<p><?php
-				        	echo htmlspecialchars('Fecha: '.$book['fechaAdicion'], ENT_QUOTES, 'UTF-8');?></p>
+				        	echo "<b>ISBN: </b>$".$book['isbn'];?></p>
+						<p>
+							<?php echo '<b>Adición:</b> '.$book['fechaAdicion'];?>
+						</p>
+				        	<p class="book-price">
+							<?php echo "<b>$".$book['precio']." MXN</b>";?>
+						</p>
 					</div>
 				</div>
 				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
+					<button id="editar" class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
+					<button id="vendido" class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
+					<button id="eliminar" class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
 				</div>
 			</div>
+			
+			<?php 
+				//Some shady shit right here. 
+				if ($flag) {
+					echo "<div class='hl col-lg-12 col-md-12 col-sm-12 col-xs-12'></div>";
+					$flag = FALSE;
+				} else {
+					$flag = TRUE;
+				}
+			 ?>
+			
 			<?php endforeach; ?>				
 			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+			
 
 			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
 			  <ul class="pagination">
@@ -219,7 +236,6 @@
 						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
 						<p><b>ISBN:</b> 2187168716</p>
 						<p class="book-price"><b>Precio: </b>$340</p>
-						<a href="#" class="btn btn-default"><b>Ver Libro</b></a>
 					</div>
 		       	</div>
 
@@ -233,14 +249,13 @@
 						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
 						<p><b>ISBN:</b> 2187168716</p>
 						<p class="book-price"><b>Precio: </b>$340</p>
-						<a href="#" class="btn btn-default"><b>Ver Libro</b></a>
 					</div>
 		       	</div>
-
 
 	        </div>
 
 	        <div class="modal-footer">
+	        	<h3 id="total"><b>Total: $230<b></h3>
                 <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
             </div>
 

@@ -11,15 +11,9 @@ jQuery(document).ready(function($) {
             $('.back').find('img').attr('src', cover);
 		})
 		.fadeIn(200);
-			
-     
-		//alert(back);
+
 	});
 
-  $("#ver-perfil").click(function() {
-    var id = $(this).closest('.libreria').data('id');
-    location.href = "http://localhost/laberet/user/infoLibreria/?id="+id;
-  });
 
 	$('.cover').click(function() {
 		var title = $('.info').find('.title').text();

@@ -36,9 +36,13 @@ jQuery(document).ready(function($) {
 	    var precio = $("#precio").val().replace("$", "");
 	    $('#tags').val(tags);
 	    $("#precio").val(precio);
+	    var titulo = $('#titulo').val();
+	    var autor = $('#autor').val();
+	    $('#titulo').val(titulo.replaceAll("'", "''"));
+	    $('#titulo').val(autor.replaceAll("'", "''"));
 	    /*Checa si el precio es correcto*/
 	    if (precioValido(precio)){
-	    	this.submit(); // If all the validations succeeded
+	    	this.submit(); // Go!
 
 	    } else {
 	    	$(".err-msg").show('fast');

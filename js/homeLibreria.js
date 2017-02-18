@@ -1,3 +1,3 @@
 jQuery(document).ready(function($) {
-	$('#modal-pedido').modal('show');
+	$('#modal-venta').modal('show');
 });
