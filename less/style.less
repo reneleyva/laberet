@@ -10,8 +10,6 @@ html, body {
 	font-family: 'Roboto Mono', monospace;
 }
 
-li.active {
-}
 
 .typed-cursor{
     opacity: 1;
@@ -108,6 +106,16 @@ h1, h2 {
 
  		}
  	}
+}
+
+ul.ui-autocomplete.ui-menu {
+	font-family: 'Roboto Mono', monospace;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	border: none;
+	width: 15em;
+	font-size: 1.5em;
+		
 }
 
 .container {
@@ -270,6 +278,8 @@ h1, h2 {
 	}
 }
 
+
+
 .btn-ver {
 	border: 1px solid black;
 	font-weight: bold;
@@ -288,17 +298,22 @@ h1, h2 {
 }
 
 
+
 .footer {
+	.menu {
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	background: none; 
+	background-color: #777777;
+	height: 30%;
+	padding-top: 30px;
+	color: white;
+
 	a {
-		color: black;
+		color: white;
 		text-decoration: underline;
 	}
-
-	.nav {
-		margin: 0 auto;
-		text-align: left;
-		width: 50%;
-	}
-
 }
 

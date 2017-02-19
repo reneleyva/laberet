@@ -11,6 +11,7 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
@@ -61,7 +62,7 @@
 			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 			<h2 class="centering text-center"></h2>
 			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="" type="text" name="keyword" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<input id="busqueda" class="typed" type="text" name="keyword" value="" placeholder=""><input id="keyword" hidden class="typed" type="text" name="keyword" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
 			</div>
 			</form>	
 	 	</div> <!-- FIN HEADER -->
@@ -197,32 +198,37 @@
 
 			<div id="footer-hl" class="hl"></div>
 
-			<div class="row footer text-center">
-				<div class="col-lg-4">
-					<div class="row">
-						<img src="img/laberet_icon.png" alt="">
-						<b>LABERET</b>
-					</div>
-					<div class="row">
-						<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
-					</div>
-				</div>
-				<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				</div>
-				<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-					<div class="row nav">
-						<a href="#">Inicio</a><br>
-						<a href="#" title="Catalogo">Registrarse</a><br>
-						<a href="#">Iniciar Sesión</a>
-					</div>
-				</div>
-			</div><!-- FIN Footer -->
+			
 
 		</div>
 	</div> <!-- FIN Ultimos Libros -->
-	
+	<div class="container-fluid footer">
+				<div class="row-fluid text-center">
+						<div class="col-lg-4">
+							<div class="row">
+								<img src="img/logo-white.png" alt="">
+								<b>LABERET</b>
+							</div>
+							<div class="row">
+								<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
+							</div>
+						</div>
+						<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+						</div>
+						<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+							<div class="menu row nav centered">
+								<div style="text-align: left">
+									<a href="../../">Inicio</a><br>
+									<a href="#">Catálogo</a><br>
+									<a href="#">Registrarse</a><br>
+									<a href="#">Iniciar Sesión</a>
+								</div>
+							</div>
+						</div>
+					</div><!-- FIN Footer -->
+			</div>
 	<!-- ****** TERMINAN ELEMENTOS ******* -->
 	
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -230,7 +236,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script src="js/linkLibro.js"></script>
+    <script src="js/autocomplete.js"></script>
     <script src="js/carousel.js"></script>
 </body>
 </html>
