@@ -21,7 +21,7 @@ while ($row = $query->fetch_assoc()) {
 
 
 //Busco por titulo de libro
-$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '%".$keyword."%';");
+$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '".$keyword."%';");
 
 while ($row = $query->fetch_assoc()) {
    	array_push($data, $row['titulo']);

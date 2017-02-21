@@ -16,8 +16,17 @@ function precioValido(n) {
 }
 
 jQuery(document).ready(function($) {
+	//For test
+	// var ran = Math.floor(Math.random() * (10000000000000));
+	// $('#isbn').val(ran);
+	// $('#autor').val('Un vato locou');
+	// $('#titulo').val('La vida de un vato locou');
+	// $('#lenguaje').val('Espanglish');
+	// $('#precio').val("$230");
+	// $("#tags").text('Loco ');
+
 	$('.bootstrap-tagsinput').tagsinput({
-	    confirmKeys: [32, 44]
+		confirmKeys: [32, 44]
 	});
 
 
@@ -36,9 +45,13 @@ jQuery(document).ready(function($) {
 	    var precio = $("#precio").val().replace("$", "");
 	    $('#tags').val(tags);
 	    $("#precio").val(precio);
+	    var titulo = $('#titulo').val();
+	    var autor = $('#autor').val();
+	    // $('#titulo').val(titulo.replaceAll("'", "''"));
+	    // $('#titulo').val(autor.replaceAll("'", "''"));
 	    /*Checa si el precio es correcto*/
 	    if (precioValido(precio)){
-	    	this.submit(); // If all the validations succeeded
+	    	this.submit(); // Go!
 
 	    } else {
 	    	$(".err-msg").show('fast');
