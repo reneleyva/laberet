@@ -83,5 +83,5 @@
 			fotoAtras = "'.$fotoAtrasPath.'";';     
 
 	$pdo->exec($sql);
-    header('Location: http://localhost/laberet/user/agregarLibro/');
+    header('Location: .');
    	exit();

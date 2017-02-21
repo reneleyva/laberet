@@ -77,7 +77,9 @@
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
-			<?php include 'muestraLibros.php'; ?>
+			<?php include 'muestraLibros.php'; 
+				  include '../../pagination.php';
+			?>
 			 
 			<?php 
 			if(!$books){
@@ -85,7 +87,10 @@
 				exit();
 			}
 
-			$total = 0; //Total de libros impresos
+			$total = 0; //Total de libros ya generados
+			$numLibros = count($books);
+			$numPaginas = ceil($numLibros/16); //Num de páginas
+
 			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
 				$book = $books[$i];
 				?>
@@ -113,7 +118,7 @@
 				<ul class="pagination">
 					
 					<?php 
-						showPagination($numPaginas, $page);
+						showPagination($books, $page, 16);
 					 ?>
 
 				</ul>
