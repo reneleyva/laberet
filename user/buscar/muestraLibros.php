@@ -10,6 +10,7 @@
 	
 	} catch (PDOException $e) {
 		$error = 'Error fetching books: ' . $e->getMessage();
+	 	$e->getMessage();
 		exit();
 	}
 

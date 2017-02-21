@@ -25,6 +25,7 @@
 </head>
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
+<<<<<<< HEAD
 	<!-- Inciar sesion -->
 	<?php  
 
@@ -43,6 +44,13 @@
 	
 	?>
 
+=======
+	<?php  
+		session_start();
+		$_SESSION['nombre'] = 'invitado';
+		$_SESSION['carrito'] = array();
+	?>
+>>>>>>> 274648043889ba9ce832cffb26cfb5dffd35e2f8
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
