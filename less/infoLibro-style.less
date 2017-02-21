@@ -298,11 +298,22 @@ html, body {
 
 
 .footer {
-	a {
-		color: black;
-		text-decoration: underline;
+
+	.menu {
+		width: fit-content;
+		margin: 0 auto;
 	}
 
+	background: none; 
+	background-color: #777777;
+	height: 30%;
+	padding-top: 80px;
+	color: white;
+
+	a {
+		color: white;
+		text-decoration: underline;
+	}
 }
 
 .hl {
@@ -314,10 +325,18 @@ html, body {
 	background: #9E9E9E;
 }
 
-.modal-dialog{
-  width: fit-content;
 
-  .modal-back {
-  	padding-left: 10px;
-  }
+.modal {
+	.modal-dialog {
+		width: fit-content;
+		
+		img {
+			width: 400px;
+			height: 600px;
+		}
+		.modal-back {
+			padding-left: 10px;
+		}
+
+	}
 }

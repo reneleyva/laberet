@@ -7,13 +7,18 @@ jQuery(document).ready(function($) {
 		nextArrow: $('#next')
 	});
 
+	$('#busqueda').focus(function() {
+		$(this).hide();
+		$('#keyword').show();
+		$('#keyword').focus();
+	});
 
-	$(function(){
-      $("#busqueda").typed({
-         strings: ["Jorge Luis Borges", "La Guerra y la paz", "Matemáticas", ""],
-    	contentType: 'html' // or 'text'
-      });
-  });
+		$(function(){
+	      $("#busqueda").typed({
+	         strings: ["Jorge Luis Borges", "La Guerra y la paz", "Matemáticas", ""],
+	    	contentType: 'html' // or 'text'
+	      });
+	  });
 	
-	$('#busqueda').focus();
+
 });

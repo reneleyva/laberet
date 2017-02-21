@@ -104,8 +104,7 @@
 				<button type="" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
 			</div>
 
-			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs" data-id="<?php
-					echo $idLibreria; ?>">
+			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs">
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
@@ -114,7 +113,7 @@
 						<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 						<p class="text-center"><?php echo $direccion; ?></p>
 						<div class="row text-center">
-							<button id="ver-perfil" name = "ver-perfil" type="" class="btn btn-default"><b>VER PERFIL</b></button>
+							<a href="../infoLibreria/?id=<?php echo $idLibreria; ?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 						</div>
 					</div>
 				</div>
@@ -157,28 +156,7 @@
 			</div>
 		</div>
 		
-		<div id="footer-hl" class="hl"></div>
 		
-		<!-- Footer -->
-		<div class="row footer text-center">
-				<div class="col-lg-4">
-					<div class="row">
-						<img src="../../img/laberet_icon.png" alt="">
-						<b>LABERET</b>
-					</div>
-				</div>
-				<div class="col-lg-4">
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-envelope"></span> contact@laberet.com </p>
-				</div>
-				<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-					<div class="row nav">
-						<a href="../../">Inicio</a><br>
-						<a href="#">Pedidos Especiales</a><br>
-						<a href="#">Catálogo</a>
-					</div>
-				</div>
-			</div><!-- FIN Footer -->
 
 
 			<!-- Modal -->
@@ -192,10 +170,10 @@
 			      <div class="modal-body">
 			        <div class="row">
 			        	<div class="modal-cover col-lg-6">
-			        		<img src="../../img/brave-men.jpg" alt="">
+			        		<img src="../../<?php echo htmlspecialchars($row['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        	<div class="modal-back col-lg-6">
-			        		<img src="../../img/braveMen-back.jpg" alt="">
+			        		<img src="../../<?php echo htmlspecialchars($row['fotoAtras'], ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        </div>
 			      </div>
@@ -204,7 +182,33 @@
 			  </div>
 			</div>
 	</div>
-
+	
+	<div class="container-fluid footer">
+			<div class="row-fluid text-center">
+					<div class="col-lg-4">
+						<div class="row">
+							<img src="../../img/logo-white.png" alt="">
+							<b>LABERET</b>
+						</div>
+						<div class="row">
+							<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
+						</div>
+					</div>
+					<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+					<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+					<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+					</div>
+					<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+						<div class="menu row nav centered">
+							<div style="text-align: left">
+								<a href="../../">Inicio</a><br>
+								<a href="#">Catálogo</a><br>
+								<a href="#">Pedidos Especiales</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- FIN Footer -->
+		</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../slick/slick.min.js"></script>

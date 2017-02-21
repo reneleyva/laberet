@@ -29,9 +29,10 @@ try {
 	$direccion = $libreria['direccion']; 
 	$fotoPerfil = $libreria['fotoPerfil'];
 
+	//Libros relacionados
+
 	//Busca autor
-	$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE autor = '".$autor.
-		    "' AND titulo != '".$titulo."';";
+	$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE autor = '".mysql_real_escape_string($autor)."' AND titulo != '".mysql_real_escape_string($titulo)."';";
 	$result = $pdo->query($sql);
 	$books = Null;
 	$titulos = Null;
@@ -50,11 +51,13 @@ try {
 	$tags = explode(" ", trim($row['tags'], " ")); 
 	foreach ($tags as $tag) {
 		if ($tag != ""){
-			$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE lower(tags) 
-			LIKE lower('%".$tag."%') AND titulo != '".$titulo."';";
+
+			$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE 
+			        lower('%".$tag."%') AND titulo != '".mysql_real_escape_string($titulo)."';";
 			$result = $pdo->query($sql);
 			while ($libro = $result->fetch()) {
 				// Verifica que no se repita el título
+				//Gerardo estaría decepcionado de nosotros </3
 				if (!(in_array($libro['titulo'], $titulos))){
 					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
 			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],

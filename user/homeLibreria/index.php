@@ -116,35 +116,52 @@
 			<?php include 'libreria.php';?>
 			<?php if (!$books) {
 					echo "FUCK!";
-					exit();
+					//exit();
 				} 
 			?>
+			<?php $flag = FALSE; //PAra que imprima cada 2 veces una linea horizontal?> 
 			<?php foreach ($books as $book): ?>
+
 				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
 					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../<?php echo $book['fotoFrente']?>" alt="Foto">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title"><?php
-				        	echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');?></p>
-						<a class="book-author" href="#"><?php
-				        	echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');?></a>
-						<p class="book-price"><?php
-				        	echo htmlspecialchars("$ ".$book['precio'], ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-title">
+							<?php echo $book['titulo']; ?>
+						</p>
+						<a class="book-author" href="#">
+							<?php echo $book['autor'];?>
+						</a>
 						<p><?php
-				        	echo htmlspecialchars($book['isbn'], ENT_QUOTES, 'UTF-8');?></p>
-						<p><?php
-				        	echo htmlspecialchars('Fecha: '.$book['fechaAdicion'], ENT_QUOTES, 'UTF-8');?></p>
+				        	echo "<b>ISBN: </b>$".$book['isbn'];?></p>
+						<p>
+							<?php echo '<b>Adición:</b> '.$book['fechaAdicion'];?>
+						</p>
+				        	<p class="book-price">
+							<?php echo "<b>$".$book['precio']." MXN</b>";?>
+						</p>
 					</div>
 				</div>
 				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
+					<button id="editar" class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
+					<button id="vendido" class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
+					<button id="eliminar" class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
 				</div>
 			</div>
+			
+			<?php 
+				//Some shady shit right here. 
+				if ($flag) {
+					echo "<div class='hl col-lg-12 col-md-12 col-sm-12 col-xs-12'></div>";
+					$flag = FALSE;
+				} else {
+					$flag = TRUE;
+				}
+			 ?>
+			
 			<?php endforeach; ?>				
 			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+			
 
 			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
 			  <ul class="pagination">
@@ -195,12 +212,117 @@
 				</div>
 			</div><!-- FIN Footer -->
 	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="modal-venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Venta en Linea</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	<h3><b>Los siguientes Libros han sido vendidos en linea.</b></h3>
+	        	<h4>Se recomienda apartar estos libros para envio.</h4>
 
+	        	<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+					</div>
+		       	</div>
+
+				<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+					</div>
+		       	</div>
+
+	        </div>
+
+	        <div class="modal-footer">
+	        	<h3 id="total"><b>Total: $230<b></h3>
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal-pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Pedido Especial</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	
+	        	<h4>Si tiene alguno de los siguientes libros cataloguelos y se le notificará al usuario.</h4>
+
+	        	<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
+	        	</div>
+				
+				<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
+	        	</div>
+	        	
+
+
+	        	
+
+
+	        </div>
+
+	        <div class="modal-footer">
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
 	
 
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/homeLibreria.js"></script>
 </body>
 </html>
