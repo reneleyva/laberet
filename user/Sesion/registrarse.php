@@ -25,4 +25,10 @@ include "../../conexion.php";
 		header("location: ../../");
 		exit();
 	}
+	$_SESSION['name'] = $nombre;
+	$_SESSION['guest'] = False;
+	$sql = "SELECT idUsuario FROM Usuario Where correo = '".$correo."';";
+	$result = $pdo->query($sql);
+	$row = $result->fetch();
+	$_SESSION['id'] = $row;
 ?>

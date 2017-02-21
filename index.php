@@ -31,14 +31,16 @@
 	session_start();
 	if(isset($_SESSION['name']))
 	{
-	}
+		$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+
+	} 
 	else
 	{
 		$_SESSION['name'] = 'invitado';
 	}
 	$_SESSION['guest'] = true;
 	$_SESSION['id'] = 0;
-	$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+	
 	?>
 
 	<nav class="navbar navbar-default navbar-fixed-top">

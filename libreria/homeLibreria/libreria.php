@@ -4,7 +4,7 @@ include '../../conexion.php';
 $id = 1; // Aquí debería de ser una variable
 
 try {
-	$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
+	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$id.";";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
 	$nombre = $row['Nombre'];
@@ -17,7 +17,7 @@ try {
 try {
 	$books = null;
 	$sql = "SELECT idLibro, titulo,autor,precio,fotoFrente,fotoAtras,isbn,fechaAdicion
-	       FROM libro WHERE LibreriaidLibreria = ".$id.";";
+	       FROM Libro WHERE LibreriaidLibreria = ".$id.";";
 	$result = $pdo->query($sql);
 	while ($row2 = $result->fetch()) { //Ojo con la cantidad
 		$books[] = array('id' => $row2['idLibro'], 'titulo' => $row2['titulo'],
