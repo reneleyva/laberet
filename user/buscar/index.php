@@ -105,7 +105,9 @@
 								<?php echo $book['autor'];?>
 							</a>
 							<p class="book-price">
-								$<?php echo $book['precio'];?>
+							<b>
+								$<?php echo $book['precio']." MXN";?>
+							</b>
 							</p>
 						</div>
 					</div>

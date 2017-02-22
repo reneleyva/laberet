@@ -1,31 +1,27 @@
 <?php
 
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = 'root';
-$dbName = 'laberet';
-
-$db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
+include '../../conexion.php';
 
 //termino
 $keyword = $_GET['term'];
 
 //Busco Por autor 
-$query = $db->query("SELECT DISTINCT autor from Libro WHERE autor LIKE '".$keyword."%';");
-
+$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '".$keyword."%';";
+$result = $pdo->query($sql);
 $data = array();
 
-while ($row = $query->fetch_assoc()) {
+while ($row = $result->fetch()) {
    	array_push($data, $row['autor']);
 }
 
-
 //Busco por titulo de libro
-$query = $db->query("SELECT titulo from Libro WHERE titulo LIKE '".$keyword."%';");
+$sql = "SELECT DISTINCT titulo from Libro WHERE titulo LIKE '".$keyword."%';";
+$result = $pdo->query($sql);
 
-while ($row = $query->fetch_assoc()) {
+while ($row = $result->fetch()) {
    	array_push($data, $row['titulo']);
 }
+
 
 //Para que no muestre muchos 
 //resultados si los datos son muchos se cortan

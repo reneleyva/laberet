@@ -8,13 +8,13 @@ include "../../conexion.php";
 	$sql = "SELECT * FROM Usuario WHere correo = '".$correo."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
-	if ($row)
-	{
-		echo "404";
-		exit();
-	}
-	else
-	{
+	// if ($row)
+	// {
+	// 	echo "404";
+	// 	exit();
+	// }
+	// else
+	// {
 		$sql = "INSERT INTO Usuario SET
 		nombre ='".$nombre."',
 		correo ='".$correo."',
@@ -24,7 +24,7 @@ include "../../conexion.php";
 		$s->execute();
 		header("location: ../../");
 		exit();
-	}
+	// }
 	$_SESSION['name'] = $nombre;
 	$_SESSION['guest'] = False;
 	$sql = "SELECT idUsuario FROM Usuario Where correo = '".$correo."';";

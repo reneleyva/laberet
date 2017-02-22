@@ -18,7 +18,6 @@ function precioValido(n) {
 jQuery(document).ready(function($) {
 	//For test
 	// var ran = Math.floor(Math.random() * (10000000000000));
-	// $('#isbn').val(ran);
 	// $('#autor').val('Un vato locou');
 	// $('#titulo').val('La vida de un vato locou');
 	// $('#lenguaje').val('Espanglish');
@@ -61,4 +60,23 @@ jQuery(document).ready(function($) {
 	    }
 	});
 
+
+	//ISBN STUFF
+	$('#isbn').keyup(function() {
+		var isbn = $(this).val();
+		$.getJSON('https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbn, function(json, textStatus) {
+			console.log(json.totalItems);
+			if(json.totalItems != 0) {
+				// console.log(json);
+				console.log(json.items[0].volumeInfo);
+				var titulo = json.items[0].volumeInfo.title;
+				var autor = json.items[0].volumeInfo.authors[0];
+				var lenguaje = json.items[0].volumeInfo.language;
+				console.log(lenguaje);
+				$('#titulo').val(titulo);
+				$('#autor').val(autor);
+				$('#lenguaje').val(lenguaje);
+			}
+		});
+	});
 });
