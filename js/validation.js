@@ -4,28 +4,23 @@ function isValidEmailAddress(emailAddress) {
 };
 
 function check() {
-	return false;
-	// $('.err-msg').hide();
-	// var correo = $("#correo").val();
-	// var pass = $("#password").val();
-	// var pass2 = $("#password2").val();
+	$('.err-msg').hide();
+	var correo = $("#correo").val();
+	var pass = $("#password").val();
+	var pass2 = $("#password2").val();
 
-	// if (!isValidEmailAddress(correo)) {
-	// 	$("#correo-invalido").show("fast");
-	// 	return false;
-	// } else if (pass.length < 5) {
-	// 	$("#pass-invalid").show("fast");
-	// 	return false;
-	// } else if (pass !== pass2) {
-	// 	$("#no-coinciden").show("fast");
-	// 	return false;
-	// }
-	// alert();
-	// $.getJSON('user/registrarse/checkEmail.php', {correo: correo}, function(json, textStatus) {
-	// 	alert(json);
-	// });
+	if (!isValidEmailAddress(correo)) {
+		$("#correo-invalido").show("fast");
+		return false;
+	} else if (pass.length < 5) {
+		$("#pass-invalid").show("fast");
+		return false;
+	} else if (pass !== pass2) {
+		$("#no-coinciden").show("fast");
+		return false;
+	}
 	
-	// return true;
+	return true;
 }
 
 jQuery(document).ready(function($) {
