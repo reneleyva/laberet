@@ -13,16 +13,16 @@ if(isset($_POST['keyword'])) {
 		switch ($selection) {
 			//mysql_real_escape_string elimina caracteres de escape de sql como '' que salía error. 
 		    case 'Todo':
-		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where     lower(tags) like lower('%".mysql_real_escape_string($keyword)."%') or lower(titulo) like lower('%".mysql_real_escape_string($keyword)."%') or lower(autor) like lower('%".mysql_real_escape_string($keyword)."%');";
+		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where     lower(tags) like lower('%".($keyword)."%') or lower(titulo) like lower('%".($keyword)."%') or lower(autor) like lower('%".($keyword)."%');";
 		        break;
 		    case 'Autor':
-		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(autor) like lower('%".mysql_real_escape_string($keyword)."%');";
+		        $sql = "SELECT titulo,autor, fotoFrente,fotAtras,precio,idLibro from Libro where    lower(autor) like lower('%".($keyword)."%');";
 		        break;
 		    case 'Titulo':
-		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(titulo) like lower('%".mysql_real_escape_string($keyword)."%');";
+		        $sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where    lower(titulo) like lower('%".($keyword)."%');";
 		        break;
 		    case 'Categoria':
-		    	$sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where lower(tags) like lower('%".mysql_real_escape_string($keyword)."%');";
+		    	$sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where lower(tags) like lower('%".($keyword)."%');";
 		}
 		$result = $pdo->query($sql);
 		$vacio = True;
