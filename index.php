@@ -27,27 +27,41 @@
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
 	<!-- Inciar sesion -->
 	<?php  
+	/*REDIRIGIR??*/
+	// session_start();
+	// if(isset($_SESSION['name']))
+	// {
+	// 	$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
-	session_start();
-	if(isset($_SESSION['name']))
-	{
-		$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-
-	} 
-	else
-	{
-		$_SESSION['name'] = 'invitado';
-	}
-	$_SESSION['guest'] = true;
-	$_SESSION['id'] = 0;
+	// } 
+	// else
+	// {
+	// 	$_SESSION['name'] = 'invitado';
+	// }
 	
+	// $_SESSION['id'] = 0;
+	
+
 	?>
 
-	<?php  
+	<?php 
+		/*Si el usuario ya inició sesión lo redirige a su página principal,
+		 * sino inicia sesión como invitado (El invitado no tiene carrito por ahora).
+		*/ 
 		session_start();
-		$_SESSION['nombre'] = 'invitado';
-		$_SESSION['carrito'] = array();
+		if (isset($_SESSION['nombre'])) {
+			if ($_SESSION['nombre'] != 'invitado') {
+				//NO DEBERÍA DE ESTAR AQUI REDIRIJO A HOME:
+				header("location: user/home");
+			} 
+		} else {
+			//PRIMERA VEZ EN LA PAGINA
+			$_SESSION['nombre'] = 'invitado';
+		}		
+		
 	?>
+
+	
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -249,7 +263,7 @@
 							</div>
 						</div>
 					</div><!-- FIN Footer -->
-			</div>
+	</div>
 	<!-- ****** TERMINAN ELEMENTOS ******* -->
 	
 	<!-- Placed at the end of the document so the pages load faster -->

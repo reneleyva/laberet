@@ -39,8 +39,8 @@
         			<li><a href="#">Inicio</a></li>
 		            <li><a href="#">Catálogo</a></li>
 		            <li><a href="#">Librerías</a></li>
-		            <li  class="active"><a href="#">Registrarse</a></li>
-		            <li><a href="iniciarSesion.html">Iniciar Sesión</a></li>
+		            <li><a href="registrarse.html">Registrarse</a></li>
+		            <li class="active"><a href="iniciarSesion.html">Iniciar Sesión</a></li>
 		            
           		</ul>
         	</div>
@@ -49,23 +49,24 @@
 
 	<div class="container">
 		<div class="row">
-			<!-- MORUBIO ESTE ES EL FORMULARIO SOLO SE VAN A ENVIAR UNA VEZ QUE SE COMPRUEBEN LOS DATOS ASÍ QUE SUPON QUE LOS DATOS SON BUENOS SOLO GUARDALOS -->
-			<form action="registrarse.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
-				<h1>Registrarse</h1>
-				<label for="nombre">Nombre</label>
-				<input id="nombre" required type="text" name="nombre" value="" placeholder="" class="form-control">
+			<!-- MORUBIO ESTE ES EL FORMULARIO. HAY UN DIV AQUÍ CON id="user-ivalid" que muestra el error puedes generar ese div para avisarle al usuario que está por la baby.-->
+			<form id="iniciar" action="iniciasesion.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+				<h1>Iniciar Sesión</h1>
+				<?php if (isset($_GET['correo'])) {
+					echo "<div id='user-invalid' class='form-control err-msg'>La contraseña o correo no coincide con ninguna cuenta.</div>";
+				} ?>
+				
 				<label for="correo">Correo</label>
-				<input id="correo" required type="email" name="correo" value="" placeholder="" class="form-control">
-				<div id="correo-invalido" class="form-control err-msg">Correo No Válido!</div>
-				<div id="correo-invalido" class="form-control err-msg">Ya Existe una cuenta asociada con este correo.</div>
+				<input id="correo" required type="email" name="correo" value="<?php if (isset($_GET['correo'])) {
+					echo htmlspecialchars($_GET['correo'], ENT_QUOTES, 'UTF-8');
+				} ?>" placeholder="" class="form-control">
+				<div id="correo-invalido" class="form-control err-msg">Correo No Válido.</div>
 			    <label for="password">Contraseña</label>
 				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control">
-				<div id="pass-invalid" class="form-control err-msg">La contraseña debe contener por lo menos 5 caracteres.</div>
-				<label for="password2">Repite contraseña</label>
-				<input id="password2" required type="password" name="password2" value="" placeholder="" class="form-control">
-				<div id="no-coinciden" class="form-control err-msg">Las contraseñas no coinciden!</div>
-				<button id="enviar" type="submit" class="btn btn-default">Enviar</button>
-				<p>¿Ya tienes cuenta? <a href="iniciarSesion.html" title="">Iniciar Sesión</a></p>
+				<div id="pass-invalid" class="form-control err-msg">Contraseña no válida.</div>
+	
+				<button id="enviar" type="submit" class="btn btn-default">Iniciar Sesión</button>
+				<p>¿Olvidaste tu contraseña? <a href="resgistrarse.html" title="">Reestablézcala</a></p>
 			</form>	
 		</div>
 	</div>
@@ -74,7 +75,7 @@
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
-	<script src="../../js/validation.js"></script>
+	<script src="../../js/validationInicarSesion.js"></script>
 
 </body>
 </html>

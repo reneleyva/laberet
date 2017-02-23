@@ -4,6 +4,7 @@ function isValidEmailAddress(emailAddress) {
 };
 
 function check() {
+	console.log("LOL");
 	$('.err-msg').hide();
 	var correo = $("#correo").val();
 	var pass = $("#password").val();
@@ -14,11 +15,9 @@ function check() {
 	} else if (pass.length < 5) {
 		$("#pass-invalid").show("fast");
 		return false;
-	} else {
-		$("#user-invalid").show("fast");
-		return false;
-	}
-	
+	} 
+	console.log("HGhjhgj");
+	return true;
 }
 
 jQuery(document).ready(function($) {
@@ -26,4 +25,6 @@ jQuery(document).ready(function($) {
 		// event.preventDefault();
 		// $('#pass-invalid').show('fast');
 	});
+
+	$('#correo').focus();
 });

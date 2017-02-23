@@ -10,8 +10,9 @@ include "../../conexion.php";
 	$row = $result->fetch();
 	if ($row)
 	{
-		header("location: .?attempt=1");
+		header("location: .?nombre=".$nombre."&correo=".$correo."");
 		exit();
+		
 	}
 	else
 	{
@@ -22,13 +23,16 @@ include "../../conexion.php";
 		DireccionidDireccion=1;";
 		$s = $pdo->prepare($sql);
 		$s->execute();
-		header("location: ../../");
-		exit();
+		
 	}
-	$_SESSION['name'] = $nombre;
-	$_SESSION['guest'] = False;
+
+	session_start();
+	$_SESSION['nombre'] = $nombre;
 	$sql = "SELECT idUsuario FROM Usuario Where correo = '".$correo."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
-	$_SESSION['id'] = $row;
+	$_SESSION['id'] = $row['idUsuario'];
+	$_SESSION['cart'] = array();
+	header("location: ../home");
+	exit();
 ?>

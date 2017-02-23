@@ -10,10 +10,10 @@
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
-	<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
-	<link rel="stylesheet" href="../css/home-style.css"> 
+	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../../slick/slick-theme.css"/>
+	<link rel="stylesheet" href="../../css/home-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="img/logo.png" alt=""></a>
+	    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
 		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
 	  </div>
 
@@ -49,7 +49,7 @@
 	    </div>
 	    <div id="list" class="col-lg-6 col-md-6 col-sm-7">
 	    	<ul class="nav navbar-nav navbar-right">
-		   	  <li id="cart"><a href="#"><img src="img/grey-cart.png" alt=""><b>(0)</b></a></li>	
+		   	  <li id="cart"><a href="#"><img src="../../img/grey-cart.png" alt=""><b>(0)</b></a></li>	
 		      <li><a href="pedidosEspeciales.html">Pedidos Especiales</a></li>
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
@@ -388,10 +388,10 @@
 			</div>
 		</div>
 
-		<div id="footer-hl" class="hl"></div>
+		<!-- <div id="footer-hl" class="hl"></div> -->
 		
 		<!-- Footer -->
-		<div class="row footer text-center">
+		<!-- <div class="row footer text-center">
 				<div class="col-lg-4">
 					<div class="row">
 						<img src="img/laberet_icon.png" alt="">
@@ -409,13 +409,41 @@
 						<a href="#">Catálogo</a>
 					</div>
 				</div>
-			</div><!-- FIN Footer -->
+			</div><!-- FIN Footer --> 
+	</div>
+	
+	<div class="container-fluid footer">
+				<div class="row-fluid text-center">
+						<div class="col-lg-4">
+							<div class="row">
+								<img src="../../img/logo-white.png" alt="">
+								<b>LABERET</b>
+							</div>
+							<div class="row">
+								<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
+							</div>
+						</div>
+						<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+						</div>
+						<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+							<div class="menu row nav centered">
+								<div style="text-align: left">
+									<a href="../../">Inicio</a><br>
+									<a href="#">Catálogo</a><br>
+									<a href="#">Pedidos Especiales</a><br>
+									<a href="#">Historial de Compras</a>
+								</div>
+							</div>
+						</div>
+					</div><!-- FIN Footer -->
 	</div>
 	<!-- FIN ELEMENTOS -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../slick/slick.min.js"></script>
-	<script src="../js/home-carousel.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../slick/slick.min.js"></script>
+	<script src="../../js/home-carousel.js"></script>
 </body>
 </html>
