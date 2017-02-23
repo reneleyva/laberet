@@ -23,7 +23,7 @@ try {
 
 try{
 	//Tales que pertenecen a la librería-
-	$sql = 'SELECT idLibro, titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro where LibreriaidLibreria = '.$id.';';
+	$sql = 'SELECT idLibro, titulo,autor,precio,tags,fotoFrente,fotoAtras FROM Libro where idLibreria = '.$id.';';
 	$result = $pdo->query($sql);
 	$contador = 0;
 	$vacio = True;

@@ -22,7 +22,6 @@ $fotoAtras = $row['fotoAtras'];
 $isbn = $row['isbn'];
 $autor = $row['autor'];
 $titulo = $row['titulo'];
-$lenguaje = $row['lenguaje'];
 $precio = $row['precio'];
 // $tags = explode($row['tags'], " ");
 $tags = implode(", ", explode(" ", trim($row['tags'])));

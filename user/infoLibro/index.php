@@ -137,9 +137,9 @@
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
 						<div class="info">
-							<p class="book-title"><?php echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');?></p>
-							<a class="book-author" href="#"><?php echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');?></a>
-							<p class="book-price"><?php echo htmlspecialchars('$ '.$book['precio'], ENT_QUOTES, 'UTF-8');?></p>
+							<p class="book-title"><?php echo $book['titulo'];?></p>
+							<a class="book-author" href="#"><?php echo $book['autor'];?></a>
+							<p class="book-price"><b><?php echo '$ '.$book['precio'].' MXN';?></b></p>
 						</div>
 						<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book['id'], ENT_QUOTES, 'UTF-8');?>">
 					</div>

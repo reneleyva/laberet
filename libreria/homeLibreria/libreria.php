@@ -7,7 +7,7 @@ try {
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$id.";";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
-	$nombre = $row['Nombre'];
+	$nombre = $row['nombre'];
 	$direccion = $row['direccion'];
 	$telefono = $row['telefono'];
 } catch (Exception $e) {
@@ -17,7 +17,7 @@ try {
 try {
 	$books = null;
 	$sql = "SELECT idLibro, titulo,autor,precio,fotoFrente,fotoAtras,isbn,fechaAdicion
-	       FROM Libro WHERE LibreriaidLibreria = ".$id.";";
+	       FROM Libro WHERE idLibreria = ".$id.";";
 	$result = $pdo->query($sql);
 	while ($row2 = $result->fetch()) { //Ojo con la cantidad
 		$books[] = array('id' => $row2['idLibro'], 'titulo' => $row2['titulo'],

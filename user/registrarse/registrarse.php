@@ -19,8 +19,7 @@ include "../../conexion.php";
 		$sql = "INSERT INTO Usuario SET
 		nombre ='".$nombre."',
 		correo ='".$correo."',
-		contrasenia ='".$pass."',
-		DireccionidDireccion=1;";
+		password ='".$pass."';";
 		$s = $pdo->prepare($sql);
 		$s->execute();
 		

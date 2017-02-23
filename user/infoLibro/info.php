@@ -20,11 +20,11 @@ try {
 		echo "404";
 	}
 	//La libreria que vende el libro. 
-	$idLibreria = $row['LibreriaidLibreria'];
+	$idLibreria = $row['idLibreria'];
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$idLibreria.";";
 	$result = $pdo->query($sql);
 	$libreria = $result->fetch();
-	$nombreLibreria = $libreria['Nombre'];
+	$nombreLibreria = $libreria['nombre'];
 	$fotoPerfil = $libreria['fotoPerfil'];
 	$direccion = $libreria['direccion']; 
 	$fotoPerfil = $libreria['fotoPerfil'];

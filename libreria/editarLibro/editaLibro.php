@@ -5,7 +5,6 @@ include '../../conexion.php';
 $id = $_POST['id'];
 $titulo = $_POST['titulo'];
 $autor =  $_POST['autor'];
-$lenguaje = $_POST['lenguaje'];
 $isbn = $_POST['isbn'];
 $precio = $_POST['precio'];
 $tags = $_POST['tags'];
@@ -24,7 +23,7 @@ $sql = 'UPDATE Libro SET
             fechaAdicion = "'.$fechaAdicion.'",
 			precio = "'.$precio.'",
 			tags = "'.$tags.'",
-			LibreriaidLibreria = 1
+			idLibreria = 1
 		WHERE idLibro = "'.$id.'";' ;     
 
 // echo $sql;

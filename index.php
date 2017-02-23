@@ -225,12 +225,7 @@
 			</div>
 			
 
-			<?php endforeach; ?>
-
-			
-
-
-			
+			<?php endforeach; ?>	
 
 		</div>
 		<div class="row text-center btn-catalogo">
