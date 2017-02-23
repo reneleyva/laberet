@@ -3,7 +3,7 @@ include 'conexion.php';
 
 //Cosulta para buscar las librerías.
 try {
-	$sql = "SELECT titulo,autor,precio,fotoFrente,LibreriaidLibreria,idLibro FROM Libro
+	$sql = "SELECT titulo,autor,precio,fotoFrente,idLibreria,idLibro FROM Libro
 	        order by fechaAdicion DESC;";
 	$result = $pdo->query($sql);
 	$libros = Null;

@@ -11,7 +11,11 @@
     $titulo = $_POST['titulo'];
     $autor =  $_POST['autor'];
     $lenguaje = $_POST['lenguaje'];
-    $isbn = $_POST['isbn'];
+    $isbn = NULL;
+    if (isset($_POST['isbn'])) {
+        $isbn = $_POST['isbn'];
+    }
+    
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
     $fotoAtrasPath = "";
@@ -78,7 +82,7 @@
             fechaAdicion = "'.$fecha.'",
 			precio = "'.$precio.'",
 			tags = "'.$tags.'",
-			LibreriaidLibreria = 1,
+			idLibreria = 1,
 			fotoFrente = "'.$fotoFrentePath.'",
 			fotoAtras = "'.$fotoAtrasPath.'";';     
 

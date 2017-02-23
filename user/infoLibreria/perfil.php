@@ -11,7 +11,7 @@ try {
 	$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
-	$nombre = $row['Nombre'];
+	$nombre = $row['nombre'];
 	$direccion = $row['direccion'];
 	$telefono = $row['telefono'];
 	$fotoPortada = $row['fotoPortada'];

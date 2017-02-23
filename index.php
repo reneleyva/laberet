@@ -227,15 +227,17 @@
 
 			<?php endforeach; ?>
 
-			<div class="row text-center btn-catalogo">
-				<a href="./user/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
-			</div>
+			
 
-			<div id="footer-hl" class="hl"></div>
 
 			
 
 		</div>
+		<div class="row text-center btn-catalogo">
+			<a href="./user/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
+		</div>
+					<div id="footer-hl" class="hl"></div>
+
 	</div> <!-- FIN Ultimos Libros -->
 	<div class="container-fluid footer">
 				<div class="row-fluid text-center">
