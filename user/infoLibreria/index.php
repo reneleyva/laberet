@@ -64,7 +64,7 @@
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
 	<?php include 'perfil.php'; ?>
-	<div class="container-fluid" style="background: url(../../img/libreriaPortada.jpg) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+	<div class="container-fluid" style="background: url(../../img/<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid" >
 			<div>
 				<div id="box">
