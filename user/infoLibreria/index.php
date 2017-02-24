@@ -113,7 +113,7 @@
 				</div>
 			</form>
 
-			<h3 class="resultado">Resultados para: <span>Stephen King</span></h3>
+			<h3 class="resultado">Resultados para: <span>Pene</span></h3>
 		</div>
 
 		
