@@ -1,7 +1,8 @@
 <?php
 include '../../conexion.php';
 
-$id = 1; // Aquí debería de ser una variable
+//Se supone que ya se revisó si ha iniciado sesión antes. 
+$id = $_SESSION['id'] ; // Aquí debería de ser una variable
 
 try {
 	$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$id.";";
@@ -10,6 +11,9 @@ try {
 	$nombre = $row['nombre'];
 	$direccion = $row['direccion'];
 	$telefono = $row['telefono'];
+	$fotoPerfil = $row['fotoPerfil'];
+	$fotoPortada =  $row['fotoPortada'];
+	
 } catch (Exception $e) {
 	echo $e->getMessage();
 }

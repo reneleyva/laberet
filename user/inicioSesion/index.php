@@ -57,7 +57,7 @@
 				} ?>
 				
 				<label for="correo">Correo</label>
-				<input id="correo" required type="email" name="correo" value="<?php if (isset($_GET['correo'])) {
+				<input id="correo" required type="text" name="correo" value="<?php if (isset($_GET['correo'])) {
 					echo htmlspecialchars($_GET['correo'], ENT_QUOTES, 'UTF-8');
 				} ?>" placeholder="" class="form-control">
 				<div id="correo-invalido" class="form-control err-msg">Correo No Válido.</div>

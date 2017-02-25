@@ -21,7 +21,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
 </head>
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
@@ -51,8 +50,13 @@
 		session_start();
 		if (isset($_SESSION['nombre'])) {
 			if ($_SESSION['nombre'] != 'invitado') {
-				//NO DEBERÍA DE ESTAR AQUI REDIRIJO A HOME:
-				header("location: user/home");
+				//NO DEBERÍA DE ESTAR AQUI REDIRIJO A HOME RESPECTIVO
+				if ($_SESSION['type'] == 'user'){
+					header("location: user/home");
+				} else {
+					header("location: libreria/home");
+				}
+
 			} 
 		} else {
 			//PRIMERA VEZ EN LA PAGINA
@@ -173,7 +177,7 @@
 						</b></h4>
 					</div>
 					<div style="background: url(
-						<?php echo htmlspecialchars('img/'.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
+						<?php echo htmlspecialchars(''.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
 					 ) no-repeat no-repeat center center;" class="circle"></div>
 					<p>
 						<?php echo htmlspecialchars($libreria['direccion'], ENT_QUOTES, 'UTF-8');?>
@@ -235,31 +239,31 @@
 
 	</div> <!-- FIN Ultimos Libros -->
 	<div class="container-fluid footer">
-				<div class="row-fluid text-center">
-						<div class="col-lg-4">
-							<div class="row">
-								<img src="img/logo-white.png" alt="">
-								<b>LABERET</b>
-							</div>
-							<div class="row">
-								<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
-							</div>
-						</div>
-						<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-						</div>
-						<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-							<div class="menu row nav centered">
-								<div style="text-align: left">
-									<a href="../../">Inicio</a><br>
-									<a href="#">Catálogo</a><br>
-									<a href="#">Registrarse</a><br>
-									<a href="#">Iniciar Sesión</a>
-								</div>
-							</div>
-						</div>
-					</div><!-- FIN Footer -->
+		<div class="row-fluid text-center">
+			<div class="col-lg-4">
+				<div class="row">
+					<img src="img/logo-white.png" alt="">
+					<b>LABERET</b>
+				</div>
+				<div class="row">
+					<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
+				</div>
+			</div>
+			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+			</div>
+			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+				<div class="menu row nav centered">
+					<div style="text-align: left">
+						<a href="../../">Inicio</a><br>
+						<a href="#">Catálogo</a><br>
+						<a href="#">Registrarse</a><br>
+						<a href="#">Iniciar Sesión</a>
+					</div>
+				</div>
+			</div>
+		</div><!-- FIN Footer -->
 	</div>
 	<!-- ****** TERMINAN ELEMENTOS ******* -->
 	

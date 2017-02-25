@@ -64,7 +64,7 @@
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
 	<?php include 'perfil.php'; ?>
-	<div class="container-fluid" style="background: url(../../img/<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+	<div class="container-fluid" style="background: url(../../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid" >
 			<div>
 				<div id="box">
@@ -72,7 +72,7 @@
 						<h3 class="col-lg-12"><b><?php echo $nombre ?></b></h3>
 						<p><?php echo $direccion ?></p>
 					</div>
-					<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
+					<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 					<p><?php echo "Tel: ".$telefono ?></p>
 
 					<div class="hl text-center"></div>
