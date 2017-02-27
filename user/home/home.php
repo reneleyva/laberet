@@ -77,72 +77,25 @@
 
 			<div id="carousel-libros" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 				
+				<?php include '../buscar/muestraLibros.php';
+					if(!$books){
+						echo "FUCK!";
+						exit();
+					}
+					foreach ($books as $book):
+				?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente'];?>" alt="PENE"></a>
 						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
+							<p class="book-title"><?php echo $book['titulo'];?></p>
+							<a class="book-author" href="#"><?php echo $book['autor'];?></a>
+							<p class="book-price"><?php echo $book['precio'];?></p>
 						</div>
 					</div>
 				</div>
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-				
-			</div><!-- Fin Carousel -->
+				<?php endforeach;?>			
+				</div><!-- Fin Carousel -->
 
 			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
 			<div id="next-libros" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
@@ -159,71 +112,28 @@
 			</div>
 
 			<div id="carousel-librerias" class="carousel col-lg-8 col-md-8 col-sm-6 col-xs-6	">
-				
+			<?php 
+			include '../../librerias.php';
+			if(!$librerias){
+				echo "FUCK!";
+				exit();
+			}
+			foreach ($librerias as $libreria): ?>	
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
+							<h4 class="col-lg-12"><b><?php echo $libreria['Nombre'];?></b></h4>
 						</div>
-						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
+						<div style="background: url(
+						<?php echo htmlspecialchars('../../img/'.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
+					 ) no-repeat no-repeat center center;" class="circle"></div>
+						<p><?php echo $libreria['direccion'];?></p>
 						<div class="row text-center">
 							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
 						</div>
 					</div>
 				</div>
-
-				<div class="perfil">
-					<div id="box">
-						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-						</div>
-						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
-						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="perfil">
-					<div id="box">
-						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-						</div>
-						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
-						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="perfil">
-					<div id="box">
-						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-						</div>
-						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
-						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="perfil">
-					<div id="box">
-						<div class="row text-center">
-							<h4 class="col-lg-12"><b>Librería Aurora</b></h4>
-						</div>
-						<div class="circle"></div>
-						<p>Donceles #2 col. centro</p>
-						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
-						</div>
-					</div>
-				</div>
+			<?php endforeach;?>
 				
 			</div><!-- Fin Carousel -->
 
@@ -235,6 +145,9 @@
 		
 
 		<!-- Pedido Especial -->
+		<?php 
+		$lunaAmaARene = False;
+		if ($lunaAmaARene):?>
 		<div class="row card pedido-especial">
 			<h3 class="text-center"><b>Librería Aurora ha surtido tu pedido especial.</b></h3>
 			<div class="libro">
@@ -251,8 +164,11 @@
 				</div>
 			</div>
 		</div> <!-- Fin Pedido Especial -->
+		<?php endif; ?>
 
-		
+		<?php 
+		$JazMeAma = False; // Pero será verdadero
+		if ($JazMeAma):?>
 		<!-- Compras Recientes -->
 		<div class="row card compras-recientes">
 			<h4 class="text-center"><b>Tus compras recientes.</b></h4>
@@ -304,7 +220,8 @@
 			</div>
 			<a href="" title="" class="btn btn-default centered"><b>Ver Todas Las Compras</b></a>
 		</div> <!-- Fin Compras Recientes.  -->
-		
+		<?php endif; ?>
+
 		<!-- Libros que Quizas le ineteresen -->
 		<div class="row card">
 			<h4 class="text-center">Libros que Quizás te interesen.</h4>
@@ -314,71 +231,24 @@
 			</div>
 
 			<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-				
+			<?php include '../buscar/muestraLibros.php';
+				if(!$books){
+					echo "PENE DE LUNA";
+					exit();
+				}
+				foreach ($books as $book):
+			?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
 						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
+							<p class="book-title"><?php echo $book['titulo']?></p>
+							<a class="book-author" href="#"><?php echo $book['autor']?></a>
+							<p class="book-price"><?php echo $book['precio']?></p>
 						</div>
 					</div>
 				</div>
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="img/brave-men.jpg" alt="Brave Men"></a>
-						<div class="info">
-							<p class="book-title">Brave men</p>
-							<a class="book-author" href="#">Ernie Pyle</a>
-							<p class="book-price">$230</p>
-						</div>
-					</div>
-				</div>
+			<?php endforeach?>
 				
 			</div><!-- Fin Carousel -->
 
