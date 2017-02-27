@@ -1,6 +1,7 @@
 <?php 
 
 include '../../conexion.php';
+session_start();
 
 $id = $_POST['id'];
 $titulo = $_POST['titulo'];
@@ -8,7 +9,7 @@ $autor =  $_POST['autor'];
 $isbn = $_POST['isbn'];
 $precio = $_POST['precio'];
 $tags = $_POST['tags'];
-
+$idLibreria = $_SESSION['id'];
 
 
 $date = 'SELECT fechaAdicion FROM Libro WHERE idLibro = "'.$id.'";';
@@ -21,12 +22,12 @@ $sql = 'UPDATE Libro SET
 			autor = "'.$autor.'",
 			isbn = "'.$isbn.'",
             fechaAdicion = "'.$fechaAdicion.'",
-			precio = "'.$precio.'",
+			precio = '.$precio.',
 			tags = "'.$tags.'",
-			idLibreria = 1
-		WHERE idLibro = "'.$id.'";' ;     
+			idLibreria = '.$idLibreria.'
+		WHERE idLibro = '.$id.';' ;     
 
 // echo $sql;
 $pdo->exec($sql);
-header('Location: ../homeLibreria');
+header('Location: ../home');
 exit();

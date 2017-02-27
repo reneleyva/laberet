@@ -53,8 +53,8 @@ class Libro
 
 	//Regresa un libro haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
-	function getBookById($id) {
-		include "../conexion.php";
+	function getLibro($id) {
+		include "../../conexion.php";
 		$sql = "SELECT * FROM Libro WHERE idLibro = ".$id.";";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();

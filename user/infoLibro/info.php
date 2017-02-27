@@ -15,7 +15,7 @@ try {
 	$row = $result->fetch();
 	$autor = $row['autor'];
 	$titulo = $row['titulo'];
-
+	$id = $row['idLibro'];
 	if (!$row) {
 		echo "404";
 	}

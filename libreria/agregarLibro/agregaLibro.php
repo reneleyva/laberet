@@ -2,7 +2,7 @@
     
     include '../../conexion.php';
     session_start();
-     $idLibreria = $_SESSION['id'];
+    $idLibreria = $_SESSION['id'];
 
 	/* Consulta para obetener el id mayor */
 	$idMaximo = 'SELECT max(idLibro) as max from Libro;';

@@ -25,23 +25,6 @@
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
 	<!-- Inciar sesion -->
-	<?php  
-	/*REDIRIGIR??*/
-	// session_start();
-	// if(isset($_SESSION['name']))
-	// {
-	// 	$_SESSION['cart']= isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-
-	// } 
-	// else
-	// {
-	// 	$_SESSION['name'] = 'invitado';
-	// }
-	
-	// $_SESSION['id'] = 0;
-	
-
-	?>
 
 	<?php 
 		/*Si el usuario ya inició sesión lo redirige a su página principal,
