@@ -18,6 +18,10 @@ jQuery(document).ready(function($) {
 
 	});
 
+	$('.libro').on('click', '#vendido', function() {
+		
+	});
+
 	//EDITAR LIBRO 
 	$('.libro').on('click', '#editar', function(event) {
 		var id = $(this).closest('.libro').data('id');

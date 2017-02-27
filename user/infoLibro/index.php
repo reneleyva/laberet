@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -67,8 +70,9 @@
 </nav> <!-- END NAV -->
 	
 	<div class="container">
-		<div class="row bookInfo">
-			<?php include 'info.php'; ?>
+		<?php include 'info.php'; ?>
+		<div class="row bookInfo" data-id="<?php echo $id;?>">
+			
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
@@ -101,7 +105,20 @@
 		
 				</p>
 				
-				<button type="" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
+				<button id="add-cart" type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
+
+				<?php 
+					if (isset($_SESSION['cart'])) {
+						include "../../temp/Libro.php";
+						$book = Libro::getLibro($id);
+						if ($book) {
+							echo "YA ESTÁ!!!!!!!!!!";
+						}
+					} else {
+
+					}
+
+				 ?>
 			</div>
 
 			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs">
@@ -110,7 +127,7 @@
 						<div class="row text-center">
 							<h4 class="col-lg-12"><b><?php echo $nombreLibreria; ?></b></h4>
 						</div>
-						<div class="circle" style="background: url(../../img/<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
+						<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 						<p class="text-center"><?php echo $direccion; ?></p>
 						<div class="row text-center">
 							<a href="../infoLibreria/?id=<?php echo $idLibreria; ?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
@@ -130,8 +147,10 @@
 			<div id="carousel-relacionados" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 			<?php include 'info.php'; ?>
 
-			<?php if(!$books){echo "FUCK!";
-					exit();}
+			<?php if(!$books){
+				echo "FUCK!";
+				// exit();
+			}
 			foreach ($books as $book): ?>
 				<div class="thumbnail libro">
 					<div class="caption">
