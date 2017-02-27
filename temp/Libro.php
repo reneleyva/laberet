@@ -3,8 +3,8 @@
 /**
 * Clase para Libro. 
 */
-class Libro
-{
+class Libro {
+
 	private $id;
 	private $autor;
 	private $titulo;
@@ -16,13 +16,11 @@ class Libro
 	private $tags;
 	private $idLibreria;
 
-
 	//Vacio 
 	function __construct() {}
 
 	//Recibe un row producto de un SELECT * y contruye el libro. 
-	function fill(array $row)
-	{
+	function fill(array $row) {
 		$this->id = $row['idLibro'];
 		$this->autor = $row['autor'];
 		$this->titulo = $row['titulo'];
