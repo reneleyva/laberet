@@ -1,6 +1,8 @@
 <?php
     
     include '../../conexion.php';
+    session_start();
+     $idLibreria = $_SESSION['id'];
 
 	/* Consulta para obetener el id mayor */
 	$idMaximo = 'SELECT max(idLibro) as max from Libro;';
@@ -10,7 +12,6 @@
 
     $titulo = $_POST['titulo'];
     $autor =  $_POST['autor'];
-    $lenguaje = $_POST['lenguaje'];
     $isbn = NULL;
     if (isset($_POST['isbn'])) {
         $isbn = $_POST['isbn'];
@@ -74,7 +75,7 @@
     $dia = date('d');
     $fecha = $anio.'/'.$mes.'/'.$dia;
 
-
+   
     $sql = 'INSERT INTO Libro SET
 			titulo ="' . $titulo . '",
 			autor = "'.$autor.'",
@@ -82,10 +83,11 @@
             fechaAdicion = "'.$fecha.'",
 			precio = "'.$precio.'",
 			tags = "'.$tags.'",
-			idLibreria = 2,
+			idLibreria = '.$idLibreria.',
 			fotoFrente = "'.$fotoFrentePath.'",
 			fotoAtras = "'.$fotoAtrasPath.'";';     
 
+    echo $sql;
 	$pdo->exec($sql);
     header('Location: .');
    	exit();

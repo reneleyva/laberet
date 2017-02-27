@@ -7,16 +7,11 @@ function check() {
 	console.log("LOL");
 	$('.err-msg').hide();
 	var correo = $("#correo").val();
-	var pass = $("#password").val();
 
-	if (!isValidEmailAddress(correo)) {
-		$("#correo-invalido").show("fast");
-		return false;
-	} else if (pass.length < 5) {
+	if (pass.length < 5) {
 		$("#pass-invalid").show("fast");
 		return false;
 	} 
-	console.log("HGhjhgj");
 	return true;
 }
 

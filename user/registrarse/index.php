@@ -40,7 +40,7 @@
 		            <li><a href="#">Catálogo</a></li>
 		            <li><a href="#">Librerías</a></li>
 		            <li  class="active"><a href="#">Registrarse</a></li>
-		            <li><a href="iniciarSesion.html">Iniciar Sesión</a></li>
+		            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
 		            
           		</ul>
         	</div>
@@ -74,7 +74,7 @@
 				<input id="password2" required type="password" name="password2" value="" placeholder="" class="form-control">
 				<div id="no-coinciden" class="form-control err-msg">Las contraseñas no coinciden!</div>
 				<button id="enviar" type="submit" class="btn btn-default">Enviar</button>
-				<p>¿Ya tienes cuenta? <a href="iniciarSesion.html" title="">Iniciar Sesión</a></p>
+				<p>¿Ya tienes cuenta? <a href="../inicioSesion" title="">Iniciar Sesión</a></p>
 			</form>	
 		</div>
 	</div>

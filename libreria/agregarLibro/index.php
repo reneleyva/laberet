@@ -68,6 +68,17 @@
 
 	
 	<div class="container">
+		<?php 
+			//Revisa la sesión
+			session_start();
+			if (!isset($_SESSION['id'])) {
+				//NO ha iniciado sesión
+				header("location: ../../user/inicioSesion");
+			} else if ($_SESSION['type'] != 'libreria') {
+				//No es una libreria
+				header("location: ../../user/home");
+			}
+		 ?>
 		<h2 class="text-center"><b>Agregar Nuevo Libro.</b></h2>
 		<div class="row formulario">
 			<div class="vista-previa col-lg-4">
@@ -75,7 +86,6 @@
 				
 			</div>
 			<form id="nuevo-libro" action="agregaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-8">
-
 				<div class="form-control err-msg ">Precio no válido!.</div>
 				<div class="form-group">
 					 <div class="labels col-lg-6">
@@ -84,7 +94,7 @@
 					 	<label for="autor" class="col-form-label">Autor</label><br>
 					 	<label for="titulo" required class="col-form-label">Título</label><br>
 					 	<label for="precio" required class="col-form-label">Precio($)</label><br>
-					 	<label for="lenguaje" required class="col-form-label">Lenguaje</label><br>
+					 	<!-- <label for="lenguaje" required class="col-form-label">Lenguaje</label><br> -->
 					 	<label for="tags" class="col-form-label">Tags.</label>
 					 </div>
 					 <div class="inputs col-lg-6">
@@ -93,7 +103,7 @@
 					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="...">
 					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00">
 					 
-						<input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español">
+						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
 						<input type="text" id="tags" name="tags" value="" class=" tags form-control" data-role="tagsinput">
 					 </div>
 					 <input required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >

@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
@@ -40,10 +39,10 @@
 	   <div id="list" class="col-lg-9 col-md-9">
 	   		<ul class="nav navbar-nav navbar-left">
 				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="#">Agregar Libro</a></li>
-				<li><a href="#">Ventas</a></li>
+				<li><a href="../agregarLibro">Agregar Libro</a></li>
+				<li><a href="../historialVentas">Ventas</a></li>
 				<li><a href="#">Pedidos Especiales</a></li>
-				<li><a href="#">Catálogo Universal</a></li>
+				<li><a href="../../user/buscar">Catálogo Universal</a></li>
 			</ul>
 	   </div>
 
@@ -56,7 +55,7 @@
 		          <li><a href="#">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Ventas</a></li>
 		          <li class="divider"></li>
-		          <li><a href="#">Salir</a></li>
+		          <li><a href="../../user/salir">Salir</a></li>
 		        </ul>
 		      </li>
 			</ul>
@@ -64,13 +63,23 @@
 	    
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
-
+	<?php 
+		//Revisa la sesión
+		session_start();
+		if (!isset($_SESSION['id'])) {
+			//NO ha iniciado sesión
+			header("location: ../../user/inicioSesion");
+		} else if ($_SESSION['type'] != 'libreria') {
+			//No es una libreria
+			header("location: ../../user/home");
+		}
+	 ?>
     <?php include 'libreria.php';?>
-	<div class="container-fluid">
+	<div class="container-fluid" style="background: url(../../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
-					<div class="circle"></div>
+					<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 					<div class="row text-center">
 						<h2 class="col-lg-12"><b><?php echo $nombre;?></b></h2>
 						<p><?php echo $direccion;?></p>
@@ -81,7 +90,6 @@
 		</div>
 	</div> <!-- Fin fluid -->
 	
-
 
 	<div class="container">
 		<div class="row">
@@ -190,27 +198,30 @@
 	
 	<div class="container-fluid footer">
 		<div class="row-fluid text-center">
-				<div class="col-lg-4">
-					<div class="row">
-						<img src="../../img/logo-white.png" alt="">
-						<b>LABERET</b>
-					</div>
-					<div class="row">
-						<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-					</div>
+			<div class="col-lg-4">
+				<div class="row">
+					<img src="../../img/logo-white.png" alt="">
+					<b>LABERET</b>
 				</div>
-				<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+				<div class="row">
+					<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
 				</div>
-				<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-					<div class="row nav centered">
-						<a href="#">Inicio</a><br>
-						<a href="#" title="Catalogo">Registrarse</a><br>
+			</div>
+			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+			</div>
+			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+				<div class="menu row nav centered">
+					<div style="text-align: left">
+						<a href="../../">Inicio</a><br>
+						<a href="#">Catálogo</a><br>
+						<a href="#">Registrarse</a><br>
 						<a href="#">Iniciar Sesión</a>
 					</div>
 				</div>
-			</div><!-- FIN Footer -->
+			</div>
+		</div><!-- FIN Footer -->
 	</div>
 	
 	<!-- Modal -->
