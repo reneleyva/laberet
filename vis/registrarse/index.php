@@ -11,7 +11,8 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/registrarse-style.css"> 
+	<link rel="stylesheet" href="../../css/registrarse-style.css">
+	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -20,31 +21,33 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand navbar-left" href="#"><img src="img/laberet_icon.png" alt=""></a>
-		          <a class="navbar-brand" href="#"><b>LABERET</b></a>
-        	</div>
+	<nav class="navbar navbar-default" role="navigation">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header col-lg-2 col-md-2">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="../../img/logo.png" alt=""></a>
+			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
+		  </div>
 
-        	<div id="navbar" class="navbar-collapse collapse">
-        		
-        		<ul class="nav navbar-nav navbar-right">
-        			<li><a href="#">Inicio</a></li>
-		            <li><a href="#">Catálogo</a></li>
-		            <li><a href="#">Librerías</a></li>
-		            <li  class="active"><a href="#">Registrarse</a></li>
-		            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
-		            
-          		</ul>
-        	</div>
-		</div>
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="collapse-target">
+		   
+		   <div id="list" class="col-lg-10 col-md-10">
+		   		<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Inicio</a></li>
+			            <li><a href="../buscar">Catálogo</a></li>
+			            <li><a href="#">Librerías</a></li>
+			            <li class="active"><a href="../registrarse">Registrarse</a></li>
+			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+				</ul>
+		   </div>
+		    
+		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
 
 	<div class="container">
