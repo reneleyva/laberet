@@ -72,7 +72,7 @@ class Libro {
 		 // Seleccionamos el libro que nos pasan como ref.
 		$book = getLibro($id);
 		// Donde se guardarán los libros relacionados
-		$books = new array(); 
+		$books = array(); 
 		// Se busca por autor
 		// $sql = "SELECT * FROM Libro WHERE autor = '".$book->getAutor()."' AND 
 		//         titulo != '".$book->getTitulo()."';";

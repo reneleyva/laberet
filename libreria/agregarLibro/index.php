@@ -40,8 +40,8 @@
 	   
 	   <div id="list" class="col-lg-9 col-md-9">
 	   		<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="#">Agregar Libro</a></li>
+				<li ><a href="../home">Inicio</a></li>
+				<li class="active"><a href="#">Agregar Libro</a></li>
 				<li><a href="#">Ventas</a></li>
 				<li><a href="#">Pedidos Especiales</a></li>
 				<li><a href="#">Catálogo Universal</a></li>
