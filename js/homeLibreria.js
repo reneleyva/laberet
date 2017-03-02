@@ -18,8 +18,10 @@ jQuery(document).ready(function($) {
 
 	});
 
-	$('.libro').on('click', '#vendido', function() {
-		
+	$('.vendido').click(function() {
+		// alert();
+		var id = $(this).closest('.libro').data('id');
+		window.location.href = "./vendidoTienda.php?id="+id;
 	});
 
 	//EDITAR LIBRO 

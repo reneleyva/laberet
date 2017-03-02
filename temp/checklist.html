@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Checklist</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../css/jquery-ui.min.css">
+	<link rel="stylesheet" href="../css/checklist.css">
+</head>
+<body>
+	<h2 class="text-center">Checklist</h2>
+	<ol class="checklist">
+		
+		<!-- <li class="item important" data-important="true">
+			<label><input type="checkbox" name="" value=""> LOL</label>
+			<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, modi?</p>
+		</li>
+		<li class="item not-complete">
+			<label><input type="checkbox" name="" value=""> LOL</label>
+			<p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, modi?</p>
+		</li> -->
+	</ol>
+
+	<div class="agregar form-group">
+		<h3>Agregar: </h3>
+		<form id="agregar" action="" method="" accept-charset="utf-8">
+			<label>Titulo: <input type="text" class="form-control" id="title" value=""></label><br>
+			<label>Descripción: <input type="text" class="form-control" id="description" value=""></label><br>
+			<label>Importante: <input type="checkbox" id="important" name="" value=""></label><br>
+			<button type="submit" class="btn btn-default">GUARDAR</button>
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/checklist.js"></script>
+	<!-- <script src="../js/jquery-ui.min.js"></script> -->
+
+</body>
+</html>

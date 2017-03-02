@@ -29,7 +29,7 @@ class Libro {
 		$this->precio = $row['precio'];
 		$this->fotoFrente = $row['fotoFrente'];
 		$this->fotoAtras = $row['fotoAtras'];
-		$this->tags = explode(" ", trim($row['tags'], " ")); 
+		$this->tags = $row['tags']; 
 		$this->idLibreria = $row['idLibreria'];
 	}
 
@@ -139,6 +139,16 @@ class Libro {
 	public function setTags($tags){
 		$this->tags = $tags;
 	}
+
+	public function getIdLibreria(){
+		return $this->idLibreria;
+	}
+
+	public function setIdLibreria($idLibreria){
+		$this->idLibreria = $idLibreria;
+	}
+
+
 }
 
 

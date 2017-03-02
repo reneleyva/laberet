@@ -44,7 +44,7 @@
 			} 
 		} else {
 			//PRIMERA VEZ EN LA PAGINA
-			$_SESSION['nombre'] = 'invitado';
+			$_SESSION['type'] = 'invitado';
 		}		
 		
 	?>
