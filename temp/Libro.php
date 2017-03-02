@@ -66,7 +66,10 @@ class Libro {
 		}
 
 	}
-
+	public function compareTo($book1):
+	{
+		return this->id == book1.getId();
+	}
 	public function getLibrosRelacionados($id) {
 		include "../../conexion.php";
 		 // Seleccionamos el libro que nos pasan como ref.
