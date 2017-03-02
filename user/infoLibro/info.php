@@ -31,17 +31,17 @@ try {
 
 	//Libros relacionados
 
-	//Busca autor
-	$sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE autor = '".mysql_real_escape_string($autor)."' AND titulo != '".mysql_real_escape_string($titulo)."';";
-	$result = $pdo->query($sql);
-	$books = Null;
-	$titulos = Null;
-	while ($libro = $result->fetch()) {
-		$titulos[] = $libro['titulo'];
-		$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
-			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],
-			            'id' => $libro['idLibro']);
-	}
+	// //Busca autor
+	// $sql = "SELECT autor,titulo,fotoFrente,idLibro,precio FROM Libro WHERE autor = '".mysql_real_escape_string($autor)."' AND titulo != '".mysql_real_escape_string($titulo)."';";
+	// $result = $pdo->query($sql);
+	// $books = Null;
+	// $titulos = Null;
+	// while ($libro = $result->fetch()) {
+	// 	$titulos[] = $libro['titulo'];
+	// 	$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
+	// 		            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],
+	// 		            'id' => $libro['idLibro']);
+	// }
 
 	//Separa los tags
 	if(!$books){

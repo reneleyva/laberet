@@ -26,7 +26,7 @@ if(isset($_POST['keyword'])) {
 		}
 		$result = $pdo->query($sql);
 		$vacio = True;
-		$books = Null;
+		$books[] = Null;
 		while ($row = $result->fetch()){
 			$vacio = False;
 			$books[] = array('titulo' => $row['titulo'],'autor' => $row['autor'], 'fotoFrente' => $row['fotoFrente'],'fotoAtras' => $row['fotoAtras'],
