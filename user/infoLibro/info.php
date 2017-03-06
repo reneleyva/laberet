@@ -57,7 +57,7 @@ try {
 			while ($libro = $result->fetch()) {
 				// Verifica que no se repita el título
 				//Gerardo estaría decepcionado de nosotros </3
-				if (!(in_array($libro['titulo'], $titulos))){
+				if (!(in_array($libro['titulo'], $titulos))) 	{
 					$books[] =array('titulo' => $libro['titulo'],'autor' => $libro['autor'], 
 			            'fotoFrente' => $libro['fotoFrente'],'precio' => $libro['precio'],
 			            'id' => $libro['idLibro']);

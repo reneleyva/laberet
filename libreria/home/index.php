@@ -164,7 +164,7 @@
 				</div>
 				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
 					<button id="editar" class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button id="vendido" class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
+					<button id="" class="btn btn-default vendido"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
 					<button id="eliminar" class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
 				</div>
 			</div>

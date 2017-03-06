@@ -19,6 +19,8 @@
     
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
+    //Se agrega el autor como tag. 
+    $tags = $tags." ".$autor;
     $fotoAtrasPath = "";
     $fotoFrentePath = "";
 

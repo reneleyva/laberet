@@ -34,7 +34,7 @@
 		$_SESSION['type'] = "user"; //Tipo usuario
 		$_SESSION['cart'] = array();
 		$_SESSION['id'] = $row['idUsuario'];
-		header("location: ../home"); 
+		header("location: ../../libreria/home"); 
 		exit();
 	}
 ?>
