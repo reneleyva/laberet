@@ -66,43 +66,7 @@ class Libro {
 		}
 
 	}
-	public function getLibrosRelacionados($id){
-		include "../../conexion.php";
-		 // Seleccionamos el libro que nos pasan como ref.
-		$book = getLibro($id);
-		// Donde se guardarán los libros relacionados
-		$books[] = Null; 
-		// Se busca por autor
-		$sql = "SELECT * FROM Libro WHERE autor = '".$book->getAutor()."' AND 
-		        titulo != '".$book->getTitulo()."';";
-		$result = $pdo->query($sql);
-		$titulos[] = Null;
-		while ($libro = $result->fetch()){
-			$bookAux = new Libro();
-			$bookAux->fill($libro);
-			//Aquí no sé como agregarlo :v
-		}
-		// Separa los tags
-		if(!$books){
-			$tags = Null;
-			$titulos[] = Null;
-		}
-		$tags = explode(" ", trim($book->getTags(), " "));
-		foreach ($tags as $tag) {
-			if ($tag != "") {
-				$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE 
-			        lower('%".$tag."%') AND titulo != '".$book->getTitulo()."';";
-			    $result = $pdo->query($sql);
-			    while ($libro = $result->fetch()){
-			    	// Verifica que no se repita el título
-			    	if (!(in_array($book->getTitulo(), $titulos))){
-			    		//Agrega libro again
-			    	}
-			    }
-			}
-		}
-	}
-
+	
 	//GETTERS Y SETTERS. 
 	public function getId(){
 		return $this->id;
