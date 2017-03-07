@@ -1,3 +1,4 @@
+<?php include_once('../redirect.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +64,7 @@
 				<input id="correo" required type="email" name="correo" value="<?php if (isset($_GET['correo'])) {
 					echo htmlspecialchars($_GET['correo'], ENT_QUOTES, 'UTF-8');
 				} ?>"  placeholder="" class="form-control">
-				<div id="correo-invalido" class="form-control err-msg">Correo No Válido!</div>
+				<div id="correo-invalido" class="form-control err-msg">¡Correo no válido!</div>
 				<?php 
 					if (isset($_GET['correo'])) {
 						echo "<div id='correo-existe' class='form-control err-msg'>Ya Existe una cuenta asociada con este correo.</div>";

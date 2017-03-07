@@ -87,7 +87,8 @@
 			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 			<h2 class="centering text-center"></h2>
 			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="typed" type="text" name="keyword" value="" placeholder=""><input id="keyword" hidden class="typed" type="text" name="keyword" value="" placeholder=""><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<input id="busqueda" class="typed" type="text" name="keyword" value="" placeholder="">
+				<input id="keyword" hidden type="text" name="keyword"><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
 			</div>
 			</form>	
 	 	</div> <!-- FIN HEADER -->
@@ -256,7 +257,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/linkLibro.js"></script>

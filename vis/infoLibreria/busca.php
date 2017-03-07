@@ -1,34 +1,36 @@
 <?php
 include '../../conexion.php';
-if (!isset($_POST['id'])) {
-	echo "PENE";
-	exit();
-}
+include_once "../../temp/Libro.php";
+include_once "../../temp/Libreria.php";
+$books = array();
+/*Aseguro que GET['id'] va estar pues 
+* perfil.php se ejecuta primero en la vista y este lo checa antes. */
+$libreria = Libreria::getLibreria($_GET['id']); 
 
-if(isset($_POST['keyword'])){
-    try{
-    	// Busca primero en tags 
-	    $keyword = $_POST['keyword'];
-	    $id = $_POST['id'];
-		$sql = "SELECT titulo,autor, fotoFrente,fotoAtras,precio,idLibro from Libro where (lower(tags) 
-		        like lower('%".$keyword."%') or lower(titulo) like lower('%".$keyword."%') 
-		        or lower(autor) like lower('%".$keyword."%') ) and 
-		        LibreriaidLibreria = ".$id.";";
-		echo $sql;
-		$result = $pdo->query($sql);
-		$vacio = True;
-		$books = Null;
-		while ($row = $result->fetch()){
-			echo 'Pene';
-			$vacio = False;
-			$books[] = array('titulo' => $row['titulo'],'autor' => $row['autor'], 'fotoFrente' => $row['fotoFrente'],'fotoAtras' => $row['fotoAtras'],
-				  'precio' => $row['precio'],'id' => $row['idLibro']);
-		}
-		include 'muestraBusqueda.html.php';
-		exit();
-	} catch (PDOException $e) {
-		$error = 'Error fetching books: ' . $e->getMessage();
-		echo $error;
-		exit();
+if (!isset($_GET['q']) or !isset($_GET['s']) ) {
+	$books = $libreria->getLibros();
+} else {
+
+	$keyword = $_GET['q']; //Palabra clave. 
+	$selection = $_GET['s']; //selection
+
+	//Según la busqueda.
+	switch ($selection) {
+		    case 'todo':
+		        $books = $libreria->buscaTodo($keyword);
+		        break;
+
+		    case 'autor':
+		        $books = $libreria->buscaAutor($keyword);
+		        break;
+
+		    case 'titulo':
+		       	$books = $libreria->buscaTitulo($keyword);
+		        break;
+
+		    case 'categoria':
+		    	$books = $libreria->buscaTodo($keyword);
+		    	break;
 	}
+
 }

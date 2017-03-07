@@ -8,30 +8,28 @@ include "../../conexion.php";
 	$sql = "SELECT * FROM Usuario WHere correo = '".$correo."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
-	if ($row)
-	{
+	if ($row) {
+		//Ya hay una cuenta asociada con este usaurio
 		header("location: .?nombre=".$nombre."&correo=".$correo."");
 		exit();
 		
-	}
-	else
-	{
+	} else {
 		$sql = "INSERT INTO Usuario SET
 		nombre ='".$nombre."',
 		correo ='".$correo."',
 		password ='".$pass."';";
 		$s = $pdo->prepare($sql);
 		$s->execute();
-		
 	}
 
 	session_start();
 	$_SESSION['nombre'] = $nombre;
+	$_SESSION['type'] = 'user';
 	$sql = "SELECT idUsuario FROM Usuario Where correo = '".$correo."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
 	$_SESSION['id'] = $row['idUsuario'];
 	$_SESSION['cart'] = array();
-	header("location: ../home");
+	header("location: ../../user/home");
 	exit();
 ?>

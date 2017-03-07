@@ -29,7 +29,7 @@ class Libreria
 	//Regresa una libreria haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
 	function getLibreria($id) {
-		include "../conexion.php";
+		include "../../conexion.php";
 		$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$id.";";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();
@@ -43,6 +43,76 @@ class Libreria
 		}
 
 	}
+
+	/* Regresa un arreglo de los libros 
+	 * que pertenecen a esta libreria.*/
+	function getLibros() {
+		include "../../conexion.php";
+		include_once "../../temp/Libro.php";
+		$books = array();
+		$sql = "SELECT * FROM Libro WHERE idLibreria = ".$this->id.";";
+		$result = $pdo->query($sql);
+
+		while ($row = $result->fetch()) {
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books, $book);
+		}
+
+		return $books;
+	}
+
+	/*Busca todo en tienda */
+	function buscaTodo($keyword) {
+		include "../../conexion.php";
+		include_once "../../temp/Libro.php";
+
+		$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$keyword."%') AND idLibreria = ".$this->id.";";
+
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books,$book);
+		}
+		return $books;
+	}
+
+	/*Busca por titulo en tienda */
+	function buscaTitulo($titulo) {
+		include "../../conexion.php";
+		include_once "../../temp/Libro.php";
+
+		$sql = "SELECT * FROM Libro WHERE lower(titulo) like lower('%".$titulo."%') AND idLibreria = ".$this->id.";";
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books, $book);
+		}
+		return $books;
+	}
+
+	// Busca por autor.
+	function buscaAutor($autor) {
+		include "../../conexion.php";
+		include_once "../../temp/Libro.php";
+
+		$sql = "SELECT * FROM Libro WHERE lower(autor) like lower('%".$autor."%') AND idLibreria=".$this->id.";";
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books,$book);
+		}
+		return $books;
+	}
+
+
+
 	//GETTERS AND SETTERS
 	public function getId(){
 		return $this->id;

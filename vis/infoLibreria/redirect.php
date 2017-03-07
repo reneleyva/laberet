@@ -1,18 +1,20 @@
 <?php 
-
-//Checo que tipo de Usuario es y si debería de estar aquí. 
-
 session_start();
+if (!isset($_GET['id'])) {
+	echo "404";
+	exit();
+}
 
 if (!isset($_SESSION['type'])) {
 	header("location: ../../");
 }
-
+$id = $_GET['id'];
 $tipo = $_SESSION['type'];
+
 if ($tipo != 'invitado') {
 	if ($tipo == 'libreria') {
-		header("location: ../../libreria/home");
+		header("location: ../../libreria/infoLibreria/?id=".$id);
 	} else if ($tipo == 'usuario') {
-		header("location: ../../user/home");
+		header("location: ../../user/infoLibreria/?id=".$id);
 	}
-}	
+}

@@ -6,9 +6,38 @@
 class Busqueda {
 	function __construct() {}
 
+	//Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
 		include "../../conexion.php";
 		$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$keyword."%');";
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books,$book);
+		}
+		return $books;
+	}
+
+	// Busca por autor.
+	function buscaAutor($autor) {
+		include "../../conexion.php";
+		$sql = "SELECT * FROM Libro WHERE lower(autor) like lower('%".$autor."%');";
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books,$book);
+		}
+		return $books;
+	}
+
+	// Busca por titulo.
+	function buscaTitulo($titulo) {
+		include "../../conexion.php";
+		$sql = "SELECT * FROM Libro WHERE lower(titulo) like lower('%".$titulo."%');";
 		$result = $pdo->query($sql);
 		$books = array();
 		while ($row = $result->fetch()){

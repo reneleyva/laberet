@@ -70,23 +70,23 @@
 
 		<div class="row">
 			
-			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="." class="form-inline" method="get" accept-charset="utf-8">
 				<div class="form-group">
 					<div class="input-group	">
 						<!-- BUSQUEDA -->
-						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">       
+						<input type="text" name="q" id="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
 				    
-				<select name="selection" class="form-control">
-					  <option>Todo</option>
-					  <option>Autor</option>
-					  <option>Titulo</option>
-					  <option>Categoria</option>
-				</select>
-				    
+					<select name="s" class="form-control">
+						  <option value="todo">Todo</option>
+						  <option value="autor">Autor</option>
+						  <option value="titulo">Titulo</option>
+						  <option value="categoria">Categoria</option>
+					</select>
+			
 				</div>
 			</form>
 
@@ -94,15 +94,17 @@
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
-			<?php include 'muestraLibros.php'; 
-				  include '../../pagination.php';
+			<?php 
+				  include_once 'busca.php'; 
+				  include_once '../../pagination.php';
 			?>
 			 
 			<?php 
-			if(!$books){
-				echo "FUCK!";
-				exit();
-			}
+			
+				if(!$books){
+					include_once "busqueda-error.html";
+					exit();
+				}
 
 			$total = 0; //Total de libros ya generados
 			$numLibros = count($books);
@@ -113,22 +115,22 @@
 				?>
 				<div class="thumbnail libro  col-lg-3 col-md-6">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">
 							<p class="book-title">
-								<?php echo $book['titulo'];?>
+								<?php echo $book->getTitulo();?>
 							</p>
 							<a class="book-author" href="#">
-								<?php echo $book['autor'];?>
+								<?php echo $book->getAutor();?>
 							</a>
 							<p class="book-price">
 							<b>
-								$<?php echo $book['precio']." MXN";?>
+								$<?php echo "<b>".$book->getPrecio()."</b> MXN";?>
 							</b>
 							</p>
 						</div>
 					</div>
-					<input type="text" class="id" hidden="true" value="<?php echo $book['id'];?>">
+					<input type="text" class="id" hidden="true" value="<?php echo $book->getId();?>">
 				</div>
 			<?php $total++;} ?>
 		

@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#busqueda').focus(function() {
-		$(this).hide();
+		$(this).remove();
 		$('#keyword').show();
 		$('#keyword').focus();
 	});

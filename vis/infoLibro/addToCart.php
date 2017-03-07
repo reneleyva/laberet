@@ -9,17 +9,14 @@ if(!isset($_GET['id'])) {
 	exit();
 }
 
-if ($_SESSION['nombre'] == 'invitado') {
+if ($_SESSION['type'] == 'invitado') {
+	//NO ha iniciado sesión, aún. 
 	header("location: ../inicioSesion");
 	exit();
 } 
 
 $idLibro = $_GET['id'];
-$sql = "SELECT * FROM Libro WHERE idLibro = ".$idLibro.";";
-$result = $pdo->query($sql);
-$row = $result->fetch();
-$book = new Libro();
-$book->fill($row);
+$book = Libro::getLibro($idLibro);
 
 if (!in_array($book, $_SESSION['cart'])) {
 	array_push($_SESSION['cart'], $book);
@@ -27,6 +24,6 @@ if (!in_array($book, $_SESSION['cart'])) {
 	echo "YA ESATABA";
 }
 
-echo $_SESSION['cart'][0]->getTitulo();
+// echo $_SESSION['cart'][0]->getTitulo();
 // header("Location: .");
 // exit();

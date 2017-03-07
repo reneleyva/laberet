@@ -1,3 +1,4 @@
+<?php include 'redirect.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,35 +55,35 @@
 	
 	<div class="container">
 		<?php include 'info.php'; ?>
-		<div class="row bookInfo" data-id="<?php echo $id;?>">
-			
+		<div class="row bookInfo" data-id="<?php echo $book->getId();?>">
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="../../<?php echo htmlspecialchars($row['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="">					
+					<img src="../../<?php echo $book->getFotoFrente();?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="../../<?php echo htmlspecialchars($row['fotoAtras'], ENT_QUOTES, 'UTF-8');?>" alt="">					
+					<img src="../../<?php echo $book->getFotoAtras();?>" alt="">
 				</div>
 			</div>
 			
 			<div class="info col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<p class="title">
-				<?php echo htmlspecialchars($row['titulo'], ENT_QUOTES, 'UTF-8');?></p>
+				<?php echo $book->getTitulo();?></p>
 
-				<p><a class="author" href="#">
-					<?php echo htmlspecialchars($row['autor'], ENT_QUOTES, 'UTF-8');?>
+				<p><a class="author" href="../buscar/?q=<?php echo $book->getAutor();?>&s=autor">
+					<?php echo $book->getAutor();?>
 				</a></p>
-				<p><b>Precio: </b> $<?php echo htmlspecialchars($row['precio'], ENT_QUOTES, 'UTF-8');?></p>
-				<p><b>Ubicación: </b> <a href="#">
-					<?php echo htmlspecialchars($nombreLibreria, ENT_QUOTES, 'UTF-8');?>
+				<p><b>Precio: </b> $<?php echo $book->getPrecio();?></p>
+				<p><b>Ubicación:</b> <a href="../infoLibreria/?id=<?php echo $libreria->getId();?>">
+					<?php echo $libreria->getNombre();?>
 				</a></p>
-				<p><b>ISBN: </b> <?php echo htmlspecialchars($row['isbn'], ENT_QUOTES, 'UTF-8');?></p>
+				<p><b>ISBN: </b> <?php echo $book->getIsbn();?></p>
 				<p><b>Tags: </b> 
 				<?php 
+				$tags = explode(" ", trim($book->getTags(), " "));
 				for ($i=0; $i < count($tags); $i++) { 
 					if ($tags[$i] != '')
-						echo ' <a href="#" class="label label-default">'.$tags[$i].'</a> ';
+						echo '<a href="../buscar/?q='.$tags[$i].'&s=todo" class="label label-default">'.$tags[$i].'</a> ';
 				} 
 				?><!-- Fin php -->
 		
@@ -92,7 +93,7 @@
 
 				<?php 
 					if (isset($_SESSION['cart'])) {
-						include "../../temp/Libro.php";
+						// include "../../temp/Libro.php";
 						$book = Libro::getLibro($id);
 						if ($book) {
 							echo "YA ESTÁ!!!!!!!!!!";
@@ -108,12 +109,12 @@
 				<div class="perfil">
 					<div id="box">
 						<div class="row text-center">
-							<h4 class="col-lg-12"><b><?php echo $nombreLibreria; ?></b></h4>
+							<h4 class="col-lg-12"><b><?php echo $libreria->getNombre(); ?></b></h4>
 						</div>
-						<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
-						<p class="text-center"><?php echo $direccion; ?></p>
+						<div class="circle" style="background: url(../../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
+						<p class="text-center"><?php echo $libreria->getDireccion(); ?></p>
 						<div class="row text-center">
-							<a href="../infoLibreria/?id=<?php echo $idLibreria; ?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
+							<a href="../infoLibreria/?id=<?php echo $libreria->getId(); ?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 						</div>
 					</div>
 				</div>
@@ -128,13 +129,12 @@
 			</div>
 
 			<div id="carousel-relacionados" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-			<?php include 'info.php'; ?>
 
-			<?php if(!$books){
+			<?php if(!$relacionados){
 				echo "FUCK!";
 				// exit();
 			}
-			foreach ($books as $book): ?>
+			foreach ($relacionados as $book): ?>
 				<div class="thumbnail libro">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
@@ -172,10 +172,10 @@
 			      <div class="modal-body">
 			        <div class="row">
 			        	<div class="modal-cover col-lg-6">
-			        		<img src="../../<?php echo htmlspecialchars($row['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        	<div class="modal-back col-lg-6">
-			        		<img src="../../<?php echo htmlspecialchars($row['fotoAtras'], ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="../../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        </div>
 			      </div>

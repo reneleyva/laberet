@@ -1,3 +1,4 @@
+<?php include 'redirect.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,17 +50,17 @@
 		    
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
-	<?php include 'perfil.php'; ?>
-	<div class="container-fluid" style="background: url(../../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+	<?php include 'perfil.php';?>
+	<div class="container-fluid" style="background: url(../../<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid" >
 			<div>
 				<div id="box">
 					<div class="row text-center">
-						<h3 class="col-lg-12"><b><?php echo $nombre ?></b></h3>
-						<p><?php echo $direccion ?></p>
+						<h3 class="col-lg-12"><b><?php echo $libreria->getNombre() ?></b></h3>
+						<p><?php echo $libreria->getDireccion() ?></p>
 					</div>
-					<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
-					<p><?php echo "Tel: ".$telefono ?></p>
+					<div class="circle" style="background: url(../../<?php echo $libreria->getFotoPerfil();?>) no-repeat no-repeat center center;"></div>
+					<p><?php echo "Tel: ".$libreria->getTelefono(); ?></p>
 
 					<div class="hl text-center"></div>
 					<div class="row text-center redes-sociales">
@@ -76,53 +77,57 @@
 	
 	<div class="container">
 		<div class="row">
-			
-			<form action="busca.php" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="." class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
 						<input type="hidden" name="id" value="<?php
 							echo $_GET['id']; ?>">
-						<input type="text" class="form-control" name= "keyword" placeholder="Search for...">
+						<input type="text" class="form-control" name="q" placeholder="Search for...">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
 				    
-				<select name="" class="form-control">
-					  <option>TODO</option>
-					  <option>Autor</option>
-					  <option>Título</option>
-					  <option>Género</option>
+				<select name="s" class="form-control">
+					  <option value="todo">Todo</option>
+					  <option value="autor">Autor</option>
+					  <option value="titulo">Titulo</option>
+					  <option value="categoria">Categoria</option>
 				</select>
 				    
 				</div>
 			</form>
 
-			<h3 class="resultado">Resultados para: <span>Pene</span></h3>
+			
 		</div>
 
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 
-		<?php 
+		
+		<?php
+		include "busca.php";
+		if (isset($_GET['q'])) {
+			echo "<h3 class='resultado'>Resultados para: <span>".$_GET['q']."</span></h3>";
+		}
 		foreach ($books as $book): ?>
 			<div class="thumbnail libro col-lg-3 col-md-6">
 				<div class="caption">
-				<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt=""></a>
+				<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
 					<div class="info">
 						<p class="book-title"><?php
-				        	echo htmlspecialchars($book['titulo'], ENT_QUOTES, 'UTF-8');
+				        	echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8');
 				        ?></p>
 						<a class="book-author" href="#"><?php
-							echo htmlspecialchars($book['autor'], ENT_QUOTES, 'UTF-8');
+							echo htmlspecialchars($book->getAutor(), ENT_QUOTES, 'UTF-8');
 						?></a>
-						<p class="book-price"><?php
-							echo htmlspecialchars('$ '.$book['precio'], ENT_QUOTES, 'UTF-8');
-						?></p>
+						<p class="book-price"><b><?php
+							echo htmlspecialchars('$'.$book->getPrecio(), ENT_QUOTES, 'UTF-8');
+						?> MXN</b></p>
 					</div>
 				</div>
-				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book['id'], ENT_QUOTES, 'UTF-8');?>">
+				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
 			</div>
 		<?php endforeach; ?>
 
