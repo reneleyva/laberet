@@ -25,7 +25,7 @@ class Usuario
 	//Regresa un usuario haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
 	function getUsuario($id) {
-		include "../conexion.php";
+		include "../../conexion.php";
 		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();

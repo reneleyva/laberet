@@ -6,18 +6,17 @@
 class Busqueda {
 	function __construct() {}
 
-	function buscaGeneral($key){
+	function buscaGeneral($keyword){
 		include "../../conexion.php";
-		$sql = "SELECT * FROM Libro;";
+		$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$keyword."%');";
 		$result = $pdo->query($sql);
-		$row = $result->fetch();
-		$books[] = array();
+		$books = array();
 		while ($row = $result->fetch()){
-			//$vacio = False;
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
 		}
+		return $books;
 	}
 
 	public function getLibrosRelacionados($id){
@@ -55,5 +54,52 @@ class Busqueda {
 			    }
 			}
 		}
+	}
+
+	public function getLibrosUsuario($idUsuario){
+		include "../../conexion.php";
+		include "Usuario.php";
+		$usuario = new Usuario();
+		// Se consigue el usuario.
+		$usuario->getUsuario($idUsuario);
+		// Arreglo donde se guardarán los libros.
+		$librosComprados = array();
+		$tags = array();
+		// Se hace la consulta de los libros que ha comprado.
+		$sql = "SELECT * FROM LibroVendido WHERE idUsuario = ".$usuario->getId().";";
+		try{
+			$result = $pdo->query($sql);
+		}catch(Exception $e){
+			echo 'No compró libros :(  ';
+			//include '../buscar/muestraLibros.php';
+			return null;
+		}
+		// itera sobre los libros que compró.
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			$tags = explode(" ", trim($book->getTags(), " "));
+			// Se podría hacer aquí. but a ro nou.
+			array_push($librosComprados,$book);
+		}
+		$libros = array();
+		// Si no ha comprado libros.
+		if (empty($librosComprados)) {
+			echo "Pene de Vanessa";
+			$sql = "SELECT * FROM Libro ORDER BY fechaAdicion DESC";
+			$result = $pdo->query($sql);
+			while ($row = $result->fetch()){
+				$book = new Libro();
+				$book->fill($row);
+				array_push($libros,$book);
+			}
+		} else {
+			$librosNuevos = array();
+			foreach ($tags as $tag) {
+				$librosNuevos = $this -> buscaGeneral($tag);
+				array_unique(array_merge($libros, $librosNuevos));
+			}	
+		}
+		return $libros;
 	}
 }

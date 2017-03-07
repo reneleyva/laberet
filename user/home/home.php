@@ -78,7 +78,7 @@
 			<div id="carousel-libros" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 				
 				<?php include '../buscar/muestraLibros.php';
-					if(!$books){
+					if(empty($books)){
 						echo "FUCK!";
 						exit();
 					}
@@ -86,11 +86,11 @@
 				?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente'];?>" alt="PENE"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
 						<div class="info">
-							<p class="book-title"><?php echo $book['titulo'];?></p>
-							<a class="book-author" href="#"><?php echo $book['autor'];?></a>
-							<p class="book-price"><?php echo $book['precio'];?></p>
+							<p class="book-title"><?php echo $book->getTitulo();?></p>
+							<a class="book-author" href="#"><?php echo $book->getAutor();?></a>
+							<p class="book-price"><?php echo $book->getPrecio();?></p>
 						</div>
 					</div>
 				</div>
@@ -231,20 +231,23 @@
 			</div>
 
 			<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-			<?php include '../buscar/muestraLibros.php';
-				if(!$books){
+			<?php 
+				include '../../temp/Busqueda.php';
+				$busqueda = new Busqueda();
+				$books = $busqueda->getLibrosUsuario(1);
+				if(empty($books)){
 					echo "PENE DE LUNA";
-					exit();
+					$books = $busqueda->buscaGeneral("");
 				}
 				foreach ($books as $book):
 			?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
 						<div class="info">
-							<p class="book-title"><?php echo $book['titulo']?></p>
-							<a class="book-author" href="#"><?php echo $book['autor']?></a>
-							<p class="book-price"><?php echo $book['precio']?></p>
+							<p class="book-title"><?php echo $book->getTitulo();?></p>
+							<a class="book-author" href="#"><?php echo $book->getAutor();?></a>
+							<p class="book-price"><?php echo $book->getPrecio();?></p>
 						</div>
 					</div>
 				</div>
