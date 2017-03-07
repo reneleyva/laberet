@@ -40,11 +40,11 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Inicio</a></li>
+						<li><a href="../../">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
 			            <li><a href="#">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li class="active"><a href="../inicioSesion">Iniciar Sesión</a></li>
 				</ul>
 		   </div>
 		    

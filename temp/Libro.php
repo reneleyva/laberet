@@ -66,8 +66,8 @@ class Libro {
 		}
 
 	}
-	public function compareTo($book1)
-	{
+	
+	public function compareTo($book1) {
 		return $this->id == book1.getId();
 	}
 	public function getLibrosRelacionados($id) {

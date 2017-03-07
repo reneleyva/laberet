@@ -29,17 +29,17 @@ class Busqueda {
 		$sql = "SELECT * FROM Libro WHERE autor = '".$book->getAutor()."' AND 
 		        titulo != '".$book->getTitulo()."';";
 		$result = $pdo->query($sql);
-		$titulos[] = Null;
+		$titulos = array();
 		while ($libro = $result->fetch()){
 			$bookAux = new Libro();
 			$bookAux->fill($libro);
 			array_push($books,$bookAux);
 		}
-		// Separa los tags
-		if(!$books){
-			$tags = Null;
-			$titulos[] = Null;
-		}
+		// // Separa los tags
+		// if(!$books){
+		// 	$tags = Null;
+		// 	$titulos[] = Null;
+		// }
 		$tags = explode(" ", trim($book->getTags(), " "));
 		foreach ($tags as $tag) {
 			if ($tag != "") {
@@ -80,7 +80,7 @@ class Busqueda {
 			$book->fill($row);
 			$tags = explode(" ", trim($book->getTags(), " "));
 			// Se podría hacer aquí. but a ro nou.
-			array_push($librosComprados,$book);
+			array_push($librosComprados, $book);
 		}
 		$libros = array();
 		// Si no ha comprado libros.

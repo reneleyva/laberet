@@ -80,6 +80,6 @@ $sql = 'INSERT INTO Administrador SET
 			password = "'.$pass.'",
 			idLibreria = "'.$id.'";';     
 $pdo->exec($sql);
-header("location: .agregarLibreria.html");
+header("location: .");
 exit();
 
