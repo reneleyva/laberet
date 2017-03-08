@@ -48,41 +48,27 @@ class Busqueda {
 		return $books;
 	}
 
+	// Busca relacionados
 	public function getLibrosRelacionados($id){
 		include "../../conexion.php";
 		 // Seleccionamos el libro que nos pasan como ref.
 		$book = getLibro($id);
-		// Donde se guardarán los libros relacionados
-		$books[] = array(); 
-		// Se busca por autor
-		$sql = "SELECT * FROM Libro WHERE autor = '".$book->getAutor()."' AND 
-		        titulo != '".$book->getTitulo()."';";
-		$result = $pdo->query($sql);
-		$titulos = array();
-		while ($libro = $result->fetch()){
-			$bookAux = new Libro();
-			$bookAux->fill($libro);
-			array_push($books,$bookAux);
-		}
-		// // Separa los tags
-		// if(!$books){
-		// 	$tags = Null;
-		// 	$titulos[] = Null;
-		// }
+		// Donde se guardarán los libros relacionados.
+		$books = array();
+		// Variable auxiliar. 
+		$booksAux = array();
+		// Búsqueda por tags (Incluye ya el autor).
 		$tags = explode(" ", trim($book->getTags(), " "));
-		foreach ($tags as $tag) {
-			if ($tag != "") {
-				$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE 
-			        lower('%".$tag."%') AND titulo != '".$book->getTitulo()."';";
-			    $result = $pdo->query($sql);
-			    while ($libro = $result->fetch()){
-			    	// Verifica que no se repita el título
-			    	if (!(in_array($book->getTitulo(), $titulos))){
-			    		array_push($books,$libro);
-			    	}
-			    }
-			}
+		// Itera sobre cada tag.
+		foreach ($tags as $tag){
+			$booksAux = Busqueda::buscaGeneral($tag);
+			array_unique(array_merge($books, $booksAux));
 		}
+		// Si no encontró ninguno relacionado.
+		if (empty($books)) {
+			return Busqueda::buscaGeneral("");		
+		}
+		return $books;
 	}
 
 	public function getLibrosUsuario($idUsuario){
