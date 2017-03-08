@@ -131,19 +131,19 @@
 			<div id="carousel-relacionados" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 
 			<?php if(!$relacionados){
-				echo "FUCK!";
+				echo "NO HAY LIRBOS RELACIONADOS";
 				// exit();
 			}
 			foreach ($relacionados as $book): ?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book['fotoFrente']?>" alt="Brave Men"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="Brave Men"></a>
 						<div class="info">
-							<p class="book-title"><?php echo $book['titulo'];?></p>
-							<a class="book-author" href="#"><?php echo $book['autor'];?></a>
-							<p class="book-price"><b><?php echo '$ '.$book['precio'].' MXN';?></b></p>
+							<p class="book-title"><?php echo $book->getTitulo();?></p>
+							<a class="book-author" href="#"><?php echo $book->getAutor();?></a>
+							<p class="book-price"><b><?php echo '$'.$book->getPrecio().' MXN';?></b></p>
 						</div>
-						<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book['id'], ENT_QUOTES, 'UTF-8');?>">
+						<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
 					</div>
 				</div>
 				
