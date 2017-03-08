@@ -67,30 +67,20 @@ class Libro {
 
 	}
 	
-	public function compareTo($book1) {
-		return $this->id == book1.getId();
+	// función equals.
+	public function equals($book) {
+		return ($this->autor == $book->getAutor()) and 
+		       ($this->titulo == $book->getTitulo());
 	}
 
-	//Obtiene los relacionados con este libro. 
-	public function getLibrosRelacionados() {
-		include "../../conexion.php";
-		// Donde se guardarán los libros relacionados
-		$books = array(); 
-		// $tags = explode(" ", trim($this->tags, " "));
-		// $titulos = array();
-		// foreach ($tags as $tag) {
-		// 	if ($tag != "") {
-		// 		$sql = "SELECT * FROM Libro WHERE lower(tags) LIKE lower('%".$tag."%') AND titulo != '".$this->getTitulo()."';";
-		// 	    $result = $pdo->query($sql);
-		// 	    while ($libro = $result->fetch()){
-		// 	    	// Verifica que no se repita el título
-		// 	    	if (!(in_array($this->getTitulo(), $titulos))){
-		// 	    		//Agrega libro again
-		// 	    	}
-		// 	    }
-		// 	}
-		// }
-		return $books;
+	// Función que regresa verdadero si el libro está en un arreglo.
+	public function inArray($books){
+		foreach ($books as $book) {
+			if ($this->equals($book)){
+				return true;
+			}
+		}
+		return False;
 	}
 
 	//GETTERS Y SETTERS. 

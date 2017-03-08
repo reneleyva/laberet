@@ -59,11 +59,19 @@ class Busqueda {
 		$booksAux = array();
 		// Búsqueda por tags (Incluye ya el autor).
 		$tags = explode(" ", trim($book->getTags(), " "));
+		// Para regresar 10 libros solamente.
+		$count = 0;
 		// Itera sobre cada tag.
 		foreach ($tags as $tag){
-			$booksAux = Busqueda::buscaGeneral($tag);
-			array_unique(array_merge($books, $booksAux));
-		}
+			$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$tag."%');";
+			$result = $pdo->query($sql);
+			while ($row = $result->fetch() and $count < 10){
+				$book = new Libro();
+				$book->fill($row);
+				if (!($book->inArray($books))){
+					array_push($books,$book);
+				}
+			}
 		// Si no encontró ninguno relacionado.
 		if (empty($books)) {
 			return Busqueda::buscaGeneral("");		
