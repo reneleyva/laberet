@@ -8,6 +8,7 @@ $books = array();
 $libreria = Libreria::getLibreria($_GET['id']); 
 
 if (!isset($_GET['q']) or !isset($_GET['s']) ) {
+	//No se está buscando nada se despliegan todos los libros. 
 	$books = $libreria->getLibros();
 } else {
 

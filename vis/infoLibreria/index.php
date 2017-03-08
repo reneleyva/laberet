@@ -77,7 +77,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<form action="." class="form-inline" method="get" accept-charset="utf-8">
+			<form action=".#muestra" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
@@ -103,7 +103,7 @@
 		</div>
 
 		
-		<div class="row muestra"> <!-- INICIO MUESTRA -->
+		<div id="muestra" class="row muestra"> <!-- INICIO MUESTRA -->
 
 		
 		<?php
