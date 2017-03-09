@@ -3,6 +3,7 @@
 include '../../conexion.php';
 include '../../temp/Libro.php';
 include '../../temp/Libreria.php';
+include '../../temp/Busqueda.php';
 
 if (!isset($_REQUEST['id'])) {
 	echo "404";
@@ -12,4 +13,4 @@ if (!isset($_REQUEST['id'])) {
 $id = $_REQUEST['id'];
 $book = Libro::getLibro($id);
 $libreria = Libreria::getLibreria($book->getIdLibreria());
-$relacionados = $book->getLibrosRelacionados();
+$relacionados = Busqueda::getLibrosRelacionados($id);

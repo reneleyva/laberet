@@ -1,5 +1,5 @@
 <?php 
-
+include_once 'Libro.php';
 /**
 * Clase para Libro. 
 */
@@ -52,7 +52,7 @@ class Busqueda {
 	public function getLibrosRelacionados($id){
 		include "../../conexion.php";
 		 // Seleccionamos el libro que nos pasan como ref.
-		$book = getLibro($id);
+		$book = Libro::getLibro($id);
 		// Donde se guardarán los libros relacionados.
 		$books = array();
 		// Variable auxiliar. 
@@ -72,6 +72,7 @@ class Busqueda {
 					array_push($books,$book);
 				}
 			}
+		}
 		// Si no encontró ninguno relacionado.
 		if (empty($books)) {
 			return Busqueda::buscaGeneral("");		
