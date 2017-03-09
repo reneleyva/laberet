@@ -19,8 +19,10 @@ include "../../conexion.php";
 		$msg = "Pene de Vannesa\n Te amo Jaz";
 		// use wordwrap() if lines are longer than 70 characters
 		$msg = wordwrap($msg,70);
-		$header = 'From: luispuli2@ciencias.unam.mx';
-		mail($correo,"Confirmación",$msg,$header);
+		$headers = 'From: lugia365@gmail.com' . "\r\n" .
+           'Reply-To: lugia365@gmail.com' . "\r\n" .
+           'X-Mailer: PHP/' . phpversion();
+		mail($correo,"Confirmación",$msg,$headers);
 		echo "Exito, perro";
 		/*
 		$sql = "INSERT INTO Usuario SET
