@@ -1,6 +1,4 @@
 jQuery(document).ready(function($) {
-	var selection = $('select').data('selected');
-	$('option').filter(function(index) {
-		return $(this).text() == selection;
-	}).attr('selected', 'selected');
+	var s = $('#search-form').find('#selected').val();
+	$('#search-form').find('select option[value="'+s+'"]').attr('selected', 'selected');
 });

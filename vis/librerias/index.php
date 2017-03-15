@@ -12,8 +12,7 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
-	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
+	<link rel="stylesheet" href="../../css/librerias-style.css"> 
 	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -41,8 +40,8 @@
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
 					<li ><a href="../../">Inicio</a></li>
-			            <li class="active"><a href="../buscar">Catálogo</a></li>
-			            <li><a href="../librerias">Librerías</a></li>
+			            <li ><a href="../buscar">Catálogo</a></li>
+			            <li class="active"><a href="#">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
 			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
 				</ul>
@@ -50,99 +49,20 @@
 		    
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
+	<?php include "librerias.php" ?>
 
-	<div class="container">
-
-		<div class="row">
-			
-			<form action="." class="form-inline" method="get" accept-charset="utf-8">
-				<div id="search-form" class="form-group">
-					<div class="input-group	">
-						<!-- BUSQUEDA -->
-						<input type="text" name="q" id="keyword" class="form-control" placeholder="Search for...">       
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-						</span>
-				    </div>
-				    
-				<select name="s" class="form-control">
-					  <option value="todo">Todo</option>
-					  <option value="autor">Autor</option>
-					  <option value="titulo">Titulo</option>
-					  <option value="categoria">Categoria</option>
-				</select>
-				
-				<!-- Para javascript -->
-				<?php if (isset($_GET['s'])) {
-					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
-				} ?>
-				 
+	<?php foreach ($librerias as $libreria): ?>
+	<div class="container muestra">
+			<div class="libreria col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $libreria->getId(); ?>">
+				<div class="wrap">
+					<h3><?php echo $libreria->getNombre(); ?></h3>
+					<div style="background: url(../../<?php echo $libreria->getFotoPerfil(); ?>) no-repeat no-repeat center center;" class="circle"></div>
+					<p class="direccion"><?php echo $libreria->getDireccion(); ?></p>
+					<!-- <a href="#" class="btn btn-default">Ver Perfil</a> -->
 				</div>
-			</form>
-
-			
-		</div>
-		
-		<div class="row muestra"> <!-- INICIO MUESTRA -->
-			<?php 
-				  include 'busca.php'; 
-				  include '../../pagination.php';
-			?>
-			
-			
-			<?php 
-			if (isset($_GET['q'])) {
-				echo "<h3 class='resultado'>Resultados para: <span>".$keyword."</span></h3>";
-			}
-
-			if(!$books){
-				include 'busqueda-error.html';
-				exit();
-			}
-
-			$total = 0; //Total de libros ya generados
-			$numLibros = count($books);
-			$numPaginas = ceil($numLibros/16); //Num de páginas
-
-			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
-				$book = $books[$i];
-				?>
-				<div class="thumbnail libro  col-lg-3 col-md-6">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
-						<div class="info">
-							<p class="book-title">
-								<?php echo $book->getTitulo();?>
-							</p>
-							<p class="book-author">
-								<?php echo $book->getAutor();?>
-							</p>
-							<p class="book-price">
-							<b>
-								$<?php echo "<b>".$book->getPrecio()."</b> MXN";?>
-							</b>
-							</p>
-						</div>
-					</div>
-					<input type="text" class="id" hidden="true" value="<?php echo $book->getId();?>">
-				</div>
-			<?php $total++;} ?>
-		
-		<div class="paginas text-center col-lg-12 col-md-12 col-sm-12">
-			<nav class="" aria-label="Page navigation">
-				<ul class="pagination">
-					
-					<?php 
-						showPagination($books, $page, 16);
-					 ?>
-
-				</ul>
-			</nav>
-		</div>
-		
-
-		</div> <!-- FIN MUESTRA DE LIBROS -->
+			</div>
 	</div>
+	<?php endforeach; ?>
 	<div class="container-fluid footer">
 		<div class="row-fluid text-center">
 			<div class="col-lg-4">
@@ -174,9 +94,7 @@
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
-	<script src="../../js/linkLibro.js"></script>
-	<script src="../../js/jquery-ui.min.js"></script>
-	<script src="../../js/busca.js"></script>
-	<script src="../../js/optionHack.js"></script>
+	<script src="../../js/linkLibreria.js"></script>
+
 </body>
 </html>

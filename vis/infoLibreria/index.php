@@ -40,9 +40,9 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Inicio</a></li>
+						<li><a href="../../">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
-			            <li><a href="#">Librerías</a></li>
+			            <li class="active"><a href="../librerias">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
 			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
 				</ul>
@@ -75,7 +75,7 @@
 	</div> <!-- Fin fluid -->
 
 	
-	<div class="container">
+	<div id="muestra" class="container">
 		<div class="row">
 			<form action=".#muestra" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
@@ -103,15 +103,29 @@
 		</div>
 
 		
-		<div id="muestra" class="row muestra"> <!-- INICIO MUESTRA -->
+		<div class="row muestra"> <!-- INICIO MUESTRA -->
 
 		
 		<?php
 		include "busca.php";
+		include './pagination.php';
+
+		if(!$books) {
+			include '../buscar/busqueda-error.html';
+			exit();
+		}
+		
 		if (isset($_GET['q'])) {
 			echo "<h3 class='resultado'>Resultados para: <span>".$_GET['q']."</span></h3>";
 		}
-		foreach ($books as $book): ?>
+
+		$total = 0; //Total de libros ya generados
+		$numLibros = count($books);
+		$numPaginas = ceil($numLibros/12); //Num de páginas
+
+		for ($i = ($page-1)*12; $i < $numLibros and $total < 12;$i++) { 
+				$book = $books[$i]; ?>
+
 			<div class="thumbnail libro col-lg-3 col-md-6">
 				<div class="caption">
 				<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
@@ -129,27 +143,15 @@
 				</div>
 				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
 			</div>
-		<?php endforeach; ?>
+		<?php $total++; } //END For ?>
 
 			
 
 			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
 			  <ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
+			    <?php 
+					showPagination($books, $page, 12);
+				?>
 			  </ul>
 			</nav>
 		</div> <!-- FIN MUESTRA DE LIBROS -->

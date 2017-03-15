@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 
 		$(function(){
 	      $("#busqueda").typed({
-	         strings: ["Jorge Luis Borges", "La Guerra y la paz", "Matemáticas", ""],
+	         strings: ["Buscar aquí...", ""],//["Jorge Luis Borges", "La Guerra y la paz", "Matemáticas", ""],
 	    	contentType: 'html' // or 'text'
 	      });
 	  });

@@ -42,7 +42,7 @@
 		   		<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
-			            <li><a href="#">Librerías</a></li>
+			            <li><a href="../librerias">Librerías</a></li>
 			            <li class="active"><a href="../registrarse">Registrarse</a></li>
 			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
 				</ul>

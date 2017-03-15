@@ -70,7 +70,7 @@
 		   		<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="#">Inicio</a></li>
 			            <li><a href="vis/buscar">Catálogo</a></li>
-			            <li><a href="#">Librerías</a></li>
+			            <li><a href="vis/librerias">Librerías</a></li>
 			            <li><a href="vis/registrarse">Registrarse</a></li>
 			            <li><a href="vis/inicioSesion">Iniciar Sesión</a></li>
 				</ul>
@@ -83,12 +83,15 @@
 	<div class="container-fluid">
 	<!-- HEADER -->
 		<div class="row-fluid">
-		<form action="user/buscar/busca.php" class="form-inline" method="post" accept-charset="utf-8">
+		<form action="vis/buscar/" class="form-inline" method="get" accept-charset="utf-8">
 			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 			<h2 class="centering text-center"></h2>
 			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="typed" type="text" name="keyword" value="" placeholder="">
-				<input id="keyword" hidden type="text" name="keyword"><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<input id="busqueda" class="typed" type="text" value="" placeholder="">
+				<input id="keyword" hidden type="text" name="q"><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<select name="s" hidden>
+					<option value="todo"></option>
+				</select>
 			</div>
 			</form>	
 	 	</div> <!-- FIN HEADER -->
@@ -170,7 +173,7 @@
 						<?php echo htmlspecialchars($libreria['direccion'], ENT_QUOTES, 'UTF-8');?>
 					</p>
 					<div class="row text-center">
-						<a href="user/infoLibreria/?id=<?php echo htmlspecialchars($libreria['idLibreria'], ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
+						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria['idLibreria'], ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 					</div>
 				</div>
 			</div>
@@ -220,7 +223,7 @@
 
 		</div>
 		<div class="row text-center btn-catalogo">
-			<a href="./user/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
+			<a href="./vis/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
 		</div>
 					<div id="footer-hl" class="hl"></div>
 

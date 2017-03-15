@@ -10,3 +10,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 $libreria = Libreria::getLibreria($id);
+
+if (!$libreria) {
+	echo "404";
+}

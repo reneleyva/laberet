@@ -16,9 +16,9 @@ include "../../conexion.php";
 	} else {
 		// Prueba para enviar un correo de confirmación
 		// Mensaje a enviar
-		$msg = "Pene de Vannesa\n Te amo Jaz";
+		$msg = "Test mandando correo";
 		// use wordwrap() if lines are longer than 70 characters
-		$msg = wordwrap($msg,70);
+		$msg = wordwrap($msg, 70);
 		$header = 'From: luispuli2@ciencias.unam.mx';
 		mail($correo,"Confirmación",$msg,$header);
 		echo "Exito, perro";
