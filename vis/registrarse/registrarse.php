@@ -21,6 +21,11 @@ include "../../conexion.php";
 		$msg = wordwrap($msg, 70);
 		$header = 'From: luispuli2@ciencias.unam.mx';
 		mail($correo,"Confirmación",$msg,$header);
+		$msg = wordwrap($msg,70);
+		$headers = 'From: lugia365@gmail.com' . "\r\n" .
+           'Reply-To: lugia365@gmail.com' . "\r\n" .
+           'X-Mailer: PHP/' . phpversion();
+		mail($correo,"Confirmación",$msg,$headers);
 		echo "Exito, perro";
 		/*
 		$sql = "INSERT INTO Usuario SET
