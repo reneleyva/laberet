@@ -1,7 +1,7 @@
 <?php 
 
-include 'conexion.php';
-include_once 'temp/Libreria.php';
+include '../../conexion.php';
+include_once '../../temp/Libreria.php';
 
 $librerias = array();
 $sql = "SELECT * FROM Libreria;";
@@ -12,4 +12,3 @@ while ($row = $result->fetch()) {
 	$l->fill($row);
 	array_push($librerias, $l);
 }
-

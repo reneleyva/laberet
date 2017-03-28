@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_GET['id'])) {
-	echo "404";
+	header("Location: ../404.html");
 	exit();
 }
 

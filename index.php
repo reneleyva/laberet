@@ -163,17 +163,17 @@
 				<div id="box">
 					<div class="row text-center">
 						<h4 class="col-lg-12"><b>
-						<?php echo htmlspecialchars($libreria['Nombre'], ENT_QUOTES, 'UTF-8');?>
+						<?php echo htmlspecialchars($libreria->getNombre(), ENT_QUOTES, 'UTF-8');?>
 						</b></h4>
 					</div>
 					<div style="background: url(
-						<?php echo htmlspecialchars(''.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
+						<?php echo htmlspecialchars(''.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 					 ) no-repeat no-repeat center center;" class="circle"></div>
-					<p>
-						<?php echo htmlspecialchars($libreria['direccion'], ENT_QUOTES, 'UTF-8');?>
+					<p class="text-center">
+						<?php echo htmlspecialchars($libreria->getDireccion(), ENT_QUOTES, 'UTF-8');?>
 					</p>
 					<div class="row text-center">
-						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria['idLibreria'], ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
+						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 					</div>
 				</div>
 			</div>

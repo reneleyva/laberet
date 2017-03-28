@@ -1,34 +1,33 @@
 <?php
 // Conexión.
-include_once '../../conexion.php';
-include_once ('../../temp/Libro.php');
-include_once ('../../temp/Busqueda.php');
+include '../../conexion.php';
+include ('../../temp/Libro.php');
+include ('../../temp/Busqueda.php');
 
 $books = array(); //Los libros a regresar. 
-
 //Ver si issert q y s.
 if (!isset($_GET['q']) or !isset($_GET['s'])) {
 	//No han buscado nada regreso todos los libros. 
-	$books = Busqueda::buscaGeneral("");
+	$books = Busqueda::buscaGeneral(" ");
 } else {
 	$keyword = $_GET['q']; //Palabra clave. 
 	$selection = $_GET['s']; //selection
 
 	//Según la busqueda.
 	switch ($selection) {
-		    case 'Todo':
+		    case 'todo':
 		        $books = Busqueda::buscaGeneral($keyword);
 		        break;
 
-		    case 'Autor':
+		    case 'autor':
 		        $books = Busqueda::buscaAutor($keyword);
 		        break;
 
-		    case 'Titulo':
+		    case 'titulo':
 		       	$books = Busqueda::buscaTitulo($keyword);
 		        break;
 
-		    case 'Categoria':
+		    case 'categoria':
 		    	$books = Busqueda::buscaGeneral($keyword);
 		    	break;
 		}

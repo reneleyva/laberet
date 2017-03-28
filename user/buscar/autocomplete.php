@@ -6,7 +6,7 @@ include '../../conexion.php';
 $keyword = $_GET['term'];
 
 //Busco Por autor 
-$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '".$keyword."%';";
+$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '%".$keyword."%';";
 $result = $pdo->query($sql);
 $data = array();
 

@@ -1,3 +1,4 @@
+<?php include "redirect.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,19 +14,18 @@
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
-	<link rel="stylesheet" href="../../css/navbar-user.css">
+	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2 col-sm-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		  <div class="navbar-header col-lg-2 col-md-2">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
 		      <span class="sr-only">Toggle navigation</span>
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
@@ -36,42 +36,26 @@
 		  </div>
 
 		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-		        <form class="navbar-form" role="search">
-		        <div class="input-group">
-		            <input type="text" class="form-control" placeholder="Search" name="q">
-		            <div class="input-group-btn">
-		                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-		            </div>
-		        </div>
-		        </form>
-		    </div>
-		    <div id="list" class="col-lg-6 col-md-6 col-sm-7">
-		    	<ul class="nav navbar-nav navbar-right">
-			   	  <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(0)</b></a></li>	
-			      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
-			      <li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="../editarPerfil">Configurar Cuenta</a></li>
-			          <li><a href="../historialCompras">Historial de Compras</a></li>
-			          <li class="divider"></li>
-			          <li><a href="../salir">Salir</a></li>
-			        </ul>
-			      </li>
+		  <div class="collapse navbar-collapse" id="collapse-target">
+		   
+		   <div id="list" class="col-lg-10 col-md-10">
+		   		<ul class="nav navbar-nav navbar-right">
+					<li ><a href="../../">Inicio</a></li>
+			            <li class="active"><a href="../buscar">Catálogo</a></li>
+			            <li><a href="../librerias">Librerías</a></li>
+			            <li><a href="../registrarse">Registrarse</a></li>
+			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
 				</ul>
-		    </div>	
+		   </div>
 		    
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
-
 	<div class="container">
 
 		<div class="row">
 			
 			<form action="." class="form-inline" method="get" accept-charset="utf-8">
-				<div class="form-group">
+				<div id="search-form" class="form-group">
 					<div class="input-group	">
 						<!-- BUSQUEDA -->
 						<input type="text" name="q" id="keyword" class="form-control" placeholder="Search for...">       
@@ -80,31 +64,40 @@
 						</span>
 				    </div>
 				    
-					<select name="s" class="form-control">
-						  <option value="todo">Todo</option>
-						  <option value="autor">Autor</option>
-						  <option value="titulo">Titulo</option>
-						  <option value="categoria">Categoria</option>
-					</select>
-			
+				<select name="s" class="form-control">
+					  <option value="todo">Todo</option>
+					  <option value="autor">Autor</option>
+					  <option value="titulo">Titulo</option>
+					  <option value="categoria">Categoria</option>
+				</select>
+				
+				<!-- Para javascript -->
+				<?php if (isset($_GET['s'])) {
+					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
+				} ?>
+				 
 				</div>
 			</form>
 
-			<!-- <h3 class="resultado">Resultados para: <span>Julio Cortazar</span></h3> -->
+			
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php 
-				  include_once 'busca.php'; 
-				  include_once '../../pagination.php';
+				  include 'busca.php'; 
+				  include '../../pagination.php';
 			?>
-			 
-			<?php 
 			
-				if(!$books){
-					include_once "busqueda-error.html";
-					exit();
-				}
+			
+			<?php 
+			if (isset($_GET['q'])) {
+				echo "<h3 class='resultado'>Resultados para: <span>".$keyword."</span></h3>";
+			}
+
+			if(!$books){
+				include 'busqueda-error.html';
+				exit();
+			}
 
 			$total = 0; //Total de libros ya generados
 			$numLibros = count($books);
@@ -120,9 +113,9 @@
 							<p class="book-title">
 								<?php echo $book->getTitulo();?>
 							</p>
-							<a class="book-author" href="#">
+							<p class="book-author">
 								<?php echo $book->getAutor();?>
-							</a>
+							</p>
 							<p class="book-price">
 							<b>
 								$<?php echo "<b>".$book->getPrecio()."</b> MXN";?>
@@ -149,7 +142,33 @@
 
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 	</div>
-
+	<div class="container-fluid footer">
+		<div class="row-fluid text-center">
+			<div class="col-lg-4">
+				<div class="row">
+					<img src="../../img/logo-white.png" alt="">
+					<b>LABERET</b>
+				</div>
+				<div class="row">
+					<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
+				</div>
+			</div>
+			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+			</div>
+			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+				<div class="menu row nav centered">
+					<div style="text-align: left">
+						<a href="../../">Inicio</a><br>
+						<a href=".">Catálogo</a><br>
+						<a href="../registrarse">Registrarse</a><br>
+						<a href="../inicioSesion">Iniciar Sesión</a>
+					</div>
+				</div>
+			</div>
+		</div><!-- FIN Footer -->
+	</div>
 
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -157,5 +176,6 @@
 	<script src="../../js/linkLibro.js"></script>
 	<script src="../../js/jquery-ui.min.js"></script>
 	<script src="../../js/busca.js"></script>
+	<script src="../../js/optionHack.js"></script>
 </body>
 </html>

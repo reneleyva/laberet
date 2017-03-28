@@ -6,7 +6,7 @@ include '../../temp/Libreria.php';
 include '../../temp/Busqueda.php';
 
 if (!isset($_REQUEST['id'])) {
-	echo "404";
+	header("Location: ../404.html");
 	exit();
 }
 

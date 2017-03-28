@@ -33,7 +33,7 @@
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
 		    </button>
-		    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="../../img/logo.png" alt=""></a>
+		    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
 			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
 		  </div>
 

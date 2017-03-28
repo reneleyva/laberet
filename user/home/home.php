@@ -38,9 +38,10 @@
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form class="navbar-form" role="search">
+	        <form action="../buscar" class="navbar-form" role="search">
 	        <div class="input-group">
 	            <input type="text" class="form-control" placeholder="Search" name="q">
+	            <input type="text" hidden name="s" value="todo">
 	            <div class="input-group-btn">
 	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	            </div>
@@ -77,7 +78,8 @@
 
 			<div id="carousel-libros" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 				
-				<?php include '../buscar/muestraLibros.php';
+				<?php include '../../temp/Busqueda.php';
+					$books = Busqueda::buscaGeneral("");
 					if(empty($books)){
 						echo "FUCK!";
 						exit();
@@ -93,6 +95,7 @@
 							<p class="book-price"><?php echo $book->getPrecio();?></p>
 						</div>
 					</div>
+					<input type="text" hidden class="id" name="" value="<?php echo $book->getId()?>">
 				</div>
 				<?php endforeach;?>			
 				</div><!-- Fin Carousel -->
@@ -107,29 +110,35 @@
 		<div class="row card">
 			<h4 class="text-center">Últimas Librerías Agregadas</h4>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="prev-librerias" class="prev col-lg-2 col-md-2 col-sm-3 col-xs-3">
+			<div id="prev-librerias" class="prev col-lg-1 col-md-2 col-sm-3 col-xs-3">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
 
-			<div id="carousel-librerias" class="carousel col-lg-8 col-md-8 col-sm-6 col-xs-6	">
+			<div id="carousel-librerias" class="carousel col-lg-10">
 			<?php 
-			include '../../librerias.php';
-			if(!$librerias){
+			include 'librerias.php';
+
+			if(!$librerias) {
 				echo "FUCK!";
 				exit();
 			}
 			foreach ($librerias as $libreria): ?>	
 				<div class="perfil">
-					<div id="box">
-						<div class="row text-center">
-							<h4 class="col-lg-12"><b><?php echo $libreria['Nombre'];?></b></h4>
+					<div class="box">
+						<div class="row text-center nombre">
+							<h4 class="col-lg-12"><b><?php echo $libreria->getNombre();?></b></h4>
 						</div>
-						<div style="background: url(
-						<?php echo htmlspecialchars('../../img/'.$libreria['fotoPerfil'], ENT_QUOTES, 'UTF-8');?>
-					 ) no-repeat no-repeat center center;" class="circle"></div>
-						<p><?php echo $libreria['direccion'];?></p>
-						<div class="row text-center">
-							<a href="#"><button type="" class="btn btn-default">VER PERFIL</button></a>
+						<div class="row foto-perfil">
+							<div style="background: url(
+							<?php echo htmlspecialchars('../../'.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
+						 ) no-repeat no-repeat center center;" class="circle"></div>
+						</div>
+					 	<div class="row direccion">
+					 		<p><?php echo $libreria->getDireccion();?></p>
+					 	</div>
+						
+						<div class="row text-center ver-perfil">
+							<a href="../infoLibreria/?id=<?php echo $libreria->getId();?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
 						</div>
 					</div>
 				</div>
@@ -138,7 +147,7 @@
 			</div><!-- Fin Carousel -->
 
 			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="next-librerias" class="next col-lg-2 col-md-2 col-sm-3 col-xs-3">
+			<div id="next-librerias" class="next col-lg-1 col-md-2 col-sm-3 col-xs-3">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
 		</div>
@@ -146,8 +155,8 @@
 
 		<!-- Pedido Especial -->
 		<?php 
-		$lunaAmaARene = False;
-		if ($lunaAmaARene):?>
+		$pedidoEspecial = False;
+		if ($pedidoEspecial):?>
 		<div class="row card pedido-especial">
 			<h3 class="text-center"><b>Librería Aurora ha surtido tu pedido especial.</b></h3>
 			<div class="libro">
@@ -167,8 +176,8 @@
 		<?php endif; ?>
 
 		<?php 
-		$JazMeAma = False; // Pero será verdadero
-		if ($JazMeAma):?>
+		$compras = False; // Pero será verdadero
+		if ($compras):?>
 		<!-- Compras Recientes -->
 		<div class="row card compras-recientes">
 			<h4 class="text-center"><b>Tus compras recientes.</b></h4>
@@ -232,18 +241,17 @@
 
 			<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 			<?php 
-				include '../../temp/Busqueda.php';
 				$busqueda = new Busqueda();
 				$books = $busqueda->getLibrosUsuario(1);
 				if(empty($books)){
-					echo "PENE DE LUNA";
+					//echo "PENE DE LUNA";
 					$books = $busqueda->buscaGeneral("");
 				}
 				foreach ($books as $book):
 			?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
 							<a class="book-author" href="#"><?php echo $book->getAutor();?></a>
@@ -318,5 +326,6 @@
 	<script src="../../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../slick/slick.min.js"></script>
 	<script src="../../js/home-carousel.js"></script>
+	<script src="../../js/linkLibro.js"></script>
 </body>
 </html>

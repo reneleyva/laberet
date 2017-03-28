@@ -40,6 +40,18 @@ class Usuario
 
 	}
 
+	/** Regresa en un arreglo los libros recientemente 
+	* comprados por el usuario. */
+	public function getCompras() {
+		include "../../conexion.php";
+		include_once "../../temp/Libro.php";
+		$compras = array();
+		
+		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";
+		$result = $pdo->query($sql);
+		$row = $result->fetch();
+	}
+
 	//agrega un elemento al carrito; EL un Objeto Libro. 
 	public function addToCart($libro) {
 		array_push($this->carrito, $libro);
