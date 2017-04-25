@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="css/navbar-vis.css">
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<link rel="import" href="bower_components/polymer/polymer.html">
+  	<link rel="import" href="components/navbar-user.html"></link>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -50,34 +52,7 @@
 	?>
 
 	
-	<nav class="navbar navbar-default" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="img/logo.png" alt=""></a>
-			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-		  </div>
-
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="collapse-target">
-		   
-		   <div id="list" class="col-lg-10 col-md-10">
-		   		<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Inicio</a></li>
-			            <li><a href="vis/buscar">Catálogo</a></li>
-			            <li><a href="vis/librerias">Librerías</a></li>
-			            <li><a href="vis/registrarse">Registrarse</a></li>
-			            <li><a href="vis/inicioSesion">Iniciar Sesión</a></li>
-				</ul>
-		   </div>
-		    
-		  </div><!-- /.navbar-collapse -->
-	</nav> <!-- END NAV -->
+	<navbar-user></navbar-user>
 	
 
 	<div class="container-fluid">
@@ -260,6 +235,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>	
     <script src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
     <script src="js/jquery-ui.min.js"></script>
