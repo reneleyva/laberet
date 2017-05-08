@@ -12,4 +12,3 @@ while ($row = $result->fetch()) {
 	$l->fill($row);
 	array_push($librerias, $l);
 }
-

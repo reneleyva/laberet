@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
+@blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -39,11 +41,6 @@ html, body {
   margin: 0 auto;
 }
 
-
-h1, h2 {
-	font-weight: bold;
-}
-
 .container-fluid {
 	height:100%;
 	display:table;
@@ -58,7 +55,7 @@ h1, h2 {
 	h1 {
 		font-family: 'Playfair Display', serif;
 		font-weight: bold;
-		font-size: 3em;
+		font-size: 3.2em;
 	}
 
 	h1, h2 {
@@ -72,27 +69,21 @@ h1, h2 {
  	
  	h2 {
  		font-size: 2em;
-
  	}
 
  	#buscar {
- 		margin-top: 10px;
-		font-size: 2em;
-		
-		.btn-default {
-			color: ;
-			background: ;
-			font-size: 23px;
-			border: none;
-			border-radius: 0%;
-		}
- 		input[type="text"] {
-			background: rgba(0, 0, 0, 0.6);
-			border: none;
-			color: white;
+		text-align: center;
+		margin-top: 10px;
 
- 		}
- 	}
+		input[type="text"] {
+			font-size: 1.6em;
+		}
+
+		button {
+			background-color: @blue;
+		}
+		// border: 1px solid black;
+	}
 }
 
 ul.ui-autocomplete.ui-menu {
@@ -106,29 +97,34 @@ ul.ui-autocomplete.ui-menu {
 }
 
 .container {
-
 	#lo_que_hacemos {
-		width: 90%;
+		
 		margin: 0 auto;
 		margin-bottom: 50px;
 		margin-top: 40px;
-		
-		
+
 		.card {
-			margin-bottom: 10px;
-
-			img {
-				width: 220px;
-				height: 350px;
+			.icono {
+				text-align: center;
+				img {
+					margin: 0 auto;
+				}
 			}
-		}
 
-		.texto {
-			margin: 0 auto;
-			width: 220px;
-		}
+			.texto {
+				margin-top: 10px;
+				p {
+					font-size: 1.1em;
+					// font-weight: bold;
+					width: 256px;
+					margin: 0 auto;
+				}
+			}
 
+		}
 	}
+
+
 }
 
 
@@ -164,20 +160,21 @@ ul.ui-autocomplete.ui-menu {
 		border-radius: 5%;
 		margin: 0 auto;
 		width: 280px;
-		height: 290px;
+		height: 270px;
 		background-color: #E0E0E0;
 		padding: 2px 10px 2px 10px;
 		overflow: hidden;
-		
+		border: 3px solid grey;
 		.circle {
-			height: 170px;
-			width: 170px;
+			height: 150px;
+			width: 150px;
 			border-radius: 100%;
 			margin: 0 auto;	
 			background-size: 100% 100%;
 		}
 
 		button {
+			margin-top: 20px;
 			color: white;
 			background-color: #A5A5A5;
 		}
@@ -233,8 +230,9 @@ ul.ui-autocomplete.ui-menu {
 		transition: all 300ms ease;
 		height: 400px;
 		overflow: hidden;
+		margin: 0 auto;
 
-		.info{
+		.info {
 			margin: 0 auto;
 			margin-top: 10px;
 			text-align: left;
@@ -246,18 +244,17 @@ ul.ui-autocomplete.ui-menu {
 			height: 260px;
 		}
 		
-		p, a {
+		p {
 			font-size: 13pt;
 		}
 
 		.book-title {
 			font-weight: bold;
-			margin-bottom: -2px;
+			margin: 0px;
 		}
 
-		a.book-author {
-			color: black;
-			text-decoration: underline;
+		.book-author {
+			margin: 0px;
 		}
 
 	}
@@ -271,10 +268,14 @@ ul.ui-autocomplete.ui-menu {
 
 
 .btn-ver {
-	border: 1px solid black;
+	background-color: @green;
 	font-weight: bold;
 }
 
+.btn-ver:hover {
+	border: 2px solid grey;
+	background-color: @green;
+}
 .hl {
 	margin: 0 auto;
 	margin-top: 20px;
@@ -291,13 +292,14 @@ ul.ui-autocomplete.ui-menu {
 
 
 .footer {
+	background: @blue; 
+
 	.menu {
 		width: fit-content;
 		margin: 0 auto;
 	}
-
-	background: none; 
-	background-color: #777777;
+	
+	// background-color: #777777;
 	height: 30%;
 	padding-top: 30px;
 	color: white;

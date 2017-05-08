@@ -1,6 +1,7 @@
 <?php 
 
 include '../../conexion.php';
+session_start();
 
 if (isset($_POST['isbn'])){
 	
@@ -15,7 +16,7 @@ if (isset($_POST['isbn'])){
 			autor = "'.$autor.'",
 			titulo = "'.$titulo.'",
 			descripcion = "'.$descripcion.'",
-			usuarioidUsuario = 1;';     
+			idUsuario = '.$_SESSION['id'].';';     
 
 		$pdo->exec($sql);
 		$exito = True;
@@ -23,7 +24,7 @@ if (isset($_POST['isbn'])){
   		echo 'Message: ' .$e->getMessage();
 	}
 	if ($exito) {
-		include 'pedidosEspeciales-enviado.html';
+		header('Location: ./pedidosEspeciales-enviado.php');
 	}
 		
 	exit();	

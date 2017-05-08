@@ -1,3 +1,7 @@
+<?php 
+
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,8 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/pedidosEspeciales-style.css"> 
+	<link rel="stylesheet" href="../../css/pedidosEspeciales-style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/navbar-user.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -29,33 +34,34 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="../../img/logo.png" alt=""></a>
+	    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
 		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
 	  </div>
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form class="navbar-form" role="search">
-	        <div class="input-group">
-	            <input type="text" class="form-control" placeholder="Search" name="q">
-	            <div class="input-group-btn">
-	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-	            </div>
-	        </div>
+	        <form action="../buscar" method="GET" class="navbar-form" role="search">
+		        <div class="input-group">
+		            <input type="text" class="form-control" placeholder="Search" name="q">
+		            <input type="text" hidden name="s" value="todo">
+		            <div class="input-group-btn">
+		                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+		            </div>
+		        </div>
 	        </form>
-	    </div>
+	    </div> 
 	    <div id="list" class="col-lg-6 col-md-6 col-sm-7">
 	    	<ul class="nav navbar-nav navbar-right">
-		   	  <li id="cart"><a href="#"><img src="../../img/grey-cart.png" alt=""><b>(0)</b></a></li>	
-		      <li class="active"><a href="#">Pedidos Especiales</a></li>
+		   	  <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>	
+		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
 		          <li><a href="#">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Compras</a></li>
 		          <li class="divider"></li>
-		          <li><a href="#">Salir</a></li>
+		          <li><a href="../salir">Salir</a></li>
 		        </ul>
 		      </li>
 			</ul>
@@ -68,7 +74,7 @@
 		<div class="row">
 			<h2><b>Pedidos Especiales</b></h2>
 			<h3>¡Buscando! Te enviaremos un correo cuando encontremos tu libro.  </h3>
-			<a href="home.html" title="Regresar a Página Principal">Regresar a Página Principal</a>
+			<a href="../home" title="Regresar a Página Principal">Regresar a Página Principal</a>
 			
 		</div>
 	</div>

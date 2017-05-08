@@ -9,13 +9,15 @@ if(!isset($_GET['id'])) {
 	exit();
 }
 
+$idLibro = $_GET['id'];
+
 if ($_SESSION['type'] == 'invitado') {
 	//NO ha iniciado sesión, aún. 
-	header("location: ../inicioSesion");
+	header("location: ../inicioSesion/?idLibro=".$idLibro);
 	exit();
 } 
 
-$idLibro = $_GET['id'];
+
 $book = Libro::getLibro($idLibro);
 
 if (!in_array($book, $_SESSION['cart'])) {

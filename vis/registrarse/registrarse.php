@@ -16,27 +16,26 @@ include "../../conexion.php";
 	} else {
 		// Prueba para enviar un correo de confirmación
 		// Mensaje a enviar
-		$msg = "Test mandando correo";
-		// use wordwrap() if lines are longer than 70 characters
-		$msg = wordwrap($msg, 70);
-		$header = 'From: luispuli2@ciencias.unam.mx';
-		mail($correo,"Confirmación",$msg,$header);
-		$msg = wordwrap($msg,70);
-		$headers = 'From: lugia365@gmail.com' . "\r\n" .
-           'Reply-To: lugia365@gmail.com' . "\r\n" .
-           'X-Mailer: PHP/' . phpversion();
-		mail($correo,"Confirmación",$msg,$headers);
-		echo "Exito, perro";
-		/*
+		// $msg = "Test mandando correo";
+		// $msg = wordwrap($msg, 70);
+		// $header = 'From: luispuli2@ciencias.unam.mx';
+		// mail($correo,"Confirmación",$msg,$header);
+		// $msg = wordwrap($msg,70);
+		// $headers = 'From: lugia365@gmail.com' . "\r\n" .
+  //          'Reply-To: lugia365@gmail.com' . "\r\n" .
+  //          'X-Mailer: PHP/' . phpversion();
+		// mail($correo,"Confirmación",$msg,$headers);
+		// echo "Exito, perro";
+		
 		$sql = "INSERT INTO Usuario SET
 		nombre ='".$nombre."',
 		correo ='".$correo."',
 		password ='".$pass."';";
 		$s = $pdo->prepare($sql);
 		$s->execute();
-		*/
+		
 	}
-	/*
+	
 	session_start();
 	$_SESSION['nombre'] = $nombre;
 	$_SESSION['type'] = 'user';
@@ -47,5 +46,4 @@ include "../../conexion.php";
 	$_SESSION['cart'] = array();
 	header("location: ../../user/home");
 	exit();
-	*/
 ?>

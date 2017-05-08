@@ -79,7 +79,7 @@
 		<div class="row">
 			<form action=".#muestra" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
-				<div class="form-group">
+				<div id="search-form" class="form-group">
 					<div class="input-group">
 						<input type="hidden" name="id" value="<?php
 							echo $_GET['id']; ?>">
@@ -95,7 +95,12 @@
 					  <option value="titulo">Titulo</option>
 					  <option value="categoria">Categoria</option>
 				</select>
-				    
+				
+				<!-- Para javascript -->
+				<?php if (isset($_GET['s'])) {
+					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
+				} ?>
+
 				</div>
 			</form>
 
@@ -159,6 +164,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/linkLibro.js"></script>
-
+	<script src="../../js/optionHack.js"></script>
 </body>
 </html>

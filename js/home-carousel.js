@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
 	$('#carousel-libros').slick({
     dots: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
     dots: false,
@@ -129,10 +129,11 @@ $('#carousel-intereses').slick({
       }
     ]
 });
+
 	$('#cart').hover(function() {
-		$(this).find('img').attr('src', 'img/cart.png');
+		$(this).find('img').attr('src', '../../img/cart.png');
 	}, function() {
-		$(this).find('img').attr('src', 'img/grey-cart.png');
+		$(this).find('img').attr('src', '../../img/grey-cart.png');
 	});
 
 	$('#prev').hover(function() {

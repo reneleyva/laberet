@@ -16,8 +16,6 @@
 	<link rel="stylesheet" href="css/navbar-vis.css">
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-	<link rel="import" href="bower_components/polymer/polymer.html">
-  	<link rel="import" href="components/navbar-user.html"></link>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -37,7 +35,7 @@
 		if (isset($_SESSION['nombre'])) {
 			if ($_SESSION['nombre'] != 'invitado') {
 				//NO DEBERÍA DE ESTAR AQUI REDIRIJO A HOME RESPECTIVO
-				if ($_SESSION['type'] == 'user'){
+				if ($_SESSION['type'] == 'user') {
 					header("location: user/home");
 				} else {
 					header("location: libreria/home");
@@ -48,27 +46,73 @@
 			//PRIMERA VEZ EN LA PAGINA
 			$_SESSION['type'] = 'invitado';
 		}		
-		
 	?>
 
 	
-	<navbar-user></navbar-user>
+	<nav class="navbar navbar-default" role="navigation">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header col-lg-2 col-md-2">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="./img/logo.png" alt=""></a>
+			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
+		  </div>
+
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="collapse-target">
+		   
+		   <div id="list" class="col-lg-10 col-md-10">
+		   		<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#">Inicio</a></li>
+			            <li><a href="vis/buscar">Catálogo</a></li>
+			            <li><a href="vis/librerias">Librerías</a></li>
+			            <li><a href="vis/registrarse">Registrarse</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="vis/inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
+				</ul>
+		   </div>
+		    
+		  </div><!-- /.navbar-collapse -->
+	</nav> <!-- END NAV -->
 	
 
 	<div class="container-fluid">
 	<!-- HEADER -->
 		<div class="row-fluid">
-		<form action="vis/buscar/" class="form-inline" method="get" accept-charset="utf-8">
-			<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
-			<h2 class="centering text-center"></h2>
-			<div id="buscar" class="centering text-center">
-				<input id="busqueda" class="typed" type="text" value="" placeholder="">
-				<input id="keyword" hidden type="text" name="q"><button type="" id="btn-busqueda" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
-				<select name="s" hidden>
-					<option value="todo"></option>
+		<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
+		<h2>La tienda en linea de las mejores librerías.</h2>
+		<div id="buscar">
+			<form  action="vis/buscar/" class="form-inline" method="get" accept-charset="utf-8">
+				<div id="search-form" class="form-group">
+					<div class="input-group	">
+						<!-- BUSQUEDA -->
+						<input type="text" name="q" id="busqueda" class="typed form-control" placeholder="...">   
+						<input id="keyword" style="display: none;" class="form-control"  type="text" name="q">    
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+				    </div>
+				    
+				<select name="s" class="form-control" style="display: none;">
+					  <option value="todo">Todo</option>
+					  <option value="autor">Autor</option>
+					  <option value="titulo">Titulo</option>
+					  <option value="categoria">Categoria</option>
 				</select>
-			</div>
-			</form>	
+				
+				 
+				</div>
+			</form>
+		</div>
+		
+	
 	 	</div> <!-- FIN HEADER -->
 	 	
 		
@@ -77,46 +121,36 @@
 	<!-- Lo que hacemos -->
 	<div class="container">
 		<div id="go1" class="hl"></div>
-		<h2 class="text-center">Lo que hacemos</h2>
-		<div  class="row" id="lo_que_hacemos">
-			<div class="col-lg-4 col-md-12 card">
-				<div class="row">
-					<div class="col-lg-12 col-md-6 col-sm-6 text-center">
-						<img src="img/LoQueHacemos.jpg" alt="">
-					</div>
-					
-					<div class="texto" class="col-lg-12 col-md-6 col-sm-6">
-						<p> Proporcionamos a las librerías de la ciudad la infraestuctura para catalogar sus mejores libros y venderlos en linea.</p>
-					</div>
-					
-				</div>
-			</div>
+		<h2 class="text-center"><b>Lo que hacemos</b></h2>
+
+		<div class="row" id="lo_que_hacemos">
 			
-			<div class="col-lg-4 col-md-12 card">
-				<div class="row">
-					<div class="col-lg-12 col-md-6 col-sm-6 text-center">
-						<img src="img/LoQueHacemos.jpg" alt="">
-					</div>
-					
-					<div class="texto" class="col-lg-12 col-md-6 col-sm-6">
-						<p>Ayudamos a las librerías a ordenar su inventario en nuestra base de datos y a llevar un control exacto de sus ventas y su presencia en linea.</p>
-					</div>
-					
+			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<img src="img/enlinea.png">
+				</div>
+				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<p> Proporcionamos a las librerías de la ciudad la infraestuctura para catalogar sus mejores libros y venderlos en linea.</p>
 				</div>
 			</div>
 
-			<div class="col-lg-4 col-md-12 card">
-				<div class="row">
-					<div class="col-lg-12 col-md-6 col-sm-6 text-center">
-						<img src="img/LoQueHacemos.jpg" alt="">
-					</div>
-					
-					<div class="texto" class="col-lg-12 col-md-6 col-sm-6">
-						<p>Envíamos los libros que compres en linea a cualquier parte. </p>
-					</div>
-					
+			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<img src="img/libros.png">
+				</div>
+				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<p>Ayudamos a las librerías a ordenar su inventario en nuestra base de datos y a llevar un control exacto de sus ventas y su presencia en linea.</p>
 				</div>
 			</div>
+			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<img src="img/reading.png">
+				</div>
+				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<p>¿No encuentras el libro que buscabas? Prueba nuestro servicio de pedido especial y nosotros lo buscamos por ti. </p>
+				</div>
+			</div>
+
 
 		</div>
 		<div class="hl"></div>
@@ -129,8 +163,8 @@
 		<?php 
 			include 'librerias.php';
 			if(!$librerias){
-				echo "FUCK!";
-				exit();
+				echo "No Hay Librerias!";
+				// exit();
 			}
 		foreach ($librerias as $libreria): ?>
 		
@@ -144,11 +178,14 @@
 					<div style="background: url(
 						<?php echo htmlspecialchars(''.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 					 ) no-repeat no-repeat center center;" class="circle"></div>
-					<p class="text-center">
+					 <!-- <div class="row direccion">
+					 	<p class="text-center">
 						<?php echo htmlspecialchars($libreria->getDireccion(), ENT_QUOTES, 'UTF-8');?>
-					</p>
+						</p>
+					 </div>
+					  -->
 					<div class="row text-center">
-						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
+						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 					</div>
 				</div>
 			</div>
@@ -182,11 +219,11 @@
 			?>
 			<div class="thumbnail libro col-lg-3 col-md-6">
 				<div class="caption">
-					<a href="#"><img class="book-cover" src="<?php echo htmlspecialchars($libro['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="Brave Men"></a>
+					<img class="book-cover" src="<?php echo htmlspecialchars($libro['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="Brave Men">
 					<div class="info">
 						<p class="book-title"><?php echo htmlspecialchars($libro['titulo'], ENT_QUOTES, 'UTF-8');?></p>
-						<a class="book-author" href="#"><?php echo htmlspecialchars($libro['autor'], ENT_QUOTES, 'UTF-8');?></a>
-						<p class="book-price">$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-author" href="#"><?php echo htmlspecialchars($libro['autor'], ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-price"><b>$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?> MXN</b></p>
 					</div>
 				</div>
 				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars(
@@ -221,10 +258,10 @@
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
-						<a href="../../">Inicio</a><br>
-						<a href="#">Catálogo</a><br>
-						<a href="#">Registrarse</a><br>
-						<a href="#">Iniciar Sesión</a>
+						<a href="#">Inicio</a><br>
+						<a href="vis/buscar">Catálogo</a><br>
+						<a href="vis/registrarse">Registrarse</a><br>
+						<a href="vis/inicioSesion">Iniciar Sesión</a>
 					</div>
 				</div>
 			</div>
@@ -239,7 +276,7 @@
     <script src="slick/slick.min.js"></script>
     <script src="js/typed.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    <script src="js/linkLibro.js"></script>
+    <script src="js/linkLibros-index.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/carousel.js"></script>
 </body>

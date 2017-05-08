@@ -4,22 +4,6 @@ jQuery(document).ready(function($) {
   $("#add-cart").click(function() {
     var id = $(this).closest('.bookInfo').data('id');
     location.href = "addToCart.php?id="+id;
-    // $.ajax({
-    //   url: 'addToCart.php',
-    //   type: 'get',
-    //   data: {id: id}
-    // })
-    // .done(function() {
-    //   console.log("success");
-    // })
-    // .fail(function() {
-    //   console.log("error");
-    // })
-    // .always(function() {
-    //   console.log("complete");
-    // });
-    
-    // alert(id);
   });
 
 	$('.back').click(function() {

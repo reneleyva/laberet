@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
 
+@blue: #2C3E50;
+@green: #18BC9C;
+
 html, body {
 	height: 100%;
 	width: 100%;
@@ -61,6 +64,7 @@ html, body {
 	.info {
 
 		margin-top: 10px;
+		margin-bottom: 50px;
 		p, a {
 			font-size: 14pt;
 			margin: 0px 0px 10px 0px;
@@ -93,6 +97,22 @@ html, body {
 			font-size: 12pt;
 			color: white;
 			text-decoration: none;
+			// background-color: @blue;
+		}
+		.label:hover {
+			text-decoration: underline;
+		}
+
+		#in-cart {
+			text-decoration: none;
+		}
+		#add-cart, #in-cart {
+			background-color: @green;
+		}
+	
+		#add-cart:hover {
+			color: black;
+			border: 2px solid black;
 		}
 	}
 
@@ -109,14 +129,12 @@ html, body {
 
 #box {
 	margin: 0 auto;
+	border-radius: 5%;
 	background-color: #E0E0E0;
 	width: 280px;
 	padding: 0px 25px 10px 25px;
-	//margin: 0px 10px 20px 10px;
+	border: 3px solid grey;
 	
-	.direccion {
-		margin-top: 10px;
-	}
 
 	.circle {
 		height: 160px;
@@ -128,6 +146,7 @@ html, body {
 	}
 
 	button {
+		margin-top: 20px;
 		color: white;
 		background-color: #A5A5A5;
 	}
@@ -135,17 +154,16 @@ html, body {
 
 
 
+#libros-relacionados {
+	margin-top: 60px;
+}
 
 .card {
-	text-align: center;
 	margin-top: 20px;
-// 	-webkit-box-shadow: 4px 4px 11px 0px rgba(50, 50, 50, 0.75);
-// -moz-box-shadow:    4px 4px 11px 0px rgba(50, 50, 50, 0.75);
-// box-shadow:         4px 4px 11px 0px rgba(50, 50, 50, 0.75);
-
-	h3 {
-		font-weight: bold;
-	}
+	margin-bottom: 20px;
+	-webkit-box-shadow: 4px 4px 11px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    4px 4px 11px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         4px 4px 11px 0px rgba(50, 50, 50, 0.75);
 
 	.prev, .next, {
 		//height: 70px;
@@ -162,14 +180,6 @@ html, body {
 	.prev:hover, .next:hover {
 		color: black;
 	}
-	.carousel {
-		// border: 1px solid black;
-		// 	float: none;
-		margin: 0 auto;
-		text-align: center;
-		margin-top: 10px;
-		//margin-bottom: 20px;
-	}	
 
 
 .libro:hover {
@@ -189,9 +199,7 @@ html, body {
 	-o-transition: all 300ms ease;
 	transition: all 300ms ease;
 	border: none;
-	// border: 1px solid black;
-	// float: none;
-	// margin: 0 auto;
+	margin-bottom: 0px;
 
 	.info {
 		margin: 0 auto;
@@ -206,8 +214,9 @@ html, body {
 	}
 	
 
-	a, p{
+	p {
 		font-size: 12pt;
+		margin: 0px;
 	}
 
 	.book-title {
@@ -222,7 +231,7 @@ html, body {
 	}
 
 
-}
+	}
 }
 
 
@@ -238,10 +247,9 @@ html, body {
 		margin: 0 auto;
 	}
 
-	background: none; 
-	background-color: #777777;
-	height: 30%;
-	padding-top: 80px;
+	background-color: @blue;
+	height: 25%;
+	padding-top: 50px;
 	color: white;
 
 	a {

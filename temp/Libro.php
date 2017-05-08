@@ -69,14 +69,13 @@ class Libro {
 	
 	// función equals.
 	public function equals($book) {
-		return ($this->autor == $book->getAutor()) and 
-		       ($this->titulo == $book->getTitulo());
+		return ($this->id == $book->getId());
 	}
 
 	// Función que regresa verdadero si el libro está en un arreglo.
 	public function inArray($books){
 		foreach ($books as $book) {
-			if ($this->equals($book)){
+			if ($this->equals($book)) {
 				return true;
 			}
 		}

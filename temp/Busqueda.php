@@ -62,7 +62,7 @@ class Busqueda {
 		// Para regresar 10 libros solamente.
 		$count = 0;
 		// Itera sobre cada tag.
-		foreach ($tags as $tag){
+		foreach ($tags as $tag) {
 			$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$tag."%');";
 			$result = $pdo->query($sql);
 			while ($row = $result->fetch() and $count < 10){
@@ -93,7 +93,7 @@ class Busqueda {
 		$sql = "SELECT * FROM LibroVendido WHERE idUsuario = ".$usuario->getId().";";
 		try{
 			$result = $pdo->query($sql);
-		}catch(Exception $e){
+		} catch(Exception $e) {
 			echo 'No compró libros :(  ';
 			//include '../buscar/muestraLibros.php';
 			return null;

@@ -20,19 +20,8 @@ $result = $pdo->query($sql);
 $row = $result->fetch();
 $book = new Libro();
 $book->fill($row);
-if(count($_SESSION['cart']) == 0)
-{
-	array_push($_SESSION['cart'], $book)
 
-}
-else
-{
-	foreach ($_SESSION['cart'] as $cart) {
-		if($book.compareTo($cart))
-			echo "Fuck you";
-	}
-	array_push($_SESSION['cart'], $book)
-}
-echo $_SESSION['cart'][0]->getTitulo();
-// header("Location: .");
-// exit();
+//Agregar Libro
+array_push($_SESSION['cart'], $book);
+header("Location: .?id=".$idLibro);
+exit();

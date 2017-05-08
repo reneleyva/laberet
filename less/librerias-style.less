@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
+@blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -17,12 +19,15 @@ html, body {
 	.libreria {
 		margin-top: 20px;
 		text-align: center;
-		
+		// border: 1px solid black;
 		.wrap {
-			// padding-top: 1px;
+			height: 250px;
 			padding-bottom: 1px;
+			padding-left: 2px;
+			padding-right: 2px;
+			overflow: hidden;
 			// background: #C9C9C9;
-			border: 1px solid black;
+			border: 3px solid @green;
 			-webkit-transition: all 300ms ease;
 			-moz-transition: all 300ms ease;
 			-ms-transition: all 300ms ease;
@@ -34,12 +39,12 @@ html, body {
 
 		}
 
-		h3 {
+		h4 {
 			font-weight: bold;
 		}
 		.circle {
-			height: 170px;
-			width: 170px;
+			height: 150px;
+			width: 150px;
 			border-radius: 100%;
 			margin: 0 auto;	
 			background-size: 100% 100%;
@@ -74,7 +79,7 @@ html, body {
 	}
 
 	background: none; 
-	background-color: #777777;
+	background-color: @blue;
 	height: 25%;
 	padding-top: 40px;
 	color: white;

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
+@blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -11,9 +13,10 @@ html, body {
 }
 
 form {
-	margin-top: 40px;
+	margin-top: 15px;
 	margin-bottom: 0px;
 	padding-left: 50px;
+
 	.input-group {
 		input {font-size: 18px;}
 	}
@@ -94,15 +97,15 @@ form {
 	}	
 }
 
-.paginas .pagination>li>a,
-.paginas .pagination>li>span {
-  border: 1px solid #9B9B9B;
-  font-weight: bold;
-  color: #656565;
-}
-.pagination>li.active>a {
-  background: #BCBCBC;
-}
+// .paginas .pagination>li>a,
+// .paginas .pagination>li>span {
+//   border: 1px solid #9B9B9B;
+//   font-weight: bold;
+//   color: #656565;
+// }
+// .pagination>li.active>a {
+//   background: #BCBCBC;
+// }
 
 
 h1.face {
@@ -131,7 +134,7 @@ ul.ui-autocomplete.ui-menu{
 	}
 
 	background: none; 
-	background-color: #777777;
+	background-color: @blue;
 	height: 25%;
 	padding-top: 40px;
 	color: white;

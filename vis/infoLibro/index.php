@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-    
+   
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
@@ -89,7 +89,7 @@
 		
 				</p>
 				
-				<button id="add-cart" type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito</button>
+				<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
 
 				<?php 
 					if (isset($_SESSION['cart'])) {
@@ -112,50 +112,55 @@
 							<h4 class="col-lg-12"><b><?php echo $libreria->getNombre(); ?></b></h4>
 						</div>
 						<div class="circle" style="background: url(../../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
-						<p class="text-center"><?php echo $libreria->getDireccion(); ?></p>
 						<div class="row text-center">
-							<a href="../infoLibreria/?id=<?php echo $libreria->getId(); ?>"><button type="" class="btn btn-default">VER PERFIL</button></a>
+							<a href="../infoLibreria/?id=<?php echo $libreria->getId(); ?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
+		<h3 class="text-center" id="libros-relacionados"><b>Libros Relacionados</b></h3>
 		<div class="row card">
-			<h3 class="text-center">Libros Relacionados</h3>
+			
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
 			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
 
-			<div id="carousel-relacionados" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
+			<div id="carousel-relacionados" class="col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 
-			<?php if(!$relacionados){
+			<?php 
+
+			if(!$relacionados) {
 				echo "NO HAY LIRBOS RELACIONADOS";
 				// exit();
 			}
-			foreach ($relacionados as $book): ?>
+			foreach ($relacionados as $book): $i++;?>
+				
+				
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="Brave Men"></a>
-						<div class="info">
+						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>"></a>
+						 <div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
-							<a class="book-author" href="#"><?php echo $book->getAutor();?></a>
+							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
 							<p class="book-price"><b><?php echo '$'.$book->getPrecio().' MXN';?></b></p>
-						</div>
+						</div> 
 						<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
 					</div>
 				</div>
-				
-			<?php endforeach; ?>
-				
-				
-			</div><!-- Fin Carousel -->
 
-			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
+				
+
+			<?php endforeach; ?>
+			</div>
+				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
+				
+			</div><!-- Fin Carousel -->
+			
 		</div>
 		
 		
@@ -186,31 +191,32 @@
 	</div>
 	
 	<div class="container-fluid footer">
-			<div class="row-fluid text-center">
-					<div class="col-lg-4">
-						<div class="row">
-							<img src="../../img/logo-white.png" alt="">
-							<b>LABERET</b>
-						</div>
-						<div class="row">
-							<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-						</div>
+		<div class="row-fluid text-center">
+			<div class="col-lg-4">
+				<div class="row">
+					<img src="../../img/logo-white.png" alt="">
+					<b>LABERET</b>
+				</div>
+				<div class="row">
+					<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
+				</div>
+			</div>
+			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+			</div>
+			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+				<div class="menu row nav centered">
+					<div style="text-align: left">
+						<a href="#">Inicio</a><br>
+						<a href="vis/buscar">Catálogo</a><br>
+						<a href="vis/registrarse">Registrarse</a><br>
+						<a href="vis/inicioSesion">Iniciar Sesión</a>
 					</div>
-					<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-					<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-					<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-					</div>
-					<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-						<div class="menu row nav centered">
-							<div style="text-align: left">
-								<a href="../../">Inicio</a><br>
-								<a href="#">Catálogo</a><br>
-								<a href="#">Pedidos Especiales</a>
-							</div>
-						</div>
-					</div>
-				</div><!-- FIN Footer -->
-		</div>
+				</div>
+			</div>
+		</div><!-- FIN Footer -->
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../../slick/slick.min.js"></script>

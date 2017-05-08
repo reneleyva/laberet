@@ -12,5 +12,5 @@ $id = $_GET['id'];
 $libreria = Libreria::getLibreria($id);
 
 if (!$libreria) {
-	echo "404";
+	header("Location: ../404.html");
 }

@@ -11,6 +11,7 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../../css/navbar-user.css"> 
 	<link rel="stylesheet" href="../../css/pedidosEspeciales-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

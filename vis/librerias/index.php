@@ -50,19 +50,20 @@
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
 	<?php include "librerias.php" ?>
-
-	<?php foreach ($librerias as $libreria): ?>
 	<div class="container muestra">
+	<?php foreach ($librerias as $libreria): ?>
+	
 			<div class="libreria col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $libreria->getId(); ?>">
 				<div class="wrap">
-					<h3><?php echo $libreria->getNombre(); ?></h3>
+					<h4><?php echo $libreria->getNombre(); ?></h4>
 					<div style="background: url(../../<?php echo $libreria->getFotoPerfil(); ?>) no-repeat no-repeat center center;" class="circle"></div>
 					<p class="direccion"><?php echo $libreria->getDireccion(); ?></p>
 					<!-- <a href="#" class="btn btn-default">Ver Perfil</a> -->
 				</div>
 			</div>
-	</div>
+	
 	<?php endforeach; ?>
+	</div>
 	<div class="container-fluid footer">
 		<div class="row-fluid text-center">
 			<div class="col-lg-4">

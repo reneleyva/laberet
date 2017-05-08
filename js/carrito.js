@@ -13,11 +13,24 @@ function calculateTotal() {
 	}
 }
 
+function deleteFromCart(id) {
+	$.ajax({
+        type: "GET",
+        url: "eliminarDelCarrito.php",
+        data : { id : id },
+        success: function(html){
+           window.location.reload(true);
+        }
+    });
+}
+
 jQuery(document).ready(function($) {
 	calculateTotal();
 
 	$('.eliminar').click(function(e) {
-		$(this).closest('tr').hide('slow').remove();
+		var fila = $(this).closest('tr');
+		deleteFromCart(fila.data('id'));
+		fila.hide('slow').remove();
 		calculateTotal();
 	});
 

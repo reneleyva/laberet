@@ -70,7 +70,7 @@
 				<div id="pass-invalid" class="form-control err-msg">Contraseña no válida.</div>
 	
 				<button id="enviar" type="submit" class="btn btn-default">Iniciar Sesión</button>
-				<p>¿Olvidaste tu contraseña? <a href="resgistrarse.html" title="">Reestablézcala</a></p>
+				<p>¿Olvidaste tu contraseña? <a href="../reestablecer" title="">Reestablézcala</a></p>
 			</form>	
 		</div>
 	</div>
