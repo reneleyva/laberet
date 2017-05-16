@@ -44,21 +44,12 @@ session_start();
 
 	  <!-- Collect the nav links, forms, and other content for toggling -->
 	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    <div id="search" class="col-lg-4 col-md-4 col-sm-3 ">
-	        <form action="../buscar" method="GET" class="navbar-form" role="search">
-		        <div class="input-group">
-		            <input type="text" class="form-control" placeholder="Search" name="q">
-		            <input type="text" hidden name="s" value="todo">
-		            <div class="input-group-btn">
-		                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-		            </div>
-		        </div>
-	        </form>
-	    </div> 
-	    <div id="list" class="col-lg-6 col-md-6 col-sm-7">
+	    <div id="list" class="">
 	    	<ul class="nav navbar-nav navbar-right">
-		   	  <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>	
+		   	  	
+		   	  <li><a href="../buscar">Catálogo</a></li>
 		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
+		      <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
 		        <ul class="dropdown-menu">
@@ -76,6 +67,37 @@ session_start();
 	
 	<!-- EMPIEZA CAROUSEL -->
 	<div class="container">
+		
+		<form action="../buscar" class="form-inline" method="get" accept-charset="utf-8">
+				<div id="search-form" class="form-group">
+					<div class="input-group	">
+						<!-- BUSQUEDA -->
+						<input type="text" maxlength="25" name="q" id="keyword" class="form-control" placeholder="Search for...">       
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+				    </div>
+				    
+				<select name="s" class="form-control">
+					  <option value="todo">Todo</option>
+					  <option value="autor">Autor</option>
+					  <option value="titulo">Titulo</option>
+					  <option value="categoria">Categoria</option>
+				</select>
+				<?php 
+					if ($_SESSION['first']) {
+						echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
+						$_SESSION['first'] = False;
+					}
+				 ?>
+				<!-- Para javascript -->
+				<?php if (isset($_GET['s'])) {
+					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
+				} ?>
+				 
+				</div>
+			</form>
+			<!-- <h1>¡Bienvenido Luis!</h1> -->
 		<div class="row card">
 			<h4 class="text-center">Últimos Libros Agregados</h4>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
@@ -262,6 +284,7 @@ session_start();
 							<p class="book-price"><b>$<?php echo $book->getPrecio();?> MXN</b></p>
 						</div>
 					</div>
+					<input type="text" hidden class="id" name="" value="<?php echo $book->getId()?>">
 				</div>
 			<?php endforeach?>
 				
@@ -310,5 +333,7 @@ session_start();
 	<script type="text/javascript" src="../../slick/slick.min.js"></script>
 	<script src="../../js/home-carousel.js"></script>
 	<script src="../../js/linkLibro.js"></script>
+	<script src="../../js/jquery-ui.min.js"></script>
+	<script src="../../js/autocomplete.js"></script>
 </body>
 </html>

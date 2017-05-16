@@ -37,7 +37,6 @@ class Usuario
 			$user->fill($row);
 			return $user;
 		}
-
 	}
 
 	/** Regresa en un arreglo los libros recientemente 

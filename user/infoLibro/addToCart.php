@@ -22,6 +22,6 @@ $book = new Libro();
 $book->fill($row);
 
 //Agregar Libro
-array_push($_SESSION['cart'], $book);
+$_SESSION['cart'][$idLibro] =  $book;
 header("Location: .?id=".$idLibro);
 exit();

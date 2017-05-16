@@ -91,18 +91,6 @@
 				
 				<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
 
-				<?php 
-					if (isset($_SESSION['cart'])) {
-						// include "../../temp/Libro.php";
-						$book = Libro::getLibro($id);
-						if ($book) {
-							echo "YA ESTÁ!!!!!!!!!!";
-						}
-					} else {
-
-					}
-
-				 ?>
 			</div>
 
 			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs">

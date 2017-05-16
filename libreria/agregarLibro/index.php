@@ -12,6 +12,7 @@
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="../../css/navbar-libreria.css"> 
 	<link rel="stylesheet" href="../../css/agregar-nuevo-style.css"> 
 	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

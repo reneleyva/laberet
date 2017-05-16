@@ -34,7 +34,7 @@
 		$_SESSION['type'] = "user"; //Tipo usuario
 		$_SESSION['cart'] = array();
 		$_SESSION['id'] = $row['idUsuario'];
-		
+		$_SESSION['first'] = True; //Primera vez iniciando sesión;
 		if(isset($_GET['idLibro'])) {
 			header("location: ../infoLibro/?id=".$_GET['idLibro']); 
 		} else {

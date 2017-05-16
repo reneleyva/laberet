@@ -94,7 +94,7 @@ class Busqueda {
 		try{
 			$result = $pdo->query($sql);
 		} catch(Exception $e) {
-			echo 'No compró libros :(  ';
+			// echo 'No compró libros :(  ';
 			//include '../buscar/muestraLibros.php';
 			return null;
 		}

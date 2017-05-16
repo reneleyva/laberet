@@ -80,19 +80,19 @@
     // for ($i = 10; $i < 60; $i++) {
         // $isbn = $isbn.$i;
         $sql = 'INSERT INTO Libro SET
-    			titulo ="' . $titulo . '",
+                idLibro = '.($id+1).',
+    			titulo = "' . $titulo . '",
     			autor = "'.$autor.'",
-    			isbn = "'.$isbn.'",
                 fechaAdicion = "'.$fecha.'",
     			precio = "'.$precio.'",
     			tags = "'.$tags.'",
     			idLibreria = '.$idLibreria.',
     			fotoFrente = "'.$fotoFrentePath.'",
     			fotoAtras = "'.$fotoAtrasPath.'";'; 
-        echo $sql;
-        // $pdo->exec($sql);
+        // echo $sql;
+        $pdo->exec($sql);
         
     // }    
     	
-    // header('Location: .');
+    header('Location: .');
    	exit();

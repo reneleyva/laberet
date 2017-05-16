@@ -93,7 +93,7 @@
 			
 			<?php 
 			if (isset($_GET['q'])) {
-				echo "<h3 class='resultado'>Resultados para: <span>".$keyword."</span></h3>";
+				echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars("$keyword", ENT_QUOTES, 'UTF-8')."</h3></span>";
 			}
 
 			if(!$books){

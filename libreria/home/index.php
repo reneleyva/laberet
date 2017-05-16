@@ -10,6 +10,7 @@
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../../css/navbar-libreria.css"> 
 	<link rel="stylesheet" href="../../css/homeLibreria-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -68,7 +69,7 @@
 		session_start();
 		if (!isset($_SESSION['id'])) {
 			//NO ha iniciado sesión
-			header("location: ../../user/inicioSesion");
+			header("location: ../../vis/inicioSesion");
 		} else if ($_SESSION['type'] != 'libreria') {
 			//No es una libreria
 			header("location: ../../user/home");
@@ -94,7 +95,7 @@
 	<div class="container">
 		<div class="row">
 			
-			<form action="" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
@@ -113,7 +114,7 @@
 				    
 				</div>
 
-				<button id="agregar-nuevo" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></button>
+				<a id="agregar-nuevo" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></a>
 			</form>
 		</div>
 
@@ -214,10 +215,11 @@
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
-						<a href="../../">Inicio</a><br>
-						<a href="#">Catálogo</a><br>
-						<a href="#">Registrarse</a><br>
-						<a href="#">Iniciar Sesión</a>
+						<a href="#">Inicio</a><br>
+						<a href="/historialVentas">Ventas</a><br>
+						<a href="/agregarLibro">Agregar Libro</a><br>
+						<a href="/pedidosEspeciales">Pedidos Especiales</a><br>
+						<a href="/buscar">Catálogo Universal</a>
 					</div>
 				</div>
 			</div>

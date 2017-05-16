@@ -10,7 +10,8 @@
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/navbar-libreria.css">  
 	<link rel="stylesheet" href="../css/homeLibreria-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -146,7 +147,6 @@
 				<?php 
 				// Para evita poner de más
 				if ($x > ($tam/2)) {
-					echo 'Pene';
 					break;
 				} ?>
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php

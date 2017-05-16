@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
 @blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -10,53 +11,6 @@ html, body {
 	font-size: 12pt;
 	font-family: 'Roboto Mono', monospace;
 }
-
-
-.navbar-default {
-	background-color: @blue;
-		-webkit-box-shadow: 0px 1px 9px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 1px 9px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 1px 9px 0px rgba(50, 50, 50, 0.75);
-	position: relative;
-    overflow: visible;
-	//height: 3em;
-	margin-bottom: 0px;
-
-	.navbar-header {
-		// border: 1px solid black;
-		#icon {			
-			// position: absolute;
-			height: 50px;
-			width: 125px;
-			margin-left: -20px;
-			margin-top: -15px;
-		}
-
-		#icon-collapse {
-			display: none;
-			position: absolute;
-			height: 50px;
-			width: 125px;
-			margin-left: -20px;
-			margin-top: -22px;
-		}
-
-	}
-	
-
-	#list {		
-		// border: 1px solid black;
-	}
-
-	#drop {
-		// border: 1px solid black;
-	}
-
-	.navbar-header {
-		// border: 1px solid black;
-	}
-}
-
 
 .container-fluid {
 	height: 80%;
@@ -130,9 +84,10 @@ form {
 		font-size: 18px;
 	}
 
-	button#agregar-nuevo {
+	#agregar-nuevo {
 		font-size: 13pt;
 		margin-left: 80px;
+		background-color: @blue;
 	}
 
 }
@@ -194,6 +149,9 @@ form {
 		
 		.botones {
 			margin-top: 10px;
+			button {
+				background-color: @green;
+			}
 		}
 	}	
 }
@@ -239,10 +197,16 @@ h1.face {
 }
 
 .footer {
-	background: none; 
-	background-color: #777777;
-	height: 30%;
-	padding-top: 80px;
+	background: @blue; 
+
+	.menu {
+		width: fit-content;
+		margin: 0 auto;
+	}
+	
+	// background-color: #777777;
+	height: 25%;
+	padding-top: 40px;
 	color: white;
 
 	a {

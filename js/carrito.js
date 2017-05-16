@@ -1,19 +1,16 @@
 //Toma los precios de la tabla y calcula el total 
 function calculateTotal() {
-	var total = 0;
+	var total = 100;
 	$("tr.item").each( function(index) {
 		var price = $(this).find(".price").data("price");
-		total += price + 100; //+100 del envio
+		total += price; //+100 del envio
 	});
 	$('#total').html("<b>" + "Total: $" + total + " MXN</b>");
-	if (total > 0) {
-		$(".continue button").removeClass("disabled");
-	} else {
-		$(".continue button").addClass("disabled");
-	}
 }
 
 function deleteFromCart(id) {
+	// alert("Eliminando: " + id);
+	// location.href = "./eliminarDelCarrito.php?id="+id;
 	$.ajax({
         type: "GET",
         url: "eliminarDelCarrito.php",
