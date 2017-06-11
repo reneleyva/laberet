@@ -1,8 +1,8 @@
 <?php
 // Conexión.
 include '../../conexion.php';
-include ('../../temp/Libro.php');
-include ('../../temp/Busqueda.php');
+include ('../../lib/Libro.php');
+include ('../../lib/Busqueda.php');
 
 $books = array(); //Los libros a regresar. 
 //Ver si issert q y s.

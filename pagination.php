@@ -31,12 +31,11 @@
 			<span aria-hidden='true'>&laquo;</span></a></li>";
 		}
 		//Libros a mostrar por pagina: 16. 
-		// // echo $numPaginas;
-		// echo "NumPgainas: ".$numPaginas;
-		// echo "actual: ".$page;
 		if ($numPaginas < 6) {
+			//Imprime normal los links. (sin saltos). Ej. << 1 2 3 4 5 >>
 			imprimeLineal($numPaginas, $page); //imprime normal.
 		} else {
+			//Imprime normal los links. (sin saltos). Ej. << 1 2 3 4 5 >>
 			imprimeSaltos($numPaginas, $page);
 		}
 		

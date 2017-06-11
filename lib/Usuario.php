@@ -43,7 +43,7 @@ class Usuario
 	* comprados por el usuario. */
 	public function getCompras() {
 		include "../../conexion.php";
-		include_once "../../temp/Libro.php";
+		include_once "../../lib/Libro.php";
 		$compras = array();
 		
 		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";

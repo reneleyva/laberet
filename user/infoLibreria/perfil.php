@@ -1,7 +1,7 @@
 <?php
 include '../../conexion.php';
-include '../../temp/Libro.php';
-include '../../temp/Libreria.php';
+include '../../lib/Libro.php';
+include '../../lib/Libreria.php';
 
 if (!isset($_GET['id'])) {
 	echo "error";

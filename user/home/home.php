@@ -1,6 +1,6 @@
 <?php 
-include '../../temp/Libro.php';
-include '../../temp/Busqueda.php';
+include '../../lib/Libro.php';
+include '../../lib/Busqueda.php';
 session_start();
  ?>
 

@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	include "../../temp/Libro.php";
+	include "../../lib/Libro.php";
 	include_once('../redirect.php');
 	
  ?>

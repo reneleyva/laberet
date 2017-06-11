@@ -101,7 +101,7 @@ session_start();
 				</p>
 				<img id="paypal" src="../../img/paypal.png"><br>
 				<?php 
-				include_once "../../temp/Libro.php";
+				include_once "../../lib/Libro.php";
 				//Checa si está en carrito 
 				
 

@@ -1,5 +1,5 @@
 <?php 
-	include "../../temp/Libro.php";
+	include "../../lib/Libro.php";
 	session_start();
  ?>
 <!DOCTYPE html>

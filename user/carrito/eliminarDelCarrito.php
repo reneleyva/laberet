@@ -1,6 +1,6 @@
 <?php 
 include '../../conexion.php';
-include ('../../temp/Libro.php');
+include ('../../lib/Libro.php');
 session_start();
 
 if (!isset($_GET['id'])) {
