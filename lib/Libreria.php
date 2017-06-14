@@ -12,6 +12,9 @@ class Libreria
 	private $fotoPortada;
 	private $telefono;
 	private $direccion;
+	private $facebook;
+	private $twitter;
+	private $instagram;
 	private $coordenadas;
 
 	function __construct(){}
@@ -24,6 +27,12 @@ class Libreria
 		$this->telefono = $row['telefono'];
 		$this->direccion = $row['direccion'];
 		$this->coordenadas = $row['coordenadas'];
+		if (isset($row['facebook']))
+			$this->facebook = $row['facebook'];
+		if (isset($row['twitter']))
+			$this->twitter = $row['twitter'];
+		if (isset($row['instagram']))
+			$this->instagram = $row['instagram'];
 	}
 
 	//Regresa una libreria haciendo una consulta por id. 
@@ -168,6 +177,30 @@ class Libreria
 
 	public function setCoordenadas($coordenadas){
 		$this->coordenadas = $coordenadas;
+	}
+
+	public function getFacebook(){
+		return $this->facebook;
+	}
+
+	public function setFacebook($facebook){
+		$this->facebook = $facebook;
+	}
+
+	public function getTwitter(){
+		return $this->twitter;
+	}
+
+	public function setTwitter($twitter){
+		$this->twitter = $twitter;
+	}
+
+	public function getInstagram(){
+		return $this->instagram;
+	}
+
+	public function setInstagram($instagram){
+		$this->instagram = $instagram;
 	}
 }
 
