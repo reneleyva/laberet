@@ -27,27 +27,7 @@
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
 	<!-- Inciar sesion -->
 
-	<?php 
-		/*Si el usuario ya inició sesión lo redirige a su página principal,
-		 * sino inicia sesión como invitado (El invitado no tiene carrito por ahora).
-		*/ 
-		session_start();
-		if (isset($_SESSION['nombre'])) {
-			if ($_SESSION['nombre'] != 'invitado') {
-				//NO DEBERÍA DE ESTAR AQUI REDIRIJO A HOME RESPECTIVO
-				if ($_SESSION['type'] == 'user') {
-					header("location: user/home");
-				} else {
-					header("location: libreria/home");
-				}
-
-			} 
-		} else {
-			//PRIMERA VEZ EN LA PAGINA
-			$_SESSION['type'] = 'invitado';
-		}		
-	?>
-
+	<?php include "variable-sesion.php" ?>
 	
 	<nav class="navbar navbar-default" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
@@ -126,12 +106,15 @@
 		<div class="row" id="lo_que_hacemos">
 			
 			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+				<div class="wrap">
+						<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
 					<img src="img/enlinea.png">
+					</div>
+					<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+						<p> Proporcionamos a las librerías de la ciudad la infraestuctura para catalogar sus mejores libros y venderlos en linea.</p>
+					</div>
 				</div>
-				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
-					<p> Proporcionamos a las librerías de la ciudad la infraestuctura para catalogar sus mejores libros y venderlos en linea.</p>
-				</div>
+			
 			</div>
 
 			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">

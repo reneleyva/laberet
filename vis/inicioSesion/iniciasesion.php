@@ -10,7 +10,7 @@
 	if(!$row)
 	{
 		//Revisar si es Libreria.
-		$sql = "SELECT * From AdministradorLibreria WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
+		$sql = "SELECT * From Administrador WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();
 

@@ -49,6 +49,7 @@ class Usuario
 		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();
+		//Falta
 	}
 
 	//agrega un elemento al carrito; EL un Objeto Libro. 

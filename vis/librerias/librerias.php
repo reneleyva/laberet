@@ -1,7 +1,7 @@
 <?php 
 
 include '../../conexion.php';
-include_once '../../temp/Libreria.php';
+include_once '../../lib/Libreria.php';
 
 $librerias = array();
 $sql = "SELECT * FROM Libreria;";
