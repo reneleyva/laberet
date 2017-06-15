@@ -83,7 +83,7 @@ class Busqueda {
 
 	public function getLibrosUsuario($idUsuario){
 		include "../../conexion.php";
-		include "Usuario.php";
+		include_once "Usuario.php";
 		$usuario = new Usuario();
 		// Se consigue el usuario.
 		$usuario->getUsuario($idUsuario);

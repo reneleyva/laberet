@@ -1,6 +1,8 @@
 <?php 
-include '../../lib/Libro.php';
-include '../../lib/Busqueda.php';
+include_once '../../lib/Libro.php';
+include_once '../../lib/LibroVendido.php';
+include_once '../../lib/Busqueda.php';
+include_once '../../lib/Usuario.php';
 session_start();
  ?>
 
@@ -202,8 +204,10 @@ session_start();
 		<?php endif; ?>
 
 		<?php 
-		$compras = True; // Pero será verdadero
+		$compras = Usuario::getCompras($_SESSION['id']);
+		 // Pero será verdadero
 		if ($compras):?>
+
 		<!-- Compras Recientes -->
 		<div class="row card compras-recientes">
 			<h4 class="text-center"><b>Tus compras recientes.</b></h4>
@@ -213,40 +217,23 @@ session_start();
 			
 			<!-- IMPORTANTE! si son menos de 3 elementos ponerle style="float: none;" -->
 			<div id="carousel-compras" class="row col-lg-10 col-md-10 col-sm-8 col-xs-8">
-				
+
+			<?php 
+				foreach ($compras as $compra): ?>
+
+				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
-					<img src="../../img/fundacion-cover.jpg" alt="">
+					<img src="../../uploads/Morua.jpg" alt="">
 				</div>
 
 				<div class="info col-lg-5 col-md-5">
-					<p><b>Fundación</b></p>
-					<p><b>Autor:</b> <a href="#" title="Isaac Asimov">Isaac Asimov</a></p>
-					<p><b>Vendedor: </b> <a href="#">Librería Aurora</a></p>
+					<p><b>Título: </b><a><?php echo $compra->getTitulo();?></a></p>
+					<p><b>Autor:</b> <a href="#" ><?php echo$compra->getAutor();?></a></p>
+					<p><b>Vendedor: </b> <a href="#"><?php echo$compra->getlibreria();?></a></p>
 					<p>$230</p>
 				</div>
 
-				<div class="cover col-lg-1 col-md-5">
-					<img src="../../img/fundacion-cover.jpg" alt="">
-				</div>
-
-				<div class="info col-lg-5 col-md-5">
-					<p><b>Fundación</b></p>
-					<p><b>Autor:</b> <a href="#" title="Isaac Asimov">Isaac Asimov</a></p>
-					<p><b>Vendedor: </b> <a href="#">Librería Aurora</a></p>
-					<p>$230</p>
-				</div>
-				
-				<div class="cover col-lg-1 col-md-5">
-					<img src="../../img/fundacion-cover.jpg" alt="">
-				</div>
-
-				<div class="info col-lg-5 col-md-5">
-					<p><b>Fundación</b></p>
-					<p><b>Autor:</b> <a href="#" title="Isaac Asimov">Isaac Asimov</a></p>
-					<p><b>Vendedor: </b> <a href="#">Librería Aurora</a></p>
-					<p>$230</p>
-				</div>
-
+				<?php endforeach;?>
 			</div>
 
 			<div id="next-compras" class="next col-lg-1 col-md-1 col-sm-2 col-xs-2">
