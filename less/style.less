@@ -86,6 +86,41 @@ html, body {
 	}
 }
 
+//Media Query 
+@media (max-width: 800px) {
+	.container-fluid {
+		height: 70%;
+
+		h1 {
+			font-size: 22pt;
+		}
+
+		h2 {
+			font-size: 20pt;
+		}
+
+		#buscar {
+			width: 70%;
+			margin: 0 auto;
+			margin-top: 10px;
+			input[type="text"] {
+				font-size: 1em;
+				
+				margin: 0 auto;
+			}
+		}
+		
+		#librerias {
+			
+			#next, #prev {
+				height: 100px;
+				width: 100px;
+				margin-top: 200px;
+			}
+		}
+		
+	}
+}
 ul.ui-autocomplete.ui-menu {
 	font-family: 'Roboto Mono', monospace;
 	background: rgba(0, 0, 0, 0.6);
