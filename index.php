@@ -74,7 +74,7 @@
 					<div class="input-group	">
 						<!-- BUSQUEDA -->
 						<input type="text" name="q" id="busqueda" class="typed form-control" placeholder="...">   
-						<input id="keyword" style="display: none;" class="form-control"  type="text" name="q">    
+						<input id="keyword" style="display: none;" maxlength="20" class="form-control"  type="text" name="q">    
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
