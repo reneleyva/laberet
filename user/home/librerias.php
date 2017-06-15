@@ -2,6 +2,7 @@
 
 include '../../conexion.php';
 include_once '../../lib/Libreria.php';
+/*
 
 $librerias = array();
 $sql = "SELECT * FROM Libreria;";
@@ -12,3 +13,6 @@ while ($row = $result->fetch()) {
 	$l->fill($row);
 	array_push($librerias, $l);
 }
+*/
+
+

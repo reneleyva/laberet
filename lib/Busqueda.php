@@ -1,5 +1,6 @@
 <?php 
 include_once 'Libro.php';
+include_once 'Libreria.php';
 /**
 * Clase para Libro. 
 */
@@ -126,4 +127,31 @@ class Busqueda {
 		}
 		return $libros;
 	}
+
+	//Busca en todo si keyword="" regresa todos los libros ;)
+	function ultimosAgregados(){
+		include "../../conexion.php";
+		$sql = "SELECT * FROM Libro order by fechaAdicion desc";
+		$result = $pdo->query($sql);
+		$books = array();
+		while ($row = $result->fetch()){
+			$book = new Libro();
+			$book->fill($row);
+			array_push($books,$book);
+		}
+		return $books;
+	}
+
+	function getLibrerias(){
+		include "../../conexion.php";
+		$sql = "SELECT * FROM Libreria order by nombre desc";
+		$result = $pdo->query($sql);
+		$librerias = array();
+		while ($row = $result->fetch()) {
+			$l = new Libreria();
+			$l->fill($row);
+			array_push($librerias, $l);
+		}
+		return $librerias;
+	}	
 }
