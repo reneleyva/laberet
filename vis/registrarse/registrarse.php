@@ -44,6 +44,7 @@ include "../../conexion.php";
 	$row = $result->fetch();
 	$_SESSION['id'] = $row['idUsuario'];
 	$_SESSION['cart'] = array();
+	$_SESSION['first'] = True; //Primera vez iniciando sesión;
 	header("location: ../../user/home");
 	exit();
 ?>

@@ -14,7 +14,7 @@ session_start();
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-	<title>Laberet</title>
+	<title>Laberet </title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
@@ -108,7 +108,7 @@ session_start();
 			<div id="carousel-libros" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 				
 				<?php 
-					$books = Busqueda::buscaGeneral("");
+					$books = Busqueda::ultimosAgregados();
 					if(empty($books)){
 						echo "No Hay Libros :'(";
 						// exit();
@@ -146,12 +146,11 @@ session_start();
 
 			<div id="carousel-librerias" class="carousel col-lg-10">
 			<?php 
-			include 'librerias.php';
-
-			if(!$librerias) {
-				echo "FUCK!";
-				// exit();
-			}
+				$librerias = Busqueda::getLibrerias();
+				if(empty($librerias)){
+					echo "No Hay Librerias :'(";
+					// exit();
+				}
 			foreach ($librerias as $libreria): ?>	
 				<div class="perfil">
 					<div class="box">
