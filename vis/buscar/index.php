@@ -13,8 +13,8 @@
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
-	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
 	<link rel="stylesheet" href="../../css/navbar-vis.css">
+	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -41,11 +41,14 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Inicio</a></li>
-			            <li class="active"><a href="../buscar">Catálogo</a></li>
+			            <li><a href="../buscar">Catálogo</a></li>
 			            <li><a href="../librerias">Librerías</a></li>
-			            <li ><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li><a href="../registrarse">Registrarse</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    
@@ -56,22 +59,25 @@
 
 		<div class="row">
 			
-			<form action="." class="form-inline" method="get" accept-charset="utf-8">
+			<form action="." class="row form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
-					<div class="input-group	">
+					<div class="input-group">
 						<!-- BUSQUEDA -->
-						<input type="text" name="q" id="keyword" class="form-control" placeholder="Search for...">       
+						<input type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
+
+						<select name="s" class="form-control">
+							  <option value="todo">Todo</option>
+							  <option value="autor">Autor</option>
+							  <option value="titulo">Titulo</option>
+							  <option value="categoria">Categoria</option>
+						</select>
 				    </div>
-				    
-				<select name="s" class="form-control">
-					  <option value="todo">Todo</option>
-					  <option value="autor">Autor</option>
-					  <option value="titulo">Titulo</option>
-					  <option value="categoria">Categoria</option>
-				</select>
+				
+					
+				
 				
 				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
@@ -108,7 +114,7 @@
 			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
 				$book = $books[$i];
 				?>
-				<div class="thumbnail libro  col-lg-3 col-md-6">
+				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">

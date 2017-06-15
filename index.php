@@ -47,7 +47,6 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#">Inicio</a></li>
 			            <li><a href="vis/buscar">Catálogo</a></li>
 			            <li><a href="vis/librerias">Librerías</a></li>
 			            <li><a href="vis/registrarse">Registrarse</a></li>

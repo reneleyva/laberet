@@ -16,15 +16,39 @@ form {
 	margin-top: 15px;
 	margin-bottom: 0px;
 	padding-left: 50px;
+	text-align: center; 
 
+	#search-form {
+		// margin: 0 auto;
+		padding-left: 15px;
+		width: 100%;
+		text-align: left;
+
+		.form-control {
+			font-size: 18px;
+		}
+
+		select {
+			margin-left: 8px;
+		}
+
+	}
 	.input-group {
+		// width: 50%;
 		input {font-size: 18px;}
 	}
+}
 
-	.form-control {
-		font-size: 18px;
+@media (max-width: 800px) { 
+	#search-form {
+		.input-group {
+			// width: 50%;
+			input, select {font-size: 12pt;}
+			select {
+				width: 80%;
+			}
+		}
 	}
-
 }
 
 .resultado {
@@ -65,7 +89,6 @@ form {
 		height: 380px;
 	    overflow:hidden !important;
 	    text-overflow: ellipsis;
-
 		.info{
 			margin: 0 auto;
 			margin-top: 10px;
