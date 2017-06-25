@@ -1,5 +1,6 @@
 <?php 
 
+include_once 'LibroVendido.php';
 /**
 * Usuario
 */
@@ -41,14 +42,18 @@ class Usuario
 
 	/** Regresa en un arreglo los libros recientemente 
 	* comprados por el usuario. */
-	public function getCompras() {
+	public function getCompras($id) {
 		include "../../conexion.php";
 		include_once "../../lib/Libro.php";
-		$compras = array();
-		
-		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";
+		$compras = array();		
+		$sql = "SELECT * FROM LibroVendido Natural join Libreria WHERE idUsuario = ".$id.";";
 		$result = $pdo->query($sql);
-		$row = $result->fetch();
+		while ($row = $result->fetch()){
+			$book = new LibroVendido();
+			$book->fill($row);
+			array_push($compras,$book);
+		}
+		return $compras;
 		//Falta
 	}
 
