@@ -106,10 +106,10 @@
 			
 			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
 				<div class="wrap">
-						<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
-					<img src="img/enlinea.png">
+					<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-6">
+						<img src="img/enlinea.png">
 					</div>
-					<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+					<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-6">
 						<p> Proporcionamos a las librerías de la ciudad la infraestuctura para catalogar sus mejores libros y venderlos en linea.</p>
 					</div>
 				</div>
@@ -117,18 +117,18 @@
 			</div>
 
 			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-6">
 					<img src="img/libros.png">
 				</div>
-				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-6">
 					<p>Ayudamos a las librerías a ordenar su inventario en nuestra base de datos y a llevar un control exacto de sus ventas y su presencia en linea.</p>
 				</div>
 			</div>
 			<div class="card col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-12">
+				<div class="icono col-lg-12 col-md-12 col-sm-6 col-xs-6">
 					<img src="img/reading.png">
 				</div>
-				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-12">
+				<div class="texto col-lg-12 col-md-12 col-sm-6 col-xs-6">
 					<p>¿No encuentras el libro que buscabas? Prueba nuestro servicio de pedido especial y nosotros lo buscamos por ti. </p>
 				</div>
 			</div>
@@ -160,12 +160,6 @@
 					<div style="background: url(
 						<?php echo htmlspecialchars(''.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 					 ) no-repeat no-repeat center center;" class="circle"></div>
-					 <!-- <div class="row direccion">
-					 	<p class="text-center">
-						<?php echo htmlspecialchars($libreria->getDireccion(), ENT_QUOTES, 'UTF-8');?>
-						</p>
-					 </div>
-					  -->
 					<div class="row text-center">
 						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 					</div>
@@ -194,7 +188,7 @@
 			<?php 
 				include 'libros.php';
 				if(!$libros){
-					echo "FUCK!";
+					echo "No books!";
 					exit();
 				}
 				foreach ($libros as $libro): 

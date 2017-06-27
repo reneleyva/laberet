@@ -88,9 +88,10 @@ html, body {
 
 //Media Query 
 @media (max-width: 800px) {
+
 	.container-fluid {
 		height: 70%;
-
+		
 		h1 {
 			font-size: 22pt;
 		}
@@ -110,17 +111,31 @@ html, body {
 			}
 		}
 		
-		#librerias {
-			
+
+	}
+	
+	.card {
+		.icono {
+			img {
+				height: 200px;
+				width: 200px;
+			}
+		}
+	}
+
+	#librerias {			
+			#next {
+				left: 85% !important;
+			}
+
 			#next, #prev {
 				height: 100px;
 				width: 100px;
-				margin-top: 200px;
+				margin-top: 100px !important;
 			}
 		}
-		
-	}
-}
+} //fin media 
+
 ul.ui-autocomplete.ui-menu {
 	font-family: 'Roboto Mono', monospace;
 	background: rgba(0, 0, 0, 0.6);
@@ -139,7 +154,7 @@ ul.ui-autocomplete.ui-menu {
 		margin-top: 40px;
 
 		.card {
-			// border: 1px solid black;
+			margin-top: 50px;
 			.icono {
 				text-align: center;
 				img {
@@ -308,6 +323,7 @@ ul.ui-autocomplete.ui-menu {
 .btn-ver {
 	background-color: @green;
 	font-weight: bold;
+	margin-top: 30px;
 }
 
 .btn-ver:hover {
@@ -331,7 +347,6 @@ ul.ui-autocomplete.ui-menu {
 
 .footer {
 	background: @blue; 
-
 	.menu {
 		width: fit-content;
 		margin: 0 auto;
