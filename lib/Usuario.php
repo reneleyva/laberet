@@ -94,6 +94,36 @@ class Usuario
 		$this->carrito = $carrito;
 	}
 
+		//Algunas funciones (por acabar).
+
+	// Regresa todos los libros surtidos (no sé por que hago esto xd)
+	public function getLibrosSurtidos (){
+		include "../../conexion.php";
+		$sql = "SELECT * from PedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido";
+		$libros = array();		
+		$result = $pdo->query($sql);
+		while ($row = $result->fetch()){
+			$libro = new PedidoEspecial();
+			$libro->fill($row);
+			array_push($libros,$libro);
+		}
+		return $libros;
+	}
+
+	// Regresa los libros que ya le surtieron la usuario (dudas, cuando se elimina uno)
+	public function getLibroSurtido($id_usuario){
+		include "../../conexion.php";
+		$sql = "SELECT * from PedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido and idUsuario = '$id_usuario'";
+		$libros = array();		
+		$result = $pdo->query($sql);
+		while ($row = $result->fetch()){
+			$libro = new PedidoEspecial();
+			$libro->fill($row);
+			array_push($libros,$libro);
+		}
+		return $libros;	
+	} 
+
 }
 
 // $user = Usuario::getUsuario(1);

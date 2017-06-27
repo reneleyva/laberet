@@ -1,7 +1,7 @@
 <?php  
 include "../../conexion.php";
 
-	$pass = md5($_POST['password']."teamolizteamomoreteamoandrea");
+	$pass = md5($_POST['password']."pene"."teamolizteamomoreteamoandrea");
 	$correo = $_POST['correo'];
 	$nombre = $_POST['nombre'];
 

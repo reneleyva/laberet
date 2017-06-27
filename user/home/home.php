@@ -3,6 +3,7 @@ include_once '../../lib/Libro.php';
 include_once '../../lib/LibroVendido.php';
 include_once '../../lib/Busqueda.php';
 include_once '../../lib/Usuario.php';
+include_once '../pedidosEspeciales/PedidoEspecial.php';
 session_start();
  ?>
 
@@ -183,24 +184,28 @@ session_start();
 
 		<!-- Pedido Especial -->
 		<?php 
-		$pedidoEspecial = True;
-		if ($pedidoEspecial):?>
-		<div class="row card pedido-especial">
-			<h3 class="text-center"><b>Librería Aurora ha surtido tu pedido especial.</b></h3>
-			<div class="libro">
-				<div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-5 col-xs-offset-0">
-					<img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men">
+			$libros_surtidos = Usuario::getLibroSurtido($_SESSION['id']);
+			if ($libros_surtidos):?>
+
+		<?php 
+		foreach ($libros_surtidos as $libro): ?>
+			<div class="row card pedido-especial">
+				<h3 class="text-center"><b>Librería Aurora ha surtido tu pedido especial.</b></h3>
+				<div class="libro">
+					<div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-5 col-xs-offset-0">
+						<img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men">
+					</div>
+					<div class="info col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-7 col-xs-offset-0">
+						<p class="book-title">Brave men</p>
+						<a class="book-author" href="#">Ernie Pyle</a>
+						<p><b>Autor: </b><a href="#">Ernie Pyle</a></p>
+						<p><b>Ubicación: </b><a href="#" title="Librería Aurora">Librería Aurora</a></p>
+						<p class="book-price">$230</p>
+						<button type="" class="btn btn-default"><b>Ver Libro</b></button>
+					</div>
 				</div>
-				<div class="info col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-7 col-xs-offset-0">
-					<p class="book-title">Brave men</p>
-					<a class="book-author" href="#">Ernie Pyle</a>
-					<p><b>Autor: </b><a href="#">Ernie Pyle</a></p>
-					<p><b>Ubicación: </b><a href="#" title="Librería Aurora">Librería Aurora</a></p>
-					<p class="book-price">$230</p>
-					<button type="" class="btn btn-default"><b>Ver Libro</b></button>
-				</div>
-			</div>
-		</div> <!-- Fin Pedido Especial -->
+			</div> <!-- Fin Pedido Especial -->
+		<?php endforeach;?>
 		<?php endif; ?>
 
 		<?php 
