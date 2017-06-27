@@ -133,46 +133,44 @@ session_start();
 				</div>
 			</div>
 		</div>
+		<?php if($relacionados): ?>
 		
-		<h3 class="text-center" id="libros-relacionados"><b>Libros Relacionados</b></h3>
-		<div class="row card">
-			
-			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
-				<span class="glyphicon glyphicon-menu-left"></span>
-			</div>
-
-			<div id="carousel-relacionados" class="col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-
-			<?php 
-
-			if(!$relacionados) {
-				echo "NO HAY LIRBOS RELACIONADOS";
-				// exit();
-			}
-			foreach ($relacionados as $book): ?>
-
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="Brave Men"></a>
-						 <div class="info">
-							<p class="book-title"><?php echo $book->getTitulo();?></p>
-							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
-							<p class="book-price"><b><?php echo '$'.$book->getPrecio().' MXN';?></b></p>
-						</div> 
-						<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
-					</div>
+			<h3 class="text-center" id="libros-relacionados"><b>Libros Relacionados</b></h3>
+			<div class="row card">
+				
+				<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
+				<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
+					<span class="glyphicon glyphicon-menu-left"></span>
 				</div>
 
-				
+				<div id="carousel-relacionados" class="col-lg-10 col-md-8 col-sm-8 col-xs-6	">
 
-			<?php endforeach; ?>
 				
-			</div>
-			<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
-				<span class="glyphicon glyphicon-menu-right"></span>
-			</div>	
-		</div><!-- Fin Carousel -->
+				<?php foreach ($relacionados as $book): ?>
+
+					<div class="thumbnail libro">
+						<div class="caption">
+							<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>"></a>
+							 <div class="info">
+								<p class="book-title"><?php echo $book->getTitulo();?></p>
+								<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
+								<p class="book-price"><b><?php echo '$'.$book->getPrecio().' MXN';?></b></p>
+							</div> 
+							<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8');?>">
+						</div>
+					</div>
+
+					
+
+				<?php endforeach; ?>
+					
+				</div>
+				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
+					<span class="glyphicon glyphicon-menu-right"></span>
+				</div>	
+			</div><!-- Fin Carousel -->
+
+		<?php endif; ?>
 
 			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
 			

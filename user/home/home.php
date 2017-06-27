@@ -249,6 +249,12 @@ session_start();
 		</div> <!-- Fin Compras Recientes.  -->
 		<?php endif; ?>
 
+		
+		<?php 
+			$busqueda = new Busqueda();
+			$books = $busqueda->getLibrosUsuario(1);
+			if(!empty($books)):?>
+
 		<!-- Libros que Quizas le ineteresen -->
 		<div class="row card">
 			<h4 class="text-center">Libros que Quizás te interesen.</h4>
@@ -258,14 +264,8 @@ session_start();
 			</div>
 
 			<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-			<?php 
-				$busqueda = new Busqueda();
-				$books = $busqueda->getLibrosUsuario(1);
-				if(empty($books)){
-					$books = $busqueda->buscaGeneral("");
-				}
-				foreach ($books as $book):
-			?>
+			<?php foreach ($books as $book): ?>
+				
 				<div class="thumbnail libro">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
@@ -285,37 +285,38 @@ session_start();
 			<div id="next-intereses" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
+			<?php endif; ?>
 		</div>
 
 	
 	</div>
 	
 	<div class="container-fluid footer">
-				<div class="row-fluid text-center">
-						<div class="col-lg-4">
-							<div class="row">
-								<img src="../../img/logo-white.png" alt="">
-								<b>LABERET</b>
-							</div>
-							<div class="row">
-								<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-							</div>
+		<div class="row-fluid text-center">
+				<div class="col-lg-4">
+					<div class="row">
+						<img src="../../img/logo-white.png" alt="">
+						<b>LABERET</b>
+					</div>
+					<div class="row">
+						<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
+					</div>
+				</div>
+				<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
+				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+				</div>
+				<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
+					<div class="menu row nav centered">
+						<div style="text-align: left">
+							<a href="../../">Inicio</a><br>
+							<a href="#">Catálogo</a><br>
+							<a href="#">Pedidos Especiales</a><br>
+							<a href="#">Historial de Compras</a>
 						</div>
-						<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-						<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-						</div>
-						<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-							<div class="menu row nav centered">
-								<div style="text-align: left">
-									<a href="../../">Inicio</a><br>
-									<a href="#">Catálogo</a><br>
-									<a href="#">Pedidos Especiales</a><br>
-									<a href="#">Historial de Compras</a>
-								</div>
-							</div>
-						</div>
-					</div><!-- FIN Footer -->
+					</div>
+				</div>
+			</div><!-- FIN Footer -->	
 	</div>
 	<!-- FIN ELEMENTOS -->
 

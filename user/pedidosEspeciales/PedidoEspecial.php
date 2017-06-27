@@ -8,11 +8,13 @@ Class PedidoEspecial {
 	private $precio;
 	private $descripcion;
 
+	// Constructor
 	/*
 	function __construct(){
 		$this-> = array();
 	}
 	*/
+	
 
 	//Llena el objeto. 
 	function fill($row) {
@@ -23,6 +25,22 @@ Class PedidoEspecial {
 		$this->precio = $row['precio'];
 	}
 
+	// Getters  
+	function getFoto(){
+		return $this->foto;
+	}
+
+	function getPrecio(){
+		return $this->precio;
+	}
+
+	function getDescripcion(){
+		return $this->descripcion;
+	}
+
+	function getidLibreria(){
+		return $this->idLibreria;
+	}
 }
 
 ?>
