@@ -2,7 +2,7 @@
 	include '../../conexion.php';
 	$correo = $_POST['correo'];
 	$pass = $_POST['password'];
-	$pass = md5($pass."pene"."teamojazteamolunateamoandrea");
+	$pass = md5($pass."pene"."teamolizteamomoreteamoandrea");
 	$sql = "SELECT * From Usuario WHERE correo = '".$correo."' AND password = '".$pass."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
@@ -10,7 +10,7 @@
 	if(!$row)
 	{
 		//Revisar si es Libreria.
-		$sql = "SELECT * From Administrador WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
+		$sql = "SELECT * From administradorLibreria WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();
 

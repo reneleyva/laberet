@@ -67,10 +67,10 @@
 			</div>
 			
 			<div class="info col-lg-4 col-md-4 col-sm-6 col-xs-6">
-				<p class="title">
+				<p class="title"> 
 				<?php echo $book->getTitulo();?></p>
 
-				<p><a class="author" href="../buscar/?q=<?php echo $book->getAutor();?>&s=autor">
+				<p><b>Autor: </b><a class="author" href="../buscar/?q=<?php echo $book->getAutor();?>&s=autor">
 					<?php echo $book->getAutor();?>
 				</a></p>
 				<p><b>Precio: </b> $<?php echo $book->getPrecio();?></p>
