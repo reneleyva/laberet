@@ -24,6 +24,7 @@ session_start();
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 	
 </head>
 <body>
@@ -99,7 +100,25 @@ session_start();
 				?><!-- Fin php -->
 		
 				</p>
-				<img id="paypal" src="../../img/paypal.png"><br>
+				<!--<img id="paypal" src="../../img/paypal.png"><br>-->
+				<div id="paypal-button"></div>
+				<script>
+			        paypal.Button.render({
+
+			            env: 'production', // Or 'sandbox',
+
+			            commit: true, // Show a 'Pay Now' button
+
+			            payment: function() {
+			                // Set up the payment here
+			            },
+
+			            onAuthorize: function(data, actions) {
+			                // Execute the payment here
+			           }
+
+			        }, '#paypal-button');
+			    </script>
 				<?php 
 				include_once "../../lib/Libro.php";
 				//Checa si está en carrito 
