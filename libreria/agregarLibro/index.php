@@ -58,7 +58,7 @@
 		          <li><a href="#">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Ventas</a></li>
 		          <li class="divider"></li>
-		          <li><a href="#">Salir</a></li>
+		          <li><a href="../../user/salir">Salir</a></li>
 		        </ul>
 		      </li>
 			</ul>

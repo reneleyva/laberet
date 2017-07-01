@@ -114,7 +114,7 @@
 				    
 				</div>
 
-				<a id="agregar-nuevo" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></a>
+				<a id="agregar-nuevo" class="btn btn-default" href="../agregarLibro"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></a>
 			</form>
 		</div>
 

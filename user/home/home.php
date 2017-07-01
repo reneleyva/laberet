@@ -196,7 +196,7 @@ session_start();
 						<img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men">
 					</div>
 					<div class="info col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-7 col-xs-offset-0">
-						<p class="book-title">Brave men</p>
+						<p class="book-title"><?php echo $libro->getDescripcion();?></p>
 						<a class="book-author" href="#">Ernie Pyle</a>
 						<p><b>Autor: </b><a href="#">Ernie Pyle</a></p>
 						<p><b>Ubicación: </b><a href="#" title="Librería Aurora">Librería Aurora</a></p>
