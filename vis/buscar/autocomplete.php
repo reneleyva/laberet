@@ -5,6 +5,9 @@ include '../../conexion.php';
 //termino
 $keyword = $_GET['term'];
 
+if (strlen($keyword) < 3) {
+	exit();
+}
 //Busco Por autor 
 $sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '%".$keyword."%';";
 $result = $pdo->query($sql);

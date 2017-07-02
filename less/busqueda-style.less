@@ -17,11 +17,12 @@ form {
 	margin-bottom: 0px;
 	padding-left: 50px;
 	text-align: center; 
+	margin-right: 0px;
 
 	#search-form {
-		// margin: 0 auto;
 		padding-left: 15px;
-		width: 100%;
+		// width: 0%;
+		float: left;
 		text-align: left;
 
 		.form-control {
@@ -34,22 +35,15 @@ form {
 
 	}
 	.input-group {
-		// width: 50%;
 		input {font-size: 18px;}
 	}
 }
 
-// @media (max-width: 800px) { 
-// 	#search-form {
-// 		.input-group {
-// 			// width: 50%;
-// 			input, select {font-size: 12pt;}
-// 			select {
-// 				width: 80%;
-// 			}
-// 		}
-// 	}
-// } //Fin media
+@media (max-width: 800px) { 
+	.row {
+		margin-right: 0px !important;
+	}
+} //Fin media
 
 .resultado {
 	margin-left: 50px;
@@ -104,8 +98,6 @@ form {
 		
 		a, p{
 			font-size: 12pt;
-			// width:280px;
-		    // white-space: nowrap;
 		}
 
 		.book-title {
@@ -120,16 +112,6 @@ form {
 
 	}	
 }
-
-// .paginas .pagination>li>a,
-// .paginas .pagination>li>span {
-//   border: 1px solid #9B9B9B;
-//   font-weight: bold;
-//   color: #656565;
-// }
-// .pagination>li.active>a {
-//   background: #BCBCBC;
-// }
 
 
 h1.face {
@@ -151,17 +133,24 @@ ul.ui-autocomplete.ui-menu{
 }
 
     
+
 .footer {
+	height: fit-content;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	color: white;
+
+	.row-fluid {
+		margin-top: 20px;
+	}
+	background: @blue; 
+	// border: 1px solid black;
 	.menu {
-		// width: fit-content;
+		width: fit-content;
 		margin: 0 auto;
 	}
-
-	background: none; 
-	background-color: @blue;
-	height: 25%;
-	padding-top: 40px;
-	color: white;
+	
+	
 
 	a {
 		color: white;

@@ -42,11 +42,14 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li><a href="../../">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
 			            <li><a href="../librerias">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    
@@ -73,11 +76,13 @@
 				<p><b>Autor: </b><a class="author" href="../buscar/?q=<?php echo $book->getAutor();?>&s=autor">
 					<?php echo $book->getAutor();?>
 				</a></p>
-				<p><b>Precio: </b> $<?php echo $book->getPrecio();?></p>
+				<p><b>Precio: </b> <b>$<?php echo $book->getPrecio();?></b></p>
 				<p><b>Ubicación:</b> <a href="../infoLibreria/?id=<?php echo $libreria->getId();?>">
 					<?php echo $libreria->getNombre();?>
 				</a></p>
-				<p><b>ISBN: </b> <?php echo $book->getIsbn();?></p>
+				<?php if($book->getIsbn()): ?>
+					<p><b>ISBN: </b> <?php echo $book->getIsbn();?></p>
+				<?php endif; ?>
 				<p><b>Tags: </b> 
 				<?php 
 				$tags = explode(" ", trim($book->getTags(), " "));
@@ -109,21 +114,22 @@
 		</div>
 		
 		<h3 class="text-center" id="libros-relacionados"><b>Libros Relacionados</b></h3>
+
 		<div class="row card">
 			
-			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
+			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
-
-			<div id="carousel-relacionados" class="col-lg-10 col-md-8 col-sm-8 col-xs-6	">
+			
+			<?php if(!$relacionados) {
+				echo "<b class='text-center'>NO HAY LIRBOS RELACIONADOS</b>";
+				// exit();
+			} ?>
+			<div  id="carousel-relacionados" class="row col-lg-12 col-md-8 col-sm-8 col-xs-8	" data-num-libros="<?php echo count($relacionados); ?>">
 
 			<?php 
 
-			if(!$relacionados) {
-				echo "NO HAY LIRBOS RELACIONADOS";
-				// exit();
-			}
+			
 			foreach ($relacionados as $book): $i++;?>
 				
 				
@@ -143,7 +149,7 @@
 
 			<?php endforeach; ?>
 			</div>
-				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
+				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
 				
@@ -164,10 +170,10 @@
 			      </div>
 			      <div class="modal-body">
 			        <div class="row">
-			        	<div class="modal-cover col-lg-6">
+			        	<div class="modal-cover col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			        		<img src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
-			        	<div class="modal-back col-lg-6">
+			        	<div class="modal-back col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			        		<img src="../../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        </div>

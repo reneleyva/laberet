@@ -1,4 +1,4 @@
-<?php include "redirect.php" ?>
+<?php include "variable-sesion.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +13,8 @@
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
-	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
+	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -22,7 +22,6 @@
     <![endif]-->
 </head>
 <body>
-
 	<nav class="navbar navbar-default" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		  <div class="navbar-header col-lg-2 col-md-2">
@@ -54,7 +53,6 @@
 		    
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
-
 	<div class="container">
 
 		<div class="row">
@@ -63,7 +61,7 @@
 				<div id="search-form" class="form-group">
 					<div class="input-group">
 						<!-- BUSQUEDA -->
-						<input type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Search for...">       
+						<input type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
@@ -75,9 +73,6 @@
 							  <option value="categoria">Categoria</option>
 						</select>
 				    </div>
-				
-					
-				
 				
 				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
@@ -99,7 +94,8 @@
 			
 			<?php 
 			if (isset($_GET['q'])) {
-				echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars("$keyword", ENT_QUOTES, 'UTF-8')."</h3></span>";
+				echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8')."</span></h3>";
+
 			}
 
 			if(!$books){
@@ -114,19 +110,19 @@
 			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
 				$book = $books[$i];
 				?>
-				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12	">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
+						<a href="#"><img class="book-cover" src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt=""></a>
 						<div class="info">
 							<p class="book-title">
-								<?php echo $book->getTitulo();?>
+								<?php echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8'); ?>
 							</p>
 							<p class="book-author">
-								<?php echo $book->getAutor();?>
+								<?php echo htmlspecialchars($book->getAutor(), ENT_QUOTES, 'UTF-8'); ?>
 							</p>
 							<p class="book-price">
 							<b>
-								$<?php echo "<b>".$book->getPrecio()."</b> MXN";?>
+								$<?php echo "<b>". htmlspecialchars($book->getPrecio(), ENT_QUOTES, 'UTF-8')."</b> MXN";?>
 							</b>
 							</p>
 						</div>
@@ -168,10 +164,10 @@
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
-						<a href="../../">Inicio</a><br>
-						<a href=".">Catálogo</a><br>
-						<a href="../registrarse">Registrarse</a><br>
-						<a href="../inicioSesion">Iniciar Sesión</a>
+						<a href="#">Inicio</a><br>
+						<a href="vis/buscar">Catálogo</a><br>
+						<a href="vis/registrarse">Registrarse</a><br>
+						<a href="vis/inicioSesion">Iniciar Sesión</a>
 					</div>
 				</div>
 			</div>

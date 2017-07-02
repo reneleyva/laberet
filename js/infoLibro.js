@@ -1,6 +1,82 @@
-jQuery(document).ready(function($) {
-	
+function aplySlick(elem) {
+    elem.slick({
+      infinite: true,
+      centerMode: true,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      dots: false,
+      prevArrow: $('#prev-relacionados'),
+      nextArrow: $('#next-relacionados'),
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+  });
+};
 
+function carouselRelacionados() {
+  var carousel = $('#carousel-relacionados');
+  var numLibros = carousel.data('num-libros');
+  var width = $( document ).width();
+  console.log(numLibros);
+  console.log(width);
+  if(carousel.hasClass('slick-slider')) {
+    carousel.slick('unslick');
+  }
+
+  if (numLibros > 5) {
+    aplySlick(carousel);
+  } else if (width < 1200 && numLibros > 3) {
+    // console.log("Adding");
+    aplySlick(carousel);
+  } else if (width < 1000 && numLibros > 2) {
+    // console.log("Adding. width: " + width + " " + "numLibros: " + numLibros);
+    aplySlick(carousel);
+  } else if (width < 768 && numLibros > 1) {
+    // console.log("Adding. width: " + width + " " + "numLibros: " + numLibros);
+    aplySlick(carousel);
+  } else if (numLibros == 1) {
+      carousel.css('width', '100%');
+      $('#prev-relacionados').hide();
+      $('#next-relacionados').hide();
+  } else {
+    //No slick for you 
+    $('#prev-relacionados').hide();
+    $('#next-relacionados').hide();
+  }
+
+};
+
+jQuery(document).ready(function($) {
+	//Tomar el num de lirbos en carousel, el tamaño de pantalla, y las flechas. 
+  //Según el numero de libros y el tamaño decidir si aplicar slick. 
+  carouselRelacionados();
+  $(window).on('resize', function(){
+    carouselRelacionados();
+  });
+ 
   $("#add-cart").click(function() {
     var id = $(this).closest('.bookInfo').data('id');
     location.href = "addToCart.php?id="+id;
@@ -26,39 +102,6 @@ jQuery(document).ready(function($) {
 		$('.modal').modal('show');
 	});
 
-	$('#carousel-relacionados').slick({
-    infinite: true,
-    centerMode: true,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    dots: false,
-    prevArrow: $('#prev-relacionados'),
-    nextArrow: $('#next-relacionados'),
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
 });
-});
+
+	
