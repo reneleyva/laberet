@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
+@blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -10,15 +12,16 @@ html, body {
 	font-family: 'Roboto Mono', monospace;
 }
 
+
 form {
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 70px;
 	font-size: 17pt;
-	width: 40%;
-	
+	width: 30vw;
+
 	.form-control {
 		font-size: 17pt;
-		width: 70%;
+		width: 100%;
 	}
 
 	input[type="text"],  input[type="password"], input[type="email"] {
@@ -47,7 +50,8 @@ form {
 	button[type="submit"] {
 		margin-top: 10px;
 		margin-bottom: 10px;
-		font-size: 17pt;
+		font-size: 15pt;
+		background-color: @green;
 	}
 
 	p {
@@ -56,8 +60,8 @@ form {
 }
 
 #iniciar {
-	margin-top: 150px;
-	width: 40%;
+	margin-top: 100px;
+	width: 30vw;
 
 	label[for="password"] {
 		margin-top: 20px;
@@ -65,5 +69,24 @@ form {
 
 	#user-invalid {
 		display: block;
+	}
+}
+
+@media (max-width: 1200px) {
+	form {
+		width: 50vw;
+		font-size: 13pt;
+
+		.form-control {
+			font-size: 13pt;
+		}
+		
+		label {
+			font-size: 15pt;
+		}
+	}
+
+	#iniciar {
+		width: 50vw;
 	}
 }

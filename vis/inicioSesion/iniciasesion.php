@@ -26,9 +26,7 @@
 			header("location: ../../libreria/home"); 
 			exit();
 		}
-	}
-	else
-	{
+	} else {
 		session_start();
 		$_SESSION['nombre'] = $row['nombre'];
 		$_SESSION['type'] = "user"; //Tipo usuario

@@ -40,11 +40,14 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
 			            <li><a href="../librerias">Librerías</a></li>
-			            <li class="active"><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li><a href="../registrarse">Registrarse</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    
@@ -53,17 +56,16 @@
 
 	<div class="container">
 		<div class="row">
-			<!-- MORUBIO ESTE ES EL FORMULARIO SOLO SE VAN A ENVIAR UNA VEZ QUE SE COMPRUEBEN LOS DATOS ASÍ QUE SUPON QUE LOS DATOS SON BUENOS SOLO GUARDALOS -->
 			<form action="registrarse.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
 				<h1>Registrarse</h1>
-				<label for="nombre">Nombre</label>
+				<label for="nombre">Nombre Completo</label>
 				<input id="nombre" required type="text" name="nombre" value="<?php if (isset($_GET['nombre'])) {
 					echo htmlspecialchars($_GET['nombre'], ENT_QUOTES, 'UTF-8');
-				} ?>" placeholder="" class="form-control">
+				} ?>" placeholder="" class="form-control" maxlength="30" size="30">
 				<label for="correo">Correo</label>
 				<input id="correo" required type="email" name="correo" value="<?php if (isset($_GET['correo'])) {
 					echo htmlspecialchars($_GET['correo'], ENT_QUOTES, 'UTF-8');
-				} ?>"  placeholder="" class="form-control">
+				} ?>"  placeholder="" class="form-control" maxlength="30" size="30">
 				<div id="correo-invalido" class="form-control err-msg">¡Correo no válido!</div>
 				<?php 
 					if (isset($_GET['correo'])) {
@@ -72,12 +74,13 @@
 				 ?>
 
 			    <label for="password">Contraseña</label>
-				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control">
+				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control" maxlength="20" size="20">
 				<div id="pass-invalid" class="form-control err-msg">La contraseña debe contener por lo menos 5 caracteres.</div>
 				<label for="password2">Repite contraseña</label>
-				<input id="password2" required type="password" name="password2" value="" placeholder="" class="form-control">
+				<input id="password2" required type="password" name="password2" value="" placeholder="" class="form-control" maxlength="20" size="20">
 				<div id="no-coinciden" class="form-control err-msg">Las contraseñas no coinciden!</div>
-				<button id="enviar" type="submit" class="btn btn-default">Enviar</button>
+					<button id="enviar" type="submit" class="btn btn-default">Crear Cuenta</button>
+				
 				<p>¿Ya tienes cuenta? <a href="../inicioSesion" title="">Iniciar Sesión</a></p>
 			</form>	
 		</div>

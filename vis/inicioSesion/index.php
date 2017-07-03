@@ -63,10 +63,10 @@
 				<label for="correo">Correo</label>
 				<input id="correo" required type="text" name="correo" value="<?php if (isset($_GET['correo'])) {
 					echo htmlspecialchars($_GET['correo'], ENT_QUOTES, 'UTF-8');
-				} ?>" placeholder="" class="form-control">
+				} ?>" placeholder="" class="form-control" maxlength="30" size="30">
 				<div id="correo-invalido" class="form-control err-msg">Correo No Válido.</div>
 			    <label for="password">Contraseña</label>
-				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control">
+				<input id="password" required type="password" name="password" value="" placeholder="" class="form-control" maxlength="30" size="30">
 				<div id="pass-invalid" class="form-control err-msg">Contraseña no válida.</div>
 	
 				<button id="enviar" type="submit" class="btn btn-default">Iniciar Sesión</button>

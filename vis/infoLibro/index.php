@@ -93,7 +93,7 @@
 				?><!-- Fin php -->
 		
 				</p>
-				
+				<img id="paypal" src="../../img/paypal.png" alt=""><br>
 				<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
 
 			</div>

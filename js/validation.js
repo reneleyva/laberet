@@ -26,6 +26,7 @@ function check() {
 }
 
 jQuery(document).ready(function($) {
+	$('#nombre').focus();
 	$('#enviar').on('click', function(event) {
 		// event.preventDefault();
 		// $('#pass-invalid').show('fast');

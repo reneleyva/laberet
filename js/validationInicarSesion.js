@@ -16,10 +16,5 @@ function check() {
 }
 
 jQuery(document).ready(function($) {
-	$('#enviar').on('click', function(event) {
-		// event.preventDefault();
-		// $('#pass-invalid').show('fast');
-	});
-
 	$('#correo').focus();
 });

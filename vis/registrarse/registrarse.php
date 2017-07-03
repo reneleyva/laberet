@@ -5,7 +5,7 @@ include "../../conexion.php";
 	$correo = $_POST['correo'];
 	$nombre = $_POST['nombre'];
 
-	$sql = "SELECT * FROM Usuario WHere correo = '".$correo."';";
+	$sql = "SELECT * FROM Usuario WHERE correo = '".$correo."';";
 	$result = $pdo->query($sql);
 	$row = $result->fetch();
 	if ($row) {
@@ -33,7 +33,6 @@ include "../../conexion.php";
 		password ='".$pass."';";
 		$s = $pdo->prepare($sql);
 		$s->execute();
-		
 	}
 	
 	session_start();
