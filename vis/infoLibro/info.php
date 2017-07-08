@@ -12,5 +12,10 @@ if (!isset($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 $book = Libro::getLibro($id);
+
+if ($book === NULL) {
+	header("Location: ../404.html");
+	exit();
+}
 $libreria = Libreria::getLibreria($book->getIdLibreria());
 $relacionados = Busqueda::getLibrosRelacionados($id);

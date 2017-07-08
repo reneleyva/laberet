@@ -1,12 +1,14 @@
 <?php 
 session_start();
 if (!isset($_GET['id'])) {
-	echo "404";
+	header("Location: ../404.html");
 	exit();
 }
 
 if (!isset($_SESSION['type'])) {
-	header("location: ../../");
+	//PRIMERA VEZ EN LA PAGINA
+	$_SESSION['type'] = 'invitado';
+	//Agregar al Log. 
 }
 $id = $_GET['id'];
 $tipo = $_SESSION['type'];
