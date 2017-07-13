@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-	<title>Laberet</title>
+	<title>Pedidos Especiales</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/navbar-libreria.css"> 
@@ -39,10 +39,10 @@
 	   
 	   <div id="list" class="col-lg-9 col-md-9">
 	   		<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="#">Inicio</a></li>
+				<li class="active"><a href="../home">Inicio</a></li>
 				<li><a href="../agregarLibro">Agregar Libro</a></li>
 				<li><a href="../historialVentas">Ventas</a></li>
-				<li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
+				<li><a href="#">Pedidos Especiales</a></li>
 				<li><a href="../../user/buscar">Catálogo Universal</a></li>
 			</ul>
 	   </div>
@@ -64,39 +64,10 @@
 	    
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
-	<?php 
-		//Revisa la sesión
-		session_start();
-		if (!isset($_SESSION['id'])) {
-			//NO ha iniciado sesión
-			header("location: ../../vis/inicioSesion");
-		} else if ($_SESSION['type'] != 'libreria') {
-			//No es una libreria
-			header("location: ../../user/home");
-		}
-	 ?>
-    <?php include 'libreria.php';?>
-	<div class="container-fluid" style="background: url(../../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
-		<div class="row-fluid">
-			<div>
-				<div id="box">
-					<div class="circle" style="background: url(../../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
-					<div class="row text-center">
-						<h2 class="col-lg-12"><b><?php echo $nombre;?></b></h2>
-						<p><?php echo $direccion;?></p>
-						<p><?php echo 'Tel: '.$telefono;?></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> <!-- Fin fluid -->
-	
 
-	<div class="container">
+	<div class="container"> <!-- Muestra de los pedidos especiales. -->
 		<div class="row">
-			
-			<form action="../agregarLibro" class="form-inline" method="get" accept-charset="utf-8">
-				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
+				<h2 class="text-center"><b>Pedidos Esepciales.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search for...">
@@ -113,9 +84,6 @@
 				</select>
 				    
 				</div>
-
-				<a id="agregar-nuevo" class="btn btn-default" href="../agregarLibro"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></a>
-			</form>
 		</div>
 
 		
@@ -196,6 +164,7 @@
 
 		
 	</div>
+
 	
 	<div class="container-fluid footer">
 		<div class="row-fluid text-center">
@@ -292,7 +261,7 @@
 	        	<h4>Si tiene alguno de los siguientes libros cataloguelos y se le notificará al usuario.</h4>
 
 	        	<div class="pedido">
-	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+	        		<p><b>El usuario Luna Andrea Lizz ha solicitado el siguiente libro</b></p>
 					<p><b>Autor: </b> Miguel Cervantes</p>
 					<p><b>Título: </b> El Quijote</p>
 					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
