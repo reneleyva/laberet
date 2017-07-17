@@ -91,15 +91,19 @@
 			
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			<?php 
-				include 'libreria.php';
+				include '../../lib/PedidosEspeciales.php';
 				include "../../pagination.php";
+				$pedidos = new PedidosEspeciales();
+				$books = $pedidos->getPedidosEspeciales();
 
 				if (!$books) {
 					echo "No hay lisbros! FUCK!";
 					//exit();
-				} 
+				} else {
+					echo count($books);
+				}
 			?>
-			<?php 
+			<?php
 				$flag = FALSE; //PAra que imprima cada 2 veces una linea horizontal
 				$total = 0; //Total de libros ya generados
 				$numLibros = count($books);
@@ -108,8 +112,10 @@
 				
 				for ($i = ($page-1)*$booksPerPage; $i < $numLibros and $total < $booksPerPage;$i++) { 
 					$book = $books[$i]; 
+					
 
 			?>
+				<<?php echo "Dick"; ?>
 
 				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book['id']; ?>">
 				<div class="caption">
