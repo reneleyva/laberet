@@ -72,22 +72,41 @@ html, body {
 
 
 form {
-	margin-top: 40px;
+	margin-top: 15px;
+	margin-bottom: 0px;
 	padding-left: 50px;
+	text-align: center; 
+	margin-right: 0px;
 
-	h2 {
-		margin-bottom: 20px;
+	#search-form {
+		padding-left: 15px;
+		// width: 0%;
+		float: left;
+		text-align: left;
+
+		.form-control {
+			font-size: 18px;
+		}
+
+		select {
+			margin-left: 8px;
+		}
+
 	}
-
 	.input-group {
 		input {font-size: 18px;}
 	}
-
-	.form-control {
-		font-size: 18px;
-	}
-
 }
+
+ul.ui-autocomplete.ui-menu{
+	font-family: 'Roboto Mono', monospace;
+}
+
+@media (max-width: 800px) { 
+	.row {
+		margin-right: 0px !important;
+	}
+} //Fin media
 
 .resultado {
 	margin-left: 50px;
@@ -122,7 +141,7 @@ form {
 		cursor: pointer;
 		height: 380px;
 		
-		.info{
+		.info {
 			margin: 0 auto;
 			margin-top: 10px;
 			text-align: left;
@@ -144,26 +163,17 @@ form {
 			margin-bottom: -2px;
 		}
 
-		a.book-author {
+		p.book-author {
 			color: black;
-			text-decoration: underline;
+			margin-bottom: 0px;
 		}
 
 	}	
 }
 
-.pagination {
-	li {
-		a {
-			color:black;
-		}
-	}
-
-	.active {
-		background-color: #FEFF9A;
-	}
+#pagination ul li a:hover {
+	cursor: pointer;
 }
-
 
 h1.face {
 	margin-top: 70px;

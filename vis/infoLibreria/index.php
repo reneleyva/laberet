@@ -8,10 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" href="../../css/perfilLibreria-style.css"> 
 	<link rel="stylesheet" type="text/css" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,16 +40,20 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li><a href="../../">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
-			            <li class="active"><a href="../librerias">Librerías</a></li>
+			            <li><a href="../librerias">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    
 		  </div><!-- /.navbar-collapse -->
 	</nav> <!-- END NAV -->
+
 	<?php include 'perfil.php';?>
 	<div class="container-fluid" style="background: url(../../<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid" >
@@ -64,10 +68,16 @@
 
 					<div class="hl text-center"></div>
 					<div class="row text-center redes-sociales">
-						<a href="#"><img src="../../img/facebook.png" alt=""></a>
-						<a href="#"><img src="../../img/twitter.png" alt=""></a>
-						<a href="#"><img src="../../img/instagram.png" alt=""></a>
-						<a href="#"><img src="../../img/maps.png" alt=""></a>
+						<?php if($libreria->getFacebook()): ?>
+							<a target="_blank" href="<?php echo $libreria->getFacebook() ?>"><img src="../../img/facebook.png" alt=""></a>
+						<?php endif; ?>
+						<?php if($libreria->getTwitter()): ?>
+							<a target="_blank" href="<?php echo $libreria->getTwitter() ?>"><img src="../../img/twitter.png" alt=""></a>
+						<?php endif; ?>
+						<?php if($libreria->getInstagram()): ?>
+							<a target="_blank" href="<?php echo $libreria->getInstagram() ?>"><img src="../../img/instagram.png" alt=""></a>
+						<?php endif; ?>
+						<a target="_blank" href="http://www.google.com/maps/place/<?php echo $libreria->getCoordenadas() ?>"><img src="../../img/maps.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -77,7 +87,7 @@
 	
 	<div id="muestra" class="container">
 		<div class="row">
-			<form action=".#muestra" class="form-inline" method="get" accept-charset="utf-8">
+			<!-- <form action=".#muestra" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div id="search-form" class="form-group">
 					<div class="input-group">
@@ -96,15 +106,41 @@
 					  <option value="categoria">Categoria</option>
 				</select>
 				
-				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
 					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
 				} ?>
 
+
+				</div>
+			</form> -->
+
+			<form action=".#muestra" class="row form-inline" method="get" accept-charset="utf-8">
+				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
+				<div id="search-form" class="form-group">
+					<div class="input-group">
+					<input type="hidden" name="id" value="<?php
+							echo htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8');  ?>">
+						<!-- BUSQUEDA -->
+						<input type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+
+						<select name="s" class="form-control">
+							  <option value="todo">Todo</option>
+							  <option value="autor">Autor</option>
+							  <option value="titulo">Titulo</option>
+							  <option value="categoria">Categoria</option>
+						</select>
+				    </div>
+				
+				<!-- Para javascript -->
+				<?php if (isset($_GET['s'])) {
+					echo "<input type='text' id='selected' hidden value='".htmlspecialchars($_GET['s'], ENT_QUOTES, 'UTF-8')."'>";
+				} ?>
+				 
 				</div>
 			</form>
-
-			
 		</div>
 
 		
@@ -121,7 +157,7 @@
 		}
 		
 		if (isset($_GET['q'])) {
-			echo "<h3 class='resultado'>Resultados para: <span>".$_GET['q']."</span></h3>";
+			echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars($_GET['q'], ENT_QUOTES, 'UTF-8')."</span></h3>";
 		}
 
 		$total = 0; //Total de libros ya generados
@@ -131,16 +167,16 @@
 		for ($i = ($page-1)*12; $i < $numLibros and $total < 12;$i++) { 
 				$book = $books[$i]; ?>
 
-			<div class="thumbnail libro col-lg-3 col-md-6">
+			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
 				<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
 					<div class="info">
 						<p class="book-title"><?php
 				        	echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8');
 				        ?></p>
-						<a class="book-author" href="#"><?php
+						<p class="book-author"><?php
 							echo htmlspecialchars($book->getAutor(), ENT_QUOTES, 'UTF-8');
-						?></a>
+						?></p>
 						<p class="book-price"><b><?php
 							echo htmlspecialchars('$'.$book->getPrecio(), ENT_QUOTES, 'UTF-8');
 						?> MXN</b></p>
@@ -152,18 +188,23 @@
 
 			
 
-			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
-			  <ul class="pagination">
+			<nav class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12" id="pagination" aria-label="Page navigation">
+			  <ul class="pagination" >
 			    <?php 
 					showPagination($books, $page, 12);
 				?>
 			  </ul>
+
 			</nav>
+
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/linkLibro.js"></script>
 	<script src="../../js/optionHack.js"></script>
+	<script src="../../js/infoLibreria.js"></script>
+	<script src="../../js/jquery-ui.min.js"></script>
+	<script src="../../js/busca.js"></script>
 </body>
 </html>

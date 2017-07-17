@@ -6,8 +6,11 @@ if (!isset($_GET['id'])) {
 }
 
 if (!isset($_SESSION['type'])) {
-	header("location: ../../");
+	//PRIMERA VEZ EN LA PAGINA
+	$_SESSION['type'] = 'invitado';
+	//Agregar al Log. 
 }
+
 $id = $_GET['id'];
 $tipo = $_SESSION['type'];
 

@@ -2,6 +2,8 @@
 /*Si el usuario ya inició sesión lo redirige a su página principal,
  * sino inicia sesión como invitado (El invitado no tiene carrito por ahora).
 */ 
+
+
 session_start();
 if (isset($_SESSION['nombre'])) {
 	if ($_SESSION['nombre'] != 'invitado') {
@@ -13,8 +15,10 @@ if (isset($_SESSION['nombre'])) {
 		}
 
 	} 
-} else {
+} else if (!isset($_SESSION['type'])){
+	include_once 'lib/Log.php';
 	//PRIMERA VEZ EN LA PAGINA
 	$_SESSION['type'] = 'invitado';
 	//Agregar al Log. 
+	Log::guardaVisita();
 }		

@@ -10,7 +10,7 @@ if (strlen($keyword) < 3) {
 }
 
 //Busco Por autor 
-$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '%".$keyword."%';";
+$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '%".$keyword."%' LIMIT 5;";
 $result = $pdo->query($sql);
 $data = array();
 
@@ -19,7 +19,7 @@ while ($row = $result->fetch()) {
 }
 
 //Busco por titulo de libro
-$sql = "SELECT DISTINCT titulo from Libro WHERE titulo LIKE '".$keyword."%';";
+$sql = "SELECT DISTINCT titulo from Libro WHERE titulo LIKE '".$keyword."%' LIMIT 5;";
 $result = $pdo->query($sql);
 
 while ($row = $result->fetch()) {

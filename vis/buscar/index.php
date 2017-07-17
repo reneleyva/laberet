@@ -61,7 +61,7 @@
 				<div id="search-form" class="form-group">
 					<div class="input-group">
 						<!-- BUSQUEDA -->
-						<input type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
+						<input required type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
@@ -76,13 +76,11 @@
 				
 				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
-					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
+					echo "<input type='text' id='selected' hidden value='".htmlspecialchars($_GET['s'], ENT_QUOTES, 'UTF-8')."'>";
 				} ?>
 				 
 				</div>
 			</form>
-
-			
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
@@ -110,7 +108,7 @@
 			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
 				$book = $books[$i];
 				?>
-				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12	">
+				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt=""></a>
 						<div class="info">
@@ -131,8 +129,8 @@
 				</div>
 			<?php $total++;} ?>
 		
-		<div class="paginas text-center col-lg-12 col-md-12 col-sm-12">
-			<nav class="" aria-label="Page navigation">
+		<div class="paginas text-center col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<nav class="" aria-label="Page navigation" id="pagination">
 				<ul class="pagination">
 					
 					<?php 

@@ -6,17 +6,20 @@ if (!isset($_GET['id'])) {
 }
 
 if (!isset($_SESSION['type'])) {
+	include_once '../../lib/Log.php';
 	//PRIMERA VEZ EN LA PAGINA
 	$_SESSION['type'] = 'invitado';
 	//Agregar al Log. 
+	Log::guardaVisita();
 }
+
 $id = $_GET['id'];
 $tipo = $_SESSION['type'];
 
 if ($tipo != 'invitado') {
 	if ($tipo == 'libreria') {
 		header("location: ../../libreria/infoLibro/?id=".$id);
-	} else if ($tipo == 'usuario') {
+	} else if ($tipo == 'user') {
 		header("location: ../../user/infoLibro/?id=".$id);
 	}
 }

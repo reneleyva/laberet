@@ -117,7 +117,7 @@
 
 		<div class="row card">
 			
-			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-2">
+			<div id="prev-relacionados" class="prev col-lg-2 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
 			
@@ -125,7 +125,7 @@
 				echo "<b class='text-center'>NO HAY LIRBOS RELACIONADOS</b>";
 				// exit();
 			} ?>
-			<div  id="carousel-relacionados" class="row col-lg-12 col-md-8 col-sm-8 col-xs-8	" data-num-libros="<?php echo count($relacionados); ?>">
+			<div  id="carousel-relacionados" class="row col-lg-8 col-md-6 col-sm-8 col-xs-8	" data-num-libros="<?php echo count($relacionados); ?>">
 
 			<?php 
 
@@ -133,11 +133,11 @@
 			foreach ($relacionados as $book): $i++;?>
 				
 				
-				<div class="thumbnail libro">
+				<div class="thumbnail libro relacionado">
 					<div class="caption">
 						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>"></a>
 						 <div class="info">
-							<p class="book-title"><?php echo $book->getTitulo();?></p>
+							<p class="book-title"><?php echo $book->getTitulo();?><br></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
 							<p class="book-price"><b><?php echo '$'.$book->getPrecio().' MXN';?></b></p>
 						</div> 
@@ -149,7 +149,7 @@
 
 			<?php endforeach; ?>
 			</div>
-				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-2">
+				<div id="next-relacionados" class="next col-lg-2 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
 				

@@ -4,7 +4,11 @@
 
 session_start();
 if (!isset($_SESSION['type'])) {
-	header("location: ../../");
+	include_once '../../lib/Log.php';
+	//PRIMERA VEZ EN LA PAGINA
+	$_SESSION['type'] = 'invitado';
+	//Agregar al Log. 
+	Log::guardaVisita();
 }
 
 $tipo = $_SESSION['type'];

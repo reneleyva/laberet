@@ -14,8 +14,6 @@ function aplySlick(elem) {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true,
-            dots: true
           }
         },
         {
@@ -69,6 +67,15 @@ function carouselRelacionados() {
 
 };
 
+//Para truncate 
+function shorten(text, maxLength) {
+    var ret = text;
+    if (ret.length > maxLength) {
+        ret = ret.substr(0,maxLength-3) + "…";
+    }
+    return ret;
+}
+
 jQuery(document).ready(function($) {
 	//Tomar el num de lirbos en carousel, el tamaño de pantalla, y las flechas. 
   //Según el numero de libros y el tamaño decidir si aplicar slick. 
@@ -102,6 +109,17 @@ jQuery(document).ready(function($) {
 		$('.modal').modal('show');
 	});
 
+  //Truncate! para libros relacionados con titulos muy largos
+  //For each .relacionaodo cambia el book title.
+  $(".relacionado").each(function(el) {
+        var title =  $(this).find('.book-title').text();
+        $(this).find('.book-title').text(shorten(title, 25));
+
+  });
+
 });
+
+
+
 
 	
