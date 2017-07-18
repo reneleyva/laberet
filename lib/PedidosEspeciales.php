@@ -15,7 +15,7 @@ class PedidosEspeciales {
 		while ($row = $result->fetch()){
 			$book = new PedidoEspecial();
 			$book->fill($row);
-			$book -> getPrecio();
+			echo $book -> getPrecio();
 			array_push($pedidos,$book);
 		}
 		return $pedidos;

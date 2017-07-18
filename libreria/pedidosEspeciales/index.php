@@ -89,10 +89,9 @@
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			<?php 
 				include '../../lib/PedidosEspeciales.php';
-				include "../../pagination.php";
+				//include "../../pagination.php";
 				$pedidos = new PedidosEspeciales();
 				$books = $pedidos->getPedidosEspeciales();
 
@@ -100,7 +99,7 @@
 					echo "No hay lisbros! FUCK!";
 					//exit();
 				} else {
-					echo count($books);
+					//echo count($books);
 				}
 			?>
 			<?php
@@ -110,61 +109,25 @@
 				$booksPerPage = 6;
 				$numPaginas = ceil($numLibros/$booksPerPage); //Num de páginas
 				
-				for ($i = ($page-1)*$booksPerPage; $i < $numLibros and $total < $booksPerPage;$i++) { 
+				for ($i = 0; $i < $numLibros;$i++) { 
 					$book = $books[$i]; 
+					echo $i;
 					
 
 			?>
-				<<?php echo "Dick"; ?>
-
-				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book['id']; ?>">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../<?php echo $book['fotoFrente']?>" alt="Foto">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">
-							<?php echo $book['titulo']; ?>
-						</p>
-						<a class="book-author" href="#">
-							<?php echo $book['autor'];?>
-						</a>
-						<p><?php
-				        	echo "<b>ISBN: </b>".$book['isbn'];?></p>
-						<p>
-							<?php echo '<b>Adición:</b> '.$book['fechaAdicion'];?>
-						</p>
-				        	<p class="book-price">
-							<?php echo "<b>$".$book['precio']." MXN</b>";?>
-						</p>
-					</div>
-				</div>
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button id="editar" class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button id="" class="btn btn-default vendido"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button id="eliminar" class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
-			
+			<?php  
+				echo $book->getDescripcion();
+				echo $book->getTitulo();
+				echo $book->getAutor();
+				echo $book->getIsbn();
+			?>
+				<!-- Aquí meteré un controlador -->
+				<button class="btn btn-default" type="button"><span class="glyphicon">Surtir</span></button>
+			<br>
 			<?php 
-				//Some shady shit right here.
-				//Preguntar a René si no sabes que pedo. 
-				if ($flag) {
-					echo "<div class='hl col-lg-12 col-md-12 col-sm-12 col-xs-12'></div>";
-					$flag = FALSE;
-				} else {
-					$flag = TRUE;
-				} //END IF ELSE 
-				$total++; 
 			 } //END MAIN FOR...
 
 			 ?>				
-			
-			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
-			  <ul class="pagination">
-			   		<?php 
-			   			showPagination($books, $page, 6);
-			   		 ?>
-			  </ul>
-			</nav>
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 		
 

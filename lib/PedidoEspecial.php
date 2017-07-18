@@ -9,6 +9,7 @@ Class PedidoEspecial {
 	private $descripcion;
 	private $titulo;
 	private $autor;
+	private $isbn;
 
 	// Constructor
 	/*
@@ -24,7 +25,7 @@ Class PedidoEspecial {
 		//$this->idLibreria = $row['LibreriaidLibreria'];
 		//$this->foto = $row['foto'];
 		$this->descripcion = $row['descripcion'];
-		//$this->precio = $row['precio'];
+		$this->isbn = $row['isbn'];
 		$this->titulo = $row['titulo'];
 		$this->autor = $row['autor'];
 	}
@@ -50,6 +51,10 @@ Class PedidoEspecial {
 
 	function getTitulo(){
 		return $this->titulo;
+	}
+
+	function getIsbn(){
+		return $this->isbn;
 	}
 /*
 	function getidLibreria(){
