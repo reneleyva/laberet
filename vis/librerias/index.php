@@ -58,7 +58,7 @@
 	
 	<?php foreach ($librerias as $libreria): ?>
 			
-		<div class="libreria col-lg-4" data-id="<?php echo $libreria->getId() ?>">
+		<div class="libreria col-lg-4 col-md-4 col-sm-6 col-xs-6" data-id="<?php echo $libreria->getId() ?>">
 			<div class="wrap">
 				<div class="imagen" style="background: url(../../<?php echo $libreria->getFotoPerfil(); ?>) no-repeat no-repeat center center;">
 					<h3><?php echo $libreria->getNombre(); ?></h3>
