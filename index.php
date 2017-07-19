@@ -173,7 +173,7 @@
 		<img src="img/next.png" alt=">" id="next">
 
 		<div id="ver_catalogo" class="text-center btn-catalogo">
-			<a href="#"><button class="btn btn-default btn-ver">VER TODAS LAS LIBRERIAS</button></a>
+			<a href="vis/librerias/"><button class="btn btn-default btn-ver">VER TODAS LAS LIBRERIAS</button></a>
 		</div>
 		
 		
