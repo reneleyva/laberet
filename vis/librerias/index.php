@@ -39,11 +39,14 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-					<li ><a href="../../">Inicio</a></li>
-			            <li ><a href="../buscar">Catálogo</a></li>
-			            <li class="active"><a href="#">Librerías</a></li>
+			            <li><a href="../buscar">Catálogo</a></li>
+			            <li><a href="../librerias">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    
@@ -51,17 +54,22 @@
 	</nav> <!-- END NAV -->
 	<?php include "librerias.php" ?>
 	<div class="container muestra">
-	<?php foreach ($librerias as $libreria): ?>
+
 	
-			<div class="libreria col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $libreria->getId(); ?>">
-				<div class="wrap">
-					<h4><?php echo $libreria->getNombre(); ?></h4>
-					<div style="background: url(../../<?php echo $libreria->getFotoPerfil(); ?>) no-repeat no-repeat center center;" class="circle"></div>
-					<p class="direccion"><?php echo $libreria->getDireccion(); ?></p>
-					<!-- <a href="#" class="btn btn-default">Ver Perfil</a> -->
+	<?php foreach ($librerias as $libreria): ?>
+			
+		<div class="libreria col-lg-4" data-id="<?php echo $libreria->getId() ?>">
+			<div class="wrap">
+				<div class="imagen" style="background: url(../../<?php echo $libreria->getFotoPerfil(); ?>) no-repeat no-repeat center center;">
+					<h3><?php echo $libreria->getNombre(); ?></h3>
+				</div>
+				<div class="info">
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, deserunt.</p>
 				</div>
 			</div>
-	
+		</div>
+
 	<?php endforeach; ?>
 	</div>
 	<div class="container-fluid footer">

@@ -37,7 +37,7 @@ class Log
 	    $hora = date('H:i:s');
 		$sql = "INSERT INTO registrovisitas (fecha, hora, ip)
 				VALUES ('".$fecha."', '".$hora."', '".Log::get_client_ip()."')";
-		echo $sql;
+		// echo $sql;
 		$pdo->query($sql);
 	}
 }

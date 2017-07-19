@@ -179,5 +179,6 @@
 	<script src="../../js/jquery-ui.min.js"></script>
 	<script src="../../js/busca.js"></script>
 	<script src="../../js/optionHack.js"></script>
+	<script src="../../js/truncateLibros.js"></script>
 </body>
 </html>

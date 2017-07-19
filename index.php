@@ -255,5 +255,6 @@
     <script src="js/linkLibros-index.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/carousel.js"></script>
+    <script src="js/truncateLibros.js"></script>
 </body>
 </html>

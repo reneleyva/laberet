@@ -196,14 +196,13 @@
 			  </ul>
 
 			</nav>
-
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../../js/bootstrap.min.js"></script>
 	<script src="../../js/linkLibro.js"></script>
 	<script src="../../js/optionHack.js"></script>
-	<script src="../../js/infoLibreria.js"></script>
+	<script src="../../js/truncateLibros.js"></script>
 	<script src="../../js/jquery-ui.min.js"></script>
 	<script src="../../js/busca.js"></script>
 </body>
