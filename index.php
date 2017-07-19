@@ -193,7 +193,7 @@
 				}
 				foreach ($libros as $libro): 
 			?>
-			<div class="thumbnail libro col-lg-3 col-md-6">
+			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
 					<img class="book-cover" src="<?php echo htmlspecialchars($libro['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="Brave Men">
 					<div class="info">
