@@ -1,3 +1,4 @@
+<?php include "variable-sesion.php" ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +28,7 @@
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
 	<!-- Inciar sesion -->
 
-	<?php include "variable-sesion.php" ?>
+	
 	
 	<nav class="navbar navbar-default" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->

@@ -50,7 +50,6 @@ class Libreria
 			$lib->fill($row);
 			return $lib;
 		}
-
 	}
 
 	/* Regresa un arreglo de los libros 
@@ -69,6 +68,18 @@ class Libreria
 		}
 
 		return $books;
+	}
+
+	/* Regresa en numero de libros en catálogo*/
+	function getNumLibros() {
+		include "../../conexion.php";
+		$sql = "SELECT COUNT(idLibro) as num from Libro where idLibreria = ".$this->id.";";
+		$result = $pdo->query($sql);
+		$num = 0;
+		if ($row = $result->fetch()) {
+			$num = $row['num'];
+		}
+		return $num;
 	}
 
 	/*Busca todo en tienda */

@@ -64,8 +64,9 @@
 					<h3><?php echo $libreria->getNombre(); ?></h3>
 				</div>
 				<div class="info">
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, deserunt.</p>
+					<p><b><?php echo $libreria->getDireccion() ?></b></p>
+					<p>Tel. <?php echo $libreria->getTelefono() ?></p>
+					<p><b><?php echo $libreria->getNumLibros() ?></b> libros en catálogo</p>
 				</div>
 			</div>
 		</div>
