@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,7 +25,7 @@
 	
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		  <div class="navbar-header col-lg-2 col-md-2">
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
@@ -112,7 +113,28 @@
 				</div>
 			</div>
 		</div>
-		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="titulo">Imágenes</h4>
+			      </div>
+			      <div class="modal-body">
+			        <div class="row">
+			        	<div class="modal-cover col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			        		<img src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        	</div>
+			        	<div class="modal-back col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			        		<img src="../../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        	</div>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+			</div>
 		<h3 class="text-center" id="libros-relacionados"><b>Libros Relacionados</b></h3>
 
 		<div class="row card">
@@ -130,7 +152,7 @@
 			<?php 
 
 			
-			foreach ($relacionados as $book): $i++;?>
+			foreach ($relacionados as $book): ?>
 				
 				
 				<div class="thumbnail libro relacionado">
@@ -159,29 +181,7 @@
 		
 		
 
-
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="titulo">Imágenes</h4>
-			      </div>
-			      <div class="modal-body">
-			        <div class="row">
-			        	<div class="modal-cover col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
-			        	</div>
-			        	<div class="modal-back col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
-			        	</div>
-			        </div>
-			      </div>
-			      
-			    </div>
-			  </div>
-			</div>
+			
 	</div>
 	
 	<div class="container-fluid footer">

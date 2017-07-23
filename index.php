@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -30,7 +31,7 @@
 
 	
 	
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		  <div class="navbar-header col-lg-2 col-md-2">
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
@@ -141,10 +142,11 @@
 	
 	<!-- INICIO Carousel Librerías -->
 	<div id="librerias" class="container-fluid">
-		<h2 class="text-center">Descubre libros de entre 20 librerías de la ciudad.</h2>
+		<?php include 'librerias.php'; ?>
+		<h2 class="text-center">Descubre libros de entre <?php echo count($librerias); ?> librerías de la ciudad.</h2>
 		 <div class="row carousel"> 
 		<?php 
-			include 'librerias.php';
+			
 			if(!$librerias){
 				echo "No Hay Librerias!";
 				// exit();

@@ -22,7 +22,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		  <div class="navbar-header col-lg-2 col-md-2">
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
@@ -40,11 +40,14 @@
 		   
 		   <div id="list" class="col-lg-10 col-md-10">
 		   		<ul class="nav navbar-nav navbar-right">
-						<li><a href="../../">Inicio</a></li>
 			            <li><a href="../buscar">Catálogo</a></li>
 			            <li><a href="../librerias">Librerías</a></li>
 			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li class="active"><a href="../inicioSesion">Iniciar Sesión</a></li>
+			            <li>
+			              <p class="navbar-btn">
+			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+			              </p>
+		            	</li> 
 				</ul>
 		   </div>
 		    

@@ -1,4 +1,4 @@
-<?php include "../redirect.php"; ?>
+<?php include "redirect.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
@@ -22,7 +21,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		  <!-- Brand and toggle get grouped for better mobile display -->
 		  <div class="navbar-header col-lg-2 col-md-2">
 		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">

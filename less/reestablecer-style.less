@@ -10,12 +10,13 @@ html, body {
 	font-family: 'Roboto Mono', monospace;
 }
 
+
+
 form {
 	margin: 0 auto;
 	margin-top: 0px;
 	font-size: 17pt;
-	width: 70%;
-	// border: 1px solid black;
+	width: 80vw;
 
 	.form-control {
 		font-size: 17pt;
@@ -58,7 +59,7 @@ form {
 }
 
 #iniciar {
-	margin-top: 80px;
+	margin-top: 120px;
 	width: 70%;
 
 	label[for="password"] {
@@ -68,4 +69,24 @@ form {
 	#user-invalid {
 		display: block;
 	}
+}
+
+@media (max-width: 1000px) {
+	form {
+		width: 100vw;
+		font-size: 15px;
+		
+		h1 {
+			font-size: 33px;
+		}
+
+		input[type="text"],  input[type="password"], input[type="email"] {
+			width: 80%;
+			font-size: 15pt;
+		}
+
+		button[type="submit"] {
+			font-size: 15pt;
+		}
+	}	
 }
