@@ -16,15 +16,37 @@ form {
 	margin-top: 15px;
 	margin-bottom: 0px;
 	padding-left: 0px;
+	text-align: center; 
+	margin-right: 0px;
 
+	#search-form {
+		padding-left: 0px;
+		// width: 0%;
+		float: left;
+		text-align: left;
+
+		.form-control {
+			font-size: 18px;
+		}
+
+		select {
+			margin-left: 8px;
+		}
+
+	}
 	.input-group {
 		input {font-size: 18px;}
 	}
+}
 
-	.form-control {
-		font-size: 18px;
+@media (max-width: 800px) { 
+	.row {
+		margin-right: 0px !important;
 	}
+} //Fin media
 
+ul.ui-autocomplete.ui-menu{
+	font-family: 'Roboto Mono', monospace;
 }
 
 .card {

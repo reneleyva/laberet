@@ -133,7 +133,7 @@ $('#carousel-intereses').slick({
 	$('#cart').hover(function() {
 		$(this).find('img').attr('src', '../../img/cart.png');
 	}, function() {
-		$(this).find('img').attr('src', '../../img/grey-cart.png');
+		$(this).find('img').attr('src', '../../img/white-cart.png');
 	});
 
 	$('#prev').hover(function() {

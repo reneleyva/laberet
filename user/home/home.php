@@ -1,10 +1,10 @@
 <?php 
+include 'redirect.php';
 include_once '../../lib/Libro.php';
 include_once '../../lib/LibroVendido.php';
 include_once '../../lib/Busqueda.php';
 include_once '../../lib/Usuario.php';
 include_once '../pedidosEspeciales/PedidoEspecial.php';
-session_start();
  ?>
 
 <!DOCTYPE html>
@@ -19,6 +19,7 @@ session_start();
 
 	<title>Laberet </title>
 	<!-- Bootstrap css -->
+	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="../../slick/slick-theme.css"/>
@@ -50,11 +51,13 @@ session_start();
 	    <div id="list" class="">
 	    	<ul class="nav navbar-nav navbar-right">
 		   	  	
+		   	  <li id="cart"><a href="../carrito"><img src="../../img/white-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
 		   	  <li><a href="../buscar">Catálogo</a></li>
+		   	  <li><a href="../librerias">Librerías</a></li>
 		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
-		      <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
+		      
 		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></a>
 		        <ul class="dropdown-menu">
 		          <li><a href="#">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Compras</a></li>
@@ -70,37 +73,37 @@ session_start();
 	
 	<!-- EMPIEZA CAROUSEL -->
 	<div class="container">
-		
-		<form action="../buscar" class="form-inline" method="get" accept-charset="utf-8">
+		<form action="../buscar" class="row form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
-					<div class="input-group	">
+					<div class="input-group">
 						<!-- BUSQUEDA -->
-						<input type="text" maxlength="25" name="q" id="keyword" class="form-control" placeholder="Search for...">       
+						<input required type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
+
+						<select name="s" class="form-control">
+							  <option value="todo">Todo</option>
+							  <option value="autor">Autor</option>
+							  <option value="titulo">Titulo</option>
+							  <option value="categoria">Categoria</option>
+						</select>
+						
 				    </div>
-				    
-				<select name="s" class="form-control">
-					  <option value="todo">Todo</option>
-					  <option value="autor">Autor</option>
-					  <option value="titulo">Titulo</option>
-					  <option value="categoria">Categoria</option>
-				</select>
-				<?php 
-					if ($_SESSION['first']) {
-						echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
-						$_SESSION['first'] = False;
-					}
-				 ?>
+				
 				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
-					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
+					echo "<input type='text' id='selected' hidden value='".htmlspecialchars($_GET['s'], ENT_QUOTES, 'UTF-8')."'>";
 				} ?>
 				 
 				</div>
 			</form>
-			<!-- <h1>¡Bienvenido Luis!</h1> -->
+			<?php 
+							if ($_SESSION['first']) {
+								echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
+								$_SESSION['first'] = False;
+							}
+						 ?>
 		<div class="row card">
 			<h4 class="text-center">Últimos Libros Agregados</h4>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
@@ -327,5 +330,6 @@ session_start();
 	<script src="../../js/linkLibro.js"></script>
 	<script src="../../js/jquery-ui.min.js"></script>
 	<script src="../../js/autocomplete.js"></script>
+	<script src="../../js/truncateLibros.js"></script>
 </body>
 </html>
