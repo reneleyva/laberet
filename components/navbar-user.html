@@ -1,38 +1,37 @@
-<dom-module id="navbar-user">
-  <template>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../" class="navbar-left navbar-brand">
-          Laberet</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
+<link rel="stylesheet" href="../css/navbar-user.css">
+<nav class="navbar navbar-default" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header col-lg-2 col-md-2 col-sm-2">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand navbar-left" href="../"><img id="icon" src="../img/logo.png" alt=""></a>
+		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
+	  </div>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="../vis/buscar">Catálogo</a></li>
-            <li><a href="../vis/librerias">Librerías</a></li>
-            <li><a href="../vis/registrarse">Registrarse</a></li>
-            <li>
-              <p class="navbar-btn">
-                <a href="../vis/inicioSesion" class="btn btn-success">Iniciar Sesión</a>
-              </p>
-            </li> 
-          </ul>
-  
-        </div>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-    Polymer({
-      is: 'navbar-user'
-    });
-  </script>
-</dom-module>
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    <div id="list" class="">
+	    	<ul class="nav navbar-nav navbar-right">
+		   	  	
+		   	  <li><a href="../buscar">Catálogo</a></li>
+		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
+		      <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
+		      <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#">Configurar Cuenta</a></li>
+		          <li><a href="#">Historial de Compras</a></li>
+		          <li class="divider"></li>
+		          <li><a href="../salir">Salir</a></li>
+		        </ul>
+		      </li>
+			</ul>
+	    </div>	
+	    
+	  </div><!-- /.navbar-collapse -->
+</nav> <!-- END NAV -->
+

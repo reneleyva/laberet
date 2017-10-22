@@ -10,27 +10,20 @@ if (strlen($keyword) < 3) {
 }
 
 //Busco Por autor 
-$sql = "SELECT DISTINCT autor from Libro WHERE autor LIKE '%".$keyword."%' LIMIT 5;";
-$result = $pdo->query($sql);
+$sql = "SELECT DISTINCT autor from libro WHERE autor LIKE '%".$keyword."%' LIMIT 5;";
+$query = mysqli_query($con, $sql);
 $data = array();
 
-while ($row = $result->fetch()) {
+while ($row = mysqli_fetch_array($query)) {
    	array_push($data, $row['autor']);
 }
 
 //Busco por titulo de libro
-$sql = "SELECT DISTINCT titulo from Libro WHERE titulo LIKE '".$keyword."%' LIMIT 5;";
-$result = $pdo->query($sql);
+$sql = "SELECT DISTINCT titulo from libro WHERE titulo LIKE '".$keyword."%' LIMIT 5;";
+$query = mysqli_query($con, $sql);
 
-while ($row = $result->fetch()) {
+while ($row = mysqli_fetch_array($query)) {
    	array_push($data, $row['titulo']);
 }
 
-
-//Para que no muestre muchos 
-//resultados si los datos son muchos se cortan
-if (sizeof($data) > 5) {
-	echo json_encode(array_slice($data, 10));
-} else {
-	echo json_encode($data);
-}
+echo json_encode($data);

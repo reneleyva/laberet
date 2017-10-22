@@ -1,11 +1,8 @@
 <?php
 /* Aquí ponen ustedes su contraseña, perros! */
-try{
-	$pdo =  new PDO('mysql:host=localhost;dbname=laberet', 'root','root'); //¡¡Aguas!!
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$pdo->exec('SET NAMES "utf8"');
+$con = @mysqli_connect('localhost', 'root', 'root', 'laberet');
 
-} catch (PDOException $e) {
-	echo $e->getMessage();
+if (!$con) {
+    echo "Error: " . mysqli_connect_error();
 	exit();
 }

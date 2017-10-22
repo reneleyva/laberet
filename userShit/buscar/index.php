@@ -1,4 +1,4 @@
-<?php include "variable-sesion.php" ?>
+<?php include "redirect.php" ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" href="../../css/busqueda-style.css"> 
-	<link rel="stylesheet" href="../../css/navbar-vis.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -22,78 +20,49 @@
     <![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
-			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-		  </div>
 
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="collapse-target">
-		   
-		   <div id="list" class="col-lg-10 col-md-10">
-		   		<ul class="nav navbar-nav navbar-right">
-			            <li><a href="../buscar">Catálogo</a></li>
-			            <li><a href="../librerias">Librerías</a></li>
-			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li>
-			              <p class="navbar-btn">
-			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
-			              </p>
-		            	</li> 
-				</ul>
-		   </div>
-		    
-		  </div><!-- /.navbar-collapse -->
-	</nav> <!-- END NAV -->
 	<div class="container">
 
 		<div class="row">
 			
-			<form action="." class="row form-inline" method="get" accept-charset="utf-8">
+			<form action="." class="form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
-					<div class="input-group">
+					<div class="input-group	">
 						<!-- BUSQUEDA -->
-						<input required type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
+						<input type="text" name="q" id="keyword" class="form-control" placeholder="Search for...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
-
-						<select name="s" class="form-control">
-							  <option value="todo">Todo</option>
-							  <option value="autor">Autor</option>
-							  <option value="titulo">Titulo</option>
-							  <option value="categoria">Categoria</option>
-						</select>
 				    </div>
+				    
+				<select name="s" class="form-control">
+					  <option value="todo">Todo</option>
+					  <option value="autor">Autor</option>
+					  <option value="titulo">Titulo</option>
+					  <option value="categoria">Categoria</option>
+				</select>
 				
 				<!-- Para javascript -->
 				<?php if (isset($_GET['s'])) {
-					echo "<input type='text' id='selected' hidden value='".htmlspecialchars($_GET['s'], ENT_QUOTES, 'UTF-8')."'>";
+					echo "<input type='text' id='selected' hidden value='".$_GET['s']."'>";
 				} ?>
 				 
 				</div>
 			</form>
+
+			
 		</div>
 		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			<?php 
 				  include 'busca.php'; 
-				  include '../../pagination.php';
+				  include '../pagination.php';
 			?>
 			
 			
 			<?php 
 			if (isset($_GET['q'])) {
-				echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8')."</span></h3>";
-
+				echo "<h3 class='resultado'>Resultados para: <span>".$keyword."</span></h3>";
 			}
 
 			if(!$books){
@@ -108,19 +77,19 @@
 			for ($i = ($page-1)*16; $i < $numLibros and $total < 16;$i++) { 
 				$book = $books[$i];
 				?>
-				<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
+				<div class="thumbnail libro  col-lg-3 col-md-6">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt=""></a>
+						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">
 							<p class="book-title">
-								<?php echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8'); ?>
+								<?php echo $book->getTitulo();?>
 							</p>
 							<p class="book-author">
-								<?php echo htmlspecialchars($book->getAutor(), ENT_QUOTES, 'UTF-8'); ?>
+								<?php echo $book->getAutor();?>
 							</p>
 							<p class="book-price">
 							<b>
-								$<?php echo "<b>". htmlspecialchars($book->getPrecio(), ENT_QUOTES, 'UTF-8')."</b> MXN";?>
+								$<?php echo "<b>".$book->getPrecio()."</b> MXN";?>
 							</b>
 							</p>
 						</div>
@@ -129,8 +98,8 @@
 				</div>
 			<?php $total++;} ?>
 		
-		<div class="paginas text-center col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<nav class="" aria-label="Page navigation" id="pagination">
+		<div class="paginas text-center col-lg-12 col-md-12 col-sm-12">
+			<nav class="" aria-label="Page navigation">
 				<ul class="pagination">
 					
 					<?php 
@@ -162,10 +131,10 @@
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
-						<a href="#">Inicio</a><br>
-						<a href="vis/buscar">Catálogo</a><br>
-						<a href="vis/registrarse">Registrarse</a><br>
-						<a href="vis/inicioSesion">Iniciar Sesión</a>
+						<a href="../../">Inicio</a><br>
+						<a href=".">Catálogo</a><br>
+						<a href="../registrarse">Registrarse</a><br>
+						<a href="../inicioSesion">Iniciar Sesión</a>
 					</div>
 				</div>
 			</div>
@@ -179,6 +148,5 @@
 	<script src="../../js/jquery-ui.min.js"></script>
 	<script src="../../js/busca.js"></script>
 	<script src="../../js/optionHack.js"></script>
-	<script src="../../js/truncateLibros.js"></script>
 </body>
 </html>

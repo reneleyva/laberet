@@ -1,23 +1,17 @@
 <?php
+include_once 'lib/Libro.php';
 include 'conexion.php';
 
 //Cosulta para buscar las librerías.
 try {
-	$sql = "SELECT titulo,autor,precio,fotoFrente,idLibreria,idLibro FROM Libro
-	        order by fechaAdicion DESC;";
-	$result = $pdo->query($sql);
-	$libros = Null;
-	$contador = 1;
-	while ($row = $result->fetch()) {
-		if ($contador < 5) {
-			$contador++;
-			$libros[] = array('titulo' => $row['titulo'],'autor' => $row['autor'],
-			        'precio' => $row['precio'],'fotoFrente' => $row['fotoFrente'],
-			         'idLibro' => $row['idLibro']);
-		} else {
-			break;
-		}
+	$sql = "SELECT * from libro LIMIT 4";
+	$query = mysqli_query($con, $sql);
+	$libros = array();
+	while ($row = mysqli_fetch_array($query)) {
+		$l = new Libro();
+		$l->fill($row);
+		array_push($libros, $l);
 	}
 } catch (Exception $e) { 
-	echo "Pene de Morubio";
+	echo "Error en libros.php";
 }

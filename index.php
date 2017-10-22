@@ -14,8 +14,8 @@
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="css/jquery-ui.min.css">
-	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" href="css/navbar-vis.css">
+	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,42 +27,45 @@
 </head>
 <body>
 	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
-	<!-- Inciar sesion -->
+	<?php 
 
-	
+		if ($_SESSION['tipo'] == 'usuario') {
+			//Es usuario registrado
+			header("location: /user/");
+		}
+	 ?>
 	
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="./img/logo.png" alt=""></a>
-			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-		  </div>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header col-lg-2 col-md-2">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand navbar-left" href="#"><img id="icon" src="img/logo.png" alt=""></a>
+      <!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
+      </div>
 
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="collapse-target">
-		   
-		   <div id="list" class="col-lg-10 col-md-10">
-		   		<ul class="nav navbar-nav navbar-right">
-			            <li><a href="vis/buscar">Catálogo</a></li>
-			            <li><a href="vis/librerias">Librerías</a></li>
-			            <li><a href="vis/registrarse">Registrarse</a></li>
-			            <li>
-			              <p class="navbar-btn">
-			                <a href="vis/inicioSesion" class="btn btn-success">Iniciar Sesión</a>
-			              </p>
-		            	</li> 
-				</ul>
-		   </div>
-		    
-		  </div><!-- /.navbar-collapse -->
-	</nav> <!-- END NAV -->
-	
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="collapse-target">
+       
+       <div id="list" class="col-lg-10 col-md-10">
+          <ul class="nav navbar-nav navbar-right">
+                  <li><a href="buscar">Catálogo</a></li>
+                  <li><a href="librerias">Librerías</a></li>
+                  <li><a href="registrarse">Registrarse</a></li>
+                  <li>
+                    <p class="navbar-btn">
+                      <a href="inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+                    </p>
+                  </li> 
+        </ul>
+       </div>
+        
+      </div><!-- /.navbar-collapse -->
+  </nav> <!-- END NAV -->
 
 	<div class="container-fluid">
 	<!-- HEADER -->
@@ -70,7 +73,7 @@
 		<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 		<h2>La tienda en linea de las mejores librerías.</h2>
 		<div id="buscar">
-			<form  action="vis/buscar/" class="form-inline" method="get" accept-charset="utf-8">
+			<form  action="/buscar/" class="form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
 					<div class="input-group	">
 						<!-- BUSQUEDA -->
@@ -95,8 +98,6 @@
 		
 	
 	 	</div> <!-- FIN HEADER -->
-	 	
-		
     </div>
 	
 	<!-- Lo que hacemos -->
@@ -139,7 +140,7 @@
 		</div>
 		<div class="hl"></div>
 	</div> <!-- FIN Lo que hacemos -->
-	
+
 	<!-- INICIO Carousel Librerías -->
 	<div id="librerias" class="container-fluid">
 		<?php include 'librerias.php'; ?>
@@ -198,15 +199,15 @@
 			?>
 			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
-					<img class="book-cover" src="<?php echo htmlspecialchars($libro['fotoFrente'], ENT_QUOTES, 'UTF-8');?>" alt="Brave Men">
+					<img class="book-cover" src="<?php echo htmlspecialchars($libro->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="Brave Men">
 					<div class="info">
-						<p class="book-title"><?php echo htmlspecialchars($libro['titulo'], ENT_QUOTES, 'UTF-8');?></p>
-						<p class="book-author" href="#"><?php echo htmlspecialchars($libro['autor'], ENT_QUOTES, 'UTF-8');?></p>
-						<p class="book-price"><b>$<?php echo htmlspecialchars($libro['precio'], ENT_QUOTES, 'UTF-8');?> MXN</b></p>
+						<p class="book-title"><?php echo htmlspecialchars($libro->getTitulo(), ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-author" href="#"><?php echo htmlspecialchars($libro->getAutor(), ENT_QUOTES, 'UTF-8');?></p>
+						<p class="book-price"><b>$<?php echo htmlspecialchars($libro->getPrecio(), ENT_QUOTES, 'UTF-8');?> MXN</b></p>
 					</div>
 				</div>
 				<input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars(
-				  $libro['idLibro'], ENT_QUOTES, 'UTF-8');?>">
+				  $libro->getId(), ENT_QUOTES, 'UTF-8');?>">
 			</div>
 			
 

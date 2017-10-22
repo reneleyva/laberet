@@ -8,12 +8,12 @@ class Busqueda {
 	function __construct() {}
 
 	//Busca en todo si keyword="" regresa todos los libros ;)
-	function buscaGeneral($keyword){
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$keyword."%');";
-		$result = $pdo->query($sql);
+	function buscaGeneral(){
+		include "../conexion.php";
+		$sql = "SELECT * FROM libro;";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
@@ -23,11 +23,11 @@ class Busqueda {
 
 	// Busca por autor.
 	function buscaAutor($autor) {
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Libro WHERE lower(autor) like lower('%".$autor."%');";
-		$result = $pdo->query($sql);
+		include "../conexion.php";
+		$sql = "SELECT * FROM libro WHERE lower(autor) like lower('%".$autor."%');";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
@@ -37,11 +37,11 @@ class Busqueda {
 
 	// Busca por titulo.
 	function buscaTitulo($titulo) {
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Libro WHERE lower(titulo) like lower('%".$titulo."%');";
-		$result = $pdo->query($sql);
+		include "../conexion.php";
+		$sql = "SELECT * FROM libro WHERE lower(titulo) like lower('%".$titulo."%');";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
@@ -51,7 +51,7 @@ class Busqueda {
 
 	// Busca relacionados
 	public function getLibrosRelacionados($id){
-		include "../../conexion.php";
+		include "../conexion.php";
 		 // Seleccionamos el libro que nos pasan como ref.
 		$book = Libro::getLibro($id);
 		// Donde se guardarán los libros relacionados.
@@ -69,9 +69,9 @@ class Busqueda {
 			if ($tag=="") {
 				continue;
 			}
-			$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$tag."%') and not titulo =  '$titulo';";
-			$result = $pdo->query($sql);
-			while ($row = $result->fetch() and $count < 10){
+			$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$tag."%') and not titulo =  '$titulo';";
+			$query = mysqli_query($con, $sql);
+			while ($row = mysqli_fetch_array($query) and $count < 10){
 				$book = new Libro();
 				$book->fill($row);
 				if (!($book->inArray($books))){
@@ -83,7 +83,7 @@ class Busqueda {
 	}
 
 	public function getLibrosUsuario($idUsuario){
-		include "../../conexion.php";
+		include "../conexion.php";
 		include_once "Usuario.php";
 		$usuario = new Usuario();
 		// Se consigue el usuario.
@@ -131,7 +131,7 @@ class Busqueda {
 
 	//Busca en todo si keyword="" regresa todos los libros ;)
 	function ultimosAgregados(){
-		include "../../conexion.php";
+		include "../conexion.php";
 		$sql = "SELECT * FROM Libro order by fechaAdicion desc";
 		$result = $pdo->query($sql);
 		$books = array();
@@ -144,7 +144,7 @@ class Busqueda {
 	}
 
 	function getLibrerias(){
-		include "../../conexion.php";
+		include "../conexion.php";
 		$sql = "SELECT * FROM Libreria order by nombre desc";
 		$result = $pdo->query($sql);
 		$librerias = array();
