@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/navbar-user.css">
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header col-lg-2 col-md-2 col-sm-2">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -17,11 +17,13 @@
 	    <div id="list" class="">
 	    	<ul class="nav navbar-nav navbar-right">
 		   	  	
+		   	  <li id="cart"><a href="../carrito"><img src="../img/white-cart.png" alt=""><b>(<?php echo count($_SESSION['carrito'])?>)</b></a></li>
 		   	  <li><a href="../buscar">Catálogo</a></li>
+		   	  <li><a href="../librerias">Librerías</a></li>
 		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
-		      <li id="cart"><a href="../carrito"><img src="../../img/grey-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
+		      
 		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Cuenta</b> <b class="caret"></b></a>
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></a>
 		        <ul class="dropdown-menu">
 		          <li><a href="#">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Compras</a></li>
@@ -34,4 +36,3 @@
 	    
 	  </div><!-- /.navbar-collapse -->
 </nav> <!-- END NAV -->
-

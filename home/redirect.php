@@ -2,17 +2,17 @@
 
 //Checo que tipo de Usuario es y si debería de estar aquí. 
 session_start();
-if (!isset($_SESSION['type'])) {
-	header("location: ../../");
+if (!isset($_SESSION['tipo'])) {
+	header("location: ../");
 } 
 
-$tipo = $_SESSION['type'];
+$tipo = $_SESSION['tipo'];
 
 if ($tipo == 'libreria') {
 	//NO debería de estar aquí redirijo
-	header("location: ../../libreria/home");
+	header("location: ../homeLibreria/");
 	exit();
 } else if ($tipo == 'invitado') {
-	header("location: ../../");	
+	header("location: ../");	
 	exit();
 }  

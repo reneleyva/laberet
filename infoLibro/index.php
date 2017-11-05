@@ -1,8 +1,7 @@
-<?php include 'redirect.php';?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -12,11 +11,12 @@
    
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="../../slick/slick-theme.css"/>
-	<link rel="stylesheet" href="../../css/infoLibro-style.css"> 
-	<link rel="stylesheet" type="text/css" href="../../css/navbar-vis.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
+	<link rel="stylesheet" href="../css/infoLibro-style.css"> 
+	<link rel="stylesheet" type="text/css" href="../css/navbar-vis.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -25,48 +25,36 @@
 	
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
-			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-		  </div>
+	<?php 
+		session_start();
+		$current_page = "infoLibro";
+		if (!isset($_SESSION['tipo'])) {
+			//Nuevo en la página
+			$_SESSION['tipo'] = 'invitado';
+			include '../components/navbar-visitante.php';
 
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="collapse-target">
-		   
-		   <div id="list" class="col-lg-10 col-md-10">
-		   		<ul class="nav navbar-nav navbar-right">
-			            <li><a href="../buscar">Catálogo</a></li>
-			            <li><a href="../librerias">Librerías</a></li>
-			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li>
-			              <p class="navbar-btn">
-			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
-			              </p>
-		            	</li> 
-				</ul>
-		   </div>
-		    
-		  </div><!-- /.navbar-collapse -->
-	</nav> <!-- END NAV -->
-	
+		} else if ($_SESSION['tipo'] == 'invitado') {
+			
+			include '../components/navbar-visitante.php';
+		} else if ($_SESSION['tipo'] == 'usuario') {
+			//Es usuario registrado
+			include '../components/navbar-user.php';
+		} else {
+			include '../components/navbar-libreria.php';
+		}
+
+	?>
+
 	<div class="container">
 		<?php include 'info.php'; ?>
 		<div class="row bookInfo" data-id="<?php echo $book->getId();?>">
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="../../<?php echo $book->getFotoFrente();?>" alt="">					
+					<img src="../<?php echo $book->getFotoFrente();?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="../../<?php echo $book->getFotoAtras();?>" alt="">
+					<img src="../<?php echo $book->getFotoAtras();?>" alt="">
 				</div>
 			</div>
 			
@@ -94,7 +82,7 @@
 				?><!-- Fin php -->
 		
 				</p>
-				<img id="paypal" src="../../img/paypal.png" alt=""><br>
+				<img id="paypal" src="../img/paypal.png" alt=""><br>
 				<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
 
 			</div>
@@ -105,7 +93,7 @@
 						<div class="row text-center">
 							<h4 class="col-lg-12"><b><?php echo $libreria->getNombre(); ?></b></h4>
 						</div>
-						<div class="circle" style="background: url(../../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
+						<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
 						<div class="row text-center">
 							<a href="../infoLibreria/?id=<?php echo $libreria->getId(); ?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 						</div>
@@ -124,10 +112,10 @@
 			      <div class="modal-body">
 			        <div class="row">
 			        	<div class="modal-cover col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        	<div class="modal-back col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        </div>
 			      </div>
@@ -157,7 +145,7 @@
 				
 				<div class="thumbnail libro relacionado">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>"></a>
+						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>"></a>
 						 <div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?><br></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -184,37 +172,19 @@
 			
 	</div>
 	
-	<div class="container-fluid footer">
-		<div class="row-fluid text-center">
-			<div class="col-lg-4">
-				<div class="row">
-					<img src="../../img/logo-white.png" alt="">
-					<b>LABERET</b>
-				</div>
-				<div class="row">
-					<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-				</div>
-			</div>
-			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-			</div>
-			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-				<div class="menu row nav centered">
-					<div style="text-align: left">
-						<a href="#">Inicio</a><br>
-						<a href="vis/buscar">Catálogo</a><br>
-						<a href="vis/registrarse">Registrarse</a><br>
-						<a href="vis/inicioSesion">Iniciar Sesión</a>
-					</div>
-				</div>
-			</div>
-		</div><!-- FIN Footer -->
-	</div>
+	<?php 
+		if ($_SESSION['tipo'] == 'invitado') {
+			include '../components/footer-visitante.html';
+		} else if ($_SESSION['tipo'] == 'usuario') {
+			include '../components/footer-user.php';
+		}
+
+	?>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../slick/slick.min.js"></script>
-	<script src="../../js/infoLibro.js"></script>
-	<script src="../../js/linkLibro.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../slick/slick.min.js"></script>
+	<script src="../js/infoLibro.js"></script>
+	<script src="../js/linkLibro.js"></script>
 </body>
 </html>

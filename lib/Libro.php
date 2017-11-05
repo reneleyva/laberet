@@ -52,10 +52,10 @@ class Libro {
 	//Regresa un libro haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
 	function getLibro($id) {
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Libro WHERE idLibro = ".$id.";";
-		$result = $pdo->query($sql);
-		$row = $result->fetch();
+		include "../conexion.php";
+		$sql = "SELECT * FROM libro WHERE idLibro = ".$id.";";
+		$query = mysqli_query($con, $sql);
+		$row = mysqli_fetch_array($query);
 
 		if (!$row) {
 			return Null;

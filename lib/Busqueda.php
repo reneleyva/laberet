@@ -8,9 +8,9 @@ class Busqueda {
 	function __construct() {}
 
 	//Busca en todo si keyword="" regresa todos los libros ;)
-	function buscaGeneral(){
+	function buscaGeneral($keyword){
 		include "../conexion.php";
-		$sql = "SELECT * FROM libro;";
+		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%');";
 		$query = mysqli_query($con, $sql);
 		$books = array();
 		while ($row = mysqli_fetch_array($query)){
@@ -92,16 +92,10 @@ class Busqueda {
 		$librosComprados = array();
 		$tags = array();
 		// Se hace la consulta de los libros que ha comprado.
-		$sql = "SELECT * FROM LibroVendido WHERE idUsuario = ".$usuario->getId().";";
-		try{
-			$result = $pdo->query($sql);
-		} catch(Exception $e) {
-			// echo 'No compró libros :(  ';
-			//include '../buscar/muestraLibros.php';
-			return null;
-		}
+		$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$usuario->getId().";";
+		$query = mysqli_query($con, $sql);
 		// itera sobre los libros que compró.
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)) {
 			$book = new Libro();
 			$book->fill($row);
 			$tags = explode(" ", trim($book->getTags(), " "));
@@ -111,10 +105,9 @@ class Busqueda {
 		$libros = array();
 		// Si no ha comprado libros.
 		if (empty($librosComprados)) {
-			echo "Pene de Vanessa";
-			$sql = "SELECT * FROM Libro ORDER BY fechaAdicion DESC";
-			$result = $pdo->query($sql);
-			while ($row = $result->fetch()){
+			$sql = "SELECT * FROM libro ORDER BY fechaAdicion DESC";
+			$query = mysqli_query($con, $sql);
+			while ($row = mysqli_fetch_array($query)){
 				$book = new Libro();
 				$book->fill($row);
 				array_push($libros,$book);
@@ -132,10 +125,10 @@ class Busqueda {
 	//Busca en todo si keyword="" regresa todos los libros ;)
 	function ultimosAgregados(){
 		include "../conexion.php";
-		$sql = "SELECT * FROM Libro order by fechaAdicion desc";
-		$result = $pdo->query($sql);
+		$sql = "SELECT * FROM libro order by fechaAdicion desc";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
@@ -145,10 +138,10 @@ class Busqueda {
 
 	function getLibrerias(){
 		include "../conexion.php";
-		$sql = "SELECT * FROM Libreria order by nombre desc";
-		$result = $pdo->query($sql);
+		$sql = "SELECT * FROM libreria order by nombre desc";
+		$query = mysqli_query($con, $sql);
 		$librerias = array();
-		while ($row = $result->fetch()) {
+		while ($row = mysqli_fetch_array($query)) {
 			$l = new Libreria();
 			$l->fill($row);
 			array_push($librerias, $l);

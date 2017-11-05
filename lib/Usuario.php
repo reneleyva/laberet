@@ -26,10 +26,10 @@ class Usuario
 	//Regresa un usuario haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
 	function getUsuario($id) {
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Usuario WHERE idUsuario = ".$id.";";
-		$result = $pdo->query($sql);
-		$row = $result->fetch();
+		include "../conexion.php";
+		$sql = "SELECT * FROM usuario WHERE idUsuario = ".$id.";";
+		$query = mysqli_query($con, $sql);
+		$row = mysqli_fetch_array($query);
 
 		if (!$row) {
 			return Null;
@@ -43,12 +43,12 @@ class Usuario
 	/** Regresa en un arreglo los libros recientemente 
 	* comprados por el usuario. */
 	public function getCompras($id) {
-		include "../../conexion.php";
-		include_once "../../lib/Libro.php";
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
 		$compras = array();		
-		$sql = "SELECT * FROM LibroVendido Natural join Libreria WHERE idUsuario = ".$id.";";
-		$result = $pdo->query($sql);
-		while ($row = $result->fetch()){
+		$sql = "SELECT * FROM libroVendido Natural join Libreria WHERE idUsuario = ".$id.";";
+		$query = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($query)){
 			$book = new LibroVendido();
 			$book->fill($row);
 			array_push($compras,$book);
@@ -98,11 +98,11 @@ class Usuario
 
 	// Regresa todos los libros surtidos (no sé por que hago esto xd)
 	public function getLibrosSurtidos (){
-		include "../../conexion.php";
-		$sql = "SELECT * from PedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido";
+		include "../conexion.php";
+		$sql = "SELECT * from pedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido";
 		$libros = array();		
-		$result = $pdo->query($sql);
-		while ($row = $result->fetch()){
+		$query = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($query)){
 			$libro = new PedidoEspecial();
 			$libro->fill($row);
 			array_push($libros,$libro);
@@ -112,11 +112,11 @@ class Usuario
 
 	// Regresa los libros que ya le surtieron la usuario (dudas, cuando se elimina uno)
 	public function getLibroSurtido($id_usuario){
-		include "../../conexion.php";
-		$sql = "SELECT * from PedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido and idUsuario = '$id_usuario'";
+		include "../conexion.php";
+		$sql = "SELECT * from pedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido and idUsuario = '$id_usuario'";
 		$libros = array();		
-		$result = $pdo->query($sql);
-		while ($row = $result->fetch()){
+		$query = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($query)){
 			$libro = new PedidoEspecial();
 			$libro->fill($row);
 			array_push($libros,$libro);

@@ -1,9 +1,9 @@
 <?php 
 
-include '../../conexion.php';
-include '../../lib/Libro.php';
-include '../../lib/Libreria.php';
-include '../../lib/Busqueda.php';
+include '../conexion.php';
+include '../lib/Libro.php';
+include '../lib/Libreria.php';
+include '../lib/Busqueda.php';
 
 if (!isset($_REQUEST['id'])) {
 	header("Location: ../404.html");

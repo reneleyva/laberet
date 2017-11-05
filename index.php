@@ -16,8 +16,10 @@
 	<link rel="stylesheet" href="css/jquery-ui.min.css">
 	<link rel="stylesheet" href="css/navbar-vis.css">
 	<link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,15 +28,7 @@
 
 </head>
 <body>
-	<!-- ****** EMPIEZAN ELEMENTOS ******* -->
-	<?php 
-
-		if ($_SESSION['tipo'] == 'usuario') {
-			//Es usuario registrado
-			header("location: /user/");
-		}
-	 ?>
-	
+	<!-- ****** EMPIEZAN ELEMENTOS ******* -->	
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header col-lg-2 col-md-2">
@@ -73,7 +67,7 @@
 		<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
 		<h2>La tienda en linea de las mejores librerías.</h2>
 		<div id="buscar">
-			<form  action="/buscar/" class="form-inline" method="get" accept-charset="utf-8">
+			<form  action="./buscar/" class="form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
 					<div class="input-group	">
 						<!-- BUSQUEDA -->
@@ -165,7 +159,7 @@
 						<?php echo htmlspecialchars(''.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 					 ) no-repeat no-repeat center center;" class="circle"></div>
 					<div class="row text-center">
-						<a href="vis/infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
+						<a href="./infoLibreria/?id=<?php echo htmlspecialchars($libreria->getId(), ENT_QUOTES, 'UTF-8');?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 					</div>
 				</div>
 			</div>
@@ -177,7 +171,7 @@
 		<img src="img/next.png" alt=">" id="next">
 
 		<div id="ver_catalogo" class="text-center btn-catalogo">
-			<a href="vis/librerias/"><button class="btn btn-default btn-ver">VER TODAS LAS LIBRERIAS</button></a>
+			<a href="./librerias/"><button class="btn btn-default btn-ver">VER TODAS LAS LIBRERIAS</button></a>
 		</div>
 		
 		
@@ -215,7 +209,7 @@
 
 		</div>
 		<div class="row text-center btn-catalogo">
-			<a href="./vis/buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
+			<a href="./buscar"><button class="btn btn-default btn-ver">VER CATÁLAGO COMPLETO</button></a>
 		</div>
 					<div id="footer-hl" class="hl"></div>
 
@@ -231,17 +225,23 @@
 					<p>Made with <img src="img/love.png" alt="Love"> by APSUS</p>
 				</div>
 			</div>
-			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
+			<div class="col-lg-4">
+			
+				<h4 class="hidden-md hidden-sm hidden-xs">Siguenos en redes sociales: </h4>
+				<div class="redes-iconos">
+					<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>		
+					<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				</div>
+				
 			</div>
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
 						<a href="#">Inicio</a><br>
-						<a href="vis/buscar">Catálogo</a><br>
-						<a href="vis/registrarse">Registrarse</a><br>
-						<a href="vis/inicioSesion">Iniciar Sesión</a>
+						<a href="./buscar">Catálogo</a><br>
+						<a href="./registrarse">Registrarse</a><br>
+						<a href="./inicioSesion">Iniciar Sesión</a>
 					</div>
 				</div>
 			</div>

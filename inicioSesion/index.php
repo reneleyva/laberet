@@ -1,4 +1,18 @@
-<?php include "../redirect.php"; ?>
+<?php 
+	session_start(); 
+	if (!isset($_SESSION['tipo'])) {
+		//Nuevo en la página 
+		$_SESSION['tipo'] = 'visitante'; 
+	} else if ($_SESSION['tipo'] != 'visitante') {
+		//Ya inicio sesión 
+		$tipo = $_SESSION['tipo']; 
+		if ($tipo == 'usuario') {
+			header("Location: ../home/");
+		} else if ($tipo == 'libreria') {
+			header("Location: ../homeLibreria/");
+		}
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +25,9 @@
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/registrarse-style.css"> 
-	<link rel="stylesheet" href="../../css/navbar-vis.css"> 
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../css/registrarse-style.css"> 
+	<link rel="stylesheet" href="../css/navbar-vis.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -22,37 +36,10 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		  <!-- Brand and toggle get grouped for better mobile display -->
-		  <div class="navbar-header col-lg-2 col-md-2">
-		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-		      <span class="sr-only">Toggle navigation</span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		      <span class="icon-bar"></span>
-		    </button>
-		    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
-			<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-		  </div>
-
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse" id="collapse-target">
-		   
-		   <div id="list" class="col-lg-10 col-md-10">
-		   		<ul class="nav navbar-nav navbar-right">
-			            <li><a href="../buscar">Catálogo</a></li>
-			            <li><a href="../librerias">Librerías</a></li>
-			            <li><a href="../registrarse">Registrarse</a></li>
-			            <li>
-			              <p class="navbar-btn">
-			                <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
-			              </p>
-		            	</li> 
-				</ul>
-		   </div>
-		    
-		  </div><!-- /.navbar-collapse -->
-	</nav> <!-- END NAV -->
+	<?php 
+		$current_page = "inicio_sesion"; 
+		include '../components/navbar-visitante.php';
+	?>
 
 	<div class="container">
 		<div class="row">
@@ -81,8 +68,8 @@
 
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../../js/bootstrap.min.js"></script>
-	<script src="../../js/validationInicarSesion.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/validationInicarSesion.js"></script>
 
 </body>
 </html>

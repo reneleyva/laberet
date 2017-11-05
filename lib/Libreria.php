@@ -38,10 +38,10 @@ class Libreria
 	//Regresa una libreria haciendo una consulta por id. 
 	//Regresa NULL sino se encontró.
 	function getLibreria($id) {
-		include "../../conexion.php";
-		$sql = "SELECT * FROM Libreria WHERE idLibreria = ".$id.";";
-		$result = $pdo->query($sql);
-		$row = $result->fetch();
+		include "../conexion.php";
+		$sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
+		$query = mysqli_query($con, $sql);
+		$row = mysqli_fetch_array($query);
 
 		if (!$row) {
 			return Null;
@@ -55,13 +55,13 @@ class Libreria
 	/* Regresa un arreglo de los libros 
 	 * que pertenecen a esta libreria.*/
 	function getLibros() {
-		include "../../conexion.php";
-		include_once "../../lib/Libro.php";
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
 		$books = array();
-		$sql = "SELECT * FROM Libro WHERE idLibreria = ".$this->id.";";
-		$result = $pdo->query($sql);
+		$sql = "SELECT * FROM libro WHERE idLibreria = ".$this->id.";";
+		$query = mysqli_query($con, $sql);
 
-		while ($row = $result->fetch()) {
+		while ($row = mysqli_fetch_array($query)) {
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books, $book);
@@ -72,11 +72,11 @@ class Libreria
 
 	/* Regresa en numero de libros en catálogo*/
 	function getNumLibros() {
-		include "../../conexion.php";
-		$sql = "SELECT COUNT(idLibro) as num from Libro where idLibreria = ".$this->id.";";
-		$result = $pdo->query($sql);
+		include "../conexion.php";
+		$sql = "SELECT COUNT(idLibro) as num from libro where idLibreria = ".$this->id.";";
+		$query = mysqli_query($con, $sql);
 		$num = 0;
-		if ($row = $result->fetch()) {
+		if ($row = mysqli_fetch_array($query)) {
 			$num = $row['num'];
 		}
 		return $num;
@@ -84,14 +84,14 @@ class Libreria
 
 	/*Busca todo en tienda */
 	function buscaTodo($keyword) {
-		include "../../conexion.php";
-		include_once "../../lib/Libro.php";
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
 
-		$sql = "SELECT * FROM Libro WHERE lower(tags) like lower('%".$keyword."%') AND idLibreria = ".$this->id.";";
+		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%') AND idLibreria = ".$this->id.";";
 
-		$result = $pdo->query($sql);
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);
@@ -101,13 +101,13 @@ class Libreria
 
 	/*Busca por titulo en tienda */
 	function buscaTitulo($titulo) {
-		include "../../conexion.php";
-		include_once "../../lib/Libro.php";
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
 
-		$sql = "SELECT * FROM Libro WHERE lower(titulo) like lower('%".$titulo."%') AND idLibreria = ".$this->id.";";
-		$result = $pdo->query($sql);
+		$sql = "SELECT * FROM libro WHERE lower(titulo) like lower('%".$titulo."%') AND idLibreria = ".$this->id.";";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books, $book);
@@ -117,13 +117,13 @@ class Libreria
 
 	// Busca por autor.
 	function buscaAutor($autor) {
-		include "../../conexion.php";
-		include_once "../../lib/Libro.php";
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
 
-		$sql = "SELECT * FROM Libro WHERE lower(autor) like lower('%".$autor."%') AND idLibreria=".$this->id.";";
-		$result = $pdo->query($sql);
+		$sql = "SELECT * FROM libro WHERE lower(autor) like lower('%".$autor."%') AND idLibreria=".$this->id.";";
+		$query = mysqli_query($con, $sql);
 		$books = array();
-		while ($row = $result->fetch()){
+		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
 			array_push($books,$book);

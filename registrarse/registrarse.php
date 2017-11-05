@@ -1,13 +1,13 @@
 <?php  
-include "../../conexion.php";
+include "../conexion.php";
 
-	$pass = md5($_POST['password']."pene"."teamolizteamomoreteamoandrea");
+	$pass = md5($_POST['password']."teamolizzteamoluz");
 	$correo = $_POST['correo'];
 	$nombre = $_POST['nombre'];
 
-	$sql = "SELECT * FROM Usuario WHERE correo = '".$correo."';";
-	$result = $pdo->query($sql);
-	$row = $result->fetch();
+	$sql = "SELECT * FROM usuario WHERE correo = '".$correo."';";
+	$query = mysqli_query($con, $sql);
+	$row = mysqli_fetch_array($query);
 	if ($row) {
 		//Ya hay una cuenta asociada con este usaurio
 		header("location: .?nombre=".$nombre."&correo=".$correo."");
@@ -27,23 +27,26 @@ include "../../conexion.php";
 		// mail($correo,"Confirmación",$msg,$headers);
 		// echo "Exito, perro";
 		
-		$sql = "INSERT INTO Usuario SET
+		$sql = "INSERT INTO usuario SET
 		nombre ='".$nombre."',
 		correo ='".$correo."',
 		password ='".$pass."';";
-		$s = $pdo->prepare($sql);
-		$s->execute();
+		$res = mysqli_query($con, $sql); 
+		if (!$res) {
+			exit();
+		}
+
+		session_start();
+		$_SESSION['nombre'] = $nombre;
+		$_SESSION['tipo'] = 'usuario';
+		$sql = "SELECT idUsuario FROM usuario Where correo = '".$correo."';";
+		$query = mysqli_query($con, $sql);
+		$row = mysqli_fetch_array($query);
+		$_SESSION['id'] = $row['idUsuario'];
+		$_SESSION['carrito'] = array();
+		$_SESSION['first'] = True; //Primera vez iniciando sesión;
+		header("location: ../user/home");
+		exit();
+
 	}
-	
-	session_start();
-	$_SESSION['nombre'] = $nombre;
-	$_SESSION['type'] = 'user';
-	$sql = "SELECT idUsuario FROM Usuario Where correo = '".$correo."';";
-	$result = $pdo->query($sql);
-	$row = $result->fetch();
-	$_SESSION['id'] = $row['idUsuario'];
-	$_SESSION['cart'] = array();
-	$_SESSION['first'] = True; //Primera vez iniciando sesión;
-	header("location: ../../user/home");
-	exit();
 ?>

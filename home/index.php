@@ -1,10 +1,10 @@
 <?php 
 include 'redirect.php';
-include_once '../../lib/Libro.php';
-include_once '../../lib/LibroVendido.php';
-include_once '../../lib/Busqueda.php';
-include_once '../../lib/Usuario.php';
-include_once '../pedidosEspeciales/PedidoEspecial.php';
+include_once '../lib/Libro.php';
+include_once '../lib/LibroVendido.php';
+include_once '../lib/Busqueda.php';
+include_once '../lib/Usuario.php';
+// include_once '../pedidosEspeciales/PedidoEspecial.php';
  ?>
 
 <!DOCTYPE html>
@@ -15,16 +15,16 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <!-- <link rel="icon" href="../favicon.ico"> -->
 
 	<title>Laberet </title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../../css/jquery-ui.min.css"> 
-	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" type="text/css" href="../../slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="../../slick/slick-theme.css"/>
-	<link rel="stylesheet" href="../../css/navbar-user.css"> 
-	<link rel="stylesheet" href="../../css/home-style.css"> 
+	<link rel="stylesheet" href="../css/jquery-ui.min.css"> 
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="../slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
+	<link rel="stylesheet" href="../css/home-style.css"> 
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -33,44 +33,11 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header col-lg-2 col-md-2 col-sm-2">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand navbar-left" href="../../"><img id="icon" src="../../img/logo.png" alt=""></a>
-		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-	  </div>
-
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    <div id="list" class="">
-	    	<ul class="nav navbar-nav navbar-right">
-		   	  	
-		   	  <li id="cart"><a href="../carrito"><img src="../../img/white-cart.png" alt=""><b>(<?php echo count($_SESSION['cart'])?>)</b></a></li>
-		   	  <li><a href="../buscar">Catálogo</a></li>
-		   	  <li><a href="../librerias">Librerías</a></li>
-		      <li><a href="../pedidosEspeciales">Pedidos Especiales</a></li>
-		      
-		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></a>
-		        <ul class="dropdown-menu">
-		          <li><a href="#">Configurar Cuenta</a></li>
-		          <li><a href="#">Historial de Compras</a></li>
-		          <li class="divider"></li>
-		          <li><a href="../salir">Salir</a></li>
-		        </ul>
-		      </li>
-			</ul>
-	    </div>	
-	    
-	  </div><!-- /.navbar-collapse -->
-</nav> <!-- END NAV -->
 	
+	<?php 
+		$current_page = 'inicio';
+		include '../components/navbar-user.php';
+	?>
 	<!-- EMPIEZA CAROUSEL -->
 	<div class="container">
 		<form action="../buscar" class="row form-inline" method="get" accept-charset="utf-8">
@@ -124,7 +91,7 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 				?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
+						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
 						<div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -165,7 +132,7 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 						</div>
 						<div class="row foto-perfil">
 							<div style="background: url(
-							<?php echo htmlspecialchars('../../'.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
+							<?php echo htmlspecialchars('../'.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 						 ) no-repeat no-repeat center center;" class="circle"></div>
 						</div>
 						
@@ -196,7 +163,7 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 				<h3 class="text-center"><b>Librería Aurora ha surtido tu pedido especial.</b></h3>
 				<div class="libro">
 					<div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-5 col-xs-offset-0">
-						<img class="book-cover" src="../../img/brave-men.jpg" alt="Brave Men">
+						<img class="book-cover" src="../img/brave-men.jpg" alt="Brave Men">
 					</div>
 					<div class="info col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-0 col-xs-7 col-xs-offset-0">
 						<p class="book-title"><?php echo $libro->getDescripcion();?></p>
@@ -231,7 +198,7 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 
 				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
-					<img src="../../uploads/Morua.jpg" alt="">
+					<img src="../uploads/Morua.jpg" alt="">
 				</div>
 
 				<div class="info col-lg-5 col-md-5">
@@ -271,7 +238,7 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 				
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../../<?php echo $book->getFotoFrente();?>" alt=""></a>
+						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -293,43 +260,20 @@ include_once '../pedidosEspeciales/PedidoEspecial.php';
 
 	
 	</div>
-	
-	<div class="container-fluid footer">
-		<div class="row-fluid text-center">
-				<div class="col-lg-4">
-					<div class="row">
-						<img src="../../img/logo-white.png" alt="">
-						<b>LABERET</b>
-					</div>
-					<div class="row">
-						<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-					</div>
-				</div>
-				<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-				<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-				</div>
-				<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-					<div class="menu row nav centered">
-						<div style="text-align: left">
-							<a href="../../">Inicio</a><br>
-							<a href="#">Catálogo</a><br>
-							<a href="#">Pedidos Especiales</a><br>
-							<a href="#">Historial de Compras</a>
-						</div>
-					</div>
-				</div>
-			</div><!-- FIN Footer -->	
+	<div id="footer-hl">
 	</div>
+	<?php 
+		include '../components/footer-user.php';
+	?>
 	<!-- FIN ELEMENTOS -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../../js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../slick/slick.min.js"></script>
-	<script src="../../js/home-carousel.js"></script>
-	<script src="../../js/linkLibro.js"></script>
-	<script src="../../js/jquery-ui.min.js"></script>
-	<script src="../../js/autocomplete.js"></script>
-	<script src="../../js/truncateLibros.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../slick/slick.min.js"></script>
+	<script src="../js/home-carousel.js"></script>
+	<script src="../js/linkLibro.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/autocomplete.js"></script>
+	<script src="../js/truncateLibros.js"></script>
 </body>
 </html>

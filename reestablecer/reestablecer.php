@@ -1,15 +1,15 @@
 <?php
-include '../../conexion.php';
+include '../conexion.php';
 
 $correo = $_POST['correo'];
 
-$sql = "SELECT * FROM Usuario WHERE correo = '".$correo."';";
-$result = $pdo->query($sql);
-$row = $result->fetch();
+$sql = "SELECT * FROM usuario WHERE correo = '".$correo."';";
+$query = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($query);
 
 if (!$row) {
 	header("Location: ./?correo=".$correo);
 } else {
 	/*** ENVIAR CORREO AQUI**/
-	include "enviado.html";
+	include "enviado.php";
 }

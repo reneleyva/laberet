@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" href="../css/busqueda-style.css"> 
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -22,20 +23,20 @@
 	
 	<?php 
 		session_start();
-
+		$current_page = "buscar";
 		if (!isset($_SESSION['tipo'])) {
 			//Nuevo en la página
-			$_SESSION['invitado'] = 'invitado';
-			include '../components/navbar-visitante.html';
+			$_SESSION['tipo'] = 'invitado';
+			include '../components/navbar-visitante.php';
 
 		} else if ($_SESSION['tipo'] == 'invitado') {
 			
-			include '../components/navbar-visitante.html';
+			include '../components/navbar-visitante.php';
 		} else if ($_SESSION['tipo'] == 'usuario') {
 			//Es usuario registrado
-			include '../components/navbar-user.html';
+			include '../components/navbar-user.php';
 		} else {
-			include '../components/navbar-libreria.html';
+			include '../components/navbar-libreria.php';
 		}
 	 ?>
 	 
@@ -45,7 +46,7 @@
 				<div id="search-form" class="form-group">
 					<div class="input-group">
 						<!-- BUSQUEDA -->
-						<input required type="text" name="q" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
+						<input required type="text" name="term" maxlength="40" id="keyword" class="form-control" placeholder="Buscar...">       
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
@@ -75,7 +76,7 @@
 			
 			
 			<?php 
-			if (isset($_GET['q'])) {
+			if (isset($_GET['term'])) {
 				echo "<h3 class='resultado'>Resultados para: <span>".htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8')."</span></h3>";
 
 			}
@@ -128,34 +129,14 @@
 
 		</div> <!-- FIN MUESTRA DE LIBROS -->
 	</div>
-	<div class="container-fluid footer">
-		<div class="row-fluid text-center">
-			<div class="col-lg-4">
-				<div class="row">
-					<img src="../../img/logo-white.png" alt="">
-					<b>LABERET</b>
-				</div>
-				<div class="row">
-					<p>Made with <img src="../../img/love.png" alt="Love"> by APSUS</p>
-				</div>
-			</div>
-			<div class="col-lg-4"><p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5556213423 </p>
-			<p><span class="glyphicon glyphicon-phone"></span> Cel. (044) 5526752006 </p>
-			</div>
-			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
-				<div class="menu row nav centered">
-					<div style="text-align: left">
-						<a href="#">Inicio</a><br>
-						<a href="vis/buscar">Catálogo</a><br>
-						<a href="vis/registrarse">Registrarse</a><br>
-						<a href="vis/inicioSesion">Iniciar Sesión</a>
-					</div>
-				</div>
-			</div>
-		</div><!-- FIN Footer -->
-	</div>
+	<?php 
+		if ($_SESSION['tipo'] == 'invitado') {
+			include '../components/footer-visitante.html';
+		} else if ($_SESSION['tipo'] == 'usuario') {
+			include '../components/footer-user.php';
+		}
 
+	 ?>
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>

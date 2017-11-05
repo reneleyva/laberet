@@ -6,4 +6,8 @@ session_start();
 if (!isset($_SESSION['tipo'])) {
 	//Primera vez en la página debería guardar una cookie? 
 	$_SESSION['tipo'] = 'invitado';
-} 		
+
+} else if ($_SESSION['tipo'] == 'usuario') {
+	//Es usuario registrado
+	header("location: home");
+}

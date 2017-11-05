@@ -8,7 +8,7 @@
 	} 
 
 	if (!isset($_GET['id'])) {
-		echo "404L";
+		echo "404";
 		exit();
 	}
 
@@ -28,10 +28,10 @@
 
 		// Checa si el num de página es válido. 
 		if ($page > $numPaginas or $page < 1) {
-			echo "404";
+			echo "";
 			// echo "numPaginas: ".$numPaginas;
 			// echo "page: ".$page;
-			exit();
+			// exit();
 		}
 		//Flecha <<
 		if ($page-1 > 0) {

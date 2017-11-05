@@ -17,12 +17,29 @@
        
        <div id="list" class="col-lg-10 col-md-10">
           <ul class="nav navbar-nav navbar-right">
-                  <li><a href="buscar">Catálogo</a></li>
-                  <li><a href="librerias">Librerías</a></li>
-                  <li><a href="registrarse">Registrarse</a></li>
+                  <?php if($current_page == 'buscar') : ?>
+                    <li class="active"><a href="">Catálogo</a></li>
+                  <?php else: ?>
+                    <li><a href="../buscar">Catálogo</a></li>
+                  <?php endif; ?>
+                  
+                  <li><a href="../librerias">Librerías</a></li>
+
+                  <?php if($current_page == 'registrarse') : ?>
+                    <li class="active"><a href="">Registrarse</a></li><li>
+                  <?php else: ?>
+                    <li><a href="../registrarse">Registrarse</a></li>
                   <li>
+                  <?php endif; ?>
+                  
                     <p class="navbar-btn">
-                      <a href="inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+                      <?php if($current_page == 'inicio_sesion') : ?>
+                        <a href="" class="btn btn-success">Iniciar Sesión</a>
+
+                      <?php else: ?>
+                        <a href="../inicioSesion" class="btn btn-success">Iniciar Sesión</a>
+                      <?php endif; ?>
+                      
                     </p>
                   </li> 
         </ul>
