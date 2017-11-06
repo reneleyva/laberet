@@ -1,6 +1,5 @@
 <?php 
 
-include '../conexion.php';
 include '../lib/Libro.php';
 session_start();
 
@@ -19,17 +18,12 @@ if ($_SESSION['tipo'] == 'invitado') {
 
 
 $book = Libro::getLibro($idLibro);
-
-if (!in_array($book, $_SESSION['carrito'])) {
-	array_push($_SESSION['carrito'], $book);
-	// header("location: ./?id=".$idLibro);
-	exit();
-
+if (!isset($_SESSION['carrito'][$idLibro])) {
+	$_SESSION['carrito'][$idLibro] = $book; 
+	header("location: .?id=".$idLibro);
 } else {
-	echo "YA ESATABA";
-	// header("location: ./?id=".$idLibro);
-	echo count($_SESSION['carrito']);
-	exit();
+	header("location: .?id=".$idLibro);
+	exit(); 
 }
 
 // echo $_SESSION['cart'][0]->getTitulo();

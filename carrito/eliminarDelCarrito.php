@@ -1,6 +1,5 @@
 <?php 
-include '../../conexion.php';
-include ('../../lib/Libro.php');
+include ('../lib/Libro.php');
 session_start();
 
 if (!isset($_GET['id'])) {
@@ -9,17 +8,15 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-
 //recorrer carrito 
-// $carrito = $_SESSION['cart'];
+// $test = array();
+// array_push($test, 'LOOOL');
+// echo $test[0];
 // echo isset($_SESSION['cart'][121]);
 // echo $_SESSION['cart'][121]->getTitulo();
 if (isset($_SESSION['carrito'][$id])) {
 	unset($_SESSION['carrito'][$id]);
 }
-// foreach (array_keys($carrito, $id) as $key) {
-//     unset($carrito[$key]);
-// }
 
 // for ($i = 0; $i < count($carrito); $i++) {
 // 	if(!isset($carrito[$i]))
@@ -29,5 +26,5 @@ if (isset($_SESSION['carrito'][$id])) {
 // 		unset($_SESSION['cart'][$i]);
 // }
 
-// header("Location: .");
+header("Location: .");
 exit();

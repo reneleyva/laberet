@@ -83,8 +83,16 @@
 		
 				</p>
 				<img id="paypal" src="../img/paypal.png" alt=""><br>
-				<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
-
+				
+				<?php $idLibro = $_GET['id']; ?>
+				<?php if(isset($_SESSION['carrito'][$idLibro])) : ?>
+					<button id="added-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-ok"></span> Añadido al carrito </b></button>
+				<?php else: ?>
+					<button id="add-cart" type="button" class="btn btn-md"><b> <span class="glyphicon glyphicon-shopping-cart"></span> Añadir al carrito </b></button>
+				<?php endif; ?>
+				
+				
+				
 			</div>
 
 			<div class="libreria col-lg-4 col-md-4 hidden-sm hidden-xs">
