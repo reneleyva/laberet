@@ -25,7 +25,7 @@
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></a>
 		        <ul class="dropdown-menu">
-		          <li><a href="#">Configurar Cuenta</a></li>
+		          <li><a href="../editarPerfil">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Compras</a></li>
 		          <li class="divider"></li>
 		          <li><a href="../salir">Salir</a></li>

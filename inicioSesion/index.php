@@ -44,7 +44,7 @@
 	<div class="container">
 		<div class="row">
 			<!-- MORUBIO ESTE ES EL FORMULARIO. HAY UN DIV AQUÍ CON id="user-ivalid" que muestra el error puedes generar ese div para avisarle al usuario que está por la baby.-->
-			<form id="iniciar" action="iniciasesion.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+			<form id="iniciar" action="<?php if (isset($_GET['idLibro'])) {echo "iniciasesion.php?idLibro=".$_GET['idLibro'];} else {echo "iniciasesion.php";}?>" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
 				<h1>Iniciar Sesión</h1>
 				<?php if (isset($_GET['correo'])) {
 					echo "<div id='user-invalid' class='form-control err-msg'>La contraseña o correo no coincide con ninguna cuenta.</div>";
@@ -60,6 +60,7 @@
 				<div id="pass-invalid" class="form-control err-msg">Contraseña no válida.</div>
 	
 				<button id="enviar" type="submit" class="btn btn-default">Iniciar Sesión</button>
+				<p>¿No tienes una cuenta? <a href="../registrarse" title="">Registrate</a></p>
 				<p>¿Olvidaste tu contraseña? <a href="../reestablecer" title="">Reestablézcala</a></p>
 			</form>	
 		</div>

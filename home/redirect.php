@@ -15,4 +15,4 @@ if ($tipo == 'libreria') {
 } else if ($tipo == 'invitado') {
 	header("location: ../");	
 	exit();
-}  
+} 

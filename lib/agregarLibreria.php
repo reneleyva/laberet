@@ -7,12 +7,13 @@ $telefono = $_POST['telefono'];
 $direccion = $_POST['direccion'];
 $coordenadas = $_POST['coordenadas'];
 $nombreUsuario = $_POST['nombreUsuario'];
-$pass = md5($_POST['password']."pene"."teamolizteamomoreteamoandrea");
+$pass = md5($_POST['password']."teamolizzteamoluz");
 
 
 $imagePath = "uploads/";
 $fotoPerfilPath = "";
 $fotoPortadaPath = "";
+
 
 if (isset($_FILES['fotoPerfil']['name'])) {
         // Foto perfil
@@ -60,7 +61,7 @@ if (isset($_FILES['fotoPortada']['name'])) {
     echo "<br>NOT IMAGE TOO";
 }
 
-$sql = 'INSERT INTO Libreria SET
+$sql = 'INSERT INTO libreria SET
 			nombre ="' .$nombre.'",
 			fotoPerfil = "'.$fotoPerfilPath.'",
 			fotoPortada = "'.$fotoPortadaPath.'",
@@ -68,19 +69,19 @@ $sql = 'INSERT INTO Libreria SET
 			direccion = "'.$direccion.'",
 			coordenadas = "'.$coordenadas.';"';     
 
-$pdo->exec($sql);
+mysqli_query($con, $sql);
 
 // Consulta para obetener el id mayor 
-$idMaximo = 'SELECT max(idLibreria) as max from Libreria;';
-$result = $pdo->query($idMaximo);
-$value = $result -> fetch();
+$idMaximo = 'SELECT max(idLibreria) as max from libreria;';
+$query = mysqli_query($con, $idMaximo);
+$value = mysqli_fetch_array($query);
 $id = $value['max'];
 echo $pass;
-$sql = 'INSERT INTO AdministradorLibreria SET
+$sql = 'INSERT INTO administradorlibreria SET
 			nombreUsuario ="' .$nombreUsuario.'",
 			password = "'.$pass.'",
 			idLibreria = "'.$id.'";';     
-$pdo->exec($sql);
-header("location: .");
+mysqli_query($con, $sql);
+header("location: ./");
 exit();
 

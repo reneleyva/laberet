@@ -10,4 +10,6 @@ if (!isset($_SESSION['tipo'])) {
 } else if ($_SESSION['tipo'] == 'usuario') {
 	//Es usuario registrado
 	header("location: home");
+} else if ($_SESSION['tipo'] == 'libreria') {
+	header("location: homeLibreria");
 }
