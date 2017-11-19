@@ -7,16 +7,30 @@
 	$query = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($query);
 
-	if(!$row)
-	{
+	if(!$row) {
 		//Revisar si es Libreria.
 		$sql = "SELECT * From administradorlibreria WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
 		$query = mysqli_query($con, $sql);
 		$row = mysqli_fetch_array($query);
 
+		// Intentar con administrador.
 		if (!$row) {
-			header("location: .?correo=".$correo."");
-			exit();
+			$sql = "SELECT * From administrador WHERE nombreUsuario = '".$correo."' AND password = '".$pass."';";
+			$query = mysqli_query($con, $sql);
+			$row = mysqli_fetch_array($query);
+			if ($row) {
+				// ES ADMINISTRADOR
+				session_start();
+				$_SESSION['nombre'] = $correo;
+				$_SESSION['tipo'] = "admin"; //Tipo usuario
+				$_SESSION['id'] = $row['id'];	
+				header("location: ../admin/");
+				echo "Eres Administrador"; 
+				exit();
+			} else {
+				header("location: .?correo=".$correo."");
+				exit();
+			}
 		} else {
 			//ES LIBRERIA
 			session_start();
