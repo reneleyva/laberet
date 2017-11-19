@@ -11,5 +11,9 @@ if (!isset($_SESSION['tipo'])) {
 	//Es usuario registrado
 	header("location: home");
 } else if ($_SESSION['tipo'] == 'libreria') {
+	// Es administrador de librería
 	header("location: homeLibreria");
+} else if ($_SESSION['tipo'] == 'admin') {
+	// Es administrador
+	header("location: admin");
 }

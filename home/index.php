@@ -66,11 +66,11 @@ include_once '../lib/Usuario.php';
 				</div>
 			</form>
 			<?php 
-							if ($_SESSION['first']) {
-								echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
-								$_SESSION['first'] = False;
-							}
-						 ?>
+				if ($_SESSION['first']) {
+					echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
+					$_SESSION['first'] = False;
+				}
+			 ?>
 		<div class="row card">
 			<h4 class="text-center">Últimos Libros Agregados</h4>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->

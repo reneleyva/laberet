@@ -94,25 +94,20 @@ class Busqueda {
 		// Se hace la consulta de los libros que ha comprado.
 		$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$usuario->getId().";";
 		$query = mysqli_query($con, $sql);
-		// itera sobre los libros que compró.
-		while ($row = mysqli_fetch_array($query)) {
-			$book = new Libro();
-			$book->fill($row);
-			$tags = explode(" ", trim($book->getTags(), " "));
-			// Se podría hacer aquí. but a ro nou.
-			array_push($librosComprados, $book);
-		}
-		$libros = array();
-		// Si no ha comprado libros.
-		if (empty($librosComprados)) {
-			$sql = "SELECT * FROM libro ORDER BY fechaAdicion DESC";
-			$query = mysqli_query($con, $sql);
-			while ($row = mysqli_fetch_array($query)){
+
+		if ($query) {
+			// itera sobre los libros que compró.
+			while ($row = mysqli_fetch_array($query) ) {
 				$book = new Libro();
 				$book->fill($row);
-				array_push($libros,$book);
+				$tags = explode(" ", trim($book->getTags(), " "));
+				// Se podría hacer aquí. but a ro nou.
+				array_push($librosComprados, $book);
 			}
-		} else {
+		}
+		$libros = array();
+		// Si ya ha comprado libros.
+		if (!empty($librosComprados)) {
 			$librosNuevos = array();
 			foreach ($tags as $tag) {
 				$librosNuevos = $this -> buscaGeneral($tag);

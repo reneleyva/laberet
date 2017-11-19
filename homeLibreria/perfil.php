@@ -11,7 +11,7 @@ $id = 6;
 $sql = "SELECT * FROM libreria WHERE idLibreria = ".$id.";";
 $query = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($query);
-$nombre = $row['Nombre'];
+$nombre = $row['nombre'];
 $direccion = $row['direccion'];
 $telefono = $row['telefono'];
 $fotoPerfil = $row['fotoPerfil'];
