@@ -88,9 +88,9 @@
 				<input type="text" name="descripcion" value="<?php echo htmlspecialchars($direccion['descripcion'], ENT_QUOTES, 'UTF-8') ?>" placeholder="Edificio G4 departamento #32" class="form-control">
 				<label for="telefono">Telefono (Celular o De casa)</label>
 				<input  required type="text" name="telefono" value="<?php echo htmlspecialchars($direccion['telefono'], ENT_QUOTES, 'UTF-8') ?>" placeholder="04455123456" class="form-control">
-				<label for="pagos">Método de pago</label>
+				<!-- <label for="pagos">Método de pago</label> -->
 
-				<div class="row" id="metodos-pagos">
+				<!-- <div class="row" id="metodos-pagos">
 					<div class="col-lg-4">
 						<div class="metodo">
 							<img src="../img/paypal-logo.png" alt="">
@@ -109,11 +109,14 @@
 							<p>Paga con <b>targeta</b> al momento del envío. Nuestros repartidores cuentan con terminal.</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="row">
+					<!-- <div id="paypal-button"></div> -->
 					<button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br>
 				</div>
-				<div id="paypal-button"></div>
+
+				
+
 			</form>	
 		</div>
 	</div>

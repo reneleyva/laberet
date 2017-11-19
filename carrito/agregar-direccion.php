@@ -8,9 +8,16 @@
 	$descripcion = $_POST['descripcion'];
 	$telefono = $_POST['telefono'];
 
-	include '../conexion.php';
+	include '../conexion.php';	
 	session_start();
-	$sql = "INSERT INTO direccion SET
+
+	$sql = "SELECT 1 from direccion WHERE idUsuario=".$_SESSION['id'].";";
+	$query = mysqli_query($con, $sql); 
+	$row = mysqli_fetch_array($query);
+
+	if (!$row) {
+		//NO tiene direccion
+		$sql = "INSERT INTO direccion SET
 		cp ='".$cp."',
 		ciudad ='CDMX',
 		delegacion ='".$delegacion."',
@@ -20,11 +27,40 @@
 		telefono ='".$telefono."',
 		idUsuario =".$_SESSION['id'].";";
 
-	$res = mysqli_query($con, $sql); 
+		$res = mysqli_query($con, $sql); 
 
-	if (!$res) {
-		echo "ERROR";
+		if (!$res) {
+			echo "ERROR";
+			exit();
+		} else {
+			$_SESSION['pago'] = True; 
+			header("Location: pago.php");
+		}
+
 	} else {
-		header("Location: pago.php");
+		// YA tiene direccion 
+		$sql = "UPDATE direccion SET
+			cp ='".$cp."',
+			ciudad ='CDMX',
+			delegacion ='".$delegacion."',
+			colonia ='".$colonia."',
+			calleYnumero ='".$calleYNum."',
+			descripcion ='".$descripcion."',
+			telefono ='".$telefono."'
+			WHERE idUsuario= ".$_SESSION['id'].";";
+
+			$res = mysqli_query($con, $sql); 
+
+			if (!$res) {
+				echo "ERROR";
+				exit();
+			} else {
+				$_SESSION['pago'] = True; 
+				header("Location: pago.php");
+				exit();
+			}
 	}
+	
+
+	
 ?>
