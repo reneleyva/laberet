@@ -45,7 +45,7 @@ include "../conexion.php";
 		$_SESSION['id'] = $row['idUsuario'];
 		$_SESSION['carrito'] = array();
 		$_SESSION['first'] = True; //Primera vez iniciando sesión;
-		header("location: ../home");
+		header("location: <div class=""></div>/home");
 		exit();
 
 	}

@@ -275,5 +275,6 @@ include_once '../lib/Usuario.php';
 	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/autocomplete.js"></script>
 	<script src="../js/truncateLibros.js"></script>
+	
 </body>
 </html>
