@@ -71,8 +71,7 @@
 						    <td onclick="detalle(<?php echo $row["id"];?>)" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
 						    <td><?php echo $row["id"]; ?> </td>
 						    <td><?php echo $row["libros"]; ?></td>
-						    <!--<td><?php ; ?></td> -->
-						    <td>22/07/2023</td>
+						    <td><?php echo $row["fecha"]; ?></td>
 						    <td>$ <?php echo $row["precio"]; ?></td>
 						    <td><?php echo $status; ?></td>
 						</tr>
