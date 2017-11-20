@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2017 a las 18:47:18
+-- Tiempo de generación: 20-11-2017 a las 19:18:32
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -60,7 +60,6 @@ CREATE TABLE `administradorlibreria` (
 
 INSERT INTO `administradorlibreria` (`idAdministrador`, `nombreUsuario`, `password`, `idLibreria`) VALUES
 (3, 'luisPuli2', 'a64770d4766f1c202f222de59e66051b', 4),
-(5, 'luis', 'a64770d4766f1c202f222de59e66051b', 5),
 (6, 'rene', 'f35c68c7373baa738e7bb525e50512ca', 6),
 (7, 'test', '504f7d1b6eb2d0892e4ed142d055f142', 9);
 
@@ -89,7 +88,8 @@ CREATE TABLE `direccion` (
 INSERT INTO `direccion` (`idDireccion`, `calleYnumero`, `colonia`, `ciudad`, `cp`, `descripcion`, `telefono`, `idUsuario`, `delegacion`) VALUES
 (5, 'LOL #3', 'Consti 1917', 'CDMX', '09200', 'LOLOLOLOLOL', '044556283049', 4, 'Tlalpan'),
 (6, 'asdasd', 'asddsa', 'CDMX', 'asddsa', 'asdasd', 'asdasdsa', 7, 'Alvaro Obregon'),
-(7, 'aZULEJOS', 'aJUSCO', 'CDMX', '98098', '', '8899', 6, 'Alvaro Obregon');
+(7, 'aZULEJOS', 'aJUSCO', 'CDMX', '98098', '', '8899', 6, 'Alvaro Obregon'),
+(8, '797', 'Río Nilo', 'CDMX', '04300', '', '676878', 8, 'Benito Juárez');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,6 @@ CREATE TABLE `libreria` (
 
 INSERT INTO `libreria` (`idLibreria`, `nombre`, `fotoPerfil`, `fotoPortada`, `telefono`, `direccion`, `coordenadas`, `facebook`, `twitter`, `instagram`) VALUES
 (4, 'Aurora', 'uploads/blue-abstract-logo-template_23-2147500373 (1).jpg', 'uploads/14550478508715.jpg', '5659834', 'Periférico 67', '1343;', NULL, NULL, NULL),
-(5, 'El Sótano', 'uploads/blue-abstract-logo-template_23-2147500373 (1).jpg', 'uploads/logoElSotano.jpg', '55672398', 'División del Norte', '23453466856;', NULL, NULL, NULL),
 (6, 'Porrua', 'uploads/El_Sotano_MILIMA20151009_0126_11.jpg', 'uploads/14550478508715.jpg', '5538727389', 'Polanco 187', '12897128912;', NULL, NULL, NULL),
 (9, 'Luis', 'uploads/22365443_1146088082191026_1270086391503524564_n.jpg', 'uploads/dummy.jpg', '76876', 'LOOOOOOOOOOL', '98798798789;', NULL, NULL, NULL);
 
@@ -148,10 +147,18 @@ INSERT INTO `libro` (`idLibro`, `autor`, `titulo`, `isbn`, `fechaAdicion`, `prec
 (2, 'Thomas Harris', 'Hannibal', NULL, '2017-06-27', 429, 'uploads/151C6dml54xL._AC_UL320_SR202,320_.jpg', 'uploads/19786074450552-A.jpg', ' policiaco  lecter  suspenso  Thomas Harris', 4),
 (3, 'J. K. Rowling', 'Harry Potter', NULL, '2017-06-27', 200, 'uploads/2Kazu-Kibuishi-Harry-Potter1.jpg', 'uploads/21b.jpg', 'magia  J. K. Rowling', 4),
 (5, 'Stephen King', 'It (Eso)', NULL, '2017-06-27', 345, 'uploads/4pennywise.jpg', 'uploads/4Libro_Planeta_001_r.jpg', 'miedo  payaso  Stephen King', 4),
-(8, 'Isabel Allende', 'La Casa de Los Espíritus', NULL, '2017-06-28', 23, 'uploads/7la-casa-de-los-espiritus-9788401352898.jpg', 'uploads/7Allende, Isabel - La casa de los espíritus [Contraportada].JPG', 'Amor  Isabel Allende', 5),
 (9, 'Isaac Asimov', 'Adiós a la Tierra', NULL, '2017-07-01', 89, 'uploads/89788498890785.jpg', 'uploads/89786074450552-A.jpg', ' ficción  ciencia  Isaac Asimov', 6),
 (10, 'J. K. Rowling', 'Animales Fantásticos', NULL, '2017-07-01', 345, 'uploads/981sY5tHIezL.jpg', 'uploads/99786074450552-A.jpg', 'magia  J. K. Rowling', 6),
-(11, 'Isaac Asimov', 'El Cometa Halley', NULL, '2017-07-01', 645, 'uploads/10asimov1.jpg', 'uploads/109786074450552-A.jpg', 'ciencia  Ficción  Isaac Asimov', 6);
+(11, 'Isaac Asimov', 'El Cometa Halley', NULL, '2017-07-01', 645, 'uploads/10asimov1.jpg', 'uploads/109786074450552-A.jpg', 'ciencia  Ficción  Isaac Asimov', 6),
+(12, 'Disney', 'Gravity Falls', NULL, '2017-11-20', 238.9, 'uploads/119786070741050_1.jpg', 'uploads/119786074450552-A.jpg', 'Fantasía  Magia  Disney', 6),
+(13, 'Vladimir Nabokov', 'Lolita', NULL, '2017-11-20', 78, 'uploads/12libro_1326385243.jpg', 'uploads/129786074450552-A.jpg', 'Amor  Lujuria  Vladimir-Nabokov', 6),
+(14, 'Thomas Harris', 'El Silencio de los Inocentes', NULL, '2017-11-20', 829.99, 'uploads/13The-Silence-Of-The-Lambs.jpg', 'uploads/139786074450552-A.jpg', 'Policiaco  Suspenso  Hannibal  Thomas-Harris', 6),
+(15, 'Kazuo Ishiguro', 'El Gigante Enterrado', NULL, '2017-11-20', 67, 'uploads/14thumb_15742_portadas_big.jpeg', 'uploads/149786074450552-A.jpg', 'Fantasia  Kazuo-Ishiguro', 6),
+(16, 'Alejandro Rosas', 'México Bizarro', NULL, '2017-11-20', 54, 'uploads/15portada_mexico-bizarro_alejandro-rosas_201708310225.jpg', 'uploads/159786074450552-A.jpg', 'Historias  Alejandro-Rosas', 6),
+(17, 'James Stweart', 'Calculus', NULL, '2017-11-20', 499.99, 'uploads/169780495011606.jpg', 'uploads/169786074450552-A.jpg', 'Cálculo  Matemáticas  James-Stweart', 6),
+(18, 'Dan Brown', 'La Conspiración', NULL, '2017-11-20', 897, 'uploads/17la_conspiracion.jpg', 'uploads/179786074450552-A.jpg', 'Suspenso  Dan-Brown', 6),
+(19, 'Isabel Allende', 'La Casa de los Espíritus', NULL, '2017-11-20', 56, 'uploads/18la-casa-de-los-espiritus-9788401352898.jpg', 'uploads/189786074450552-A.jpg', 'Amor  Isabel-Allende', 6),
+(20, 'Isaac Asimov', 'Nemesis', NULL, '2017-11-20', 9028, 'uploads/19Sin títu5lo.jpg', 'uploads/199786074450552-A.jpg', 'Ciencia  Ficción  Isaac-Asimov', 6);
 
 -- --------------------------------------------------------
 
@@ -202,10 +209,9 @@ CREATE TABLE `librovendido` (
 
 INSERT INTO `librovendido` (`idLibroVendido`, `autor`, `titulo`, `isbn`, `precio`, `fotoFrente`, `vendidoLinea`, `tags`, `fechaVenta`, `idLibreria`, `idUsuario`, `Entregaid`) VALUES
 (6, 'John Katzenbach', 'El Psicoanalista', '', 478, 'uploads/5El-psicoanalista-1.jpg', 1, 'suspenso  análisis  John Katzenbach', '0000-00-00', 4, 6, 7),
-(7, 'Stephen King', 'Carrie', '', 245, 'uploads/6carrie86.jpg', 1, 'suspenso  carrie  Stephen King', '0000-00-00', 5, 6, 7),
 (8, 'Gabriel García Marquez', 'El Amor en los tiempos del colera', NULL, 45.9, '', 1, '', NULL, 4, 8, 5),
 (9, 'Luis Pulido', 'Cómo tener un bícepsote', NULL, 927.99, '', 1, 'Bícpes Gym', NULL, 6, 8, 5),
-(10, 'El Brou', 'Como amar a Luz', '7098090', 45.78, '', 1, 'Miedo', '0000-00-00', 5, 8, 1);
+(12, 'Luis Pulido', 'Cómo conquistar a Liz', '', 90, 'uploads/11dog-hd-laptop-wallpaper.jpg', 1, 'Amor  Eterno  Moticación  Luis-Pulido', '2017-11-20', 6, 8, 12);
 
 -- --------------------------------------------------------
 
@@ -243,7 +249,8 @@ INSERT INTO `pedido_entrega` (`id`, `fecha`, `idUsuario`, `status`) VALUES
 (1, '2017-11-20', 8, 1),
 (5, '2017-11-13', 8, 0),
 (6, '2017-11-07', 8, 0),
-(7, '2017-11-01', 6, 1);
+(7, '2017-11-01', 6, 1),
+(12, '2017-11-20', 8, 0);
 
 -- --------------------------------------------------------
 
@@ -424,7 +431,7 @@ ALTER TABLE `administradorlibreria`
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idDireccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `libreria`
@@ -436,7 +443,7 @@ ALTER TABLE `libreria`
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
-  MODIFY `idLibro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idLibro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `librosurtido`
@@ -448,7 +455,7 @@ ALTER TABLE `librosurtido`
 -- AUTO_INCREMENT de la tabla `librovendido`
 --
 ALTER TABLE `librovendido`
-  MODIFY `idLibroVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idLibroVendido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidosespeciales`
@@ -460,7 +467,7 @@ ALTER TABLE `pedidosespeciales`
 -- AUTO_INCREMENT de la tabla `pedido_entrega`
 --
 ALTER TABLE `pedido_entrega`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `reestablecer`
