@@ -1,3 +1,14 @@
+$(document).ready(function($) {
+    console.log("Administrador totalmente cargada.");   
+    $(".glyphicon-plus-sign").on('click', function(event) {
+        abreModal();
+    });
+});
+
+function abreModal() {
+    $('#myModal').modal('show');
+}
+
 function myFunction() {
     // Declare variables 
     var input, filter, table, tr, td, i;

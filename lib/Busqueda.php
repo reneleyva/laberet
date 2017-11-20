@@ -7,6 +7,19 @@ include_once 'Libreria.php';
 class Busqueda {
 	function __construct() {}
 
+	// Regresa todos los pedidos que se han realizado
+	function getPedidos (){
+		include "../conexion.php";
+		$sql = "SELECT * FROM pedido_entrega p INNER JOIN librovendido l 
+			    on p.id = l.Entregaid ";
+	    $query = mysqli_query($con, $sql);
+		// while ($row = mysqli_fetch_array($query)){
+		// 	echo $row["titulo"];
+		// }
+		return $query;
+	}
+
+
 	//Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
 		include "../conexion.php";
