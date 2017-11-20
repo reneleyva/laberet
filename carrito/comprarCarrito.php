@@ -11,10 +11,10 @@
 	$fecha = new DateTime();
 	$sql = "INSERT INTO pedido_entrega SET 
 			id=".$first_key.", 
-			fecha=".$fecha->getTimestamp()."
+			fecha=".$fecha->getTimestamp().",
 			status=0,
 			idUsuario=".$_SESSION['id'].";";
-
+	echo $sql;
 	mysqli_query($con, $sql);
 	foreach ($carrito as $libro) {
 		$libro->setAsLibroVendido($_SESSION['id'], $first_key);
