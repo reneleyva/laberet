@@ -66,7 +66,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 				</div>
 				<div class="row subir">
 				
-					<label>Foto de Atras</label><br>
+					<label>Foto de Atrás</label><br>
 					<button type="button" id="upload-atras" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
 				</div>
 			</div>
@@ -91,6 +91,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 
 						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
 						<input type="text" id="tags" name="tags" value="" class=" tags form-control" data-role="tagsinput">
+						<p style="font-size: 12pt;">*El autor se agrega automáticamente como tag</p>
 					 </div>
 					
 					 <button class="btn btn-default" type="submit"><b>Enviar</b></button>

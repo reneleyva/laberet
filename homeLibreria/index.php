@@ -63,13 +63,13 @@ if (!isset($_SESSION['tipo'])) {
 							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
-				    
+				<!--     
 				<select name="" class="form-control">
 					  <option>TODO</option>
 					  <option>Suspenso</option>
 					  <option>Miedo</option>
 					  <option>Matemáticas</option>
-				</select>
+				</select> -->
 				    
 				</div>
 
@@ -112,11 +112,12 @@ if (!isset($_SESSION['tipo'])) {
 						<a class="book-author" href="#">
 							<?php echo $book['autor'];?>
 						</a>
-						<p><?php
-				        	echo "<b>ISBN: </b>".$book['isbn'];?></p>
-						<p>
-							<?php echo '<b>Adición:</b> '.$book['fechaAdicion'];?>
-						</p>
+						<?php if($book['isbn']): ?>
+							<p><?php
+				        		echo "<b>ISBN: </b>".$book['isbn'];?></p>
+							<p>
+						<?php endif; ?>
+						
 				        	<p class="book-price">
 							<?php echo "<b>$".$book['precio']." MXN</b>";?>
 						</p>

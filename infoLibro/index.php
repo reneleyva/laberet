@@ -77,7 +77,7 @@
 				$tags = explode(" ", trim($book->getTags(), " "));
 				for ($i=0; $i < count($tags); $i++) { 
 					if ($tags[$i] != '')
-						echo '<a href="../buscar/?q='.$tags[$i].'&s=todo" class="label label-default">'.$tags[$i].'</a> ';
+						echo '<a href="../buscar/?term='.$tags[$i].'&s=todo" class="label label-default">'.$tags[$i].'</a> ';
 				} 
 				?><!-- Fin php -->
 		

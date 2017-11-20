@@ -20,7 +20,8 @@
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
     //Se agrega el autor como tag. 
-    $tags = $tags." ".$autor;
+    $autorTags = join("-", explode(" ", $autor));
+    $tags = $tags." ".$autorTags;
     $fotoAtrasPath = "";
     $fotoFrentePath = "";
 
