@@ -60,7 +60,7 @@
 					while ($row = mysqli_fetch_array($query)){
 						echo "\n";?>
 						<tr style="background-color: #A9F5A9">
-						    <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
+						    <td onclick="detalle(<?php echo $row["id"];?>)" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
 						    <td><?php echo $row["id"]; ?> </td>
 						    <td><?php echo $row["libros"]; ?></td>
 						    <td><?php echo $row["fecha"]; ?></td>
@@ -71,30 +71,6 @@
 					}
 				}
 			?>
-		  <tr style="background-color: #A9F5A9">
-		    <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
-		    <td>1</td>
-		    <td>12</td>
-		    <td>12/10/2017</td>
-		    <td>$689.00</td>
-		    <td>ENTREGADO</td>
-		  </tr>
-		  <tr style="background-color: #F5A9A9">
-		    <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
-		    <td>2</td>
-		    <td>56</td>
-		    <td>03/09/2017</td>
-		    <td>$223.00</td>
-		    <td>NO ENTREGADO</td>
-		  </tr>
-		  <tr style="background-color: #A9F5A9">
-		    <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
-		    <td>3</td>
-		    <td>4</td>
-		    <td>15/10/2017</td>
-		    <td>$884.80</td>
-		    <td>ENTREGADO</td>
-		  </tr>
 		</table>
 		
 	</div>
@@ -110,29 +86,7 @@
 	        <h3 class="modal-title" style="text-align: center">Libros Pertenecientes al Pedido</h3>
 	      </div>
 	      <div class="modal-body">
-	        <table id="tablaLibros">
-			  <tr class="header">
-			    <th style="width:50%;">Título</th>
-			    <th style="width:20%;">Precio</th>
-			    <th style="width:20%;">Librería</th>
-			  </tr>
-			  <tr>
-			    <td>La Historia del Loco</td>
-			    <td>$112.00</td>
-			    <td>Aurora</td>
-			  </tr>
-			  <tr>
-			    <td>El Silencio de los Inocentes</td>
-			    <td>$34.00</td>
-			    <td>Porrua</td>
-			  </tr>
-			  <tr>
-			    <td>Harry Potter</td>
-			    <td>$78.99</td>
-			    <td>El Sótano</td>
-			  </tr>
-			</table>
-
+	        <table id="tablaLibros"> </table>
 			<table id="tablaPrecio">
 			  <tr class="header">
 			    <th style="width:50%; text-align: right;">Total: $679.99</th>

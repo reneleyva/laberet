@@ -15,10 +15,33 @@ class Busqueda {
 			    on p.id = l.Entregaid 
 			    GROUP BY p.id,p.fecha ";
 	    $query = mysqli_query($con, $sql);
-		// while ($row = mysqli_fetch_array($query)){
-		// 	echo $row["titulo"];
-		// }
 		return $query;
+	}
+
+	// Regresa todos los libros asociados a ese pedido
+	function getDetalle ($id) {
+		include "../conexion.php";
+		$sql = "SELECT  l.precio costo ,lib.nombre libreria,l.titulo prueba
+				FROM pedido_entrega p INNER JOIN librovendido l INNER JOIN libreria lib
+			    on p.id = l.Entregaid 
+			    and p.id = ".$id."
+			    and l.idLibreria = lib.idLibreria";
+		$query = mysqli_query($con, $sql);
+		// El JSON que regresará.
+		$json = array();
+		// Si hay resultados.
+		if ($query) {
+			while ($row = mysqli_fetch_array($query)){
+				// $titulo = $row['prueba'];
+				$costo = $row['costo'];
+				$titulo = "El amor en los tiempos";
+				// echo $titulo;
+				$libreria  = $row['libreria'];
+				$arr = array ('titulo'=>$titulo,'costo'=>$costo,'libreria'=>$libreria);
+				array_push($json, array ('info'=>$arr));
+			}
+		}
+    	return $json;
 	}
 
 

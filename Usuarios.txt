@@ -1,0 +1,11 @@
+Usuarios:
+user: liz@ciencias.unam.mx
+pass: teamoLuis
+user : lugia365@gmail.com
+pass : *86buzon
+user: rene@ciencias.unam.mx
+pass : 12345
+
+Admins:
+user: luis_admin
+pass: *86buzon
