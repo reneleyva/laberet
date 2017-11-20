@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2017 a las 16:33:20
+-- Tiempo de generación: 20-11-2017 a las 18:47:18
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -190,7 +190,7 @@ CREATE TABLE `librovendido` (
   `fotoFrente` varchar(1024) NOT NULL,
   `vendidoLinea` int(1) NOT NULL,
   `tags` varchar(1024) NOT NULL,
-  `fechaVenta` int(64) DEFAULT NULL,
+  `fechaVenta` date DEFAULT NULL,
   `idLibreria` int(10) NOT NULL,
   `idUsuario` int(10) DEFAULT NULL,
   `Entregaid` int(11) DEFAULT NULL
@@ -201,11 +201,11 @@ CREATE TABLE `librovendido` (
 --
 
 INSERT INTO `librovendido` (`idLibroVendido`, `autor`, `titulo`, `isbn`, `precio`, `fotoFrente`, `vendidoLinea`, `tags`, `fechaVenta`, `idLibreria`, `idUsuario`, `Entregaid`) VALUES
-(6, 'John Katzenbach', 'El Psicoanalista', '', 478, 'uploads/5El-psicoanalista-1.jpg', 1, 'suspenso  análisis  John Katzenbach', 1511142910, 4, 6, 7),
-(7, 'Stephen King', 'Carrie', '', 245, 'uploads/6carrie86.jpg', 1, 'suspenso  carrie  Stephen King', 1511142910, 5, 6, 7),
+(6, 'John Katzenbach', 'El Psicoanalista', '', 478, 'uploads/5El-psicoanalista-1.jpg', 1, 'suspenso  análisis  John Katzenbach', '0000-00-00', 4, 6, 7),
+(7, 'Stephen King', 'Carrie', '', 245, 'uploads/6carrie86.jpg', 1, 'suspenso  carrie  Stephen King', '0000-00-00', 5, 6, 7),
 (8, 'Gabriel García Marquez', 'El Amor en los tiempos del colera', NULL, 45.9, '', 1, '', NULL, 4, 8, 5),
 (9, 'Luis Pulido', 'Cómo tener un bícepsote', NULL, 927.99, '', 1, 'Bícpes Gym', NULL, 6, 8, 5),
-(10, 'El Brou', 'Como amar a Luz', '7098090', 45.78, '', 1, 'Miedo', 876897, 5, 8, 1);
+(10, 'El Brou', 'Como amar a Luz', '7098090', 45.78, '', 1, 'Miedo', '0000-00-00', 5, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -230,7 +230,7 @@ CREATE TABLE `pedidosespeciales` (
 
 CREATE TABLE `pedido_entrega` (
   `id` int(11) NOT NULL,
-  `fecha` int(64) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -240,10 +240,10 @@ CREATE TABLE `pedido_entrega` (
 --
 
 INSERT INTO `pedido_entrega` (`id`, `fecha`, `idUsuario`, `status`) VALUES
-(1, 890038383, 8, 1),
-(5, 27, 8, 0),
-(6, 23012009, 8, 0),
-(7, 22, 6, 1);
+(1, '2017-11-20', 8, 1),
+(5, '2017-11-13', 8, 0),
+(6, '2017-11-07', 8, 0),
+(7, '2017-11-01', 6, 1);
 
 -- --------------------------------------------------------
 
