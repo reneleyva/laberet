@@ -242,6 +242,7 @@ CREATE TABLE `pedido_entrega` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` int(64) DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
+  `status` int(1) NOT NULL, 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -271,7 +272,8 @@ CREATE TABLE `pedidosespeciales` (
   `idUsuario` int(10) NOT NULL,
   PRIMARY KEY (`idPedido`),
   KEY `FKPedidosEsp131845` (`idUsuario`),
-  CONSTRAINT `FKPedidosEsp131845` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
+  CONSTRAINT `FKPedidosEsp131845` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) 
+  ON DELETE CASCADE 
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -299,6 +301,7 @@ CREATE TABLE `reestablecer` (
   UNIQUE KEY `hash` (`hash`),
   KEY `FKReestablec30483` (`idUsuario`),
   CONSTRAINT `FKReestablec30483` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
+  ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

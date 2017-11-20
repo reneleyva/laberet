@@ -11,7 +11,8 @@
 	$fecha = new DateTime();
 	$sql = "INSERT INTO pedido_entrega SET 
 			id=".$first_key.", 
-			fecha=".$fecha->getTimestamp().",
+			fecha=".$fecha->getTimestamp()."
+			status=0,
 			idUsuario=".$_SESSION['id'].";";
 
 	mysqli_query($con, $sql);
