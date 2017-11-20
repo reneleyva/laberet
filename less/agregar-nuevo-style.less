@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
+@blue: #2C3E50;
+@green: #18BC9C;
 
 html, body {
 	height: 100%;
@@ -11,15 +13,25 @@ html, body {
 }
 
 .formulario {
+
 	margin-top: 50px;
-	.vista-previa {
-		// border: 1px solid black;
-		text-align: center;
+	.preview {
+		border: 2px dashed black; 
+		height:400px; 
+	}
+
+	.subir {
+		text-align: center; 
+	}
+
+	.preview {
+		text-align: center; 
 
 		img {
-			height: 500px;
-			width: 320px;
-			border: 1px solid black;
+			height: 390px; 
+			width: auto; 
+			max-width: 280px; 
+			margin: auto; 
 		}
 	}
 
@@ -61,6 +73,7 @@ html, body {
 		button {
 			font-size: 14pt;
 			margin-top: 30px;
+			background: @green; 
 			float: right;
 		}
 		
@@ -93,11 +106,6 @@ html, body {
 		font-size: 14pt;
 	}
 }
-
-.vista-previa {
-	border: 1px solid black; 
-}
-
 
 .footer {
 	background: none; 

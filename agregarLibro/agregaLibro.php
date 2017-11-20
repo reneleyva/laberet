@@ -1,13 +1,13 @@
 <?php
     
-    include '../../conexion.php';
+    include '../conexion.php';
     session_start();
     $idLibreria = $_SESSION['id'];
 
 	/* Consulta para obetener el id mayor */
-	$idMaximo = 'SELECT max(idLibro) as max from Libro;';
-	$result = $pdo->query($idMaximo);
-	$value = $result -> fetch();
+	$idMaximo = 'SELECT max(idLibro) as max from libro;';
+	$result = mysqli_query($con, $idMaximo);
+	$value = mysqli_fetch_array($result);
 	$id = $value['max'];
 
     $titulo = $_POST['titulo'];
@@ -32,21 +32,22 @@
         $imageFtype = $_FILES['fotoFrente']['type'];
         $imageFerror = $_FILES['fotoFrente']['error'];
         $tmp_name = $_FILES['fotoFrente']['tmp_name'];
-
         $name = $id.$name; //Para que sean imagenes con nombres unicos. 
         $fotoFrentePath = $imagePath.$name;
-
+        echo "PATH:".$fotoFrentePath;
         if (!empty($name)) {
 
-            if  (move_uploaded_file($tmp_name, "../../".$fotoFrentePath)) {
-                // echo 'Uploaded';
+            if  (move_uploaded_file($tmp_name, "../".$fotoFrentePath)) {
+                echo 'Uploaded';
+            } else {
+                echo "NOPE";
             }
 
         } else {
             echo 'please choose a file';
         }
 
-    }
+    } 
     
 
     if (isset($_FILES['fotoAtras']['name'])) {
@@ -61,7 +62,7 @@
 
         if (!empty($name)) {
 
-            if  (move_uploaded_file($tmp_name, "../../".$fotoAtrasPath)) {
+            if  (move_uploaded_file($tmp_name, "../".$fotoAtrasPath)) {
                 // echo 'Uploaded';
             }
 
@@ -70,29 +71,20 @@
         }
 
     }
-	
-    //$hoy = getdate();
-    $anio = date('Y');
-    $mes = date('m');
-    $dia = date('d');
-    $fecha = $anio.'/'.$mes.'/'.$dia;
 
-    // for ($i = 10; $i < 60; $i++) {
-        // $isbn = $isbn.$i;
-        $sql = 'INSERT INTO Libro SET
-                idLibro = '.($id+1).',
-    			titulo = "' . $titulo . '",
-    			autor = "'.$autor.'",
-                fechaAdicion = "'.$fecha.'",
-    			precio = "'.$precio.'",
-    			tags = "'.$tags.'",
-    			idLibreria = '.$idLibreria.',
-    			fotoFrente = "'.$fotoFrentePath.'",
-    			fotoAtras = "'.$fotoAtrasPath.'";'; 
-        // echo $sql;
-        $pdo->exec($sql);
+
+$sql = 'INSERT INTO libro SET
+        idLibro = '.($id+1).',
+		titulo = "' . $titulo . '",
+		autor = "'.$autor.'",
+        fechaAdicion = CURDATE(),
+		precio = "'.$precio.'",
+		tags = "'.$tags.'",
+		idLibreria = '.$idLibreria.',
+		fotoFrente = "'.$fotoFrentePath.'",
+		fotoAtras = "'.$fotoAtrasPath.'";'; 
+mysqli_query($con, $sql);
         
-    // }    
     	
-    header('Location: .');
-   	exit();
+header('Location: .');
+exit();

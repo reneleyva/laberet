@@ -31,7 +31,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap-tagsinput.css">
 	<link rel="stylesheet" href="../css/agregar-nuevo-style.css"> 
-	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -49,15 +49,32 @@ if ($_SESSION['tipo'] == 'usuario') {
 		
 		<h2 class="text-center"><b>Agregar Nuevo Libro.</b></h2>
 		<div class="row formulario">
-			<div class="vista-previa col-lg-4">
-				<img id="preview" src="../img/images.jpg" alt="">
-				
+			<div  class="col-lg-3">
+				<div class="row preview">
+					<img id="foto-frente" src="" alt="">
+				</div>
+				<div class="row subir">
+				 
+					<label>Foto de Frente</label><br>
+					<button type="button" id="upload-frente" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
+				</div>
 			</div>
-			<form id="nuevo-libro" action="agregaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-8">
+			<div  class="col-lg-3">
+				<div class="row preview">
+					<img id="foto-atras" src="" alt="">
+				</div>
+				<div class="row subir">
+				
+					<label>Foto de Atras</label><br>
+					<button type="button" id="upload-atras" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
+				</div>
+			</div>
+			<form id="nuevo-libro" action="agregaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-6">
 				<div class="form-control err-msg ">Precio no válido!.</div>
 				<div class="form-group">
-					 <div class="labels col-lg-6">
-						
+					 <div class="labels col-lg-4">
+						<input style="display: none;" required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
+						<input  style="display: none;" required type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
 					 	<label for="isbn" class="col-form-label">ISBN (opcional)</label><br>
 					 	<label for="autor" class="col-form-label">Autor</label><br>
 					 	<label for="titulo" required class="col-form-label">Título</label><br>
@@ -65,7 +82,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 	<!-- <label for="lenguaje" required class="col-form-label">Lenguaje</label><br> -->
 					 	<label for="tags" class="col-form-label">Tags.</label>
 					 </div>
-					 <div class="inputs col-lg-6">
+					 <div class="inputs col-lg-8">
 					 	<input type="text" class="form-control" name="isbn" id="isbn" placeholder="0803287682">
 					 	<input type="text" required class="form-control" name="autor" id="autor" placeholder="Julio Verne">
 					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="...">
@@ -74,8 +91,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
 						<input type="text" id="tags" name="tags" value="" class=" tags form-control" data-role="tagsinput">
 					 </div>
-					 <input required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
-					<input  required type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
+					
 					 <button class="btn btn-default" type="submit"><b>Enviar</b></button>
 				</div>
 				

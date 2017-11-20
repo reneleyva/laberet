@@ -26,9 +26,11 @@ $sql = "INSERT INTO librovendido SET
 	precio = ".$book->getPrecio().",
 	fotoFrente = '".$book->getFotoFrente()."',
 	vendidoLinea = '0',
-	fechaVenta = ".$fecha->getTimestamp().",
+	fechaVenta = CURDATE(),
 	tags = '".$book->getTags()."',
 	idLibreria = '".$book->getIdLibreria()."';";
 
+// echo $sql;
 mysqli_query($con, $sql);
-header("Location: .");
+exit(); 
+// header("Location: .");
