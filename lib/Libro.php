@@ -82,6 +82,32 @@ class Libro {
 		return False;
 	}
 
+	public function setAsLibroVendido($idUsuario, $idEntrega) {
+		include "../conexion.php";
+		//lo quito de la tabla libro
+		$sql="DELETE FROM libro WHERE idLibro=".$this->getId().";";
+		mysqli_query($con, $sql);
+
+
+		$fecha = new DateTime();
+		// //LO agrego a libro vendido
+		$sql = "INSERT INTO librovendido SET 
+				idLibroVendido=".$this->getId().", 
+				autor='".$this->getAutor()."',
+				titulo='".$this->getTitulo()."',
+				isbn='".$this->getIsbn()."',
+				precio=".$this->getPrecio().",
+				fotoFrente='".$this->getFotoFrente()."',
+				vendidoLinea=1,
+				tags='".$this->getTags()."',
+				fechaVenta=".$fecha->getTimestamp().",
+				idLibreria=".$this->getIdLibreria().",
+				idUsuario=".$idUsuario.",
+				Entregaid=".$idEntrega.";";
+
+		mysqli_query($con, $sql);
+	}
+
 	//GETTERS Y SETTERS. 
 	public function getId(){
 		return $this->id;
