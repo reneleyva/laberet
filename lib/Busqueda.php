@@ -10,8 +10,10 @@ class Busqueda {
 	// Regresa todos los pedidos que se han realizado
 	function getPedidos (){
 		include "../conexion.php";
-		$sql = "SELECT * FROM pedido_entrega p INNER JOIN librovendido l 
-			    on p.id = l.Entregaid ";
+		$sql = "SELECT p.id id,p.fecha fecha,COUNT(DISTINCT(l.idLibroVendido)) libros, FORMAT(SUM(l.precio),2) precio 
+				FROM pedido_entrega p INNER JOIN librovendido l
+			    on p.id = l.Entregaid 
+			    GROUP BY p.id,p.fecha ";
 	    $query = mysqli_query($con, $sql);
 		// while ($row = mysqli_fetch_array($query)){
 		// 	echo $row["titulo"];

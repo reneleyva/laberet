@@ -62,7 +62,7 @@
 						<tr style="background-color: #A9F5A9">
 						    <td><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
 						    <td><?php echo $row["id"]; ?> </td>
-						    <td>12</td>
+						    <td><?php echo $row["libros"]; ?></td>
 						    <td><?php echo $row["fecha"]; ?></td>
 						    <td>$ <?php echo $row["precio"]; ?></td>
 						    <td>ENTREGADO</td>
