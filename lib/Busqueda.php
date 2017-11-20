@@ -10,10 +10,11 @@ class Busqueda {
 	// Regresa todos los pedidos que se han realizado
 	function getPedidos (){
 		include "../conexion.php";
-		$sql = "SELECT p.id id,p.fecha fecha,COUNT(DISTINCT(l.idLibroVendido)) libros, FORMAT(SUM(l.precio),2) precio 
+		$sql = "SELECT p.id id,p.fecha fecha, p.status status,COUNT(DISTINCT(l.idLibroVendido)) libros, FORMAT(SUM(l.precio),2) precio 
 				FROM pedido_entrega p INNER JOIN librovendido l
 			    on p.id = l.Entregaid 
-			    GROUP BY p.id,p.fecha ";
+			    and l.vendidoLinea = 1
+			    GROUP BY p.id,p.fecha,p.status ";
 	    $query = mysqli_query($con, $sql);
 		return $query;
 	}
@@ -27,6 +28,7 @@ class Busqueda {
 				FROM pedido_entrega p INNER JOIN librovendido l INNER JOIN libreria lib
 			    on p.id = l.Entregaid 
 			    and p.id = ".$id."
+			    and l.vendidoLinea = 1
 			    and l.idLibreria = lib.idLibreria";
 		$query = mysqli_query($con, $sql);
 		// El JSON que regresará.

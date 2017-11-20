@@ -25,6 +25,7 @@ function detalle(id_pedido) {
         success:  function (response) {
             // Borramos los datos de la tabla.
             $("#tablaLibros").text("");
+            $("#total").text("");
             // La cabecera de la tabla;
             var cabecera = " <tr class='header'> \n" + 
                            "    <th style='width:50%;'>Título</th> \n"+
@@ -32,6 +33,7 @@ function detalle(id_pedido) {
                            "    <th style='width:20%;'>Librería</th> \n" +
                            " </tr>";
             $("#tablaLibros").html(cabecera);
+            var total = 0;
             // Itera sobre el json de jsons :v
             $.each(response, function(index, element) {
                 var myObj, titulo,precio,libreria,fila;
@@ -39,6 +41,7 @@ function detalle(id_pedido) {
                 titulo = myObj.titulo;
                 precio = myObj.costo;
                 libreria = myObj.libreria;
+                total += parseFloat(precio);
                 fila = " <tr> \n" +
                        "     <td>"+titulo+"</td> \n" +
                        "     <td>$"+precio+"</td> \n" +
@@ -46,6 +49,7 @@ function detalle(id_pedido) {
                        " </tr>";
                 $("#tablaLibros").append(fila);
             });
+            $("#total").append("Total: $" + total);
             abreModal();
         }
     });

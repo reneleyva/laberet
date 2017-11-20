@@ -2,12 +2,26 @@
 	background-color: #2C3E50;
 }
 
+.verde {
+    background-color: #58FA58;
+}
+
+.verde:hover {
+    background-color: #2EFE2E;
+}
+
+.rojo {
+    background-color: #FE2E2E;
+}
+
+.rojo:hover {
+    background-color: #FF0000;
+}
+
 #myInput {
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 100%; /* Full-width */
     font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
+    padding: 12px 20px 12px 10px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
 }
@@ -17,6 +31,11 @@
     width: 100%; /* Full-width */
     border: 1px solid #ddd; /* Add a grey border */
     font-size: 18px; /* Increase font-size */
+}
+
+#myTable {
+    font-weight: bold;
+    color: black;
 }
 
 #myTable th, #myTable td,#tablaPrecio th, #tablaPrecio td,#tablaLibros th, #tablaLibros td {
@@ -29,7 +48,7 @@
     border-bottom: 1px solid #ddd; 
 }
 
-#myTable tr.header, #myTable tr:hover,#tablaPrecio tr.header, #tablaPrecio tr:hover,#tablaLibros tr.header, #tablaLibros tr:hover {
+#myTable tr.header,#tablaPrecio tr.header, #tablaPrecio tr:hover,#tablaLibros tr.header, #tablaLibros tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
 }

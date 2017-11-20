@@ -58,17 +58,30 @@
 				$query = Busqueda::getPedidos();
 				if ($query) {
 					while ($row = mysqli_fetch_array($query)){
-						echo "\n";?>
-						<tr style="background-color: #A9F5A9">
+						$status =  $row["status"];
+						if ($status == "1") {
+						 	$color = "'verde'";
+						 	$status = "ENTREGADO";
+						} else {
+							$color = "'rojo'";
+							$status = "NO ENTREGADO";
+						} 
+						?> 
+						<tr class=<?php  echo $color;?> >
 						    <td onclick="detalle(<?php echo $row["id"];?>)" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></td>
 						    <td><?php echo $row["id"]; ?> </td>
 						    <td><?php echo $row["libros"]; ?></td>
-						    <td><?php echo $row["fecha"]; ?></td>
+						    <!--<td><?php ; ?></td> -->
+						    <td>22/07/2023</td>
 						    <td>$ <?php echo $row["precio"]; ?></td>
-						    <td>ENTREGADO</td>
+						    <td><?php echo $status; ?></td>
 						</tr>
 						<?php
 					}
+				} else {
+					?>
+					<h1>No hay Datos Aún</h1> 
+					<?php  
 				}
 			?>
 		</table>
@@ -89,7 +102,7 @@
 	        <table id="tablaLibros"> </table>
 			<table id="tablaPrecio">
 			  <tr class="header">
-			    <th style="width:50%; text-align: right;">Total: $679.99</th>
+			    <th id="total" style="width:50%; text-align: right;"></th>
 			  </tr>
 			</table>
 	      </div>
