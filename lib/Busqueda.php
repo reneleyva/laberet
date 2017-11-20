@@ -21,7 +21,9 @@ class Busqueda {
 	// Regresa todos los libros asociados a ese pedido
 	function getDetalle ($id) {
 		include "../conexion.php";
-		$sql = "SELECT  l.precio costo ,lib.nombre libreria,l.titulo prueba
+		$sqlAux = " SET NAMES UTF8;";
+		mysqli_query($con, $sqlAux);
+		$sql = "SELECT  l.precio costo ,lib.nombre libreria,l.titulo titulo
 				FROM pedido_entrega p INNER JOIN librovendido l INNER JOIN libreria lib
 			    on p.id = l.Entregaid 
 			    and p.id = ".$id."
@@ -32,10 +34,8 @@ class Busqueda {
 		// Si hay resultados.
 		if ($query) {
 			while ($row = mysqli_fetch_array($query)){
-				// $titulo = $row['prueba'];
+				$titulo = $row['titulo'];
 				$costo = $row['costo'];
-				$titulo = "El amor en los tiempos";
-				// echo $titulo;
 				$libreria  = $row['libreria'];
 				$arr = array ('titulo'=>$titulo,'costo'=>$costo,'libreria'=>$libreria);
 				array_push($json, array ('info'=>$arr));
