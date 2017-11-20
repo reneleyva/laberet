@@ -17,7 +17,6 @@
 		header("location: .");	
 	}
 	include "../lib/Libro.php";	
-	include '';
  ?>
 <!DOCTYPE html>
 <html>

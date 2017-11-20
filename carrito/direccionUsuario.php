@@ -1,6 +1,5 @@
 <?php
 include '../conexion.php'; 
-session_start(); 
 $id = $_SESSION['id']; 
 
 $sql = "SELECT * from direccion WHERE idUsuario = ".$id.";";
