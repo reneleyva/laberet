@@ -100,7 +100,7 @@ class Libro {
 				fotoFrente='".$this->getFotoFrente()."',
 				vendidoLinea=1,
 				tags='".$this->getTags()."',
-				fechaVenta=".$fecha->getTimestamp().",
+				fechaVenta=CURDATE(),
 				idLibreria=".$this->getIdLibreria().",
 				idUsuario=".$idUsuario.",
 				Entregaid=".$idEntrega.";";

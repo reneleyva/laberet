@@ -23,7 +23,6 @@
 </head>
 <body>
 	<?php 
-		session_start();
 		$current_page = "infoLibreria";
 		if (!isset($_SESSION['tipo'])) {
 			//Nuevo en la página

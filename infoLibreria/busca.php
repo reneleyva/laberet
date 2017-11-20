@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include '../conexion.php';
 include_once "../lib/Libro.php";
 include_once "../lib/Libreria.php";
 $books = array();

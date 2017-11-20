@@ -82,7 +82,7 @@
 				?><!-- Fin php -->
 		
 				</p>
-				<img id="paypal" src="../img/paypal.png" alt=""><br>
+				<img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppmcvdam.png" alt="Credit Card Badges"><br>
 				
 				<?php $idLibro = $_GET['id']; ?>
 				<?php if(isset($_SESSION['carrito'][$idLibro])) : ?>

@@ -32,9 +32,10 @@
 	  	if(!$cart_books)
 	  	{
 	  		include "carrito-vacio.html";
-	  		exit();
 	  	}
 	 ?>
+
+<?php if($cart_books) : ?>
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped">
@@ -74,7 +75,7 @@
 			</div>
 		</div>
 	</div>
-	
+<?php endif; ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/carrito.js"></script>

@@ -1,20 +1,13 @@
 <?php 
-session_start(); 
-//Checo que tipo de Usuario es y si debería de estar aquí. 
+//Revisa la sesión
+session_start();
 if (!isset($_SESSION['tipo'])) {
+	//NO ha iniciado sesión
 	header("location: ../");
-} 
-
-$tipo = $_SESSION['tipo'];
-
-if ($tipo == 'usuario') {
-	//NO debería de estar aquí redirijo
-	header("location: ../home/");
-	exit();
-} else if ($tipo == 'invitado') {
-	header("location: ../");	
-	exit();
-} 
+} else if ($_SESSION['tipo'] != 'libreria') {
+	//No es una libreria
+	header("location: ../home");	
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +18,9 @@ if ($tipo == 'usuario') {
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
-
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css">  
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../css/homeLibreria-style.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -36,23 +28,21 @@ if ($tipo == 'usuario') {
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 <body>
-	<?php 
-	$current_page = 'inicio'; 
-	include '../components/navbar-libreria.php'; ?>
-	<?php include 'perfil.php'; ?>
-
-	<div style="background: url(../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" class="container-fluid">
+	<?php include '../components/navbar-libreria.php'; ?>
+	
+    <?php include 'libreria.php';?>
+	<div class="container-fluid" style="background: url(../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
-					
 					<div class="circle" style="background: url(../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
 					<div class="row text-center">
-						<h2 class="col-lg-12"><b><?php echo $nombre ?></b></h2>
-						<p><?php echo $direccion ?></p>
-						<p><?php echo $telefono ?></p>
+						<h2 class="col-lg-12"><b><?php echo $nombre;?></b></h2>
+						<p><?php echo $direccion;?></p>
+						<p><?php echo 'Tel: '.$telefono;?></p>
 					</div>
 				</div>
 			</div>
@@ -60,11 +50,10 @@ if ($tipo == 'usuario') {
 	</div> <!-- Fin fluid -->
 	
 
-
 	<div class="container">
 		<div class="row">
 			
-			<form action="" class="form-inline" method="post" accept-charset="utf-8">
+			<form action="../agregarLibro" class="form-inline" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
@@ -74,99 +63,204 @@ if ($tipo == 'usuario') {
 						</span>
 				    </div>
 				    
-				<!-- <select name="" class="form-control">
+				<select name="" class="form-control">
 					  <option>TODO</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
-					  <option>Stuff</option>
-				</select> -->
+					  <option>Suspenso</option>
+					  <option>Miedo</option>
+					  <option>Matemáticas</option>
+				</select>
 				    
 				</div>
 
-				<a href="agregarLibro" class="btn btn-default"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b> <input type="text" class="id" hidden="true" value="<?php echo htmlspecialchars($idLibreria, ENT_QUOTES, 'UTF-8');?>"></a>
+				<a id="agregar-nuevo" class="btn btn-default" href="../agregarLibro"><b> <span class="glyphicon glyphicon-plus-sign"></span> Agregar Nuevo Libro</b></a>
 			</form>
 		</div>
 
-		<?php
-		if(!($tam%2== 0)){
-			$tam = $tam+1;
-		} 
-		for ($x = 0;$x<=($tam/2)+1;$x+=2): ?>
+		
 		<div class="row muestra"> <!-- INICIO MUESTRA -->
 			
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+			<?php 
+				include 'libreria.php';
+				include "../pagination.php";
+
+				if (!$books) {
+					echo "No hay lisbros! FUCK!";
+					//exit();
+				} 
+			?>
+			<?php 
+				$flag = FALSE; //PAra que imprima cada 2 veces una linea horizontal
+				$total = 0; //Total de libros ya generados
+				$numLibros = count($books);
+				$booksPerPage = 6;
+				$numPaginas = ceil($numLibros/$booksPerPage); //Num de páginas
+				
+				for ($i = ($page-1)*$booksPerPage; $i < $numLibros and $total < $booksPerPage;$i++) { 
+					$book = $books[$i]; 
+
+			?>
+
+				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book['id']; ?>">
+				<div class="caption">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $book['fotoFrente']?>" alt="Foto">
+					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<p class="book-title">
+							<?php echo $book['titulo']; ?>
+						</p>
+						<a class="book-author" href="#">
+							<?php echo $book['autor'];?>
+						</a>
+						<p><?php
+				        	echo "<b>ISBN: </b>".$book['isbn'];?></p>
+						<p>
+							<?php echo '<b>Adición:</b> '.$book['fechaAdicion'];?>
+						</p>
+				        	<p class="book-price">
+							<?php echo "<b>$".$book['precio']." MXN</b>";?>
+						</p>
+					</div>
+				</div>
+				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
+					<button id="editar" class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
+					<button id="" class="btn btn-default vendido"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
+					<button id="eliminar" class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
+				</div>
+			</div>
 			
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php
-				        echo htmlspecialchars($idLibros[$x], ENT_QUOTES, 'UTF-8');?>">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $fotoFrente[$x]?>" alt="PENE">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title"><?php
-				        	echo htmlspecialchars($titulos[$x], ENT_QUOTES, 'UTF-8');
-				        ?></p>
-						<a class="book-author" href="#"><?php
-				        	echo htmlspecialchars($autores[$x], ENT_QUOTES, 'UTF-8');
-				        ?></a>
-						<p class="book-price"><b>Precio: $ </b><?php
-				        	echo htmlspecialchars($precios[$x], ENT_QUOTES, 'UTF-8');
-				        ?></p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b><?php echo $fechas[$x]?></p>
-						<p><b>Lenguaje: </b>Inglés</p>
-					</div>
-				</div>
+			<?php 
+				//Some shady shit right here.
+				//Preguntar a René si no sabes que pedo. 
+				if ($flag) {
+					echo "<div class='hl col-lg-12 col-md-12 col-sm-12 col-xs-12'></div>";
+					$flag = FALSE;
+				} else {
+					$flag = TRUE;
+				} //END IF ELSE 
+				$total++; 
+			 } //END MAIN FOR...
 
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
-				<?php 
-				// Para evita poner de más
-				if ($x > ($tam/2)) {
-					break;
-				} ?>
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php
-				        echo htmlspecialchars($idLibros[$x], ENT_QUOTES, 'UTF-8');?>">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $fotoFrente[$x+1]?>" alt="Foto">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title"><?php
-				        	echo htmlspecialchars($titulos[$x+1], ENT_QUOTES, 'UTF-8');
-				        ?></p>
-						<a class="book-author" href="#"><?php
-				        	echo htmlspecialchars($autores[$x+1], ENT_QUOTES, 'UTF-8');
-				        ?></a>
-						<p class="book-price"><b>Precio: $ </b><?php
-				        	echo htmlspecialchars($precios[$x+1], ENT_QUOTES, 'UTF-8');
-				        ?></p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha Adición: </b><?php echo $fechas[$x+1]?></p>
-						<p><b>Lenguaje: </b>Inglés</p>
-					</div>
-				</div>
-
-				<div class="row botones text-center col-lg-12 col-md-12 col-sm-12">
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-pencil"></span> Editar</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-ok"></span> Vendido En Tienda</b></button>
-					<button class="btn btn-default"><b><span class="glyphicon glyphicon-remove"></span> Eliminar</b></button>
-				</div>
-			</div>
-
-		</div>
-		<?php endfor; ?>
-		<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-</div>
-		<?php 
-			include '../components/footer-libreria.php';
-		?>
-			 <!-- FIN MUESTRA DE LIBROS -->
+			 ?>				
+			
+			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
+			  <ul class="pagination">
+			   		<?php 
+			   			showPagination($books, $page, 6);
+			   		 ?>
+			  </ul>
+			</nav>
+		</div> <!-- FIN MUESTRA DE LIBROS -->
 		
+
+		
+	</div>
+	
+	<?php include '../components/footer-libreria.php'; ?>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="modal-venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Venta en Linea</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	<h3><b>Los siguientes Libros han sido vendidos en linea.</b></h3>
+	        	<h4>Se recomienda apartar estos libros para envio.</h4>
+
+	        	<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+					</div>
+		       	</div>
+
+				<div class="libro col-lg-12">
+		        	<div class="book-cover col-lg-4">
+		        		<img src="../img/brave-men.jpg" alt="Foto" />
+		        	</div>
+
+					<div class="info col-lg-8">
+						<p class="book-title"><b>Titulo: </b>Brave Men</p>
+						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
+						<p><b>ISBN:</b> 2187168716</p>
+						<p class="book-price"><b>Precio: </b>$340</p>
+					</div>
+		       	</div>
+
+	        </div>
+
+	        <div class="modal-footer">
+	        	<h3 id="total"><b>Total: $230<b></h3>
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="modal-pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="titulo"><b>Pedido Especial</b></h3>
+	      </div>
+	      <div class="modal-body">
+	        <div>
+	        	
+	        	<h4>Si tiene alguno de los siguientes libros cataloguelos y se le notificará al usuario.</h4>
+
+	        	<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
+	        	</div>
+				
+				<div class="pedido">
+	        		<p><b>El usuario Luna Andrea Jazz ha solicitado el siguiente libro</b></p>
+					<p><b>Autor: </b> Miguel Cervantes</p>
+					<p><b>Título: </b> El Quijote</p>
+					<p><b>Descripción: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore amet soluta quos provident illum officia id beatae, quam aperiam aut dolores iusto ipsa ex atque dicta commodi. Itaque, aperiam, repellendus! </p>
+					
+					<div class="text-right">
+						<a href="#" class="reportar">Reportar</a>
+					</div>
+					<button type="button" class="btn btn-default center-block"><b>Surtir Libro</b></button>
+	        	</div>
+	        </div>
+
+	        <div class="modal-footer">
+                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+            </div>
+
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div> <!-- END Modal -->
+	
+
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/homeLibreria.js"></script>
-
 </body>
 </html>

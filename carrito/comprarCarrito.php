@@ -11,7 +11,7 @@
 	$fecha = new DateTime();
 	$sql = "INSERT INTO pedido_entrega SET 
 			id=".$first_key.", 
-			fecha=".$fecha->getTimestamp().",
+			fecha=CURDATE(),
 			status=0,
 			idUsuario=".$_SESSION['id'].";";
 	echo $sql;
