@@ -32,6 +32,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap-tagsinput.css">
 	<link rel="stylesheet" href="../css/agregar-nuevo-style.css"> 
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/jquery-ui.min.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -106,7 +107,9 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/bootstrap-tagsinput.js"></script>
 	<script src="../js/agregarNuevo.js" ></script>
+	<script src="../js/autocomplete.js"></script>
 
 </html>
