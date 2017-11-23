@@ -47,16 +47,49 @@ class Busqueda {
 	}
 
 
-	//Busca en todo si keyword="" regresa todos los libros ;)
+	// Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
+		if ($keyword == "") {
+			return null;
+		}
 		include "../conexion.php";
 		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%');";
+		// echo $sql."\n";
 		$query = mysqli_query($con, $sql);
 		$books = array();
 		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
+			// echo $book->getTitulo();
 			array_push($books,$book);
+		}
+		return $books;
+	}
+
+	// Método auxiliar para buscar por medio de tags
+	function busquedaPorTags($tags){
+		include "../conexion.php";
+		// Limit 10, prro
+		$books = array();
+		// Consulta
+		$sql = "SELECT * FROM libro WHERE ";
+		// Itera sobre cada tag para llenar la consulta.
+		foreach ($tags as $tag) {
+			// No sé por que mete tags vacíos.
+			if ($tag=="") {
+				continue;
+			}
+			$sql.= " lower(tags) like lower('%".$tag."%') ";
+			$sql.= " OR";
+		}
+		$sql = substr($sql, 0, -2);
+		$query = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($query)){
+			$book = new Libro();
+			$book->fill($row);
+			if (!($book->inArray($books))){
+				array_push($books,$book);
+			}
 		}
 		return $books;
 	}
@@ -122,36 +155,48 @@ class Busqueda {
 		return $books;
 	}
 
+	// Los libros que ha comprado un usuario.
+	public function getLibrosComprados($idUsuario){
+		include "../conexion.php";
+		include_once "../lib/Libro.php";
+		$compras = array();		
+		// Cambiar por inner join
+		$sql = "SELECT * FROM libroVendido Natural join Libreria WHERE idUsuario = ".$idUsuario.";";
+		$query = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($query)){
+			$book = new LibroVendido();
+			$book->fill($row);
+			array_push($compras,$book);
+		}
+		return $compras;
+	}
+
 	public function getLibrosUsuario($idUsuario){
 		include "../conexion.php";
-		include_once "Usuario.php";
-		$usuario = new Usuario();
-		// Se consigue el usuario.
-		$usuario->getUsuario($idUsuario);
-		// Arreglo donde se guardarán los libros.
-		$librosComprados = array();
+		// Arreglo donde se guardarán los tags de los libros que ya compró.
+		$tags_totales = array();
 		$tags = array();
 		// Se hace la consulta de los libros que ha comprado.
-		$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$usuario->getId().";";
+		$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$idUsuario.";";
 		$query = mysqli_query($con, $sql);
 
 		if ($query) {
-			// itera sobre los libros que compró.
+			// Itera sobre los libros que ya compró.
 			while ($row = mysqli_fetch_array($query) ) {
-				$book = new Libro();
-				$book->fill($row);
-				$tags = explode(" ", trim($book->getTags(), " "));
-				// Se podría hacer aquí. but a ro nou.
-				array_push($librosComprados, $book);
+				// Mezcla todos los tags.
+				$tags = array_merge($tags,explode(" ", trim($row['tags'], " ")));
 			}
 		}
 		$libros = array();
-		// Si ya ha comprado libros.
-		if (!empty($librosComprados)) {
+		// Si ya ha comprado libros. (Ya que existen tags)
+		if (!empty($tags)) {
 			$librosNuevos = array();
-			foreach ($tags as $tag) {
+			foreach ($tags as &$tag) {
 				$librosNuevos = $this -> buscaGeneral($tag);
-				array_unique(array_merge($libros, $librosNuevos));
+				// Si sí regresa algo la búsqueda.
+				if (!is_null($librosNuevos)) {
+					$libros = array_merge($libros, $librosNuevos);
+				}	
 			}	
 		}
 		return $libros;

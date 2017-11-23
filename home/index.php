@@ -67,7 +67,7 @@ include_once '../lib/Usuario.php';
 			</form>
 			<?php 
 				if ($_SESSION['first']) {
-					echo "<h1>".htmlspecialchars("!Bienvenido ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
+					echo "<h1>".htmlspecialchars("!Bienvenid@, ".$_SESSION['nombre']."!", ENT_QUOTES, 'UTF-8')."</h1>";
 					$_SESSION['first'] = False;
 				}
 			 ?>
@@ -179,9 +179,12 @@ include_once '../lib/Usuario.php';
 		<?php endif; ?>
 
 		<?php 
-		$compras = Usuario::getCompras($_SESSION['id']);
+		$compras = Busqueda::getLibrosComprados($_SESSION['id']);
 		 // Pero será verdadero
-		if ($compras):?>
+		if ($compras):
+			// Para buscar sugerencias.
+			$tags = array();
+		?>
 
 		<!-- Compras Recientes -->
 		<div class="row card compras-recientes">
@@ -194,7 +197,10 @@ include_once '../lib/Usuario.php';
 			<div id="carousel-compras" class="row col-lg-10 col-md-10 col-sm-8 col-xs-8">
 
 			<?php 
-				foreach ($compras as $compra): ?>
+				foreach ($compras as $compra): 
+					// Va llenando los tags
+					$tags = array_merge($tags,explode(" ", trim($compra->getTags(), " ")));
+			?>
 
 				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
@@ -203,62 +209,62 @@ include_once '../lib/Usuario.php';
 
 				<div class="info col-lg-5 col-md-5">
 					<p><b>Título: </b><a><?php echo $compra->getTitulo();?></a></p>
-					<p><b>Autor:</b> <a href="#" ><?php echo$compra->getAutor();?></a></p>
-					<p><b>Vendedor: </b> <a href="#"><?php echo$compra->getlibreria();?></a></p>
-					<p>$230</p>
+					<p><b>Autor:</b> <a href="" ><?php echo$compra->getAutor();?></a></p>
+					<p><b>Vendedor: </b> <a href=""><?php echo$compra->getlibreria();?></a></p>
+					<p><b>Precio: </b> <a href=""><?php echo$compra->getPrecio();?></a></p>
 				</div>
 
-				<?php endforeach;?>
+				<?php endforeach;
+					// Buscamos los libros de interés.
+					$books = array();
+					$books = Busqueda::busquedaPorTags($tags);
+				?>
 			</div>
 
 			<div id="next-compras" class="next col-lg-1 col-md-1 col-sm-2 col-xs-2">
 			
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
-			<a href="../historialCompras" title="" class="btn btn-default centered"><b>Ver Todas Las Compras</b></a>
+			<a href="../historialCompras" title="" class="btn btn-default centered"><b>Ver Todas Las Compras </b></a>
 		</div> <!-- Fin Compras Recientes.  -->
-		<?php endif; ?>
 
-		
-		<?php 
-			$busqueda = new Busqueda();
-			$books = $busqueda->getLibrosUsuario(1);
-			if(!empty($books)):?>
+		<!-- Si hay libros relacionados -->
+		<?php if (!empty($books)): ?>
 
-		<!-- Libros que Quizas le ineteresen -->
-		<div class="row card">
-			<h4 class="text-center">Libros que Quizás te interesen.</h4>
-			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="prev-intereses" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
-				<span class="glyphicon glyphicon-menu-left"></span>
-			</div>
-
-			<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
-			<?php foreach ($books as $book): ?>
-				
-				<div class="thumbnail libro">
-					<div class="caption">
-						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
-						<div class="info">
-							<p class="book-title"><?php echo $book->getTitulo();?></p>
-							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
-							<p class="book-price"><b>$<?php echo $book->getPrecio();?> MXN</b></p>
-						</div>
-					</div>
-					<input type="text" hidden class="id" name="" value="<?php echo $book->getId()?>">
+			<!-- Libros que Quizas le ineteresen -->
+			<div class="row card">
+				<h4 class="text-center">Libros que Quizás te interesen.</h4>
+				<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
+				<div id="prev-intereses" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
+					<span class="glyphicon glyphicon-menu-left"></span>
 				</div>
-			<?php endforeach?>
-				
-			</div><!-- Fin Carousel -->
 
-			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="next-intereses" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
-				<span class="glyphicon glyphicon-menu-right"></span>
-			</div>
-			<?php endif; ?>
-		</div>
+				<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
+				<?php foreach ($books as $book): ?>
+					
+					<div class="thumbnail libro">
+						<div class="caption">
+							<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
+							<div class="info">
+								<p class="book-title"><?php echo $book->getTitulo();?></p>
+								<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
+								<p class="book-price"><b>$<?php echo $book->getPrecio();?> MXN</b></p>
+							</div>
+						</div>
+						<input type="text" hidden class="id" name="" value="<?php echo $book->getId()?>">
+					</div>
+				<?php endforeach?>
+					
+				</div><!-- Fin Carousel -->
 
-	
+				<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
+				<div id="next-intereses" class="next col-lg-1 col-md-2 col-sm-2 col-xs-3">
+					<span class="glyphicon glyphicon-menu-right"></span>
+				</div>
+			</div>  <!-- End Libros Relacionados -->
+		<?php endif; ?> 
+	<?php endif; ?> 
+		
 	</div>
 	<div id="footer-hl">
 	</div>

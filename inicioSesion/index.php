@@ -4,7 +4,7 @@
 		//Nuevo en la página 
 		$_SESSION['tipo'] = 'visitante'; 
 	} else if ($_SESSION['tipo'] != 'visitante') {
-		//Ya inicio sesión 
+		//Ya inició sesión 
 		$tipo = $_SESSION['tipo']; 
 		if ($tipo == 'usuario') {
 			header("Location: ../home/");
