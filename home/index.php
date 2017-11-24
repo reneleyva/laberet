@@ -91,7 +91,7 @@ include_once '../lib/Usuario.php';
 				?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt="PENE"></a>
+						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
 						<div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -204,7 +204,7 @@ include_once '../lib/Usuario.php';
 
 				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
-					<img src="../uploads/Morua.jpg" alt="">
+					<img src="../<?php echo $compra->getFotoFrente();?>" alt="">
 				</div>
 
 				<div class="info col-lg-5 col-md-5">

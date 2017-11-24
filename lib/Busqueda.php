@@ -72,7 +72,7 @@ class Busqueda {
 		// Limit 10, prro
 		$books = array();
 		// Consulta
-		$sql = "SELECT * FROM libro WHERE ";
+		$sql = "SELECT DISTINCT(idLibro),titulo,precio,autor,fotoFrente,fotoAtras,idLibreria,fechaAdicion,tags,isbn FROM libro WHERE ";
 		// Itera sobre cada tag para llenar la consulta.
 		foreach ($tags as $tag) {
 			// No sé por que mete tags vacíos.
@@ -83,6 +83,8 @@ class Busqueda {
 			$sql.= " OR";
 		}
 		$sql = substr($sql, 0, -2);
+		// Para que solo traiga 10.
+		$sql .= "LIMIT 10;" ;
 		$query = mysqli_query($con, $sql);
 		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
@@ -171,36 +173,36 @@ class Busqueda {
 		return $compras;
 	}
 
-	public function getLibrosUsuario($idUsuario){
-		include "../conexion.php";
-		// Arreglo donde se guardarán los tags de los libros que ya compró.
-		$tags_totales = array();
-		$tags = array();
-		// Se hace la consulta de los libros que ha comprado.
-		$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$idUsuario.";";
-		$query = mysqli_query($con, $sql);
+	// public function getLibrosUsuario($idUsuario){
+	// 	include "../conexion.php";
+	// 	// Arreglo donde se guardarán los tags de los libros que ya compró.
+	// 	$tags_totales = array();
+	// 	$tags = array();
+	// 	// Se hace la consulta de los libros que ha comprado.
+	// 	$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$idUsuario.";";
+	// 	$query = mysqli_query($con, $sql);
 
-		if ($query) {
-			// Itera sobre los libros que ya compró.
-			while ($row = mysqli_fetch_array($query) ) {
-				// Mezcla todos los tags.
-				$tags = array_merge($tags,explode(" ", trim($row['tags'], " ")));
-			}
-		}
-		$libros = array();
-		// Si ya ha comprado libros. (Ya que existen tags)
-		if (!empty($tags)) {
-			$librosNuevos = array();
-			foreach ($tags as &$tag) {
-				$librosNuevos = $this -> buscaGeneral($tag);
-				// Si sí regresa algo la búsqueda.
-				if (!is_null($librosNuevos)) {
-					$libros = array_merge($libros, $librosNuevos);
-				}	
-			}	
-		}
-		return $libros;
-	}
+	// 	if ($query) {
+	// 		// Itera sobre los libros que ya compró.
+	// 		while ($row = mysqli_fetch_array($query) ) {
+	// 			// Mezcla todos los tags.
+	// 			$tags = array_merge($tags,explode(" ", trim($row['tags'], " ")));
+	// 		}
+	// 	}
+	// 	$libros = array();
+	// 	// Si ya ha comprado libros. (Ya que existen tags)
+	// 	if (!empty($tags)) {
+	// 		$librosNuevos = array();
+	// 		foreach ($tags as &$tag) {
+	// 			$librosNuevos = $this -> buscaGeneral($tag);
+	// 			// Si sí regresa algo la búsqueda.
+	// 			if (!is_null($librosNuevos)) {
+	// 				$libros = array_merge($libros, $librosNuevos);
+	// 			}	
+	// 		}	
+	// 	}
+	// 	return $libros;
+	// }
 
 	//Busca en todo si keyword="" regresa todos los libros ;)
 	function ultimosAgregados(){
