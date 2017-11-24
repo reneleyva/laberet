@@ -160,15 +160,37 @@ class Busqueda {
 	// Los libros que ha comprado un usuario.
 	public function getLibrosComprados($idUsuario){
 		include "../conexion.php";
-		include_once "../lib/Libro.php";
+		include_once "../lib/LibroVendido.php";
 		$compras = array();		
 		// Cambiar por inner join
-		$sql = "SELECT * FROM libroVendido Natural join Libreria WHERE idUsuario = ".$idUsuario.";";
+		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+				WHERE idUsuario = ".$idUsuario." LIMIT 10;";
 		$query = mysqli_query($con, $sql);
-		while ($row = mysqli_fetch_array($query)){
-			$book = new LibroVendido();
-			$book->fill($row);
-			array_push($compras,$book);
+		if ($query) {
+			while ($row = mysqli_fetch_array($query)){
+				$book = new LibroVendido();
+				$book->fill($row);
+				array_push($compras,$book);
+			}
+		}
+		return $compras;
+	}
+
+	// Básicamente los mismo de "getLibrosComprados" pero sin limites
+	public function getHistorialCompras($idUsuario){
+		include "../conexion.php";
+		include_once "../lib/LibroVendido.php";
+		$compras = array();		
+		// Cambiar por inner join
+		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+				WHERE idUsuario = ".$idUsuario.";";
+		$query = mysqli_query($con, $sql);
+		if ($query) {
+			while ($row = mysqli_fetch_array($query)){
+				$book = new LibroVendido();
+				$book->fill($row);
+				array_push($compras,$book);
+			}
 		}
 		return $compras;
 	}

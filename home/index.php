@@ -211,7 +211,7 @@ include_once '../lib/Usuario.php';
 					<p><b>Título: </b><a><?php echo $compra->getTitulo();?></a></p>
 					<p><b>Autor:</b> <a href="" ><?php echo$compra->getAutor();?></a></p>
 					<p><b>Vendedor: </b> <a href=""><?php echo$compra->getlibreria();?></a></p>
-					<p><b>Precio: </b> <a href=""><?php echo$compra->getPrecio();?></a></p>
+					<p><b>Precio: </b> <a href="">$<?php echo$compra->getPrecio();?>MXN</a></p>
 				</div>
 
 				<?php endforeach;
@@ -225,7 +225,7 @@ include_once '../lib/Usuario.php';
 			
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
-			<a href="../historialCompras" title="" class="btn btn-default centered"><b>Ver Todas Las Compras </b></a>
+			<a href="../historialCompras"  title="" class="btn btn-default centered"><b>Ver Todas Las Compras </b></a>
 		</div> <!-- Fin Compras Recientes.  -->
 
 		<!-- Si hay libros relacionados -->
