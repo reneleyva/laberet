@@ -4,8 +4,7 @@ include_once 'LibroVendido.php';
 /**
 * Usuario
 */
-class Usuario
-{
+class Usuario {
 	private $id;
 	private $correo;
 	private $nombre;
@@ -20,7 +19,7 @@ class Usuario
 	function fill($row) {
 		$this->id = $row['idUsuario'];
 		$this->nombre = $row['nombre'];
-		$this->correo = $row['correo'];
+		$this->correo = $row['correo'];		
 	}
 
 	//Regresa un usuario haciendo una consulta por id. 
@@ -56,6 +55,16 @@ class Usuario
 		return $compras;
 		//Falta
 	}
+
+	// Actualiza los datos de un usuario en la BD.
+	public function actualizaUsuario ($id,$nombre,$correo,$pass){
+		include "../conexion.php";	
+		$sql = "UPDATE usuario set nombre ='".$nombre."',correo = '".$correo."', password = '".$pass."'  
+				WHERE idUsuario = ".$id.";";
+		$query = mysqli_query($con, $sql);
+		return ($query);
+	}
+
 
 	//agrega un elemento al carrito; EL un Objeto Libro. 
 	public function addToCart($libro) {
