@@ -1,4 +1,5 @@
 <?php 
+	include "../lib/Libro.php";
 	session_start();
 	if (!isset($_SESSION['pago'])){
 		//NO debería estar aquí! 
@@ -40,12 +41,53 @@
 	?>
 	
 	<div class="container">
-
-		<div class="row">
-			<div id="paypal-button"></div>
-			<!-- <button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br> -->
-		</div>
-				
+		<?php 
+			include "compruebaLibros.php"; 
+			$cart_books = $_SESSION['carrito'];
+		?>
+		<div class="checkout">
+			<h1>ORDEN #1235</h1>
+			<table class="table">
+				  <thead>
+				    <tr>
+				      <th>#</th>
+				      <th>Portada</th>
+				      <th>Titulo</th>
+				      <th>Autor</th>
+				      <th>Precio</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <?php
+				  	$i = 1;
+				  	foreach ($cart_books as $book): ?>
+				  	<tr>
+				  		<td colspan="6" rowspan="" headers="">LOOL</td>
+				  	</tr>
+					<tr class="item" data-id=<?php echo $book->getId() ?>>
+						<th scope="row"><?php echo $i ?></th>
+						<td><img class="portada" src="../<?php echo $book->getFotoFrente();?>" alt=""></td>
+						<td><p><?php echo $book->getTitulo();?></p></td>
+						<td><p><?php echo $book->getAutor();?></p></td>
+						<td class="price" data-price="<?php echo $book->getPrecio();?>"><b>$<?php echo $book->getPrecio();?></b></td>
+						<!-- <td class="eliminar">
+							<button type="button">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</td> -->
+					</tr>
+					<?php $i++; ?>
+					<?php endforeach; ?>
+				  </tbody>
+			</table>
+			<div class="continue row">
+				<h4><b>Envío(Sólo envíos locales): +$100</b></h4>
+				<h2 id="total"><b>Total: $0</b></h2>
+			<div class="row">
+				<div id="paypal-button"></div>
+				<!-- <button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br> -->
+			</div>
+					
 		</div>
 	</div>
 	

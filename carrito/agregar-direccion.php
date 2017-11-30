@@ -34,7 +34,8 @@
 			exit();
 		} else {
 			$_SESSION['pago'] = True; 
-			header("Location: comprarCarrito.php");
+			// header("Location: comprarCarrito.php");
+			header("Location: pago.php");
 		}
 
 	} else {
@@ -56,7 +57,8 @@
 				exit();
 			} else {
 				$_SESSION['pago'] = True; 
-				header("Location: comprarCarrito.php");
+				// header("Location: comprarCarrito.php");
+				header("Location: pago.php");
 				exit();
 			}
 	}

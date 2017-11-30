@@ -116,6 +116,9 @@ class Usuario
 		$sql = "SELECT * from pedidosEspeciales P join librosurtido L where P.idPedido = L.PedidosEspecialesidPedido and idUsuario = '$id_usuario'";
 		$libros = array();		
 		$query = mysqli_query($con, $sql);
+		if(!$query) {
+			return NULL;
+		}
 		while ($row = mysqli_fetch_array($query)){
 			$libro = new PedidoEspecial();
 			$libro->fill($row);
