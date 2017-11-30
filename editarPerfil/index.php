@@ -41,6 +41,9 @@
 	<?php 
 		$current_page = 'editarPerfil';
 		include '../components/navbar-user.php';
+	 	// Buscamos al Usuario.
+	 	include '../lib/Usuario.php';
+	 	$usuario = Usuario:: getUsuario($_SESSION['id']);
 	?>
 	
 	<div class="container">
@@ -48,12 +51,12 @@
 		<table class="table">
 			<tr>
 				<td><b>Nombre</b></td>
-				<td class="value">Jazmin Luna Andrea</td>
+				<td class="value"><?php echo $usuario->getNombre(); ?></td>
 				<td><a class="editar" href="#"><span class="glyphicon glyphicon-pencil"></span> editar</a></td>
 			</tr>
 			<tr>
 				<td><b>Correo</b></td>
-				<td class="value">luis@mail.com</td>
+				<td class="value"><?php echo $usuario->getCorreo(); ?></td>
 				<td><a class="editar" href="#"><span class="glyphicon glyphicon-pencil"></span> editar</a></td>
 			</tr>
 			<tr>
@@ -63,24 +66,24 @@
 			</tr>
 		</table>
 
-		<form action="stuff.php" method="post" accept-charset="utf-8">
+		<form action="actualizaPerfil.php" method="post" accept-charset="utf-8">
 			<table class="table" hidden="true" id="forma">
 				<tr>
 					<td><b>Nombre</b></td>
-					<td class="value"><input required id="nombre" type="text" value="" placeholder=""></td>
+					<td class="value"><input required name="nombre" id="nombre" type="text" value="<?php echo $usuario->getNombre(); ?>" placeholder=""></td>
 				</tr>
 				<tr>
 					<td><b>Correo</b></td>
-					<td class="value"><input required type="email" value="" placeholder=""></td>
+					<td class="value"><input required name="correo" type="email" value="<?php echo $usuario->getCorreo(); ?>" placeholder=""></td>
 				</tr>
 				<tr>
 					<td><b>Contraseña</b></td>
-					<td class="value"><input required type="password" id="pass1" value="penis" placeholder=""><p hidden class="err-msg" id="corta">Contraseña muy corta</p></td>
+					<td class="value"><input required name="password" type="password" id="pass1" placeholder=""><p hidden class="err-msg" id="corta">Contraseña muy corta</p></td>
 				</tr>
 
 				<tr>
 					<td><b>Repetir Contraseña</b></td>
-					<td class="value"><input type="password" id="pass2" value="" placeholder=""><p hidden class="err-msg" id="coiciden">Las contraseñas no coinciden</p></td>
+					<td class="value"><input type="password" id="pass2" placeholder=""><p hidden class="err-msg" id="coiciden">Las contraseñas no coinciden</p></td>
 				</tr>
 
 				<tr>
