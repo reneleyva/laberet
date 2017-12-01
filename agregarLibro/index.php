@@ -42,6 +42,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 </head>
 <body>
 	<?php 
+		$current_page = 'agregarLibro';
 		include '../components/navbar-libreria.php';
 	?>
 

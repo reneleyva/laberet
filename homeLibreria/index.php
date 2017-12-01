@@ -32,7 +32,10 @@ if (!isset($_SESSION['tipo'])) {
 
 </head>
 <body>
-	<?php include '../components/navbar-libreria.php'; ?>
+	<?php 
+		$current_page = 'inicio';
+		include '../components/navbar-libreria.php'; 
+	?>
 	
     <?php include 'libreria.php';?>
 	<div class="container-fluid" style="background: url(../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
@@ -86,7 +89,7 @@ if (!isset($_SESSION['tipo'])) {
 				include "../pagination.php";
 
 				if (!$books) {
-					echo "No hay lisbros! FUCK!";
+					echo "No hay libros";
 					//exit();
 				} 
 			?>
@@ -109,9 +112,9 @@ if (!isset($_SESSION['tipo'])) {
 						<p class="book-title">
 							<?php echo $book['titulo']; ?>
 						</p>
-						<a class="book-author" href="#">
+						<p class="book-author">
 							<?php echo $book['autor'];?>
-						</a>
+						</p>
 						<?php if($book['isbn']): ?>
 							<p><?php
 				        		echo "<b>ISBN: </b>".$book['isbn'];?></p>

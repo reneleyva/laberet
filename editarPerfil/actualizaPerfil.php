@@ -10,9 +10,9 @@ $id = $_SESSION['id'];
 
 $inserta = Usuario::actualizaUsuario($id,$nombre,$correo,$pass);
 if ($inserta) {
-	header("location: /laberet/");
+	header("location: .");
 } else {
-	header("location: /laberet/error");
+	header("location: .");
 }
 
 // header("location: /laberet/");

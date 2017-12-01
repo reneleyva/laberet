@@ -82,7 +82,7 @@
 			}
 
 			if(!$books){
-				include 'busqueda-error.html';
+				include 'busqueda-error.php';
 				exit();
 			}
 
@@ -134,6 +134,8 @@
 			include '../components/footer-visitante.html';
 		} else if ($_SESSION['tipo'] == 'usuario') {
 			include '../components/footer-user.php';
+		} else {
+			include '../components/footer-libreria.php';
 		}
 
 	 ?>

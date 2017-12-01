@@ -37,14 +37,40 @@ jQuery(document).ready(function($) {
                 return actions.payment.execute().then(function(payment) {
                     console.log(payment);
                     alert("Pagado perro");
-                    // The payment is complete!
-                    // You can now show a confirmation message to the customer
+                    // AJAX CALL TO BUY CART 
+                    $.ajax({
+                        url: 'comprarCarrito.php',
+                        type: 'POST',
+                    })
+                    .done(function() {
+                        alert("SUCCESS");
+                        window.location.replace("../gracias");
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })                    
                 });
             }
 
         }, '#paypal-button');
     }; 
 
-    initPaypalButton(200);
+    $.ajax({
+        url: '../carrito/total.php',
+        type: 'POST',
+    })
+    .done(function(data) {
+        if (isNaN(parseInt(data))) {
+            alert("Parece haber un error intentelo más tarde");
+        }else {
+            initPaypalButton(parseInt(data));
+        }
+        
+    })
+    .fail(function() {
+        alert("error");
+    });
+    
+    
 	
 });

@@ -22,10 +22,39 @@ jQuery(document).ready(function($) {
 		$("#input-foto-perfil").click();
 	});
 
+	$('#cancelar-perfil').click(function(event) {
+		$("#input-foto-perfil").val("");
+		let circle = $('#box').find('.circle');
+		let original = circle.data('image');
+		circle.css({
+        	'background': 'url(' + original + ') no-repeat no-repeat center center',
+        	'background-size': '100% 100%'
+        });
+
+        // Esconder todo otra vez 
+        $('#cambiar-perfil').show();
+		$("#guardar-perfil").hide();
+		$('#cancelar-perfil').hide();
+	});
+
+	$('#cancelar-portada').click(function(event) {
+		$("#input-foto-portada").val("");
+		let original = $('.fotos').data('image');
+		$('.fotos').css({
+        	'background': 'url(' + original + ') no-repeat no-repeat center center',
+        	'background-size': '100% 100%'
+        });	
+
+        $('#cambiar-portada').show();
+		$("#guardar-portada").hide();
+		$('#cancelar-portada').hide();
+	});
+
 	//Si se sube una foto de perfil
 	$("#input-foto-perfil").change(function() {
 		$('#cambiar-perfil').hide();
 		$("#guardar-perfil").show();
+		$('#cancelar-perfil').show();
 		//Vista previa
 		readURL(this, $('#box').find('.circle'));
 	});
@@ -40,11 +69,17 @@ jQuery(document).ready(function($) {
 		$("#input-foto-portada").click();
 	});
 
+	$('#cancelar').click(function(event) {
+		event.preventDefault();
+		$('#table-info').show();
+		$('#forma').hide();
+	});
 
 	//Si se sube una foto de portada
 	$("#input-foto-portada").change(function() {
 		$('#cambiar-portada').hide();
 		$("#guardar-portada").show();
+		$('#cancelar-portada').show();
 		//Vista previa
 		readURL(this, $('.fotos'));
 	});

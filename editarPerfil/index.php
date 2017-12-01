@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../css/editarPerfil-style.css">
 	<link rel="stylesheet" href="../css/navbar-user.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -48,7 +49,7 @@
 	
 	<div class="container">
 		<h2>Editar Perfil</h2>
-		<table class="table">
+		<table class="table" id="preview-info-table">
 			<tr>
 				<td><b>Nombre</b></td>
 				<td class="value"><?php echo $usuario->getNombre(); ?></td>
@@ -87,9 +88,10 @@
 				</tr>
 
 				<tr>
-					<td></td>
-					<!-- <td><button type="button" id="cancelar" class="btn btn-default">Cancel</button></td> -->
-					<td><button type="submit" id="guardar" class="btn btn-default">Guardar</button></td>
+				<td></td>
+					<td>
+					<button type="button" id="cancelar" class="btn btn-default">Cancel</button>
+					<button type="submit" id="guardar" class="btn btn-default">Guardar</button></td>
 				</tr>
 			</table>
 			
@@ -104,5 +106,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/editarPerfil.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
 </body>
 </html>

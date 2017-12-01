@@ -46,7 +46,7 @@
 			$cart_books = $_SESSION['carrito'];
 		?>
 		<div class="checkout">
-			<h1>ORDEN #1235</h1>
+			<h2><strong>Orden:</strong> #<?php echo $numOrden ?></h2>
 			<table class="table">
 				  <thead>
 				    <tr>
@@ -61,9 +61,6 @@
 				  <?php
 				  	$i = 1;
 				  	foreach ($cart_books as $book): ?>
-				  	<tr>
-				  		<td colspan="6" rowspan="" headers="">LOOL</td>
-				  	</tr>
 					<tr class="item" data-id=<?php echo $book->getId() ?>>
 						<th scope="row"><?php echo $i ?></th>
 						<td><img class="portada" src="../<?php echo $book->getFotoFrente();?>" alt=""></td>
@@ -81,8 +78,8 @@
 				  </tbody>
 			</table>
 			<div class="continue row">
-				<h4><b>Envío(Sólo envíos locales): +$100</b></h4>
-				<h2 id="total"><b>Total: $0</b></h2>
+				<h4><b>Envío: +$100</b></h4>
+				<h2 id="total"><b>Total: $<?php echo $total; ?></b></h2>
 			<div class="row">
 				<div id="paypal-button"></div>
 				<!-- <button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br> -->

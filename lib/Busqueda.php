@@ -49,9 +49,9 @@ class Busqueda {
 
 	// Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
-		if ($keyword == "") {
-			return null;
-		}
+		// if ($keyword == "") {
+		// 	return null;
+		// }
 		include "../conexion.php";
 		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%');";
 		// echo $sql."\n";

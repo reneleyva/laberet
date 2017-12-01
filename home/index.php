@@ -77,11 +77,13 @@ include_once '../lib/Usuario.php';
 			<div id="prev-libros" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-3">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
-
-			<div id="carousel-libros" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
+			<?php 
+				$books = Busqueda::ultimosAgregados();
+			 ?>
+			<div id="carousel-libros" class="col-lg-10 col-md-8 col-sm-8 col-xs-6" data-num-libros="<?php echo count($books); ?>">
 				
 				<?php 
-					$books = Busqueda::ultimosAgregados();
+					
 					if(empty($books)){
 						echo "No Hay Libros :'(";
 						// exit();
@@ -109,17 +111,20 @@ include_once '../lib/Usuario.php';
 			</div>
 		</div>
 		
+		<?php 
+			$librerias = Busqueda::getLibrerias();
+		 ?>
 		<!-- Empieza Carousel Librerías -->
 		<div class="row card">
 			<h4 class="text-center">Últimas Librerías Agregadas</h4>
 			<!-- <img src="img/back-grey.png" id="prev" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="prev-librerias" class="prev col-lg-1 col-md-2 col-sm-3 col-xs-3">
+			<div id="prev-librerias" class="prev col-lg-1 col-md-1 col-sm-3 col-xs-3">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
 
-			<div id="carousel-librerias" class="carousel col-lg-10">
+			<div id="carousel-librerias" class="col-lg-10 col-md-10 col-sm-6 col-xs-6" data-num-librerias="<?php echo count($librerias) ?>">
 			<?php 
-				$librerias = Busqueda::getLibrerias();
+				
 				if(empty($librerias)){
 					echo "No Hay Librerias :'(";
 					// exit();
@@ -146,7 +151,7 @@ include_once '../lib/Usuario.php';
 			</div><!-- Fin Carousel -->
 
 			<!-- <img src="img/next-grey.png" id="next" class="col-lg-1 col-md-1 col-sm-1"></img> -->
-			<div id="next-librerias" class="next col-lg-1 col-md-2 col-sm-3 col-xs-3">
+			<div id="next-librerias" class="next col-lg-1 col-md-1 col-sm-3 col-xs-3">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
 		</div>

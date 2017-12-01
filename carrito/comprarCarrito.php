@@ -1,6 +1,6 @@
 <?php 
 	include '../conexion.php';
-	include '../lib/Libro.php';
+	include_once '../lib/Libro.php';
 	session_start(); 
 	$carrito = $_SESSION['carrito']; 
 
@@ -14,13 +14,12 @@
 			fecha=CURDATE(),
 			status=0,
 			idUsuario=".$_SESSION['id'].";";
-	echo $sql;
 	mysqli_query($con, $sql);
 	foreach ($carrito as $libro) {
 		$libro->setAsLibroVendido($_SESSION['id'], $first_key);
 	}
 
 	$_SESSION['carrito'] = array(); 
-	echo "<h2>TODOS LOS LIBROS EN CARRITO HAN SIDO COMPRADOS PRRO!</h2>";
-	
+	$_SESSION['pago'] = false; 
+	// echo "<h2>TODOS LOS LIBROS EN CARRITO HAN SIDO COMPRADOS PRRO!</h2>";
 ?>

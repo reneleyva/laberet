@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/navbar-libreria.css">	
-<nav class="navbar navbar-default" role="navigation">
+<nav class="<?php if($current_page == 'buscar') {echo "navbar-fixed-top ";} ?>navbar navbar-default" role="navigation">
 	  <!-- Brand and toggle get grouped for better mobile display -->
 	  <div class="navbar-header col-lg-2 col-md-2">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
@@ -17,11 +17,27 @@
 	   
 	   <div id="list" class="col-lg-9 col-md-9">
 	   		<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="../agregarLibro">Agregar Libro</a></li>
+	   			<?php if($current_page == 'inicio'):   ?>
+					<li class="active"><a href>Inicio</a></li>
+				<?php else: ?>
+					<li><a href="../homeLibreria">Inicio</a></li>
+				<?php endif; ?>
+
+				<?php if($current_page == 'agregarLibro'): ?>
+					<li class="active"><a href>Agregar Libro</a></li>
+				<?php else: ?>
+					<li><a href="../agregarLibro">Agregar Libro</a></li>
+				<?php endif; ?>
+
+				
 				<li><a href="#">Ventas</a></li>
 				<li><a href="#">Pedidos Especiales</a></li>
-				<li><a href="../user/buscar">Catálogo Universal</a></li>
+
+				<?php if($current_page == 'buscar'): ?>
+					<li class="active"><a href>Catálogo Universal</a></li>
+				<?php else: ?>
+					<li><a href="../buscar">Catálogo Universal</a></li>
+				<?php endif; ?>
 			</ul>
 	   </div>
 
@@ -31,7 +47,7 @@
 		      <li class="dropdown">
 		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></span> </a>
 		        <ul class="dropdown-menu">
-		          <li><a href="#">Configurar Cuenta</a></li>
+		          <li><a href="../editarPerfilLibreria">Configurar Cuenta</a></li>
 		          <li><a href="#">Historial de Ventas</a></li>
 		          <li class="divider"></li>
 		          <li><a href="../salir">Salir</a></li>

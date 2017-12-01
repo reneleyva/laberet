@@ -36,36 +36,53 @@ jQuery(document).ready(function($) {
     ]
 });
 
+var initLibreriasCarousel = function() {
   $('#carousel-librerias').slick({
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    prevArrow: $('#prev-librerias'),
-    nextArrow: $('#next-librerias'),
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      prevArrow: $('#prev-librerias'),
+      nextArrow: $('#next-librerias'),
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
         }
-      },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-});
+      ]
+
+  });
+}; 
+
+let numLibrerias = $('#carousel-librerias').data('num-librerias');
+let windowWidth = $(window).width();
+
+if (numLibrerias > 3) {
+    initLibreriasCarousel();
+} else if (windowWidth < 970) {
+  initLibreriasCarousel();
+} else {
+  $('#carousel-librerias').addClass('no-carousel');
+  $('#prev-librerias').hide();
+  $('#next-librerias').hide(); 
+}
 
 
-$('#carousel-compras').slick({
+let initComprasCarousel = function() {
+  $('#carousel-compras').slick({
     dots: false,
     infinite: true,
     speed: 300,
@@ -92,6 +109,10 @@ $('#carousel-compras').slick({
       }
     ]
 });
+};
+
+
+initComprasCarousel();
 
 
 $('#carousel-intereses').slick({

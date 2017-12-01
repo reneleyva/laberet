@@ -143,7 +143,7 @@
 		}
 
 		if(!$books) {
-			include '../buscar/busqueda-error.html';
+			include '../buscar/busqueda-error.php';
 		}
 		
 		

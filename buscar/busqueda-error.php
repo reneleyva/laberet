@@ -24,7 +24,14 @@
 	<div class="container">
 		<h1 class="face text-center">(>_<)</h1>
 		<h3 class="not-found text-center">Ningún libro encontrado. </h3>
-		<h4 class="not-found text-center">Prueba nuestro servicio de pedidos especiales <a href="../inicioSesion" title="">aquí</a>. </h4>
+		<h4 class="not-found text-center">Prueba nuestro servicio de pedidos especiales 
+		<?php 
+			  if ($_SESSION['tipo'] == 'usuario') {
+			  	echo "<a href='../pedidosEspeciales'>aquí</a>";
+			  }	else {
+			  	echo "<a href='../inicioSesion'>aquí</a>";
+			  }
+		 ?>. </h4>
 		
 	</div>
 

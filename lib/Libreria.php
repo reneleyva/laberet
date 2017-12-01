@@ -8,6 +8,7 @@ class Libreria
 	
 	private $id;
 	private $nombre;
+	private $correo;
 	private $fotoPerfil;
 	private $fotoPortada;
 	private $telefono;
@@ -22,6 +23,7 @@ class Libreria
 	function fill(array $row) {
 		$this->id = $row['idLibreria'];
 		$this->nombre = $row['nombre'];
+		$this->correo = $row['correo'];
 		$this->fotoPerfil = $row['fotoPerfil'];
 		$this->fotoPortada = $row['fotoPortada'];
 		$this->telefono = $row['telefono'];
@@ -144,6 +146,14 @@ class Libreria
 
 	public function getNombre(){
 		return $this->nombre;
+	}
+
+	public function getCorreo() {
+		return $this->correo;
+	}
+
+	public function setCorreo($correo) {
+		$this->correo = $correo; 
 	}
 
 	public function setNombre($nombre){
