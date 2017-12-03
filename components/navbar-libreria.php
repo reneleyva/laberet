@@ -31,7 +31,12 @@
 
 				
 				<li><a href="#">Ventas</a></li>
-				<li><a href="#">Pedidos Especiales</a></li>
+				<!-- <?php if($current_page == 'pedidosEspeciales'): ?>
+					<li class="active"><a href>Pedidos Especiales</a></li>
+				<?php else: ?>
+					<li><a href="../pedidosEspecialesLibreria">Pedidos Especiales</a></li>
+				<?php endif; ?> -->
+				
 
 				<?php if($current_page == 'buscar'): ?>
 					<li class="active"><a href>Catálogo Universal</a></li>

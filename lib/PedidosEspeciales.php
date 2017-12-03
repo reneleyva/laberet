@@ -8,11 +8,11 @@ class PedidosEspeciales {
 	function __construct() {}
 
 	function getPedidosEspeciales (){
-		include "../../conexion.php";
+		include "../conexion.php";
 		$sql = "SELECT * FROM pedidosespeciales";
 		$pedidos = array();		
-		$result = $pdo->query($sql);
-		while ($row = $result->fetch()){
+		$result = mysqli_query($con, $sql);
+		while ($row = mysqli_fetch_array($result)){
 			$book = new PedidoEspecial();
 			$book->fill($row);
 			echo $book -> getPrecio();

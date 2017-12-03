@@ -23,8 +23,10 @@
 				<div class="menu row nav centered">
 					<div style="text-align: left">
 						<a href="../">Inicio</a><br>
+						<a href="#">Ventas</a><br>
 						<a href="#">Catálogo</a><br>
-						<a href="#">Pedidos Especiales</a><br>
+
+						<!-- <a href="#">Pedidos Especiales</a><br> -->
 						<a href="#">Historial de Compras</a>
 					</div>
 				</div>

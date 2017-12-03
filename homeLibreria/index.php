@@ -269,5 +269,6 @@ if (!isset($_SESSION['tipo'])) {
 	<!-- SWEET ALERT -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
 	<script src="../js/homeLibreria.js"></script>
+	<script src="../js/notificacionesLibreria.js"></script>
 </body>
 </html>

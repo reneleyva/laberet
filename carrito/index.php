@@ -1,6 +1,20 @@
 <?php 
 	include "../lib/Libro.php";
 	session_start();
+	if (!isset($_SESSION['tipo'])) {
+		header("location: ../");
+	} 
+
+	$tipo = $_SESSION['tipo'];
+
+	if ($tipo == 'libreria') {
+		//NO debería de estar aquí redirijo
+		header("location: ../homeLibreria/");
+		exit();
+	} else if ($tipo == 'invitado') {
+		header("location: ../");	
+		exit();
+	} 
  ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +40,7 @@
 <body>
 
 	<?php 
-		$current_page = 'inicio';
+		$current_page = 'carrito';
 		include '../components/navbar-user.php';
 	  	$cart_books = $_SESSION['carrito'];
 	  	if(!$cart_books)

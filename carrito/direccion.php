@@ -50,6 +50,7 @@
 	
 	<div class="container">
 		<div class="row">
+		<?php if($direccion): ?>
 			<form id="formulario" action="agregar-direccion.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
 				<h1><b>Dirección de envío</b></h1>
 				<h3>Solo envíos en la CDMX.</h3>
@@ -87,28 +88,6 @@
 				<input type="text" name="descripcion" value="<?php echo htmlspecialchars($direccion['descripcion'], ENT_QUOTES, 'UTF-8') ?>" placeholder="Edificio G4 departamento #32" class="form-control">
 				<label for="telefono">Telefono (Celular o De casa)</label>
 				<input  required type="text" name="telefono" value="<?php echo htmlspecialchars($direccion['telefono'], ENT_QUOTES, 'UTF-8') ?>" placeholder="04455123456" class="form-control">
-				<!-- <label for="pagos">Método de pago</label> -->
-
-				<!-- <div class="row" id="metodos-pagos">
-					<div class="col-lg-4">
-						<div class="metodo">
-							<img src="../img/paypal-logo.png" alt="">
-							<p>Te enviaremos un correo con una froma de pago en <b>Paypal</b>.</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="metodo">
-							<img src="../img/change.png" alt="">
-							<p>Paga al momento del envío en <b>efectivo</b>.</p>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="metodo">
-							<img src="../img/point-of-service.png" alt="">
-							<p>Paga con <b>targeta</b> al momento del envío. Nuestros repartidores cuentan con terminal.</p>
-						</div>
-					</div>
-				</div> -->
 				<div class="row">
 					<!-- <div id="paypal-button"></div> -->
 					<button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br>
@@ -117,6 +96,53 @@
 				
 
 			</form>	
+		<?php else: ?>
+			<form id="formulario" action="agregar-direccion.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">
+				<h1><b>Dirección de envío</b></h1>
+				<h3>Solo envíos en la CDMX.</h3>
+				<label for="nombre">Nombre Completo</label>
+				<input id="nombre" required type="text" name="nombre"  placeholder="Luis Alberto" class="form-control" value="<?php echo $_SESSION['nombre']; ?>">
+				<label for="cp">Código Postal</label>
+				<input value="" id="cp" maxlength="6" required type="text" name="cp"  placeholder="09200" class="form-control">
+				<!-- <div id="correo-invalido" class="form-control err-msg">¡Correo no válido!</div> -->
+			    <label for="Delegación">Delegación</label>
+			    <select name="delegacion" id="delegacion" class="form-control" data-choosen="">
+			    	<option value="Alvaro Obregon">Alvaro Obregon</option>
+			    	<option value="Azcapotzalco">Azcapotzalco</option>
+			    	<option value="Benito Juárez">Benito Juárez</option>
+			    	<option value="Coyoacan">Coyoacan</option>
+			    	<option value="Cuajimalpa de Morelos">Cuajimalpa de Morelos</option>
+			    	<option value="Cuauhtémoc">Cuauhtémoc</option>
+			    	<option value="Gustavo Madero">Gustavo Madero</option>
+			    	<option value="Iztacalco">Iztacalco</option>
+			    	<option value="Iztapalapa">Iztapalapa</option>
+			    	<option value="Magdalena Contreras">Magdalena Contreras</option>
+			    	<option value="Miguel Hidalgo">Miguel Hidalgo</option>
+			    	<option value="Milpa Alta">Milpa Alta</option>
+			    	<option value="Tláhuac">Tláhuac</option>
+			    	<option value="Tlalpan">Tlalpan</option>
+			    	<option value="Venustiano Carranza">Venustiano Carranza</option>
+			    	<option value="Xochimilco">Xochimilco</option>
+			    </select>
+				
+				<label for="colonia">Colonia</label>
+				<input  required type="text" name="colonia" value="" placeholder="Colonia" class="form-control">
+				<label for="calleYNum">Calle y Número</label>
+				<input  required type="text" name="calleYNum" value="" placeholder="azulejos #23" class="form-control">
+				<label for="descripcion">Descripción extra (Opcional)</label>
+				<p>Ej. Numero de edificio y departamento, color de puerta, etc.</p>
+				<input type="text" name="descripcion" value="" placeholder="Edificio G4 departamento #32" class="form-control">
+				<label for="telefono">Telefono (Celular o De casa)</label>
+				<input  required type="text" name="telefono" value="" placeholder="04455123456" class="form-control">
+				<div class="row">
+					<!-- <div id="paypal-button"></div> -->
+					<button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br>
+				</div>
+
+
+			</form>	
+		<?php endif; ?>
+			
 		</div>
 	</div>
 	
