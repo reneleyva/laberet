@@ -29,8 +29,13 @@
 					<li><a href="../agregarLibro">Agregar Libro</a></li>
 				<?php endif; ?>
 
+				<?php if($current_page == 'ventas'): ?>
+					<li class="active"><a href>Ventas</a></li>
+				<?php else: ?>
+					<li><a href="../historialVentas">Ventas</a></li>
+				<?php endif; ?>
 				
-				<li><a href="#">Ventas</a></li>
+
 				<!-- <?php if($current_page == 'pedidosEspeciales'): ?>
 					<li class="active"><a href>Pedidos Especiales</a></li>
 				<?php else: ?>

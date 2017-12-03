@@ -10,8 +10,8 @@
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../../css/historialVentas.css"> 
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="../css/historialVentas.css"> 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -20,49 +20,10 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header col-lg-2 col-md-2">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-target">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand navbar-left" href="#"><img id="icon" src="../../img/logo.png" alt=""></a>
-		<!-- <a class="navbar-brand navbar-left laberet" href="#"><b>LABERET</b></a> -->
-	  </div>
-
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse" id="collapse-target">
-	   
-	   <div id="list" class="col-lg-9 col-md-9">
-	   		<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="#">Agregar Libro</a></li>
-				<li><a href="#">Ventas</a></li>
-				<li><a href="#">Pedidos Especiales</a></li>
-				<li><a href="#">Catálogo Universal</a></li>
-			</ul>
-	   </div>
-
-	    <div id="drop" class="col-lg-1 col-md-1">
-
-	    	<ul class="nav navbar-nav navbar-right">
-		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><b class="caret"></b></span> </a>
-		        <ul class="dropdown-menu">
-		          <li><a href="#">Configurar Cuenta</a></li>
-		          <li><a href="#">Historial de Ventas</a></li>
-		          <li class="divider"></li>
-		          <li><a href="#">Salir</a></li>
-		        </ul>
-		      </li>
-			</ul>
-	    </div>	
-	    
-	  </div><!-- /.navbar-collapse -->
-</nav> <!-- END NAV -->
+	<?php 
+		$current_page = 'ventas'; 
+		include '../components/navbar-libreria.php';
+	?>
 	
 	<div class="container">
 
@@ -86,7 +47,7 @@
 
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">Brave men</p>
 						<a class="book-author" href="#">Ernie Pyle</a>
@@ -100,7 +61,7 @@
 
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">Brave men</p>
 						<a class="book-author" href="#">Ernie Pyle</a>
@@ -116,7 +77,7 @@
 			
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">Brave men</p>
 						<a class="book-author" href="#">Ernie Pyle</a>
@@ -130,7 +91,7 @@
 
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../../img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">Brave men</p>
 						<a class="book-author" href="#">Ernie Pyle</a>
@@ -168,7 +129,7 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>

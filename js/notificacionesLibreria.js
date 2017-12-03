@@ -19,4 +19,5 @@ function check() {
 }
 jQuery(document).ready(function($) {
 	// check();
+	$('#modal-venta').modal('show');
 });
