@@ -160,59 +160,59 @@ if (!isset($_SESSION['tipo'])) {
 		
 	</div>
 	
-	<?php include '../components/footer-libreria.php'; ?>
+	<?php 
+	include '../components/footer-libreria.php';
+	include 'vendidosEnLinea.php';
+	 ?>
 	
+	<?php if ($librosVendidos): ?>
+		<div class="modal fade" id="modal-venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h3 class="modal-title" id="titulo"><b>¡Venta en Linea!</b></h3>
+		      </div>
+		      <div class="modal-body">
+		        <div>
+		        	<h3><b>Los siguientes Libros han sido vendidos en linea.</b></h3>
+		        	<h4>Se recomienda apartar estos libros para envio.</h4>
+					
+					<?php foreach ($librosVendidos as $row): ?>
+						<div class="libro col-lg-12" data-id="<?php echo $row['idLibroVendido']; ?>">
+				        	<div class="book-cover col-lg-4">
+				        		<img src="../<?php echo $row['fotoFrente']; ?>" alt="Foto" />
+				        	</div>
+
+							<div class="info col-lg-8">
+								<p class="book-title"><b>Titulo: </b><?php echo $row['titulo']; ?></p>
+								<p class="book-author" href="#"><b>Autor: </b><?php echo $row['autor']; ?></p>
+								<?php if ($row['isbn']): ?>
+									<p><b>ISBN:</b> <?php echo $row['isbn']; ?></p>
+								<?php endif ?>
+								
+								<p class="book-price"><b>Precio: </b>$<?php echo $row['precio']; ?></p>
+							</div>
+				       	</div>
+					<?php endforeach ?>
+
+		        	
+
+		        </div>
+
+		        <div class="modal-footer">
+		        	<h3 id="total"><b>Total: $<?php echo $totalVendidos; ?><b></h3>
+	                <button style="font-size: 15pt;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
+	            </div>
+
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div> <!-- END Modal -->
+	<?php endif ?>
 	<!-- Modal -->
-	<div class="modal fade" id="modal-venta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h3 class="modal-title" id="titulo"><b>Venta en Linea</b></h3>
-	      </div>
-	      <div class="modal-body">
-	        <div>
-	        	<h3><b>Los siguientes Libros han sido vendidos en linea.</b></h3>
-	        	<h4>Se recomienda apartar estos libros para envio.</h4>
-
-	        	<div class="libro col-lg-12">
-		        	<div class="book-cover col-lg-4">
-		        		<img src="../img/brave-men.jpg" alt="Foto" />
-		        	</div>
-
-					<div class="info col-lg-8">
-						<p class="book-title"><b>Titulo: </b>Brave Men</p>
-						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
-						<p><b>ISBN:</b> 2187168716</p>
-						<p class="book-price"><b>Precio: </b>$340</p>
-					</div>
-		       	</div>
-
-				<div class="libro col-lg-12">
-		        	<div class="book-cover col-lg-4">
-		        		<img src="../img/brave-men.jpg" alt="Foto" />
-		        	</div>
-
-					<div class="info col-lg-8">
-						<p class="book-title"><b>Titulo: </b>Brave Men</p>
-						<p class="book-author" href="#"><b>Autor: </b>Ernie Pyle</p>
-						<p><b>ISBN:</b> 2187168716</p>
-						<p class="book-price"><b>Precio: </b>$340</p>
-					</div>
-		       	</div>
-
-	        </div>
-
-	        <div class="modal-footer">
-	        	<h3 id="total"><b>Total: $230<b></h3>
-                <button style="font-size: 15pt; background-color: #D2D2D2;" type="button" class="btn btn-default" data-dismiss="modal"><b>Cerrar</b></button>
-            </div>
-
-	      </div>
-	      
-	    </div>
-	  </div>
-	</div> <!-- END Modal -->
+	
 
 	<!-- Modal -->
 	<div class="modal fade" id="modal-pedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
