@@ -35,15 +35,12 @@ jQuery(document).ready(function($) {
 
             onAuthorize: function(data, actions) {
                 return actions.payment.execute().then(function(payment) {
-                    console.log(payment);
-                    alert("Pagado perro");
                     // AJAX CALL TO BUY CART 
                     $.ajax({
                         url: 'comprarCarrito.php',
                         type: 'POST',
                     })
                     .done(function() {
-                        alert("SUCCESS");
                         window.location.replace("../gracias");
                     })
                     .fail(function() {
