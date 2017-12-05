@@ -88,11 +88,8 @@ class Libro {
 		$sql="DELETE FROM libro WHERE idLibro=".$this->getId().";";
 		mysqli_query($con, $sql);
 
-
-		$fecha = new DateTime();
 		// //LO agrego a libro vendido
 		$sql = "INSERT INTO librovendido SET 
-				idLibroVendido=".$this->getId().", 
 				autor='".$this->getAutor()."',
 				titulo='".$this->getTitulo()."',
 				isbn='".$this->getIsbn()."',
@@ -103,7 +100,8 @@ class Libro {
 				fechaVenta=CURDATE(),
 				idLibreria=".$this->getIdLibreria().",
 				idUsuario=".$idUsuario.",
-				Entregaid=".$idEntrega.";";
+				Entregaid=".$idEntrega.",
+				visto=0;";
 
 		mysqli_query($con, $sql);
 	}

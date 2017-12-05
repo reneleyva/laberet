@@ -89,7 +89,7 @@ class Libreria
 		include "../conexion.php";
 		include_once "../lib/Libro.php";
 
-		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%') AND idLibreria = ".$this->id.";";
+		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%') OR titulo like lower('%".$keyword."%') OR autor like lower('%".$keyword."%') AND idLibreria = ".$this->id.";";
 
 		$query = mysqli_query($con, $sql);
 		$books = array();

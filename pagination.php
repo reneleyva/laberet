@@ -20,7 +20,7 @@
 
 		// Checa si el num de página es válido. 
 		if ($page > $numPaginas or $page < 1) {
-			echo "404";
+			// echo "404";
 			// echo "numPaginas: ".$numPaginas;
 			// echo "page: ".$page;
 			exit();

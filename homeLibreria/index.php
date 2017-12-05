@@ -22,6 +22,7 @@ if (!isset($_SESSION['tipo'])) {
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="../css/homeLibreria-style.css"> 
+	<link rel="stylesheet" href="../css/jquery-ui.min.css"> 
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -38,15 +39,16 @@ if (!isset($_SESSION['tipo'])) {
 	?>
 	
     <?php include 'libreria.php';?>
-	<div class="container-fluid" style="background: url(../<?php echo $fotoPortada?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+
+	<div class="container-fluid" style="background: url(../<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
-					<div class="circle" style="background: url(../<?php echo $fotoPerfil?>) no-repeat no-repeat center center;"></div>
+					<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
 					<div class="row text-center">
-						<h2 class="col-lg-12"><b><?php echo $nombre;?></b></h2>
-						<p><?php echo $direccion;?></p>
-						<p><?php echo 'Tel: '.$telefono;?></p>
+						<h2 class="col-lg-12"><b><?php echo $libreria->getNombre();?></b></h2>
+						<p><?php echo $libreria->getDireccion();?></p>
+						<p><?php echo 'Tel: '.$libreria->getTelefono();?></p>
 					</div>
 				</div>
 			</div>
@@ -57,22 +59,15 @@ if (!isset($_SESSION['tipo'])) {
 	<div class="container">
 		<div class="row">
 			
-			<form action="../agregarLibro" class="form-inline" method="get" accept-charset="utf-8">
+			<form action=".#muestra" class="form-inline row" method="get" accept-charset="utf-8">
 				<h2 class="text-center"><b>Catálogo en Tienda.</b></h2>
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for...">
+						<input type="text" id="keyword" class="form-control" placeholder="Search for..." name="term">
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 				    </div>
-				<!--     
-				<select name="" class="form-control">
-					  <option>TODO</option>
-					  <option>Suspenso</option>
-					  <option>Miedo</option>
-					  <option>Matemáticas</option>
-				</select> -->
 				    
 				</div>
 
@@ -81,15 +76,17 @@ if (!isset($_SESSION['tipo'])) {
 		</div>
 
 		
-		<div class="row muestra"> <!-- INICIO MUESTRA -->
-			
+		<div class="row muestra" id="muestra"> <!-- INICIO MUESTRA -->
+			<?php if(isset($_GET['term'])): ?>
+				
+				<h2>Resultados para: <b><?php echo  $_GET['term'] ?></b></h2>				
+			<?php endif; ?>
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			<?php 
-				include 'libreria.php';
 				include "../pagination.php";
 
 				if (!$books) {
-					echo "No hay libros";
+					include 'busqueda-error.php';
 					//exit();
 				} 
 			?>
@@ -105,24 +102,24 @@ if (!isset($_SESSION['tipo'])) {
 
 			?>
 
-				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book['id']; ?>">
+				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book->getId(); ?>">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $book['fotoFrente']?>" alt="Foto">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $book->getFotoFrente()?>" alt="Foto">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">
-							<?php echo $book['titulo']; ?>
+							<?php echo $book->getTitulo(); ?>
 						</p>
 						<p class="book-author">
-							<?php echo $book['autor'];?>
+							<?php echo $book->getAutor();?>
 						</p>
-						<?php if($book['isbn']): ?>
+						<?php if($book->getIsbn()): ?>
 							<p><?php
-				        		echo "<b>ISBN: </b>".$book['isbn'];?></p>
+				        		echo "<b>ISBN: </b>".$book->getIsbn();?></p>
 							<p>
 						<?php endif; ?>
 						
 				        	<p class="book-price">
-							<?php echo "<b>$".$book['precio']." MXN</b>";?>
+							<?php echo "<b>$".$book->getPrecio()." MXN</b>";?>
 						</p>
 					</div>
 				</div>
@@ -270,5 +267,7 @@ if (!isset($_SESSION['tipo'])) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
 	<script src="../js/homeLibreria.js"></script>
 	<script src="../js/notificacionesLibreria.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/busca.js"></script>
 </body>
 </html>

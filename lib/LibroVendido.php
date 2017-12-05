@@ -56,7 +56,7 @@ class LibroVendido {
 	//Regresa NULL sino se encontró.
 	function getLibro($id) {
 		include "../../conexion.php";
-		$sql = "SELECT * FROM LibroVendido WHERE idLibroVendido = ".$id.";";
+		$sql = "SELECT * FROM librovendido WHERE idLibroVendido = ".$id.";";
 		$result = $pdo->query($sql);
 		$row = $result->fetch();
 

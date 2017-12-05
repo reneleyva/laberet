@@ -11,7 +11,7 @@ class Busqueda {
 	function getLibrosVendidos($idLibreria) {
 		include "../conexion.php";
 		include_once "../lib/LibroVendido.php";
-		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+		$sql = "SELECT * FROM librovendido l INNER JOIN libreria lib ON l.idLibreria = lib.idLibreria
 				WHERE l.idLibreria = ".$idLibreria.";";
 		$ventas = array();
 		$query = mysqli_query($con, $sql);
@@ -177,7 +177,7 @@ class Busqueda {
 		include_once "../lib/LibroVendido.php";
 		$compras = array();		
 		// Cambiar por inner join
-		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+		$sql = "SELECT * FROM librovendido l INNER JOIN libreria lib ON l.idLibreria = lib.idLibreria
 				WHERE idUsuario = ".$idUsuario." LIMIT 10;";
 		$query = mysqli_query($con, $sql);
 		if ($query) {
@@ -195,7 +195,7 @@ class Busqueda {
 		include "../conexion.php";
 		include_once "../lib/LibroVendido.php";
 		$compras = array();		
-		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+		$sql = "SELECT * FROM librovendido l INNER JOIN libreria lib ON l.idLibreria = lib.idLibreria
 				WHERE idUsuario = ".$idUsuario.";";
 		$query = mysqli_query($con, $sql);
 		if ($query) {

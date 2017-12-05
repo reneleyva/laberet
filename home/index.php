@@ -213,10 +213,10 @@ include_once '../lib/Usuario.php';
 				</div>
 
 				<div class="info col-lg-5 col-md-5">
-					<p><b>Título: </b><a><?php echo $compra->getTitulo();?></a></p>
-					<p><b>Autor:</b> <a href="" ><?php echo$compra->getAutor();?></a></p>
-					<p><b>Vendedor: </b> <a href=""><?php echo$compra->getlibreria();?></a></p>
-					<p><b>Precio: </b> <a href="">$<?php echo$compra->getPrecio();?>MXN</a></p>
+					<p style="margin-bottom: 5px;"><b><?php echo $compra->getTitulo();?></b></p>
+					<p><b>Autor: </b><?php echo$compra->getAutor();?></p>
+					<p><b>Vendedor: </b> <?php echo$compra->getlibreria();?></p>
+					<p><b>Precio: </b> $<?php echo$compra->getPrecio();?> MXN</p>
 				</div>
 
 				<?php endforeach;
@@ -268,6 +268,9 @@ include_once '../lib/Usuario.php';
 				</div>
 			</div>  <!-- End Libros Relacionados -->
 		<?php endif; ?> 
+
+	<?php else: ?>
+		<h1>NO COMPRAS!</h1>
 	<?php endif; ?> 
 		
 	</div>
