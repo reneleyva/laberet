@@ -7,6 +7,25 @@ include_once 'Libreria.php';
 class Busqueda {
 	function __construct() {}
 
+	// Regresa todos los libros que ha vendido una libreria
+	function getLibrosVendidos($idLibreria) {
+		include "../conexion.php";
+		include_once "../lib/LibroVendido.php";
+		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
+				WHERE l.idLibreria = ".$idLibreria.";";
+		$ventas = array();
+		$query = mysqli_query($con, $sql);
+		// Si hay resultados.
+		if ($query) {
+			while ($row = mysqli_fetch_array($query)){
+				$book = new LibroVendido();
+				$book->fill($row);
+				array_push($ventas,$book);
+			}
+		}
+		return $ventas;
+	}
+
 	// Regresa todos los pedidos que se han realizado
 	function getPedidos (){
 		include "../conexion.php";
@@ -49,18 +68,13 @@ class Busqueda {
 
 	// Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
-		// if ($keyword == "") {
-		// 	return null;
-		// }
 		include "../conexion.php";
 		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%');";
-		// echo $sql."\n";
 		$query = mysqli_query($con, $sql);
 		$books = array();
 		while ($row = mysqli_fetch_array($query)){
 			$book = new Libro();
 			$book->fill($row);
-			// echo $book->getTitulo();
 			array_push($books,$book);
 		}
 		return $books;
@@ -181,7 +195,6 @@ class Busqueda {
 		include "../conexion.php";
 		include_once "../lib/LibroVendido.php";
 		$compras = array();		
-		// Cambiar por inner join
 		$sql = "SELECT * FROM librovendido l INNER JOIN Libreria lib ON l.idLibreria = lib.idLibreria
 				WHERE idUsuario = ".$idUsuario.";";
 		$query = mysqli_query($con, $sql);
@@ -194,37 +207,6 @@ class Busqueda {
 		}
 		return $compras;
 	}
-
-	// public function getLibrosUsuario($idUsuario){
-	// 	include "../conexion.php";
-	// 	// Arreglo donde se guardarán los tags de los libros que ya compró.
-	// 	$tags_totales = array();
-	// 	$tags = array();
-	// 	// Se hace la consulta de los libros que ha comprado.
-	// 	$sql = "SELECT * FROM libroVendido WHERE idUsuario = ".$idUsuario.";";
-	// 	$query = mysqli_query($con, $sql);
-
-	// 	if ($query) {
-	// 		// Itera sobre los libros que ya compró.
-	// 		while ($row = mysqli_fetch_array($query) ) {
-	// 			// Mezcla todos los tags.
-	// 			$tags = array_merge($tags,explode(" ", trim($row['tags'], " ")));
-	// 		}
-	// 	}
-	// 	$libros = array();
-	// 	// Si ya ha comprado libros. (Ya que existen tags)
-	// 	if (!empty($tags)) {
-	// 		$librosNuevos = array();
-	// 		foreach ($tags as &$tag) {
-	// 			$librosNuevos = $this -> buscaGeneral($tag);
-	// 			// Si sí regresa algo la búsqueda.
-	// 			if (!is_null($librosNuevos)) {
-	// 				$libros = array_merge($libros, $librosNuevos);
-	// 			}	
-	// 		}	
-	// 	}
-	// 	return $libros;
-	// }
 
 	//Busca en todo si keyword="" regresa todos los libros ;)
 	function ultimosAgregados(){

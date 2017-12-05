@@ -12,25 +12,29 @@
 	session_start();
 
 	$sql = "SELECT 1 from direccion WHERE idUsuario=".$_SESSION['id'].";";
-	$query = mysqli_query($con, $sql); 
-	$row = mysqli_fetch_array($query);
-
-	if (!$row) {
+	$query = mysqli_query($con, $sql);
+	// if (!$query) {
+	//  	$row = mysqli_fetch_array($query);
+	//  } 
+	
+	if (!$query) {
 		//NO tiene direccion
 		$sql = "INSERT INTO direccion SET
 		cp ='".$cp."',
 		ciudad ='CDMX',
-		delegacion ='".$delegacion."',
 		colonia ='".$colonia."',
 		calleYnumero ='".$calleYNum."',
 		descripcion ='".$descripcion."',
 		telefono ='".$telefono."',
 		idUsuario =".$_SESSION['id'].";";
 
+		// delegación  falta
+
 		$res = mysqli_query($con, $sql); 
 
 		if (!$res) {
-			echo "ERROR";
+			echo $sql;
+			echo "ERROR INSERT";
 			exit();
 		} else {
 			$_SESSION['pago'] = True; 
@@ -53,7 +57,7 @@
 			$res = mysqli_query($con, $sql); 
 
 			if (!$res) {
-				echo "ERROR";
+				echo "ERROR UPDATE";
 				exit();
 			} else {
 				$_SESSION['pago'] = True; 

@@ -42,69 +42,48 @@
 				</div>
 			</form>
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-			
-			
-
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha de Adición: </b>12/04/17</p>
-						<p><b>Fecha de Venta: </b>12/04/17</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha de Adición: </b>12/04/17</p>
-						<p><b>Fecha de Venta: </b>12/04/17</p>
-					</div>
-				</div>
-			</div>
-			
+			<!-- Inicio Libros Vendidos -->
+		<?php 
+			include '../lib/Busqueda.php';
+			// Prueba con 6
+			$ventas = Busqueda::getLibrosVendidos(6);
+			if ($ventas):
+				// Para hacer las divisiones (líneas).
+				$contador = 0;
+				foreach ($ventas as $venta):
+					$contador++;
+					if ($contador == 3): 
+						$contador =0;
+		?> 
+			<!-- Esta es la división -->
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-			
+		<?php
+					endif;
+		?>	
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $venta->getFotoFrente(); ?>" alt="Img">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha de Adición: </b>12/04/17</p>
-						<p><b>Fecha de Venta: </b>12/04/17</p>
+						<p class="book-title"><?php echo $venta->getTitulo();?></p>
+						<a class="book-author" href="#"><?php echo $venta->getAutor();?></a>
+						<p class="book-price"><b>Precio: </b>$<?php echo $venta->getPrecio();?></p>
+						<?php 
+							$isbn = $venta->getIsbn();
+							// Para mostrarlo si existe.
+							if ($isbn):
+						?>
+						<p><b>ISBN: </b><?php  echo $isbn ?></p>
+						<?php 
+							endif;
+						?>
+						<p><b>Fecha de Venta: </b><?php echo $venta->getFechaVenta();?></p>
 					</div>
 				</div>
 			</div>
-
-			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
-				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../img/brave-men.jpg" alt="Brave Men">
-					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
-						<p class="book-title">Brave men</p>
-						<a class="book-author" href="#">Ernie Pyle</a>
-						<p class="book-price"><b>Precio: </b>$250</p>
-						<p><b>ISBN: </b>9788435020848</p>
-						<p><b>Fecha de Adición: </b>12/04/17</p>
-						<p><b>Fecha de Venta: </b>12/04/17</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-
+		<?php 
+				endforeach;
+			endif;
+		?>
 			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
 			  <ul class="pagination">
 			    <li>

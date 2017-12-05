@@ -31,11 +31,12 @@ class LibroVendido {
 		$this->idLibreria = $row['idLibreria'];
 		$this->idUsuario = $row['idUsuario'];
 		$this->libreria = $row['nombre'];
+		$this->fechaVenta = $row['fechaVenta'];
 	}
 
 	//A mano (No hay multiples constructores)
 	function contruct($id, $autor, $titulo, $isbn, $fechaAdicion, 
-		$precio, $fotoFrente, $fotoAtras, $tags, $idLibreria,$libreria)
+		$precio, $fotoFrente, $fotoAtras, $tags, $idLibreria,$libreria,$fechaVenta)
 	{
 		$this->$id = $id;
 		$this->$autor = $autor;
@@ -47,6 +48,7 @@ class LibroVendido {
 		$this->idLibreria = $idLibreria;
 		$this->idUsuario = $idUsuario;
 		$this->libreria = $libreria;
+		$this->fechaVenta = $fechaVenta;
 	}
 
 
@@ -162,6 +164,10 @@ class LibroVendido {
 
 	public function setLibreria($libreria){
 		$this->$libreria = $libreria;
+	}
+
+	public function getFechaVenta (){
+		return $this->fechaVenta;
 	}
 }
 
