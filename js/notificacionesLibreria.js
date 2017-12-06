@@ -1,7 +1,7 @@
 function check() {
 	setTimeout(function() {
 		$.ajax({
-			url: 'compruebaVentas.php',
+			url: '../lib/compruebaVentas.php',
 			type: 'POST'
 		})
 		.done(function(res) {
@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
 		ids = ids.slice(0, ids.length-1);
 		console.log(ids);
 		$.ajax({
-			url: 'marcarLibrosVisto.php',
+			url: '../lib/marcarLibrosVisto.php',
 			type: 'POST',
 			data: {ids: ids},
 		})
@@ -38,9 +38,6 @@ jQuery(document).ready(function($) {
 		.fail(function() {
 			console.log("error");
 		})
-		.always(function() {
-			console.log("complete");
-		});
 		
 	});
 });

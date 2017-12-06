@@ -42,18 +42,23 @@ if ($_SESSION['tipo'] == 'usuario') {
 </head>
 <body>
 	<?php 
-		$current_page = 'agregarLibro';
+		$current_page = 'editarLibro';
 		include '../components/navbar-libreria.php';
+		include_once '../lib/Libro.php';
+		if (!isset($_GET['id'])) 
+			exit();
+
+		$libro = Libro::getLibro($_GET['id']); 
 	?>
 
 	
 	<div class="container">
 		
-		<h2 class="text-center"><b>Agregar Nuevo Libro.</b></h2>
+		<h2 class="text-center"><b>Editar Libro.</b></h2>
 		<div class="row formulario">
 			<div  class="col-lg-3">
 				<div class="row preview">
-					<img id="foto-frente" src="" alt="">
+					<img id="foto-frente" src="../<?php echo $libro->getFotoFrente(); ?>" alt="">
 				</div>
 				<div class="row subir">
 				 
@@ -63,7 +68,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 			</div>
 			<div  class="col-lg-3">
 				<div class="row preview">
-					<img id="foto-atras" src="" alt="">
+					<img id="foto-atras" src="../<?php echo $libro->getFotoAtras(); ?>" alt="">
 				</div>
 				<div class="row subir">
 				
@@ -71,12 +76,12 @@ if ($_SESSION['tipo'] == 'usuario') {
 					<button type="button" id="upload-atras" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
 				</div>
 			</div>
-			<form id="nuevo-libro" action="agregaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-6">
+			<form id="nuevo-libro" action="actualizaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-6">
 				<div class="form-control err-msg ">Precio no válido!.</div>
 				<div class="form-group">
 					 <div class="labels col-lg-4">
-						<input style="display: none;" required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
-						<input  style="display: none;" required type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
+						<input style="display: none;" type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
+						<input  style="display: none;" type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
 					 	<label for="isbn" class="col-form-label">ISBN (opcional)</label><br>
 					 	<label for="autor" class="col-form-label">Autor</label><br>
 					 	<label for="titulo" required class="col-form-label">Título</label><br>
@@ -85,13 +90,15 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 	<label for="tags" class="col-form-label">Tags.</label>
 					 </div>
 					 <div class="inputs col-lg-8">
-					 	<input type="text" class="form-control" name="isbn" id="isbn" placeholder="0803287682">
-					 	<input type="text" required class="form-control" name="autor" id="autor" placeholder="Julio Verne">
-					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="...">
-					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00">
-					 
+					 	<input type="text" class="form-control" name="isbn" id="isbn" placeholder="0803287682" value="<?php echo $libro->getIsbn(); ?>">
+					 	<input type="text" required class="form-control" name="autor" id="autor" placeholder="Julio Verne" value="<?php echo $libro->getAutor(); ?>">
+					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="..." value="<?php echo $libro->getTitulo(); ?>">
+					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00" value="$<?php echo $libro->getPrecio(); ?>">
 						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
-						<input type="text" id="tags" name="tags" value="" class=" tags form-control" data-role="tagsinput">
+						<input type="text" id="tags" name="tags" data-values="<?php echo $libro->getTags(); ?>" class=" form-control">
+						<input type="text" id="idLibro" name="idLibro" hidden value="<?php echo $_GET['id']; ?>" placeholder="">
+						<input hidden type="text" name="fotoFrente-original" value="<?php echo $libro->getFotoFrente(); ?>" placeholder="">
+						<input hidden type="text" name="fotoAtras-original" value="<?php echo $libro->getFotoAtras(); ?>" placeholder="">
 						<p style="font-size: 12pt;">*El autor se agrega automáticamente como tag</p>
 					 </div>
 					
@@ -161,7 +168,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/bootstrap-tagsinput.js"></script>
-	<script src="../js/agregarNuevo.js" ></script>
+	<script src="../js/editarLibro.js" ></script>
 	<script src="../js/autocomplete.js"></script>
 	<script src="../js/notificacionesLibreria.js"></script>
 </html>

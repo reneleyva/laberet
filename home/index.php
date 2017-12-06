@@ -199,7 +199,7 @@ include_once '../lib/Usuario.php';
 			</div>
 			
 			<!-- IMPORTANTE! si son menos de 3 elementos ponerle style="float: none;" -->
-			<div id="carousel-compras" class="row col-lg-10 col-md-10 col-sm-8 col-xs-8">
+			<div id="carousel-compras" class="row col-lg-10 col-md-10 col-sm-8 col-xs-8" data-num-compras="<?php echo count($compras); ?>">
 
 			<?php 
 				foreach ($compras as $compra): 
@@ -209,14 +209,14 @@ include_once '../lib/Usuario.php';
 
 				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
-					<img src="../<?php echo $compra->getFotoFrente();?>" alt="">
+					<img src="../<?php echo $compra->getFotoFrente();?>" alt="" style="margin-right: -2px; ">
 				</div>
 
 				<div class="info col-lg-5 col-md-5">
 					<p style="margin-bottom: 5px;"><b><?php echo $compra->getTitulo();?></b></p>
-					<p><b>Autor: </b><?php echo$compra->getAutor();?></p>
-					<p><b>Vendedor: </b> <?php echo$compra->getlibreria();?></p>
-					<p><b>Precio: </b> $<?php echo$compra->getPrecio();?> MXN</p>
+					<p><b>Autor: </b><?php echo$compra->getAutor();?></p><br>
+					<p><b>Vendedor: <br> </b> <?php echo$compra->getlibreria();?></p><br>
+					<p><b>Precio: <br></b> $<?php echo$compra->getPrecio();?> MXN</p>
 				</div>
 
 				<?php endforeach;

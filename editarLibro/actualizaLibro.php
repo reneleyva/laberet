@@ -3,7 +3,7 @@
     include '../conexion.php';
     session_start();
     $idLibreria = $_SESSION['id'];
-
+    $idLibro = $_POST['idLibro'];
     $titulo = $_POST['titulo'];
     $autor =  $_POST['autor'];
     $isbn = NULL;
@@ -14,14 +14,14 @@
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
     //Se agrega el autor como tag. 
-    $autorTags = join(" ", explode(" ", $autor));
-    $tags = $tags." ".$autorTags;
-    $fotoAtrasPath = "";
-    $fotoFrentePath = "";
+    $fotoAtrasPath = $_POST['fotoAtras-original'];
+    $fotoFrentePath = $_POST['fotoFrente-original'];
+
 
     $imagePath = "uploads/";
     $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoFrente']['name'])) {
+    if (isset($_FILES['fotoFrente']) && !empty($_FILES['fotoFrente']['name'])) {
+        /* Foto portada */
         $name = $_FILES['fotoFrente']['name'];
         $imageFtype = $_FILES['fotoFrente']['type'];
         $imageFerror = $_FILES['fotoFrente']['error'];
@@ -33,7 +33,7 @@
         if (!empty($name)) {
 
             if  (move_uploaded_file($tmp_name, "../".$fotoFrentePath)) {
-                echo 'Uploaded';
+                // echo 'Uploaded';
             } else {
                 echo "NOPE";
             }
@@ -44,18 +44,18 @@
 
     } 
     
+
     $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoAtras']['name'])) {
+    if (isset($_FILES['fotoAtras']) && !empty($_FILES['fotoAtras']['name'])) {
         /* Foto portada */
         $name = $_FILES['fotoAtras']['name'];
         $imageFtype = $_FILES['fotoAtras']['type'];
         $imageFerror = $_FILES['fotoAtras']['error'];
         $tmp_name = $_FILES['fotoAtras']['tmp_name'];
-
         $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
         $tipo = explode('/', $imageFtype)[1];
         $fotoAtrasPath = $imagePath.$name.".".$tipo;
-
+        
         if (!empty($name)) {
 
             if  (move_uploaded_file($tmp_name, "../".$fotoAtrasPath)) {
@@ -68,19 +68,21 @@
 
     }
 
+    // echo $fotoAtrasPath."<br>";
+    // echo $fotoFrentePath;
 
-$sql = 'INSERT INTO libro SET
-        idLibro = '.($id+1).',
+$sql = 'UPDATE libro SET
 		titulo = "' . $titulo . '",
 		autor = "'.$autor.'",
-        fechaAdicion = CURDATE(),
+        isbn= "'.$isbn.'",
 		precio = "'.$precio.'",
 		tags = "'.$tags.'",
-		idLibreria = '.$idLibreria.',
 		fotoFrente = "'.$fotoFrentePath.'",
-		fotoAtras = "'.$fotoAtrasPath.'";'; 
+		fotoAtras = "'.$fotoAtrasPath.'" 
+        WHERE idLibro='.$idLibro.' ;'; 
+
 mysqli_query($con, $sql);
         
     	
-header('Location: .');
+header('Location: ../index.php#muestra');
 exit();

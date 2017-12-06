@@ -111,8 +111,10 @@ let initComprasCarousel = function() {
 });
 };
 
-
+let numCompras = $('#carousel-compras').data('num-compras'); 
 initComprasCarousel();
+
+
 
 
 $('#carousel-intereses').slick({
