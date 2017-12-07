@@ -7,9 +7,8 @@
 <html>
 <head>
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	<link rel="stylesheet" href="../css/admin.css"> 
+	<link rel="stylesheet" href="../css/bootstrap.min.css"> 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../js/admin.js"></script>
@@ -17,31 +16,12 @@
 	<title>Administración de Laberet</title>
 </head>
 <body>
-	<!-- NavBar -->
-	<nav class="navbar navbar-inverse .navbar-fixed-top">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span>
-	        	<span class="icon-bar"></span> 
-	      	</button>
-	      <a class="navbar-brand" href="#">Historial de Ventas.</a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	    	<!--
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Historial de ventas.</a></li>
-			</ul> -->
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../salir"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
-			</ul>
-    	</div>
-	  </div>
-	</nav>
-	<!--End  NavBar -->
-
+	
+	<?php 
+	$current_page = 'inicio';
+	include '../components/navbar-admin.php'; ?>
+	<div class="container" style="margin-top: 100px;">
+		
 	<div class="col-md-12">
 		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 		<table id="myTable">
@@ -86,7 +66,7 @@
 		</table>
 		
 	</div>
-
+</div>
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">

@@ -27,7 +27,31 @@ jQuery(document).ready(function($) {
 	// $('#precio').val("$230");
 	// $("#tags").text('Loco ');
 
-	$('.bootstrap-tagsinput').tagsinput({
+	var etiquetas = new Bloodhound({
+	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+	    queryTokenizer: Bloodhound.tokenizers.whitespace,
+	    prefetch: {
+	    url: '../etiquetas.json',
+	    filter: function(list) {
+	      return $.map(list, function(name) {
+	      return { name: name }; });
+	    }
+	    }
+	  });
+
+	  etiquetas.initialize();
+
+	  $('#tags').tagsinput({ 
+		    typeaheadjs: {
+		    name: 'etiquetas',
+		    displayKey: 'name',
+		    valueKey: 'name',
+		    source: etiquetas.ttAdapter()
+		    }, 
+	    confirmKeys: [32, 44]
+	  });
+
+	$('#tags').tagsinput({
 		confirmKeys: [32, 44]
 	});
 

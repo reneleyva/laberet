@@ -30,7 +30,7 @@ class Busqueda {
 	function getPedidos (){
 		include "../conexion.php";
 		$sql = "SELECT p.id id,p.fecha fecha, p.status status,COUNT(DISTINCT(l.idLibroVendido)) libros, FORMAT(SUM(l.precio),2) precio 
-				FROM pedido_entrega p INNER JOIN librovendido l
+				FROM entrega p INNER JOIN librovendido l
 			    on p.id = l.Entregaid 
 			    and l.vendidoLinea = 1
 			    GROUP BY p.id,p.fecha,p.status ";

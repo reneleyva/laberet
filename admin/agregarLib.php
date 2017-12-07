@@ -8,7 +8,7 @@ $direccion = $_POST['direccion'];
 $coordenadas = $_POST['coordenadas'];
 $nombreUsuario = $_POST['nombreUsuario'];
 $pass = md5($_POST['password']."teamolizzteamoluz");
-
+$correo = $_POST['correo'];
 
 $imagePath = "uploads/";
 $fotoPerfilPath = "";
@@ -67,6 +67,7 @@ $sql = 'INSERT INTO libreria SET
 			fotoPortada = "'.$fotoPortadaPath.'",
             telefono = "'.$telefono.'",
 			direccion = "'.$direccion.'",
+            correo = "'.$correo.'",
 			coordenadas = "'.$coordenadas.';"';     
 
 mysqli_query($con, $sql);
