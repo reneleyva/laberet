@@ -91,8 +91,11 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00">
 					 
 						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
-						<input type="text" id="tags" name="tags" value="" class="tags form-control" data-role="tagsinput">
-						<p style="font-size: 12pt;">*El autor se agrega automáticamente como tag</p>
+						<div class="etiquetas">
+							<input type="text" id="tags" name="tags" value="" class="tags form-control" data-role="tagsinput">
+							<p style="font-size: 12pt;">*El autor se agrega automáticamente como tag</p>	
+						</div>
+						
 					 </div>
 					
 					 <button class="btn btn-default" type="submit"><b>Enviar</b></button>

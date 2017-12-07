@@ -19,41 +19,44 @@ function precioValido(n) {
 }
 
 jQuery(document).ready(function($) {
-	//For test
-	// var ran = Math.floor(Math.random() * (10000000000000));
-	// $('#autor').val('Un vato locou');
-	// $('#titulo').val('La vida de un vato locou');
-	// $('#lenguaje').val('Espanglish');
-	// $('#precio').val("$230");
-	// $("#tags").text('Loco ');
+	
+
+	var data = ["ciencia-ficción", "historia", "ficción", "matemáticas", "fantasía", "terror", 
+	"poesía", "cuentos", "novela", "trilogía", "artes", "autoayuda", "ciencia", 
+	"guerra", "deportes", "economía", "política", "religión", "música", "humor", 
+	"cine", "cinematografía", "entretenimiento", "filosofía", "gastronomía", "psicología", 
+	"leyes", "medicina", "química", "literatura", "ensayo", "romance", "muerte", "novela-histórica",
+	"pintura", "robots"];
 
 	var etiquetas = new Bloodhound({
 	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
 	    queryTokenizer: Bloodhound.tokenizers.whitespace,
-	    prefetch: {
-	    url: '../etiquetas.json',
-	    filter: function(list) {
-	      return $.map(list, function(name) {
-	      return { name: name }; });
-	    }
-	    }
-	  });
-
-	  etiquetas.initialize();
-
-	  $('#tags').tagsinput({ 
-		    typeaheadjs: {
-		    name: 'etiquetas',
-		    displayKey: 'name',
-		    valueKey: 'name',
-		    source: etiquetas.ttAdapter()
-		    }, 
-	    confirmKeys: [32, 44]
-	  });
-
-	$('#tags').tagsinput({
-		confirmKeys: [32, 44]
+	    local: $.map(data, function (city) {
+	        return {
+	            name: city
+	        };
+	    })
 	});
+	etiquetas.initialize();
+
+	$('.etiquetas').tagsinput({
+	    typeaheadjs: [{
+	          minLength: 1,
+	          highlight: true,
+	    },{
+	        minlength: 1,
+	        name: 'etiquetas',
+	        displayKey: 'name',
+	        valueKey: 'name',
+	        source: etiquetas.ttAdapter()
+	    }],
+	    freeInput: true, 
+	    confirmKeys: [32, 44]
+	});
+
+	// $('.bootstrap-tagsinput').tagsinput({
+	// 	confirmKeys: [32, 44]
+	// });
 
 	$('#upload-frente').click(function(event) {
 		let input = $('#fotoFrente'); 
@@ -105,25 +108,5 @@ jQuery(document).ready(function($) {
 	    }
 
 	   this.submit(); 
-	});
-
-
-	//ISBN STUFF
-	$('#isbn').keyup(function() {
-		// var isbn = $(this).val();
-		// $.getJSON('https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbn, function(json, textStatus) {
-		// 	console.log(json.totalItems);
-		// 	if(json.totalItems != 0) {
-		// 		// console.log(json);
-		// 		console.log(json.items[0].volumeInfo);
-		// 		var titulo = json.items[0].volumeInfo.title;
-		// 		var autor = json.items[0].volumeInfo.authors[0];
-		// 		var lenguaje = json.items[0].volumeInfo.language;
-		// 		console.log(lenguaje);
-		// 		$('#titulo').val(titulo);
-		// 		$('#autor').val(autor);
-		// 		$('#lenguaje').val(lenguaje);
-		// 	}
-		// });
 	});
 });

@@ -70,7 +70,6 @@
 
 
 $sql = 'INSERT INTO libro SET
-        idLibro = '.($id+1).',
 		titulo = "' . $titulo . '",
 		autor = "'.$autor.'",
         fechaAdicion = CURDATE(),
@@ -82,5 +81,5 @@ $sql = 'INSERT INTO libro SET
 mysqli_query($con, $sql);
         
     	
-header('Location: .');
+// header('Location: .');
 exit();
