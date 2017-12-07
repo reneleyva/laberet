@@ -7,12 +7,31 @@ include_once 'Libreria.php';
 class Busqueda {
 	function __construct() {}
 
-	// Regresa todos los libros que ha vendido una libreria
+	// Regresa todos los libros que ha vendido una librería en línea
 	function getLibrosVendidos($idLibreria) {
 		include "../conexion.php";
 		include_once "../lib/LibroVendido.php";
 		$sql = "SELECT * FROM librovendido l INNER JOIN libreria lib ON l.idLibreria = lib.idLibreria
-				WHERE l.idLibreria = ".$idLibreria.";";
+				WHERE l.idLibreria = ".$idLibreria." AND l.vendidoLinea = 1 ;";
+		$ventas = array();
+		$query = mysqli_query($con, $sql);
+		// Si hay resultados.
+		if ($query) {
+			while ($row = mysqli_fetch_array($query)){
+				$book = new LibroVendido();
+				$book->fill($row);
+				array_push($ventas,$book);
+			}
+		}
+		return $ventas;
+	}
+
+	// Regresa todos los libros que ha vendido una librería en tienda
+	function getLibrosVendidosTienda($idLibreria) {
+		include "../conexion.php";
+		include_once "../lib/LibroVendido.php";
+		$sql = "SELECT * FROM librovendido l INNER JOIN libreria lib ON l.idLibreria = lib.idLibreria
+				WHERE l.idLibreria = ".$idLibreria." AND l.vendidoLinea = 0;";
 		$ventas = array();
 		$query = mysqli_query($con, $sql);
 		// Si hay resultados.
