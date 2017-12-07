@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 		// alert();
 		var id = $(this).closest('.libro').data('id');
 		$.ajax({
-	        type: "GET",
+	        type: "POST",
 	        url: "vendidoTienda.php",
 	        data : { id : id },
 	        success: function(html){
@@ -44,9 +44,13 @@ jQuery(document).ready(function($) {
 				  type: 'success',
 				  title: 'Libro vendido en tienda!',
 				  showConfirmButton: false,
-				  timer: 1500
+				  timer: 1000
 				});
-	           window.location.reload(false);
+
+	        	setTimeout(function() {
+	        		window.location.reload(false);
+	        	}, 1000);
+	           
 	        }
 	    });
 	});

@@ -3,12 +3,12 @@
 include '../conexion.php';
 include '../lib/Libro.php';
 
-if(!isset($_GET['id'])) {
+if(!isset($_POST['id'])) {
 	echo "404";
 	exit();
 }
 
-$id = $_GET['id'];
+$id = $_POST['id'];
 
 //Seleccionar Libro. 
 $book = Libro::getLibro($id);
@@ -17,7 +17,6 @@ $book = Libro::getLibro($id);
 $sql = "DELETE FROM libro WHERE idLibro = ".$id.";";
 mysqli_query($con, $sql);
 
-$fecha = new DateTime();
 //añadir Libro a Libro Vendido en Linea. 
 $sql = "INSERT INTO librovendido SET 
 	autor = '".$book->getAutor()."',
@@ -30,7 +29,7 @@ $sql = "INSERT INTO librovendido SET
 	tags = '".$book->getTags()."',
 	idLibreria = '".$book->getIdLibreria()."';";
 
-// echo $sql;
+echo $sql;
 mysqli_query($con, $sql);
 exit(); 
 // header("Location: .");
