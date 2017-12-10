@@ -35,16 +35,16 @@
 			<h4 class="text-center" id="total_compras">Total Compras en Linea: $</h4>
 			<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 			<!-- Inicio Libros Vendidos -->
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-		  <li class="nav-item">
-		    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Vendidos en Línea:</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Vendidos en Tienda: </a>
-		  </li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-		  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Vendidos en Línea:</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Vendidos en Tienda: </a>
+			  </li>
+			</ul>
+		<div class="tab-content pill-content" id="myTabContent">
+		  <div class="tab-pane fade show active pill-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
 		  	<!-- Inicio Vendido en Línea -->
 		  	<?php 
 				$ventas = Busqueda::getLibrosVendidos($idLibreria);
@@ -138,28 +138,11 @@
 		<!-- Para calcular el total de ventas en línea -->
 		<input type="hidden" id="precio_total" value="<?php echo $total_ventas ?>">
 
-			<nav class="text-center col-lg-12 col-md-12 col-sm-12" aria-label="Page navigation">
-			  <ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
 		</div> <!-- FIN MUESTRA DE LIBROS -->
+		<div class="hl col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 	</div>
-
+	
+	<?php include '../components/footer-libreria.php'; ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/historialVentas.js"></script>
