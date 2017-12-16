@@ -23,9 +23,9 @@
 				<div class="menu row nav centered">
 					<div style="text-align: left">
 						<a href="../">Inicio</a><br>
-						<a href="#">Catálogo</a><br>
-						<a href="#">Pedidos Especiales</a><br>
-						<a href="#">Historial de Compras</a>
+						<a href="../buscar">Catálogo</a><br>
+						<a href="../pedidosEspeciales">Pedidos Especiales</a><br>
+						<a href="../historialCompras">Historial de Compras</a>
 					</div>
 				</div>
 			</div>

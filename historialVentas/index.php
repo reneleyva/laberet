@@ -68,7 +68,7 @@
 						<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $venta->getFotoFrente(); ?>" alt="Img">
 						<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<p class="book-title"><?php echo $venta->getTitulo();?></p>
-							<a class="book-author" href="#"><?php echo $venta->getAutor();?></a>
+							<p class="book-author" href="#"><?php echo $venta->getAutor();?></p>
 							<p class="book-price"><b>Precio: </b>$<?php echo $venta->getPrecio();?></p>
 							<?php 
 								$isbn = $venta->getIsbn();
@@ -112,7 +112,7 @@
 						<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $venta->getFotoFrente(); ?>" alt="Img">
 						<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<p class="book-title"><?php echo $venta->getTitulo();?></p>
-							<a class="book-author" href="#"><?php echo $venta->getAutor();?></a>
+							<p class="book-author" href="#"><?php echo $venta->getAutor();?></p>
 							<p class="book-price"><b>Precio: </b>$<?php echo $venta->getPrecio();?></p>
 							<?php 
 								$isbn = $venta->getIsbn();

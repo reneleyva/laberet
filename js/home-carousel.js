@@ -116,8 +116,10 @@ initComprasCarousel();
 
 
 
+let numInteres = $('#carousel-intereses').data('num-libros'); 
 
-$('#carousel-intereses').slick({
+var initInteresesCarousel = function() {
+  $('#carousel-intereses').slick({
     dots: true,
     infinite: true,
     speed: 300,
@@ -152,6 +154,18 @@ $('#carousel-intereses').slick({
       }
     ]
 });
+};
+
+if (numInteres > 5) {
+    initInteresesCarousel();
+} else if (windowWidth < 970) {
+  initInteresesCarousel();
+} else {
+  $('#carousel-intereses').addClass('no-carousel');
+  $('#prev-intereses').hide();
+  $('#next-intereses').hide(); 
+}
+
 
 	$('#prev').hover(function() {
 		$(this).attr('src', 'img/back-black.png');

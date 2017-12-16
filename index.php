@@ -238,7 +238,7 @@
 			<div class="col-lg-4 hidden-md hidden-sm hidden-xs">
 				<div class="menu row nav centered">
 					<div style="text-align: left">
-						<a href="#">Inicio</a><br>
+						<a href>Inicio</a><br>
 						<a href="./buscar">Catálogo</a><br>
 						<a href="./registrarse">Registrarse</a><br>
 						<a href="./inicioSesion">Iniciar Sesión</a>

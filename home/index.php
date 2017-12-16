@@ -244,7 +244,7 @@ include_once '../lib/Usuario.php';
 					<span class="glyphicon glyphicon-menu-left"></span>
 				</div>
 
-				<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6	">
+				<div id="carousel-intereses" class="carousel col-lg-10 col-md-8 col-sm-8 col-xs-6" data-num-libros="<?php echo count($books); ?>">
 				<?php foreach ($books as $book): ?>
 					
 					<div class="thumbnail libro">
