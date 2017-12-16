@@ -3,7 +3,9 @@
 $user = getenv('SQL_USER');
 $pass = getenv('SQL_PASS');
 $database = getenv('DB_NAME');
-$con = @mysqli_connect('localhost', $user, $pass, $database);
+$host = getenv('DB_HOST');
+
+$con = @mysqli_connect($host, $user, $pass, $database);
 // Para los acentos.
 $sql = " SET NAMES UTF8;";
 mysqli_query($con, $sql);
