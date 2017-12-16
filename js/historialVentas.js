@@ -4,8 +4,3 @@ jQuery(document).ready(function($) {
 	$('#home-tab').tab('show'); // Select tab by name
 });
 
-
-$('#myTab a').on('click', function (e) {
-	e.preventDefault();
-	$(this).tab('show');
-});
