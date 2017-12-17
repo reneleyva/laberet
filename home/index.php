@@ -268,9 +268,6 @@ include_once '../lib/Usuario.php';
 				</div>
 			</div>  <!-- End Libros Relacionados -->
 		<?php endif; ?> 
-
-	<?php else: ?>
-		<h1>NO COMPRAS!</h1>
 	<?php endif; ?> 
 		
 	</div>
