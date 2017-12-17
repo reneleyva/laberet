@@ -138,7 +138,7 @@
 	<!-- INICIO Carousel Librerías -->
 	<div id="librerias" class="container-fluid">
 		<?php include 'librerias.php'; ?>
-		<h2 class="text-center">Descubre libros de entre <?php echo count($librerias); ?> librerías de la ciudad.</h2>
+		<h2 class="text-center">Descubre libros de entre nuestras librerías de la ciudad.</h2>
 		 <div class="row carousel"> 
 		<?php 
 			
