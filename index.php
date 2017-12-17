@@ -8,6 +8,11 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:title" content="Laberet" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="www.laberet.com" />
+	<meta property="og:image" content="http://res.cloudinary.com/dzu2umeba/image/upload/v1513531736/ew6ufbaqaopvxokmjmdc.png" />
+	<meta property="og:description" content="La tienda en línea de las librerías independientes">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
 	<title>Laberet</title>
@@ -65,7 +70,7 @@
 	<!-- HEADER -->
 		<div class="row-fluid">
 		<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
-		<h2>La tienda en linea de las librerías independientes.</h2>
+		<h2>La tienda en línea de las librerías independientes.</h2>
 		<div id="buscar">
 			<form  action="./buscar/" class="form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
