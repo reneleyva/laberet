@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <meta property="og:title" content="Laberet" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="www.laberet.com" />
+	<meta property="og:url" content="http://www.laberet.com" />
 	<meta property="og:image" content="http://res.cloudinary.com/dzu2umeba/image/upload/v1513531736/ew6ufbaqaopvxokmjmdc.png" />
 	<meta property="og:description" content="La tienda en línea de las librerías independientes">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
