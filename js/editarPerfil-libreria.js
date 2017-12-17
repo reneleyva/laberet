@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 
 	//Si presiona guardar portada
 	$('#guardar-portada').click(function() {
-		$('.fotos').find('form').submit(); //Se envia formulario escondido dentro de .fotos
+		$('.fotos').find('input[type="submit"]').click(); //Se envia formulario escondido dentro de .fotos
 	});
 	
 	$(".editar").on('click', function(event) {

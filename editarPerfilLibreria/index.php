@@ -62,7 +62,7 @@
 						
 						<!-- Formulario Escondido para subir foto de perfil -->
 						<form hidden action="actualizarFotoPerfil.php" method="post" enctype="multipart/form-data">
-							<input id="input-foto-perfil" type="file" name="foto-perfil">
+							<input id="input-foto-perfil" type="file" accept="image/x-png,image/gif,image/jpeg" name="foto-perfil">
 							<button type="submit"></button>
 						</form>
 
@@ -71,7 +71,8 @@
 				
 				<!-- Formulario Escondido para subir foto de portada -->
 				<form hidden action="actualizarFotoPortada.php" method="post"  enctype="multipart/form-data">
-					<input id="input-foto-portada" type="file" name="foto-portada" value="">
+					<input id="input-foto-portada" type="file" accept="image/x-png,image/gif,image/jpeg" name="foto-portada" value="">
+					<input type="submit" name="submit" hidden>
 				</form>
 
 				<div class="row text-center">

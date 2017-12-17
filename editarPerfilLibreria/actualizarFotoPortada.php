@@ -17,6 +17,7 @@
       "api_secret" => $api_secret 
     ));
 
+
     $fotoPortada = \Cloudinary\Uploader::upload($_FILES['foto-portada']['tmp_name']); 
     $fotoPortadaPath = $fotoPortada['url'];
   
