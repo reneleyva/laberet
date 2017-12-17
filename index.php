@@ -65,7 +65,7 @@
 	<!-- HEADER -->
 		<div class="row-fluid">
 		<h1 id="element" class="centering text-center">Encuentra Los Libros Que Amas</h1>
-		<h2>La tienda en linea de las mejores librerías.</h2>
+		<h2>La tienda en linea de las librerías independientes.</h2>
 		<div id="buscar">
 			<form  action="./buscar/" class="form-inline" method="get" accept-charset="utf-8">
 				<div id="search-form" class="form-group">
