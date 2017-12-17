@@ -51,10 +51,10 @@
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="../<?php echo $book->getFotoFrente();?>" alt="">					
+					<img src="<?php echo $book->getFotoFrente();?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="../<?php echo $book->getFotoAtras();?>" alt="">
+					<img src="<?php echo $book->getFotoAtras();?>" alt="">
 				</div>
 			</div>
 			
@@ -101,7 +101,7 @@
 						<div class="row text-center">
 							<h4 class="col-lg-12"><b><?php echo $libreria->getNombre(); ?></b></h4>
 						</div>
-						<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
+						<div class="circle" style="background: url(<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
 						<div class="row text-center">
 							<a href="../infoLibreria/?id=<?php echo $libreria->getId(); ?>"><button type="" class="btn btn-sm">Ver Perfil</button></a>
 						</div>
@@ -120,10 +120,10 @@
 			      <div class="modal-body">
 			        <div class="row">
 			        	<div class="modal-cover col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="<?php echo htmlspecialchars($book->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        	<div class="modal-back col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			        		<img src="../<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
+			        		<img src="<?php echo htmlspecialchars($book->getFotoAtras(), ENT_QUOTES, 'UTF-8');?>" alt="">
 			        	</div>
 			        </div>
 			      </div>
@@ -153,7 +153,7 @@
 				
 				<div class="thumbnail libro relacionado">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>"></a>
+						<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>"></a>
 						 <div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?><br></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>

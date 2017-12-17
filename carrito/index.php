@@ -68,7 +68,7 @@
 				  	foreach ($cart_books as $book): ?>
 					<tr class="item" data-id=<?php echo $book->getId() ?>>
 						<th scope="row"><?php echo $i ?></th>
-						<td><img class="portada" src="../<?php echo $book->getFotoFrente();?>" alt=""></td>
+						<td><img class="portada" src="<?php echo $book->getFotoFrente();?>" alt=""></td>
 						<td><a href="<?php echo "../infoLibro/?id=".$book->getId(); ?>" title=""><?php echo $book->getTitulo();?></a></td>
 						<td><p><?php echo $book->getAutor();?></p></td>
 						<td class="price" data-price="<?php echo $book->getPrecio();?>"><b>$<?php echo $book->getPrecio();?></b></td>

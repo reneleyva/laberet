@@ -1,5 +1,7 @@
 <?php
-
+require '../lib/cloudinary/src/Cloudinary.php';
+require '../lib/cloudinary/src/Uploader.php';
+require '../lib/cloudinary/src/Api.php';
 include '../conexion.php';
 
 $nombre = $_POST['nombre'];
@@ -9,57 +11,33 @@ $coordenadas = $_POST['coordenadas'];
 $nombreUsuario = $_POST['nombreUsuario'];
 $pass = md5($_POST['password']."teamolizzteamoluz");
 $correo = $_POST['correo'];
+$facebook = $_POST['facebook'];
+$instagram = $_POST['instagram'];
+$twitter = $_POST['twitter']; 
 
-$imagePath = "uploads/";
 $fotoPerfilPath = "";
 $fotoPortadaPath = "";
 
+$cloud = getenv('CLOUD_NAME');
+$api_key = getenv('API_KEY');
+$api_secret = getenv('API_SECRET');
 
-if (isset($_FILES['fotoPerfil']['name'])) {
-        // Foto perfil
-        $name = $_FILES['fotoPerfil']['name'];
-        $imageFtype = $_FILES['fotoPerfil']['type'];
-        $imageFerror = $_FILES['fotoPerfil']['error'];
-        $tmp_name = $_FILES['fotoPerfil']['tmp_name'];
-
-        $fotoPerfilPath = $imagePath.$name;
-
-        if (!empty($name)) {
-
-            if  (move_uploaded_file($tmp_name, "../".$fotoPerfilPath)) {
-                // echo 'Uploaded';
-            }
-
-        } else {
-            echo 'please choose a file';
-        }
-
-} else {
-    echo "NOT IMAGE";
-}
+\Cloudinary::config(array( 
+  "cloud_name" => $cloud,  
+  "api_key" => $api_key, 
+  "api_secret" => $api_secret 
+));
 
 
-if (isset($_FILES['fotoPortada']['name'])) {
-        // Foto portada 
-        $name = $_FILES['fotoPortada']['name'];
-        $imageFtype = $_FILES['fotoPortada']['type'];
-        $imageFerror = $_FILES['fotoPortada']['error'];
-        $tmp_name = $_FILES['fotoPortada']['tmp_name'];
 
-        $fotoPortadaPath = $imagePath.$name;
+$fotoPerfil = \Cloudinary\Uploader::upload($_FILES['fotoPerfil']['tmp_name']); 
+$fotoPortada = \Cloudinary\Uploader::upload($_FILES['fotoPortada']['tmp_name']); 
 
-        if (!empty($name)) {
+$fotoPerfilPath = $fotoPerfil['url'];
+$fotoPortadaPath = $fotoPortada['url'];
 
-            if  (move_uploaded_file($tmp_name, "../".$fotoPortadaPath)) {
-                // echo 'Uploaded';
-            }
-
-        } else {
-            echo 'please choose a file';
-        }
-} else {
-    echo "<br>NOT IMAGE TOO";
-}
+echo $fotoPerfilPath."<br>";
+echo $fotoPortadaPath;
 
 $sql = 'INSERT INTO libreria SET
 			nombre ="' .$nombre.'",
@@ -68,6 +46,9 @@ $sql = 'INSERT INTO libreria SET
             telefono = "'.$telefono.'",
 			direccion = "'.$direccion.'",
             correo = "'.$correo.'",
+            facebook = "'.$facebook.'",
+            instagram = "'.$instagram.'",
+            twitter = "'.$twitter.'",
 			coordenadas = "'.$coordenadas.';"';     
 
 mysqli_query($con, $sql);

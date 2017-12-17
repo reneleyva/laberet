@@ -69,7 +69,7 @@ if ($tipo == 'libreria') {
 			?>
 			<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $libro->getFotoFrente(); ?>" alt="Brave Men">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="<?php echo $libro->getFotoFrente(); ?>" alt="Brave Men">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title"><?php echo $libro-> getTitulo(); ?></p>
 						<a class="book-author" href="#"><?php echo $libro->getAutor(); ?></a>

@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 	"guerra", "deportes", "economía", "política", "religión", "música", "humor", 
 	"cine", "cinematografía", "entretenimiento", "filosofía", "gastronomía", "psicología", 
 	"leyes", "medicina", "química", "literatura", "ensayo", "romance", "muerte", "novela-histórica",
-	"pintura", "robots"];
+	"pintura", "robots", "derecho"];
 
 	var etiquetas = new Bloodhound({
 	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),

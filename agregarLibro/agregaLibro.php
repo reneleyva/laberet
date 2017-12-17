@@ -1,6 +1,9 @@
 <?php
     
     include '../conexion.php';
+    require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
     session_start();
     $idLibreria = $_SESSION['id'];
 
@@ -16,57 +19,29 @@
     //Se agrega el autor como tag. 
     $autorTags = join(" ", explode(" ", $autor));
     $tags = $tags." ".$autorTags;
-    $fotoAtrasPath = "";
-    $fotoFrentePath = "";
-
-    $imagePath = "uploads/";
-    $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoFrente']['name'])) {
-        $name = $_FILES['fotoFrente']['name'];
-        $imageFtype = $_FILES['fotoFrente']['type'];
-        $imageFerror = $_FILES['fotoFrente']['error'];
-        $tmp_name = $_FILES['fotoFrente']['tmp_name'];
-        $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
-        $tipo = explode('/', $imageFtype)[1];
-        $fotoFrentePath = $imagePath.$name.".".$tipo;
-
-        if (!empty($name)) {
-
-            if  (move_uploaded_file($tmp_name, "../".$fotoFrentePath)) {
-                echo 'Uploaded';
-            } else {
-                echo "NOPE";
-            }
-
-        } else {
-            echo 'please choose a file';
-        }
-
-    } 
     
-    $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoAtras']['name'])) {
-        /* Foto portada */
-        $name = $_FILES['fotoAtras']['name'];
-        $imageFtype = $_FILES['fotoAtras']['type'];
-        $imageFerror = $_FILES['fotoAtras']['error'];
-        $tmp_name = $_FILES['fotoAtras']['tmp_name'];
+    $cloud = getenv('CLOUD_NAME');
+    $api_key = getenv('API_KEY');
+    $api_secret = getenv('API_SECRET');
 
-        $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
-        $tipo = explode('/', $imageFtype)[1];
-        $fotoAtrasPath = $imagePath.$name.".".$tipo;
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
+    echo $api_key;
+    //  \Cloudinary::config(array( 
+    //   "cloud_name" => "dzu2umeba", 
+    //   "api_key" => "176317843429194", 
+    //   "api_secret" => "SqdUW7QjZaFri1WJo93DUiP1eyo" 
+    // ));
 
-        if (!empty($name)) {
 
-            if  (move_uploaded_file($tmp_name, "../".$fotoAtrasPath)) {
-                // echo 'Uploaded';
-            }
+    $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
+    $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 
 
-        } else {
-            echo 'please choose a file';
-        }
-
-    }
+    $fotoAtrasUrl = $fotoAtras['url'];
+    $fotoFrenteUrl = $fotoFrente['url'];
 
 
 $sql = 'INSERT INTO libro SET
@@ -76,10 +51,11 @@ $sql = 'INSERT INTO libro SET
 		precio = "'.$precio.'",
 		tags = "'.$tags.'",
 		idLibreria = '.$idLibreria.',
-		fotoFrente = "'.$fotoFrentePath.'",
-		fotoAtras = "'.$fotoAtrasPath.'";'; 
+		fotoFrente = "'.$fotoFrenteUrl.'",
+		fotoAtras = "'.$fotoAtrasUrl.'";'; 
+
 mysqli_query($con, $sql);
         
     	
-// header('Location: .');
+header('Location: .');
 exit();

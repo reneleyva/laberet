@@ -1,46 +1,28 @@
 <?php 
 	session_start(); 
+    require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
 	include '../conexion.php';
 
 	$id = $_SESSION['id'];
-    $fotoPortada = "";
 
-    $imagePath = "uploads/";
-    // Random bytes
-    $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['foto-portada']['name'])) {
-        /* Foto portada */
-        $origName = $_FILES['foto-portada']['name'];
-        $imageFtype = $_FILES['foto-portada']['type'];
-        $imageFerror = $_FILES['foto-portada']['error'];
-        $tmp_name = $_FILES['foto-portada']['tmp_name'];
-        $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
-        $tipo = explode('/', $imageFtype)[1];
-        $fotoPortada = $imagePath.$name.".".$tipo;
-        echo "PATH: ".$fotoPortada;
-        if (!empty($name)) {
+    $cloud = getenv('CLOUD_NAME');
+    $api_key = getenv('API_KEY');
+    $api_secret = getenv('API_SECRET');
 
-            if  (move_uploaded_file($tmp_name, "../".$fotoPortada)) {
-                echo 'Uploaded';
-            } else {
-                echo "ERROR";
-                exit();
-            }
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
 
-        }
-    }
-
-    // Borro la foto anterior
-
-    $sql = "SELECT fotoPortada from libreria WHERE idLibreria=".$id."; ";
-    $res = mysqli_query($con, $sql);
-    $url = mysqli_fetch_array($res)['fotoPortada'];
-    echo "<br>La que tenía antes: ".$url;
-    unlink('../'.$url); //LO borro ALV 
-    
+    $fotoPortada = \Cloudinary\Uploader::upload($_FILES['foto-portada']['tmp_name']); 
+    $fotoPortadaPath = $fotoPortada['url'];
+  
     // Actualizar foto de perfil de librería con nueva foto 
     $sql = "UPDATE libreria SET 
-    		fotoPortada='".$fotoPortada."' 
+    		fotoPortada='".$fotoPortadaPath."' 
     		WHERE idLibreria=".$id." ;"; 
 
     mysqli_query($con, $sql);

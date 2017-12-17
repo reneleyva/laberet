@@ -40,16 +40,16 @@
 	<div class="container">
 		<h2>Editar Perfil</h2>
 
-		<div class="fotos col-lg-12" style="background: url(../<?php echo $libreria->getFotoPortada(); ?>) no-repeat no-repeat center center; 
+		<div class="fotos col-lg-12" style="background: url(<?php echo $libreria->getFotoPortada(); ?>) no-repeat no-repeat center center; 
 		  -webkit-background-size: cover;
 		  -moz-background-size: cover;
 		  -o-background-size: cover;
-		  background-size: cover;" data-image="../<?php echo $libreria->getFotoPortada() ?>">
+		  background-size: cover;" data-image="<?php echo $libreria->getFotoPortada() ?>">
 			<div class="row-fluid">
 				<div>
 					<div id="box">
 						
-						<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;" data-image="../<?php echo $libreria->getFotoPerfil() ?>"></div>
+						<div class="circle" style="background: url(<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;" data-image="<?php echo $libreria->getFotoPerfil() ?>"></div>
 						<div class="row text-center">
 							<button id="cambiar-perfil" type="button" class="btn btn-default"><b> <span class="glyphicon glyphicon-camera"></span> Cambiar Foto Perfil</b></button>
 							<div class="row">

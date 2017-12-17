@@ -93,9 +93,9 @@ if ($_SESSION['tipo'] == 'usuario') {
 						<!-- <input type="text" class="form-control" name="lenguaje" id="lenguaje" placeholder="" value="Español"> -->
 						<div class="etiquetas">
 							<input type="text" id="tags" name="tags" value="" class="tags form-control" data-role="tagsinput">
-							<p style="font-size: 12pt;">*El autor se agrega automáticamente como tag</p>	
+								
 						</div>
-						
+						<p style="font-size: 12pt;margin-bottom: 0px;">*El autor se agrega automáticamente como tag</p>
 					 </div>
 					
 					 <button class="btn btn-default" type="submit"><b>Enviar</b></button>

@@ -40,11 +40,11 @@ if (!isset($_SESSION['tipo'])) {
 	
     <?php include 'libreria.php';?>
 
-	<div class="container-fluid" style="background: url(../<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+	<div class="container-fluid" style="background: url(<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid">
 			<div>
 				<div id="box">
-					<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
+					<div class="circle" style="background: url(<?php echo $libreria->getFotoPerfil()?>) no-repeat no-repeat center center;"></div>
 					<div class="row text-center">
 						<h2 class="col-lg-12"><b><?php echo $libreria->getNombre();?></b></h2>
 						<p><?php echo $libreria->getDireccion();?></p>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['tipo'])) {
 
 				<div class="thumbnail row libro col-lg-6 col-md-6 col-sm-12" data-id="<?php echo $book->getId(); ?>">
 				<div class="caption">
-					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="../<?php echo $book->getFotoFrente()?>" alt="Foto">
+					<img class="book-cover col-lg-6 col-md-6 col-sm-6 col-xs-6" src="<?php echo $book->getFotoFrente()?>" alt="Foto">
 					<div class="info col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<p class="book-title">
 							<?php echo $book->getTitulo(); ?>

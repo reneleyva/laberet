@@ -1,6 +1,10 @@
 <?php
     
     include '../conexion.php';
+    require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
+
     session_start();
     $idLibreria = $_SESSION['id'];
     $idLibro = $_POST['idLibro'];
@@ -14,62 +18,34 @@
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
     //Se agrega el autor como tag. 
-    $fotoAtrasPath = $_POST['fotoAtras-original'];
-    $fotoFrentePath = $_POST['fotoFrente-original'];
+    $autorTags = join(" ", explode(" ", $autor));
+    $tags = $tags." ".$autorTags;
 
+    $fotoAtrasUrl = $_POST['fotoAtras-original'];
+    $fotoFrenteUrl = $_POST['fotoFrente-original'];
 
-    $imagePath = "uploads/";
-    $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoFrente']) && !empty($_FILES['fotoFrente']['name'])) {
-        /* Foto portada */
-        $name = $_FILES['fotoFrente']['name'];
-        $imageFtype = $_FILES['fotoFrente']['type'];
-        $imageFerror = $_FILES['fotoFrente']['error'];
-        $tmp_name = $_FILES['fotoFrente']['tmp_name'];
-        $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
-        $tipo = explode('/', $imageFtype)[1];
-        $fotoFrentePath = $imagePath.$name.".".$tipo;
+    $cloud = getenv('CLOUD_NAME');
+    $api_key = getenv('API_KEY');
+    $api_secret = getenv('API_SECRET');
 
-        if (!empty($name)) {
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
 
-            if  (move_uploaded_file($tmp_name, "../".$fotoFrentePath)) {
-                // echo 'Uploaded';
-            } else {
-                echo "NOPE";
-            }
-
-        } else {
-            echo 'please choose a file';
-        }
-
-    } 
-    
-
-    $bytes = openssl_random_pseudo_bytes(32);
-    if (isset($_FILES['fotoAtras']) && !empty($_FILES['fotoAtras']['name'])) {
-        /* Foto portada */
-        $name = $_FILES['fotoAtras']['name'];
-        $imageFtype = $_FILES['fotoAtras']['type'];
-        $imageFerror = $_FILES['fotoAtras']['error'];
-        $tmp_name = $_FILES['fotoAtras']['tmp_name'];
-        $name = (string)bin2hex($bytes); //Para que sean imagenes con nombres unicos. 
-        $tipo = explode('/', $imageFtype)[1];
-        $fotoAtrasPath = $imagePath.$name.".".$tipo;
-        
-        if (!empty($name)) {
-
-            if  (move_uploaded_file($tmp_name, "../".$fotoAtrasPath)) {
-                // echo 'Uploaded';
-            }
-
-        } else {
-            echo 'please choose a file';
-        }
-
+    if (isset($_FILES['fotoFrente']) && !empty($_FILES['fotoFrente']['name'])) { 
+        $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
+        $fotoFrenteUrl = $fotoFrente['url'];
     }
 
-    // echo $fotoAtrasPath."<br>";
-    // echo $fotoFrentePath;
+    if (isset($_FILES['fotoAtras']) && !empty($_FILES['fotoAtras']['name'])) {
+        $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 
+        $fotoAtrasUrl = $fotoAtras['url'];
+    }
+    
+    
+
 
 $sql = 'UPDATE libro SET
 		titulo = "' . $titulo . '",
@@ -77,12 +53,11 @@ $sql = 'UPDATE libro SET
         isbn= "'.$isbn.'",
 		precio = "'.$precio.'",
 		tags = "'.$tags.'",
-		fotoFrente = "'.$fotoFrentePath.'",
-		fotoAtras = "'.$fotoAtrasPath.'" 
+		fotoFrente = "'.$fotoFrenteUrl.'",
+		fotoAtras = "'.$fotoAtrasUrl.'" 
         WHERE idLibro='.$idLibro.' ;'; 
 
 mysqli_query($con, $sql);
-        
     	
 header('Location: ../index.php#muestra');
 exit();

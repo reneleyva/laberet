@@ -42,7 +42,7 @@
 	?>
 
 	<?php include 'perfil.php';?>
-	<div class="container-fluid" style="background: url(../<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
+	<div class="container-fluid" style="background: url(<?php echo $libreria->getFotoPortada()?>) no-repeat no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover; background-size: cover;">
 		<div class="row-fluid" >
 			<div>
 				<div id="box">
@@ -50,7 +50,7 @@
 						<h3 class="col-lg-12"><b><?php echo $libreria->getNombre() ?></b></h3>
 						<p><?php echo $libreria->getDireccion() ?></p>
 					</div>
-					<div class="circle" style="background: url(../<?php echo $libreria->getFotoPerfil();?>) no-repeat no-repeat center center;"></div>
+					<div class="circle" style="background: url(<?php echo $libreria->getFotoPerfil();?>) no-repeat no-repeat center center;"></div>
 					<p><?php echo "Tel: ".$libreria->getTelefono(); ?></p>
 
 					<div class="hl text-center"></div>
@@ -157,7 +157,7 @@
 
 			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
-				<a href="#"><img class="book-cover" src="../<?php echo $book->getFotoFrente();?>" alt=""></a>
+				<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>" alt=""></a>
 					<div class="info">
 						<p class="book-title"><?php
 				        	echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8');

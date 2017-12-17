@@ -58,7 +58,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 		<div class="row formulario">
 			<div  class="col-lg-3">
 				<div class="row preview">
-					<img id="foto-frente" src="../<?php echo $libro->getFotoFrente(); ?>" alt="">
+					<img id="foto-frente" src="<?php echo $libro->getFotoFrente(); ?>" alt="">
 				</div>
 				<div class="row subir">
 				 
@@ -68,7 +68,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 			</div>
 			<div  class="col-lg-3">
 				<div class="row preview">
-					<img id="foto-atras" src="../<?php echo $libro->getFotoAtras(); ?>" alt="">
+					<img id="foto-atras" src="<?php echo $libro->getFotoAtras(); ?>" alt="">
 				</div>
 				<div class="row subir">
 				
