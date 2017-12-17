@@ -1,3 +1,14 @@
+<?php 
+session_start();
+if (!isset($_SESSION['tipo'])) {
+	//NO ha iniciado sesión
+	header("location: ../");
+} else if ($_SESSION['tipo'] != 'admin') {
+	//No es una libreria
+	header("location: ../");	
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
