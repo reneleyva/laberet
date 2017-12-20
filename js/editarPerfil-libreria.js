@@ -61,7 +61,17 @@ jQuery(document).ready(function($) {
 
 	//Si presiona guardar perfil
 	$('#guardar-perfil').click(function() {
-		$('#box').find('form').submit(); //Se envia formulario escondido dentro de #box
+		let size = $("#input-foto-perfil")[0].files[0].size/1024/1024; 
+		if (size > 2) {
+			swal({
+				title: 'Archivo supera los 2MB', 
+				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
+				type: 'error'});
+			return;
+		} else {
+			$('#box').find('form').submit(); //Se envia formulario escondido dentro de #box
+		} 
+		
 	});
 
 	//Cuando quieren cambiar foto de portada. 
@@ -86,7 +96,17 @@ jQuery(document).ready(function($) {
 
 	//Si presiona guardar portada
 	$('#guardar-portada').click(function() {
-		$('.fotos').find('input[type="submit"]').click(); //Se envia formulario escondido dentro de .fotos
+		let size = $("#input-foto-portada")[0].files[0].size/1024/1024; 
+		if (size > 2) {
+			swal({
+				title: 'Archivo supera los 2MB', 
+				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
+				type: 'error'});
+			return;
+		} else {
+			$('.fotos').find('input[type="submit"]').click(); //Se envia formulario escondido dentro de .fotos
+		} 
+		
 	});
 	
 	$(".editar").on('click', function(event) {

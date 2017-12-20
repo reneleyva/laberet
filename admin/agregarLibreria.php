@@ -17,6 +17,7 @@ if (!isset($_SESSION['tipo'])) {
 	<title>Laberet | Admin</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/agregar-nuevo-style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.css">
 </head>
 <body>
 	
@@ -26,7 +27,7 @@ if (!isset($_SESSION['tipo'])) {
 
 	<div class="container">
 		<h2 class="text-center"><strong>Agregar Libreria</strong></h2>
-		<form action="agregarLib.php" method="post"  enctype="multipart/form-data" >
+		<form action="agregarLib.php" method="post"  enctype="multipart/form-data" id="agregarLibreria">
 			<div class="row">
 				<div class="col-lg-6">
 					<label>Nombre: <input class="form-control" required type="text" name="nombre" value=""></label>
@@ -107,6 +108,7 @@ if (!isset($_SESSION['tipo'])) {
 </style>
 <!-- FIN ELEMENTOS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-
+<script src="../js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
+<script src="../js/agregarLibreria-admin.js"></script>
 </html>

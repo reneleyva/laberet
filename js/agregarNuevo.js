@@ -105,6 +105,15 @@ jQuery(document).ready(function($) {
 	    	$(".err-msg").text('Asegurese de subir ambas fotos!')
 	    	$(".err-msg").show('fast');
 	    	return; 
+	    } 
+
+	    // Revisar maxSize! 
+	    let frenteSize = $('#fotoFrente')[0].files[0].size/1024/1024;
+	    let atrasSize =  $('#fotoAtras')[0].files[0].size/1024/1024;
+
+	    if (frenteSize > 2 || fotoAtras > 2) {
+	    	alert("No puedes subir fotos que sobrepasen los 2MB!");
+	    	return; 
 	    }
 
 	   this.submit(); 

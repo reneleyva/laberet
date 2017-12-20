@@ -11,15 +11,13 @@
     $titulo = $_POST['titulo'];
     $autor =  $_POST['autor'];
     $isbn = NULL;
-    if (isset($_POST['isbn'])) {
+    if (isset($_POST['isbn']) && $_POST['isbn'] != "") {
+        echo "ISBN<br>";
         $isbn = $_POST['isbn'];
     }
     
     $precio = $_POST['precio'];
     $tags = $_POST['tags'];
-    //Se agrega el autor como tag. 
-    $autorTags = join(" ", explode(" ", $autor));
-    $tags = $tags." ".$autorTags;
 
     $fotoAtrasUrl = $_POST['fotoAtras-original'];
     $fotoFrenteUrl = $_POST['fotoFrente-original'];
@@ -46,17 +44,16 @@
     
     
 
-
 $sql = 'UPDATE libro SET
 		titulo = "' . $titulo . '",
 		autor = "'.$autor.'",
-        isbn= "'.$isbn.'",
 		precio = "'.$precio.'",
 		tags = "'.$tags.'",
 		fotoFrente = "'.$fotoFrenteUrl.'",
 		fotoAtras = "'.$fotoAtrasUrl.'" 
         WHERE idLibro='.$idLibro.' ;'; 
 
+echo $sql;
 mysqli_query($con, $sql);
     	
 header('Location: ../index.php#muestra');

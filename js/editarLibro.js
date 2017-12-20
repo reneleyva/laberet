@@ -74,6 +74,22 @@ jQuery(document).ready(function($) {
 	    	return; 
 	    } 
 
+	    if (fotoFrente) {
+	    	let frenteSize = $('#fotoFrente')[0].files[0].size/1024/1024;
+	    	if (frenteSize > 2) {
+	    		alert("Foto de Frente supera los 2MB!");
+	    		return;
+	    	}
+	    }
+	    
+	    if (fotoAtras) {
+	    	let atrasSize =  $('#fotoAtras')[0].files[0].size/1024/1024;
+	    	if (atrasSize > 2) {
+	    		alert("Foto de Atrás supera los 2MB!");
+	    		return;
+	    	}
+	    }
+	    
 	   this.submit(); 
 	});
 });
