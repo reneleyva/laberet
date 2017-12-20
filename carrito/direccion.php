@@ -92,9 +92,6 @@
 					<!-- <div id="paypal-button"></div> -->
 					<button id="enviar" type="submit" class="btn btn-default">Ir a Pago</button><br><br>
 				</div>
-
-				
-
 			</form>	
 		<?php else: ?>
 			<form id="formulario" action="agregar-direccion.php" method="post" accept-charset="utf-8" class="form-group" onsubmit="return check()">

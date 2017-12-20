@@ -13,15 +13,14 @@
 
 	$sql = "SELECT 1 from direccion WHERE idUsuario=".$_SESSION['id'].";";
 	$query = mysqli_query($con, $sql);
-	// if (!$query) {
-	//  	$row = mysqli_fetch_array($query);
-	//  } 
-	
-	if (!$query) {
+	$res = mysqli_fetch_array($query);
+
+	if (!$res) {
 		//NO tiene direccion
 		$sql = "INSERT INTO direccion SET
 		cp ='".$cp."',
 		ciudad ='CDMX',
+		delegacion ='".$delegacion."',
 		colonia ='".$colonia."',
 		calleYnumero ='".$calleYNum."',
 		descripcion ='".$descripcion."',
@@ -66,7 +65,5 @@
 				exit();
 			}
 	}
-	
-
 	
 ?>
