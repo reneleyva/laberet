@@ -62,8 +62,9 @@ class Busqueda {
 		include "../conexion.php";
 		$sqlAux = " SET NAMES UTF8;";
 		mysqli_query($con, $sqlAux);
-		$sql = "SELECT  l.precio costo ,lib.nombre libreria,l.titulo titulo
-				FROM pedido_entrega p INNER JOIN librovendido l INNER JOIN libreria lib
+		// Debería ser pedido_entrega
+		$sql = "SELECT  l.precio costo ,lib.nombre libreria,l.titulo titulo 
+				FROM entrega p INNER JOIN librovendido l INNER JOIN libreria lib
 			    on p.id = l.Entregaid 
 			    and p.id = ".$id."
 			    and l.vendidoLinea = 1
