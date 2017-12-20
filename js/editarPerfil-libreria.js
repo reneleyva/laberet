@@ -62,9 +62,9 @@ jQuery(document).ready(function($) {
 	//Si presiona guardar perfil
 	$('#guardar-perfil').click(function() {
 		let size = $("#input-foto-perfil")[0].files[0].size/1024/1024; 
-		if (size > 2) {
+		if (size > 3) {
 			swal({
-				title: 'Archivo supera los 2MB', 
+				title: 'Archivo supera los 3MB', 
 				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
 				type: 'error'});
 			return;
@@ -97,9 +97,9 @@ jQuery(document).ready(function($) {
 	//Si presiona guardar portada
 	$('#guardar-portada').click(function() {
 		let size = $("#input-foto-portada")[0].files[0].size/1024/1024; 
-		if (size > 2) {
+		if (size > 3) {
 			swal({
-				title: 'Archivo supera los 2MB', 
+				title: 'Archivo supera los 3MB', 
 				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
 				type: 'error'});
 			return;

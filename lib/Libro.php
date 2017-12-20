@@ -102,7 +102,6 @@ class Libro {
 				idUsuario=".$idUsuario.",
 				Entregaid=".$idEntrega.",
 				visto=0;";
-
 		mysqli_query($con, $sql);
 	}
 

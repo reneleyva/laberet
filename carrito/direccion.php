@@ -151,8 +151,6 @@
 	<!-- FIN ELEMENTOS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/direccion.js"></script>
-	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-	<script src="../js/paypal.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

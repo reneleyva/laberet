@@ -30,12 +30,6 @@
       "api_secret" => $api_secret 
     ));
     echo $api_key;
-    //  \Cloudinary::config(array( 
-    //   "cloud_name" => "dzu2umeba", 
-    //   "api_key" => "176317843429194", 
-    //   "api_secret" => "SqdUW7QjZaFri1WJo93DUiP1eyo" 
-    // ));
-
 
     $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
     $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 

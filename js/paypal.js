@@ -34,8 +34,7 @@ jQuery(document).ready(function($) {
             },
 
             onAuthorize: function(data, actions) {
-                return actions.payment.execute().then(function(payment) {
-                    // AJAX CALL TO BUY CART 
+                return actions.payment.execute().then(function() {
                     $.ajax({
                         url: 'comprarCarrito.php',
                         type: 'POST',
@@ -45,7 +44,7 @@ jQuery(document).ready(function($) {
                     })
                     .fail(function() {
                         console.log("error");
-                    })                    
+                    }) 
                 });
             }
 

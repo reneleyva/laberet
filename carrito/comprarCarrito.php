@@ -14,7 +14,6 @@
 			status=0,
 			idUsuario=".$_SESSION['id'].";";
 
-	echo $sql;
 	mysqli_query($con, $sql);
 	
 	foreach ($carrito as $libro) {

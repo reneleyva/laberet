@@ -111,8 +111,8 @@ jQuery(document).ready(function($) {
 	    let frenteSize = $('#fotoFrente')[0].files[0].size/1024/1024;
 	    let atrasSize =  $('#fotoAtras')[0].files[0].size/1024/1024;
 
-	    if (frenteSize > 2 || fotoAtras > 2) {
-	    	alert("No puedes subir fotos que sobrepasen los 2MB!");
+	    if (frenteSize > 3 || fotoAtras > 3) {
+	    	alert("No puedes subir fotos que sobrepasen los 3MB!");
 	    	return; 
 	    }
 

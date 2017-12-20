@@ -16,6 +16,8 @@ if (!$con) {
 	exit();
 }
 
+
+
 /* LOCAL HOST CONEXION! */
 // $con = @mysqli_connect('localhost', 'root', 'root', 'laberet');
 // // Para los acentos.
