@@ -178,7 +178,7 @@ if (!isset($_SESSION['tipo'])) {
 					<?php foreach ($librosVendidos as $row): ?>
 						<div class="libro col-lg-12" data-id="<?php echo $row['idLibroVendido']; ?>">
 				        	<div class="book-cover col-lg-4">
-				        		<img src="../<?php echo $row['fotoFrente']; ?>" alt="Foto" />
+				        		<img src="<?php echo $row['fotoFrente']; ?>" alt="Foto" />
 				        	</div>
 
 							<div class="info col-lg-8">
