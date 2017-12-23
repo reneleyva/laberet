@@ -14,21 +14,9 @@ include "../conexion.php";
 		exit();
 		
 	} else {
-		// Prueba para enviar un correo de confirmación
-		// Mensaje a enviar
-		// $msg = "Test mandando correo";
-		// $msg = wordwrap($msg, 70);
-		// $header = 'From: luispuli2@ciencias.unam.mx';
-		// mail($correo,"Confirmación",$msg,$header);
-		// $msg = wordwrap($msg,70);
-		// $headers = 'From: lugia365@gmail.com' . "\r\n" .
-  //          'Reply-To: lugia365@gmail.com' . "\r\n" .
-  //          'X-Mailer: PHP/' . phpversion();
-		// mail($correo,"Confirmación",$msg,$headers);
-		// echo "Exito, perro";
 		
 		$sql = "INSERT INTO usuario SET
-		nombre ='".$nombre."',
+		nombre ='".$nombre."', 
 		correo ='".$correo."',
 		password ='".$pass."';";
 		$res = mysqli_query($con, $sql); 

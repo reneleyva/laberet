@@ -4,6 +4,11 @@ include '../conexion.php';
 include ('../lib/Libro.php');
 include ('../lib/Busqueda.php');
 
+// Inserta valores para redimensionar un link de cloudinary,
+function resize($url) {
+	return join("upload/h_260", explode("upload", $url));
+};
+
 $books = array(); //Los libros a regresar. 
 //Ver si issert q y s.
 if (!isset($_GET['term']) or !isset($_GET['s'])) {

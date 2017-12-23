@@ -157,7 +157,7 @@
 
 			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
-				<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>" alt=""></a>
+				<a href="#"><img class="book-cover" src="<?php echo resize($book->getFotoFrente());?>" alt=""></a>
 					<div class="info">
 						<p class="book-title"><?php
 				        	echo htmlspecialchars($book->getTitulo(), ENT_QUOTES, 'UTF-8');
