@@ -4,8 +4,7 @@
 	$pass = $_POST['password'];
 	$pass = md5($pass."teamolizzteamoluz");
 	$sql = "SELECT * From usuario WHERE correo = '".$correo."' AND password = '".$pass."';";
-	$stm = $con->prepare($sql);
-	$query = mysqli_query($con, $stm);
+	$query = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($query);
 
 	if(!$row) {

@@ -21,7 +21,12 @@ function check() {
 	}
 	
 	
-
+	ga('send', {
+	  hitType: 'event',
+	  eventCategory: 'Register',
+	  eventAction: 'registered', 
+	  eventLabel: 'Registered'
+	});
 	return true;
 }
 
