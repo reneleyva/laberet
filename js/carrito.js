@@ -8,7 +8,6 @@ function calculateTotal() {
 		items++;
 	});
 
-	alert(items);
 	var envio = 0;
 	switch (items) {
 		case 1: 
@@ -28,6 +27,10 @@ function calculateTotal() {
 
 		case 5: 
 			envio = 100; 
+			break; 
+
+		default:
+			envio = 150; 
 			break;  
 
 	}

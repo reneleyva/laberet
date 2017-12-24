@@ -78,7 +78,7 @@
 				  </tbody>
 			</table>
 			<div class="continue row">
-				<h4><b>Envío: +$100</b></h4>
+				<h4><b>Envío: +$<?php echo $envio; ?></b></h4>
 				<h2 id="total"><b>Total: $<?php echo $total; ?></b></h2>
 			<div class="row">
 				<div id="paypal-button"></div>
