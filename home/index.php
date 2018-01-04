@@ -159,7 +159,7 @@ include_once '../lib/Usuario.php';
 						</div>
 						<div class="row foto-perfil">
 							<div style="background: url(
-							<?php echo htmlspecialchars('../'.$libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
+							<?php echo htmlspecialchars($libreria->getFotoPerfil(), ENT_QUOTES, 'UTF-8');?>
 						 ) no-repeat no-repeat center center;" class="circle"></div>
 						</div>
 						
