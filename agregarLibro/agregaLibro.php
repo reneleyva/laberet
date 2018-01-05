@@ -29,7 +29,6 @@
       "api_key" => $api_key, 
       "api_secret" => $api_secret 
     ));
-    echo $api_key;
 
     $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
     $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 
