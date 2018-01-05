@@ -36,7 +36,7 @@
     ));
 
     $fotoFrente = \Cloudinary\Uploader::upload_large($_FILES['fotoFrente']['tmp_name']); 
-    $fotoAtras = \Cloudinary\Uploader::upload_large($_FILES['fotoAtras']['tmp_name']); 
+    // $fotoAtras = \Cloudinary\Uploader::upload_large($_FILES['fotoAtras']['tmp_name']); 
 
     $fotoAtrasUrl = $fotoAtras['url'];
     $fotoFrenteUrl = $fotoFrente['url'];
