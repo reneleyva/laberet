@@ -30,8 +30,8 @@
       "api_secret" => $api_secret 
     ));
 
-    $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
-    $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 
+    $fotoFrente = \Cloudinary\Uploader::upload_large($_FILES['fotoFrente']['tmp_name']); 
+    $fotoAtras = \Cloudinary\Uploader::upload_large($_FILES['fotoAtras']['tmp_name']); 
 
     $fotoAtrasUrl = $fotoAtras['url'];
     $fotoFrenteUrl = $fotoFrente['url'];

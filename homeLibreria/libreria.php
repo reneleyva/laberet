@@ -3,6 +3,11 @@ include '../conexion.php';
 include_once '../lib/Libreria.php';
 include_once '../lib/Libro.php';
 
+// Inserta valores para redimensionar un link de cloudinary,
+function resize($url) {
+	return join("upload/h_260", explode("upload", $url));
+};
+
 //Se supone que ya se revisó si ha iniciado sesión antes. 
 $id = $_SESSION['id'] ; // Aquí debería de ser una variable
 

@@ -16,7 +16,10 @@ if (!$con) {
 	exit();
 }
 
-/* LOCAL HOST CONEXION! */
+// putenv("CLOUD_NAME=$cloud");
+// putenv("API_KEY=$api_key");
+// putenv("API_SECRET=$api_secret");
+// /* LOCAL HOST CONEXION! */
 // $con = @mysqli_connect('localhost', 'root', 'root', 'laberet');
 // // Para los acentos.
 // $sql = " SET NAMES UTF8;";
