@@ -22,9 +22,9 @@
     
     echo $titulo."<br>";
     echo $autor."<br>";
-    echo $precio."<br>"
+    echo $precio."<br>";
     echo $tags."<br>";
-    
+
     $cloud = getenv('CLOUD_NAME');
     $api_key = getenv('API_KEY');
     $api_secret = getenv('API_SECRET');
@@ -38,8 +38,8 @@
     // $fotoFrente = \Cloudinary\Uploader::upload_large($_FILES['fotoFrente']['tmp_name']); 
     // // $fotoAtras = \Cloudinary\Uploader::upload_large($_FILES['fotoAtras']['tmp_name']); 
 
-    // $fotoAtrasUrl = $fotoAtras['url'];
-    // $fotoFrenteUrl = $fotoFrente['url'];
+    $fotoAtrasUrl = 'lol';//$fotoAtras['url'];
+    $fotoFrenteUrl = 'lol';//$fotoFrente['url'];
 
 
 $sql = 'INSERT INTO libro SET
