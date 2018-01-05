@@ -20,6 +20,11 @@
     $autorTags = join(" ", explode(" ", $autor));
     $tags = $tags." ".$autorTags;
     
+    echo $titulo."<br>";
+    echo $autor."<br>";
+    echo $precio."<br>"
+    echo $tags."<br>";
+    
     $cloud = getenv('CLOUD_NAME');
     $api_key = getenv('API_KEY');
     $api_secret = getenv('API_SECRET');
