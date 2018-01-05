@@ -47,8 +47,8 @@ $sql = 'INSERT INTO libro SET
 		fotoFrente = "'.$fotoFrenteUrl.'",
 		fotoAtras = "'.$fotoAtrasUrl.'";'; 
 
-mysqli_query($con, $sql);
+echo $sql;
+// mysqli_query($con, $sql);
         
-    	
-header('Location: .');
+// header('Location: .');
 exit();
