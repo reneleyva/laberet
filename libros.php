@@ -2,6 +2,10 @@
 include_once 'lib/Libro.php';
 include 'conexion.php';
 
+function resize($url) {
+	return join("upload/h_260", explode("upload", $url));
+};
+
 //Cosulta para buscar las librerías.
 try {
 	$sql = "SELECT * from libro LIMIT 4";

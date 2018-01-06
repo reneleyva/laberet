@@ -218,7 +218,7 @@
 			?>
 			<div class="thumbnail libro col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="caption">
-					<img class="book-cover" src="<?php echo htmlspecialchars($libro->getFotoFrente(), ENT_QUOTES, 'UTF-8');?>" alt="Brave Men">
+					<img class="book-cover" src="<?php echo resize(htmlspecialchars($libro->getFotoFrente(), ENT_QUOTES, 'UTF-8'));?>" alt="Brave Men">
 					<div class="info">
 						<p class="book-title"><?php echo htmlspecialchars($libro->getTitulo(), ENT_QUOTES, 'UTF-8');?></p>
 						<p class="book-author" href="#"><?php echo htmlspecialchars($libro->getAutor(), ENT_QUOTES, 'UTF-8');?></p>
