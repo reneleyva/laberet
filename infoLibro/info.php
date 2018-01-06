@@ -5,8 +5,8 @@ include '../lib/Libro.php';
 include '../lib/Libreria.php';
 include '../lib/Busqueda.php';
 
-function resize($url) {
-	return join("upload/h_400", explode("upload", $url));
+function resize($url, $size) {
+	return join("upload/h_".$size, explode("upload", $url));
 };
 
 

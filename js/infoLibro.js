@@ -1,10 +1,9 @@
 function aplySlick(elem) {
     elem.slick({
       infinite: true,
-      centerMode: true,
       speed: 300,
       slidesToShow: 5,
-      slidesToScroll: 5,
+      slidesToScroll: 4,
       dots: false,
       prevArrow: $('#prev-relacionados'),
       nextArrow: $('#next-relacionados'),

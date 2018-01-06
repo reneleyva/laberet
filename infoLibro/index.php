@@ -71,10 +71,10 @@
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="<?php echo resize($book->getFotoFrente());?>" alt="">					
+					<img src="<?php echo resize($book->getFotoFrente(), 400);?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="<?php echo resize($book->getFotoAtras());?>" alt="">
+					<img src="<?php echo resize($book->getFotoAtras(), 400);?>" alt="">
 				</div>
 			</div>
 			
@@ -155,7 +155,7 @@
 
 		<div class="row card">
 			
-			<div id="prev-relacionados" class="prev col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<div id="prev-relacionados" class="prev col-lg-1 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-left"></span>
 			</div>
 			
@@ -163,7 +163,7 @@
 				echo "<b class='text-center'>NO HAY LIRBOS RELACIONADOS</b>";
 				// exit();
 			} ?>
-			<div  id="carousel-relacionados" class="row col-lg-8 col-md-6 col-sm-8 col-xs-8	" data-num-libros="<?php echo count($relacionados); ?>">
+			<div  id="carousel-relacionados" class="row col-lg-10 col-md-6 col-sm-8 col-xs-8	" data-num-libros="<?php echo count($relacionados); ?>">
 
 			<?php 
 
@@ -173,7 +173,7 @@
 				
 				<div class="thumbnail libro relacionado">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>"></a>
+						<a href="#"><img class="book-cover" src="<?php echo resize($book->getFotoFrente(), 260);?>"></a>
 						 <div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?><br></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -187,7 +187,7 @@
 
 			<?php endforeach; ?>
 			</div>
-				<div id="next-relacionados" class="next col-lg-2 col-md-2 col-sm-2 col-xs-2">
+				<div id="next-relacionados" class="next col-lg-1 col-md-2 col-sm-2 col-xs-2">
 				<span class="glyphicon glyphicon-menu-right"></span>
 			</div>
 				
