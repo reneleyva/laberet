@@ -23,23 +23,15 @@
     $fotoFrenteUrl = $_POST['fotoFrente-original'];
 
     $cloud = getenv('CLOUD_NAME');
-    $api_key = getenv('API_KEY');
-    $api_secret = getenv('API_SECRET');
 
-    \Cloudinary::config(array( 
-      "cloud_name" => $cloud,  
-      "api_key" => $api_key, 
-      "api_secret" => $api_secret 
-    ));
-
-    if (isset($_FILES['fotoFrente']) && !empty($_FILES['fotoFrente']['name'])) { 
-        $fotoFrente = \Cloudinary\Uploader::upload($_FILES['fotoFrente']['tmp_name']); 
-        $fotoFrenteUrl = $fotoFrente['url'];
+    if (isset($_POST['fotoFrente'])) { 
+        $fotoFrenteUrl = $_POST['fotoFrente'];
+        $fotoFrenteUrl = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoFrenteUrl)[0];
     }
 
-    if (isset($_FILES['fotoAtras']) && !empty($_FILES['fotoAtras']['name'])) {
-        $fotoAtras = \Cloudinary\Uploader::upload($_FILES['fotoAtras']['tmp_name']); 
-        $fotoAtrasUrl = $fotoAtras['url'];
+    if (isset($_POST['fotoAtras'])) {
+        $fotoAtrasUrl = $_POST['fotoAtras'];
+        $fotoAtrasUrl = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoAtrasUrl)[0];
     }
     
     

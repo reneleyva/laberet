@@ -19,25 +19,12 @@ $fotoPerfilPath = "";
 $fotoPortadaPath = "";
 
 $cloud = getenv('CLOUD_NAME');
-$api_key = getenv('API_KEY');
-$api_secret = getenv('API_SECRET');
 
-\Cloudinary::config(array( 
-  "cloud_name" => $cloud,  
-  "api_key" => $api_key, 
-  "api_secret" => $api_secret 
-));
+$fotoPerfilPath = $_POST['fotoPerfil'];
+$fotoPortadaPath = $_POST['fotoPortada'];
 
-
-
-$fotoPerfil = \Cloudinary\Uploader::upload($_FILES['fotoPerfil']['tmp_name']); 
-$fotoPortada = \Cloudinary\Uploader::upload($_FILES['fotoPortada']['tmp_name']); 
-
-$fotoPerfilPath = $fotoPerfil['url'];
-$fotoPortadaPath = $fotoPortada['url'];
-
-echo $fotoPerfilPath."<br>";
-echo $fotoPortadaPath;
+$fotoPerfilPath = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoPerfilPath)[0];
+$fotoPortadaPath = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoPortadaPath)[0];
 
 $sql = 'INSERT INTO libreria SET
 			nombre ="' .$nombre.'",

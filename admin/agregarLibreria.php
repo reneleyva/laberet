@@ -18,6 +18,50 @@ if (!isset($_SESSION['tipo'])) {
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/agregar-nuevo-style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.iframe-transport.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.cloudinary.js"></script>
+	<script>
+	 	$(function() {
+		  if($.fn.cloudinary_fileupload !== undefined) {
+		    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+		  }
+		});
+	</script>	
+
+	<?php 
+	require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
+    $api_key = "176317843429194";
+	$cloud = "dzu2umeba"; 
+	$api_secret = "SqdUW7QjZaFri1WJo93DUiP1eyo";
+
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
+
+    echo cloudinary_js_config();
+
+    if (array_key_exists('REQUEST_SCHEME', $_SERVER)) {   
+	  $cors_location = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] .
+	    dirname($_SERVER["SCRIPT_NAME"]) . "/cloudinary_cors.html";
+	} else {
+	  $cors_location = "https://" . $_SERVER["HTTP_HOST"] . "/cloudinary_cors.html";
+	}
+
+	 ?>
+
+	<style>
+		.cloudinary-fileupload {
+		    display: block !important;
+		}
+	</style>
 </head>
 <body>
 	
@@ -39,10 +83,11 @@ if (!isset($_SESSION['tipo'])) {
 			</div>
 			<div class="row">
 				<div class="col-lg-6">
-					<label>Foto Perfil: <input type="file" required name="fotoPerfil" id="fotoPerfil" value="" accept="image/x-png,image/jpeg"></label>
+					<label>Foto Perfil: </label>
+					<?php echo cl_image_upload_tag('fotoPerfil', array("callback" => $cors_location)); ?>
 				</div>
 				<div class="col-lg-6">
-					<label>Foto Portada<input  type="file" required name="fotoPortada" id="fotoPortada" value="" accept="image/x-png,image/jpeg"></label>
+					<label>Foto Portada <?php echo cl_image_upload_tag('fotoPortada', array("callback" => $cors_location)); ?></label>
 				</div>
 			</div>
 			<div class="row">
@@ -107,7 +152,6 @@ if (!isset($_SESSION['tipo'])) {
 	}
 </style>
 <!-- FIN ELEMENTOS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
 <script src="../js/agregarLibreria-admin.js"></script>

@@ -20,27 +20,14 @@
     $autorTags = join(" ", explode(" ", $autor));
     $tags = $tags." ".$autorTags;
     
-    echo $titulo."<br>";
-    echo $autor."<br>";
-    echo $precio."<br>";
-    echo $tags."<br>";
 
     $cloud = getenv('CLOUD_NAME');
-    $api_key = getenv('API_KEY');
-    $api_secret = getenv('API_SECRET');
 
-    \Cloudinary::config(array( 
-      "cloud_name" => $cloud,  
-      "api_key" => $api_key, 
-      "api_secret" => $api_secret 
-    ));
+    $fotoAtrasUrl = $_POST['fotoAtras'];
+    $fotoFrenteUrl = $_POST['fotoFrente'];
 
-    // $fotoFrente = \Cloudinary\Uploader::upload_large($_FILES['fotoFrente']['tmp_name']); 
-    // // $fotoAtras = \Cloudinary\Uploader::upload_large($_FILES['fotoAtras']['tmp_name']); 
-
-    $fotoAtrasUrl = 'lol';//$fotoAtras['url'];
-    $fotoFrenteUrl = 'lol';//$fotoFrente['url'];
-
+    $fotoFrenteUrl = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoFrenteUrl)[0];
+    $fotoAtrasUrl = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoAtrasUrl)[0];
 
 $sql = 'INSERT INTO libro SET
 		titulo = "' . $titulo . '",
@@ -52,8 +39,8 @@ $sql = 'INSERT INTO libro SET
 		fotoFrente = "'.$fotoFrenteUrl.'",
 		fotoAtras = "'.$fotoAtrasUrl.'";'; 
 
-echo $sql;
-// mysqli_query($con, $sql);
+// echo $sql;
+mysqli_query($con, $sql);
         
-// header('Location: .');
+header('Location: .');
 exit();

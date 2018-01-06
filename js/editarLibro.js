@@ -1,13 +1,19 @@
+var upFront = false; 
+var upBehind = false; 
+
 function readURL(input,id) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-        	if (id == 'fotoAtras')
+        	if (id == 'fotoAtras') {
             	$('#foto-atras').attr('src', e.target.result);
-            else
+            	upBehind = true; 
+        	} else {
             	$('#foto-frente').attr('src', e.target.result);
+            	upFront = true;
+        	}
         }
 
         reader.readAsDataURL(input.files[0]);
@@ -31,18 +37,18 @@ jQuery(document).ready(function($) {
 	}
 
 	$('#upload-frente').click(function(event) {
-		let input = $('#fotoFrente'); 
+		let input = $('#frenteInput').find('.cloudinary-fileupload'); 
 		input.click();
 	});
 
 	$('#upload-atras').click(function(event) {
-		let input = $('#fotoAtras'); 
+		let input = $('#atrasInput').find('.cloudinary-fileupload'); 
 		input.click();
 	});
 
 	$('input[type="file"]').change(function(evt){
 		$this = $(evt.target);
-		let id = $this.attr('id');
+		let id = $this.data('cloudinary-field');
 	    readURL(this,id);
 	});
 
@@ -59,8 +65,6 @@ jQuery(document).ready(function($) {
 	    $("#precio").val(precio);
 	    var titulo = $('#titulo').val();
 	    var autor = $('#autor').val();
-	    let fotoFrente = $('#fotoFrente').val();
-	    let fotoAtras = $('#fotoAtras').val();
 	    // $('#titulo').val(titulo.replaceAll("'", "''"));
 	    // $('#titulo').val(autor.replaceAll("'", "''"));
 	    /*Checa si el precio es correcto*/
@@ -74,22 +78,22 @@ jQuery(document).ready(function($) {
 	    	return; 
 	    } 
 
-	    if (fotoFrente) {
-	    	let frenteSize = $('#fotoFrente')[0].files[0].size/1024/1024;
-	    	if (frenteSize > 3) {
-	    		alert("Foto de Frente supera los 3MB!");
+	    if (upFront) {
+	    	let front = $('input[name="fotoFrente"]').val();
+	    	if (!front) {
+	    		alert("La foto aún no termina de subirse, espere unos segundos más");
+	    		return;
+	    	}
+	    }
+
+	    if (upBehind) {
+	    	let atras = $('input[name="fotoAtras"]').val();
+	    	if (!atras) {
+	    		alert("La foto aún no termina de subirse, espere unos segundos más");
 	    		return;
 	    	}
 	    }
 	    
-	    if (fotoAtras) {
-	    	let atrasSize =  $('#fotoAtras')[0].files[0].size/1024/1024;
-	    	if (atrasSize > 3) {
-	    		alert("Foto de Atrás supera los 3MB!");
-	    		return;
-	    	}
-	    }
-	    
-	   this.submit(); 
+	   this.submit(); 	
 	});
 });

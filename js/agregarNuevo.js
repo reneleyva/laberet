@@ -1,13 +1,19 @@
+var upFront = false; 
+var upBehind = false; 
+
 function readURL(input,id) {
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-        	if (id == 'fotoAtras')
+        	if (id == 'fotoAtras') {
             	$('#foto-atras').attr('src', e.target.result);
-            else
+            	upFront = true; 
+        	} else {
             	$('#foto-frente').attr('src', e.target.result);
+            	upBehind = true; 
+        	}
         }
 
         reader.readAsDataURL(input.files[0]);
@@ -26,7 +32,9 @@ jQuery(document).ready(function($) {
 	"guerra", "deportes", "economía", "política", "religión", "música", "humor", 
 	"cine", "cinematografía", "entretenimiento", "filosofía", "gastronomía", "psicología", 
 	"leyes", "medicina", "química", "literatura", "ensayo", "romance", "muerte", "novela-histórica",
-	"pintura", "robots", "derecho"];
+	"pintura", "robots", "derecho", "extraterrestres", "conspiración", "astronomía"];
+
+	
 
 	var etiquetas = new Bloodhound({
 	    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -58,19 +66,26 @@ jQuery(document).ready(function($) {
 	// 	confirmKeys: [32, 44]
 	// });
 
+	$('#autor').focus(function(event) {
+		if (!upFront || !upBehind) {
+			alert("Asegurate de subir las fotos primero!");
+			$('#upload-frente').focus();
+		}
+	});
+
 	$('#upload-frente').click(function(event) {
-		let input = $('#fotoFrente'); 
+		let input = $('#frenteInput').find('.cloudinary-fileupload'); 
 		input.click();
 	});
 
 	$('#upload-atras').click(function(event) {
-		let input = $('#fotoAtras'); 
+		let input = $('#atrasInput').find('.cloudinary-fileupload'); 
 		input.click();
 	});
 
 	$('input[type="file"]').change(function(evt){
 		$this = $(evt.target);
-		let id = $this.attr('id');
+		let id = $this.data('cloudinary-field');
 	    readURL(this,id);
 	});
 
@@ -87,8 +102,6 @@ jQuery(document).ready(function($) {
 	    $("#precio").val(precio);
 	    var titulo = $('#titulo').val();
 	    var autor = $('#autor').val();
-	    let fotoFrente = $('#fotoFrente').val();
-	    let fotoAtras = $('#fotoAtras').val();
 	    // $('#titulo').val(titulo.replaceAll("'", "''"));
 	    // $('#titulo').val(autor.replaceAll("'", "''"));
 	    /*Checa si el precio es correcto*/
@@ -100,22 +113,28 @@ jQuery(document).ready(function($) {
 	    	$('#precio').addClass('input-err');
 	    	$("#precio").focus();
 	    	return; 
-	    } else if (!fotoFrente || !fotoAtras) {
+	    } else if (!upFront || !upBehind) {
 	    	$('#precio').removeClass('input-err');
 	    	$(".err-msg").text('Asegurese de subir ambas fotos!')
 	    	$(".err-msg").show('fast');
 	    	return; 
 	    } 
 
-	    // Revisar maxSize! 
-	    let frenteSize = $('#fotoFrente')[0].files[0].size/1024/1024;
-	    let atrasSize =  $('#fotoAtras')[0].files[0].size/1024/1024;
-
-	    if (frenteSize > 3 || fotoAtras > 3) {
-	    	alert("No puedes subir fotos que sobrepasen los 3MB!");
-	    	return; 
+	    if (upFront) {
+	    	let front = $('input[name="fotoFrente"]').val();
+	    	if (!front) {
+	    		alert("La foto aún no termina de subirse, espere unos segundos más");
+	    		return;
+	    	}
 	    }
 
+	    if (upBehind) {
+	    	let atras = $('input[name="fotoAtras"]').val();
+	    	if (!atras) {
+	    		alert("La foto aún no termina de subirse, espere unos segundos más");
+	    		return;
+	    	}
+	    }
 	   this.submit(); 
 	});
 });

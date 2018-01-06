@@ -8,17 +8,11 @@
 	$id = $_SESSION['id'];
 
     $cloud = getenv('CLOUD_NAME');
-    $api_key = getenv('API_KEY');
-    $api_secret = getenv('API_SECRET');
 
-    \Cloudinary::config(array( 
-      "cloud_name" => $cloud,  
-      "api_key" => $api_key, 
-      "api_secret" => $api_secret 
-    ));
+    $fotoPerfilPath = $_POST['fotoPerfil'];
 
-    $fotoPerfil = \Cloudinary\Uploader::upload($_FILES['foto-perfil']['tmp_name']); 
-    $fotoPerfilPath = $fotoPerfil['url'];
+    $fotoPerfilPath = "http://res.cloudinary.com/".$cloud."/".explode("#", $fotoPerfilPath)[0];
+
 
     //Actualizar foto de perfil de librería con nueva foto 
     $sql = "UPDATE libreria SET 

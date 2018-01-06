@@ -38,7 +38,45 @@ if ($_SESSION['tipo'] == 'usuario') {
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<!-- Cloudinary shit -->
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.iframe-transport.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.cloudinary.js"></script>
+	<script>
+	 	$(function() {
+		  if($.fn.cloudinary_fileupload !== undefined) {
+		    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+		  }
+		});
+	</script>	
+
+	<?php 
+	require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
+    $api_key = "176317843429194";
+	$cloud = "dzu2umeba"; 
+	$api_secret = "SqdUW7QjZaFri1WJo93DUiP1eyo";
+
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
+
+    echo cloudinary_js_config();
+
+    if (array_key_exists('REQUEST_SCHEME', $_SERVER)) {   
+	  $cors_location = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] .
+	    dirname($_SERVER["SCRIPT_NAME"]) . "/cloudinary_cors.html";
+	} else {
+	  $cors_location = "https://" . $_SERVER["HTTP_HOST"] . "/cloudinary_cors.html";
+	}
+
+	 ?>
 </head>
 <body>
 	<?php 
@@ -55,29 +93,40 @@ if ($_SESSION['tipo'] == 'usuario') {
 				<div class="row preview">
 					<img id="foto-frente" src="" alt="">
 				</div>
-				<div class="row subir">
+				<div class="row subir" data-pos="frente">
 				 
 					<label>Foto de Frente</label><br>
 					<button type="button" id="upload-frente" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
+					
 				</div>
 			</div>
-			<div  class="col-lg-3">
+			<div class="col-lg-3">
 				<div class="row preview">
 					<img id="foto-atras" src="" alt="">
 				</div>
-				<div class="row subir">
+				<div class="row subir" data-pos="atras">
 				
 					<label>Foto de Atrás</label><br>
 					<button type="button" id="upload-atras" class="upload-btn btn"><i class="fa fa-upload" aria-hidden="true"></i> SUBIR</button>
+					
 				</div>
 			</div>
 			<form id="nuevo-libro" action="agregaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-6">
 				<div class="form-control err-msg ">Precio no válido!.</div>
+				
+				<div id="frenteInput" style="display:none;">
+					<?php echo cl_image_upload_tag('fotoFrente', array("callback" => $cors_location)); ?>
+				 </div>
+
+				 <div id="atrasInput" style="display:none;">
+				 	<?php echo cl_image_upload_tag('fotoAtras', array("callback" => $cors_location)); ?>
+				 </div>
+
 				<div class="form-group">
 					 <div class="labels col-lg-4">
-						<input style="display: none;" required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
-						<input  style="display: none;" required type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
-					 	<label for="isbn" class="col-form-label">ISBN (opcional)</label><br>
+					 
+						<!-- <input style="display: none;" required type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" > -->
+						<!-- <input  style="display: none;" required type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg"> -->
 					 	<label for="autor" class="col-form-label">Autor</label><br>
 					 	<label for="titulo" required class="col-form-label">Título</label><br>
 					 	<label for="precio" required class="col-form-label">Precio($)</label><br>
@@ -85,7 +134,6 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 	<label for="tags" class="col-form-label">Tags.</label>
 					 </div>
 					 <div class="inputs col-lg-8">
-					 	<input type="text" class="form-control" name="isbn" id="isbn" placeholder="0803287682">
 					 	<input type="text" required class="form-control" name="autor" id="autor" placeholder="Julio Verne">
 					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="...">
 					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00">
@@ -100,7 +148,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 					
 					 <button class="btn btn-default" type="submit"><b>Enviar</b></button>
 				</div>
-				
+
 			</form>
 		</div>
 	</div>	
@@ -160,7 +208,7 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<!-- Modal -->
 
 	<!-- FIN ELEMENTOS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/bootstrap-tagsinput.js"></script>
@@ -168,4 +216,5 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<script src="../js/autocomplete.js"></script>
 	<script src="../js/notificacionesLibreria.js"></script>
 	<script src="../js/typeahead.js"></script>
+	
 </html>

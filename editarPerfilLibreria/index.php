@@ -52,7 +52,50 @@
 
 	  gtag('config', 'UA-111545043-1');
 	</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.iframe-transport.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.cloudinary.js"></script>
+	<script>
+	 	$(function() {
+		  if($.fn.cloudinary_fileupload !== undefined) {
+		    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+		  }
+		});
+	</script>	
 
+	<?php 
+	require '../lib/cloudinary/src/Cloudinary.php';
+    require '../lib/cloudinary/src/Uploader.php';
+    require '../lib/cloudinary/src/Api.php';
+    $api_key = "176317843429194";
+	$cloud = "dzu2umeba"; 
+	$api_secret = "SqdUW7QjZaFri1WJo93DUiP1eyo";
+
+    \Cloudinary::config(array( 
+      "cloud_name" => $cloud,  
+      "api_key" => $api_key, 
+      "api_secret" => $api_secret 
+    ));
+
+    echo cloudinary_js_config();
+
+    if (array_key_exists('REQUEST_SCHEME', $_SERVER)) {   
+	  $cors_location = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] .
+	    dirname($_SERVER["SCRIPT_NAME"]) . "/cloudinary_cors.html";
+	} else {
+	  $cors_location = "https://" . $_SERVER["HTTP_HOST"] . "/cloudinary_cors.html";
+	}
+
+	 ?>
+
+	 <style>
+		.cloudinary-fileupload {
+		    display: block !important;
+		}
+	</style>
 </head>
 <body>
 	
@@ -86,7 +129,10 @@
 						
 						<!-- Formulario Escondido para subir foto de perfil -->
 						<form hidden action="actualizarFotoPerfil.php" method="post" enctype="multipart/form-data">
-							<input id="input-foto-perfil" type="file" accept="image/x-png,image/gif,image/jpeg" name="foto-perfil">
+							<div id="input-foto-perfil">
+								<?php echo cl_image_upload_tag('fotoPerfil', array("callback" => $cors_location)); ?>
+							</div>
+							
 							<button type="submit"></button>
 						</form>
 
@@ -95,7 +141,9 @@
 				
 				<!-- Formulario Escondido para subir foto de portada -->
 				<form hidden action="actualizarFotoPortada.php" method="post"  enctype="multipart/form-data">
-					<input id="input-foto-portada" type="file" accept="image/x-png,image/gif,image/jpeg" name="foto-portada" value="">
+					<div id="input-foto-portada">
+						<?php echo cl_image_upload_tag('fotoPortada', array("callback" => $cors_location)); ?>
+					</div>
 					<input type="submit" name="submit" hidden>
 				</form>
 
@@ -170,7 +218,6 @@
 	</div>
 	
 	<?php include '../components/footer-libreria.php'; ?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.0/sweetalert2.min.js"></script>
 	<script src="../js/editarPerfil-libreria.js"></script>

@@ -61,6 +61,46 @@ if ($_SESSION['tipo'] == 'usuario') {
 
 	  gtag('config', 'UA-111545043-1');
 	</script>
+	
+	<!-- Cloudinary shit -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.iframe-transport.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="../js/cloudinary_js/jquery.cloudinary.js"></script>
+	<script>
+	 	$(function() {
+		  if($.fn.cloudinary_fileupload !== undefined) {
+		    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+		  }
+		});
+	</script>	
+
+	<?php 
+		require '../lib/cloudinary/src/Cloudinary.php';
+	    require '../lib/cloudinary/src/Uploader.php';
+	    require '../lib/cloudinary/src/Api.php';
+	    $api_key = "176317843429194";
+		$cloud = "dzu2umeba"; 
+		$api_secret = "SqdUW7QjZaFri1WJo93DUiP1eyo";
+
+	    \Cloudinary::config(array( 
+	      "cloud_name" => $cloud,  
+	      "api_key" => $api_key, 
+	      "api_secret" => $api_secret 
+	    ));
+
+	    echo cloudinary_js_config();
+
+	    if (array_key_exists('REQUEST_SCHEME', $_SERVER)) {   
+		  $cors_location = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["SERVER_NAME"] .
+		    dirname($_SERVER["SCRIPT_NAME"]) . "/cloudinary_cors.html";
+		} else {
+		  $cors_location = "https://" . $_SERVER["HTTP_HOST"] . "/cloudinary_cors.html";
+		}
+
+	 ?>
 
 </head>
 <body>
@@ -101,11 +141,16 @@ if ($_SESSION['tipo'] == 'usuario') {
 			</div>
 			<form id="nuevo-libro" action="actualizaLibro.php" method="post"  enctype="multipart/form-data" class="col-lg-6">
 				<div class="form-control err-msg ">Precio no válido!.</div>
+				<div id="frenteInput" style="display:none;">
+					<?php echo cl_image_upload_tag('fotoFrente', array("callback" => $cors_location)); ?>
+				 </div>
+
+				 <div id="atrasInput" style="display:none;">
+				 	<?php echo cl_image_upload_tag('fotoAtras', array("callback" => $cors_location)); ?>
+				 </div>
+
 				<div class="form-group">
 					 <div class="labels col-lg-4">
-						<input style="display: none;" type="file" name="fotoFrente" id="fotoFrente" accept="image/x-png,image/jpeg" >
-						<input  style="display: none;" type="file" name="fotoAtras" id="fotoAtras" accept="image/x-png,image/jpeg">
-					 	<label for="isbn" class="col-form-label">ISBN (opcional)</label><br>
 					 	<label for="autor" class="col-form-label">Autor</label><br>
 					 	<label for="titulo" required class="col-form-label">Título</label><br>
 					 	<label for="precio" required class="col-form-label">Precio($)</label><br>
@@ -113,7 +158,6 @@ if ($_SESSION['tipo'] == 'usuario') {
 					 	<label for="tags" class="col-form-label">Tags.</label>
 					 </div>
 					 <div class="inputs col-lg-8">
-					 	<input type="text" class="form-control" name="isbn" id="isbn" placeholder="0803287682" value="<?php echo $libro->getIsbn(); ?>">
 					 	<input type="text" required class="form-control" name="autor" id="autor" placeholder="Julio Verne" value="<?php echo $libro->getAutor(); ?>">
 					 	<input type="text" class="form-control" name="titulo" id="titulo" placeholder="..." value="<?php echo $libro->getTitulo(); ?>">
 					 	<input type="text" class="form-control" name="precio" id="precio" placeholder="$00.00" value="$<?php echo $libro->getPrecio(); ?>">
@@ -187,7 +231,6 @@ if ($_SESSION['tipo'] == 'usuario') {
 	<!-- Modal -->
 
 	<!-- FIN ELEMENTOS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery-ui.min.js"></script>
 	<script src="../js/bootstrap-tagsinput.js"></script>

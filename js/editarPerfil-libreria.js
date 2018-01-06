@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
 
 	//Cuando quieren cambiar foto de perfil. 
 	$('#cambiar-perfil').click(function() {
-		$("#input-foto-perfil").click();
+		$("#input-foto-perfil").find('.cloudinary-fileupload').click();
 	});
 
 	$('#cancelar-perfil').click(function(event) {
@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
 	});
 
 	//Si se sube una foto de perfil
-	$("#input-foto-perfil").change(function() {
+	$("#input-foto-perfil .cloudinary-fileupload").change(function() {
 		$('#cambiar-perfil').hide();
 		$("#guardar-perfil").show();
 		$('#cancelar-perfil').show();
@@ -61,12 +61,9 @@ jQuery(document).ready(function($) {
 
 	//Si presiona guardar perfil
 	$('#guardar-perfil').click(function() {
-		let size = $("#input-foto-perfil")[0].files[0].size/1024/1024; 
-		if (size > 3) {
-			swal({
-				title: 'Archivo supera los 3MB', 
-				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
-				type: 'error'});
+		let perfil = $('input[name="fotoPerfil"]').val();
+		if (!perfil) {
+			alert("La foto aún no termina de subirse, espere unos segundos más");
 			return;
 		} else {
 			$('#box').find('form').submit(); //Se envia formulario escondido dentro de #box
@@ -76,7 +73,7 @@ jQuery(document).ready(function($) {
 
 	//Cuando quieren cambiar foto de portada. 
 	$('#cambiar-portada').click(function() {
-		$("#input-foto-portada").click();
+		$("#input-foto-portada").find('.cloudinary-fileupload').click();
 	});
 
 	$('#cancelar').click(function(event) {
@@ -86,7 +83,7 @@ jQuery(document).ready(function($) {
 	});
 
 	//Si se sube una foto de portada
-	$("#input-foto-portada").change(function() {
+	$("#input-foto-portada .cloudinary-fileupload").change(function() {
 		$('#cambiar-portada').hide();
 		$("#guardar-portada").show();
 		$('#cancelar-portada').show();
@@ -96,12 +93,9 @@ jQuery(document).ready(function($) {
 
 	//Si presiona guardar portada
 	$('#guardar-portada').click(function() {
-		let size = $("#input-foto-portada")[0].files[0].size/1024/1024; 
-		if (size > 3) {
-			swal({
-				title: 'Archivo supera los 3MB', 
-				html: 'Use un servicio para comprimir la imagen como: <a target="_blank" href="http://compressjpeg.com/">http://compressjpeg.com/</a> para reducir el tamaño de la imagen.', 
-				type: 'error'});
+		let portada = $('input[name="fotoPortada"]').val(); 
+		if (!portada) {
+			alert("La foto aún no termina de subirse, espere unos segundos más");
 			return;
 		} else {
 			$('.fotos').find('input[type="submit"]').click(); //Se envia formulario escondido dentro de .fotos
