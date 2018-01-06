@@ -32,7 +32,7 @@ jQuery(document).ready(function($) {
 	"guerra", "deportes", "economía", "política", "religión", "música", "humor", 
 	"cine", "cinematografía", "entretenimiento", "filosofía", "gastronomía", "psicología", 
 	"leyes", "medicina", "química", "literatura", "ensayo", "romance", "muerte", "novela-histórica",
-	"pintura", "robots", "derecho", "extraterrestres", "conspiración", "astronomía"];
+	"pintura", "robots", "derecho", "extraterrestres", "conspiración", "astronomía", "aventura", "clásicos", "policíaco"];
 
 	
 

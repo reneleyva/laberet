@@ -5,6 +5,11 @@ include '../lib/Libro.php';
 include '../lib/Libreria.php';
 include '../lib/Busqueda.php';
 
+function resize($url) {
+	return join("upload/h_400", explode("upload", $url));
+};
+
+
 if (!isset($_REQUEST['id'])) {
 	header("Location: ../404.html");
 	exit();

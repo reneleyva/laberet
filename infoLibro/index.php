@@ -71,10 +71,10 @@
 
 			<div class="photos col-lg-4 col-md-4 col-sm-6 col-xs-6">
 				<div class="cover">
-					<img src="<?php echo $book->getFotoFrente();?>" alt="">					
+					<img src="<?php echo resize($book->getFotoFrente());?>" alt="">					
 				</div>
 				<div class="back">
-					<img src="<?php echo $book->getFotoAtras();?>" alt="">
+					<img src="<?php echo resize($book->getFotoAtras());?>" alt="">
 				</div>
 			</div>
 			
