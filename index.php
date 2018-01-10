@@ -13,7 +13,7 @@
 	<meta property="og:url" content="http://www.laberet.com" />
 	<meta property="og:image" content="http://res.cloudinary.com/dzu2umeba/image/upload/v1513531736/ew6ufbaqaopvxokmjmdc.png" />
 	<meta property="og:description" content="La tienda en línea de las librerías independientes">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="http://res.cloudinary.com/dzu2umeba/image/upload/h_32/v1513531736/ew6ufbaqaopvxokmjmdc.png">
 
 	<title>Laberet</title>
 	<!-- Bootstrap css -->
