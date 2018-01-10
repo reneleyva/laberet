@@ -101,6 +101,9 @@ include_once '../lib/Usuario.php';
 			</div>
 			<?php 
 				$books = Busqueda::ultimosAgregados();
+				function resize($url) {
+					return join("upload/h_260", explode("upload", $url));
+				};
 			 ?>
 			<div id="carousel-libros" class="col-lg-10 col-md-8 col-sm-8 col-xs-6" data-num-libros="<?php echo count($books); ?>">
 				
@@ -115,7 +118,7 @@ include_once '../lib/Usuario.php';
 				?>
 				<div class="thumbnail libro">
 					<div class="caption">
-						<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>" alt=""></a>
+						<a href="#"><img class="book-cover" src="<?php echo resize($book->getFotoFrente());?>" alt=""></a>
 						<div class="info">
 							<p class="book-title"><?php echo $book->getTitulo();?></p>
 							<p class="book-author" href="#"><?php echo $book->getAutor();?></p>
@@ -231,7 +234,7 @@ include_once '../lib/Usuario.php';
 
 				<!-- Prueba para Morrú -->
 				<div class="cover col-lg-1 col-md-5">
-					<img src="<?php echo $compra->getFotoFrente();?>" alt="" style="margin-right: -2px; ">
+					<img src="<?php echo resize($compra->getFotoFrente());?>" alt="" style="margin-right: -2px; ">
 				</div>
 
 				<div class="info col-lg-5 col-md-5">
@@ -271,7 +274,7 @@ include_once '../lib/Usuario.php';
 					
 					<div class="thumbnail libro">
 						<div class="caption">
-							<a href="#"><img class="book-cover" src="<?php echo $book->getFotoFrente();?>" alt=""></a>
+							<a href="#"><img class="book-cover" src="<?php echo resize($book->getFotoFrente());?>" alt=""></a>
 							<div class="info">
 								<p class="book-title"><?php echo $book->getTitulo();?></p>
 								<p class="book-author" href="#"><?php echo $book->getAutor();?></p>

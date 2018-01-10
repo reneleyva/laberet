@@ -37,6 +37,7 @@
 			$_SESSION['nombre'] = $correo;
 			$_SESSION['tipo'] = "libreria"; //Tipo usuario
 			$_SESSION['id'] = $row['idLibreria'];
+			$_SESSION['correo'] = $correo;
 			header("location: ../homeLibreria/"); 
 			exit();
 		}
@@ -47,6 +48,7 @@
 		$_SESSION['tipo'] = "usuario"; //Tipo usuario
 		$_SESSION['carrito'] = array();
 		$_SESSION['id'] = $row['idUsuario'];
+		$_SESSION['correo'] = $correo;
 		$_SESSION['first'] = True; //Primera vez iniciando sesión;	
 		if(isset($_REQUEST['idLibro'])) {
 			include_once '../lib/Libro.php';

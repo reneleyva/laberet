@@ -32,7 +32,8 @@ jQuery(document).ready(function($) {
 	"guerra", "deportes", "economía", "política", "religión", "música", "humor", 
 	"cine", "cinematografía", "entretenimiento", "filosofía", "gastronomía", "psicología", 
 	"leyes", "medicina", "química", "literatura", "ensayo", "romance", "muerte", "novela-histórica",
-	"pintura", "robots", "derecho", "extraterrestres", "conspiración", "astronomía", "aventura", "clásicos", "policíaco"];
+	"pintura", "robots", "derecho", "extraterrestres", "conspiración", "astronomía", "aventura", 
+	"clásicos", "policíaco", "teatro"];
 
 	
 
@@ -96,7 +97,10 @@ jQuery(document).ready(function($) {
 
 	$('#nuevo-libro').submit(function(ev) {
 	    ev.preventDefault(); // to stop the form from submitting
-	    var tags = $(".bootstrap-tagsinput").text();
+	    var tags = $(".bootstrap-tagsinput").first().text();
+	    tags = tags.split(" ");
+	    tags.pop();
+	    tags = tags.join(" ");
 	    var precio = $("#precio").val().replace("$", "");
 	    $('#tags').val(tags);
 	    $("#precio").val(precio);

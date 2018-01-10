@@ -19,7 +19,6 @@
     //Se agrega el autor como tag. 
     $autorTags = join(" ", explode(" ", $autor));
     $tags = $tags." ".$autorTags;
-    
 
     $cloud = getenv('CLOUD_NAME');
 

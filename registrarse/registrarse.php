@@ -1,5 +1,6 @@
 <?php  
 include "../conexion.php";
+include '../lib/Correo.php';
 
 	$pass = md5($_POST['password']."teamolizzteamoluz");
 	$correo = $_POST['correo'];
@@ -32,7 +33,21 @@ include "../conexion.php";
 		$row = mysqli_fetch_array($query);
 		$_SESSION['id'] = $row['idUsuario'];
 		$_SESSION['carrito'] = array();
+		$_SESSION['correo'] = $correo;
 		$_SESSION['first'] = True; //Primera vez iniciando sesión;
+
+		Correo::enviaCorrero($correo, 
+			"Bienvenido a Laberet ".$nombre, 
+			"Gracias por registrarte en Laberet. Ten la libertad de comentarnos cualquier duda que tengas o sugerencia contestando este correo.", true);
+
+		Correo::enviaCorrero("sinmatonesaporfavor@gmail.com", 
+			"Usuario registrado ", 
+			$nombre." acaba de registrarse con correo: ".$correo, false);
+
+		Correo::enviaCorrero("lugia365@gmail.com", 
+			"Usuario registrado ", 
+			$nombre." acaba de registrarse con correo: ".$correo, false);
+
 		header("location: ../home");
 		exit();
 
