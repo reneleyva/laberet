@@ -8,7 +8,7 @@ function resize($url) {
 
 //Cosulta para buscar las librerías.
 try {
-	$sql = "SELECT * from libro LIMIT 4";
+	$sql = "SELECT * FROM libro ORDER BY idLibro DESC LIMIT 4";
 	$query = mysqli_query($con, $sql);
 	$libros = array();
 	while ($row = mysqli_fetch_array($query)) {
