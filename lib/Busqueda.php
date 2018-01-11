@@ -89,7 +89,8 @@ class Busqueda {
 	// Busca en todo si keyword="" regresa todos los libros ;)
 	function buscaGeneral($keyword){
 		include "../conexion.php";
-		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%');";
+		$sql = "SELECT * FROM libro WHERE lower(tags) like lower('%".$keyword."%')
+				OR lower(titulo) like lower('%".$keyword."%') ;";
 		$query = mysqli_query($con, $sql);
 		$books = array();
 		while ($row = mysqli_fetch_array($query)){
